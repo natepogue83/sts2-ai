@@ -299,9 +299,12 @@ class ValueCorpus:
     examples: tuple[ValueExample, ...]
     trajectories: int
     excluded_trajectories: int
+    policy_filtered_trajectories: int
     duplicate_states: int
     horizon_floors: int
     feature_schema: str
+    state_sampling: str
+    allowed_policies: tuple[str, ...]
 
 
 def _trajectory_files(inputs: Sequence[str | os.PathLike[str]]) -> list[Path]:
@@ -320,15 +323,24 @@ def build_value_corpus(
     *,
     horizon_floors: int = 3,
     feature_schema: str = "linear_v1",
+    state_sampling: str = "round_start",
+    allowed_policies: Sequence[str] | None = None,
 ) -> ValueCorpus:
     """Build seed-grouped combat values from completed first-party trajectories."""
 
     if horizon_floors <= 0:
         raise ValueError("horizon_floors must be positive")
+    if state_sampling not in {"round_start", "all_combat_decisions"}:
+        raise ValueError(f"Unsupported value state sampling: {state_sampling}")
+    normalized_policies = tuple(
+        sorted({str(policy).strip() for policy in allowed_policies or () if str(policy).strip()})
+    )
+    allowed_policy_set = set(normalized_policies)
     examples: list[ValueExample] = []
     seen: set[str] = set()
     trajectories = 0
     excluded = 0
+    policy_filtered = 0
     duplicates = 0
     for path in _trajectory_files(inputs):
         records: list[Mapping[str, Any]] = []
@@ -351,6 +363,10 @@ def build_value_corpus(
             or end.get("truncated") is True
         ):
             excluded += 1
+            continue
+        if allowed_policy_set and str(start.get("policy") or "") not in allowed_policy_set:
+            excluded += 1
+            policy_filtered += 1
             continue
         try:
             character = _canonical_character(start.get("character"))
@@ -377,9 +393,10 @@ def build_value_corpus(
             floor = int(context.get("floor") or 0)
             round_number = int(decision.get("round") or 0)
             round_key = (floor, round_number)
-            if round_key in seen_rounds:
-                continue
-            seen_rounds.add(round_key)
+            if state_sampling == "round_start":
+                if round_key in seen_rounds:
+                    continue
+                seen_rounds.add(round_key)
             canonical = json.dumps(
                 observation, sort_keys=True, separators=(",", ":"), ensure_ascii=False
             )
@@ -436,9 +453,12 @@ def build_value_corpus(
         examples=tuple(examples),
         trajectories=trajectories,
         excluded_trajectories=excluded,
+        policy_filtered_trajectories=policy_filtered,
         duplicate_states=duplicates,
         horizon_floors=horizon_floors,
         feature_schema=feature_schema,
+        state_sampling=state_sampling,
+        allowed_policies=normalized_policies,
     )
 
 
@@ -1383,6 +1403,124 @@ def train_value_model_v4(
         },
         "validation": validation_evaluation,
         "test": test_evaluation,
+    }
+    if metrics_output is not None:
+        _atomic_json(Path(metrics_output), report)
+    return report
+
+
+def train_rank_value_model(
+    inputs: Sequence[str | os.PathLike[str]],
+    output: str | os.PathLike[str],
+    *,
+    metrics_output: str | os.PathLike[str] | None = None,
+    allowed_policies: Sequence[str] = ("combat_deepsets_greedy_noncombat_v1",),
+    horizon_floors: int = 3,
+    epochs: int = 150,
+    learning_rate: float = 0.02,
+    l2: float = 3e-3,
+    build_id: str = "v0.107.1",
+    ensemble_seeds: Sequence[int] = (401, 503, 607),
+) -> dict[str, Any]:
+    """Fit one bounded action-state ensemble for hash-bound rank-only search tests."""
+
+    feature_schema = "character_nonlinear_v3"
+    if len(ensemble_seeds) < 2 or len(set(ensemble_seeds)) != len(ensemble_seeds):
+        raise ValueError("Rank value model requires at least two unique ensemble seeds")
+    if not tuple(allowed_policies):
+        raise ValueError("Rank value model requires at least one allowed policy")
+    corpus = build_value_corpus(
+        inputs,
+        horizon_floors=horizon_floors,
+        feature_schema=feature_schema,
+        state_sampling="all_combat_decisions",
+        allowed_policies=allowed_policies,
+    )
+    grouped = {
+        split: [example for example in corpus.examples if example.split == split]
+        for split in ("train", "validation", "test")
+    }
+    if any(not grouped[split] for split in grouped):
+        raise ValueError("Rank value corpus must contain non-empty train/validation/test splits")
+    member_weights: list[np.ndarray] = []
+    member_biases: list[float] = []
+    for seed in ensemble_seeds:
+        member_examples = _bootstrap_groups(grouped["train"], seed=seed)
+        member_x, member_y = _matrix(member_examples)
+        weights, bias = _fit_logistic(
+            member_x,
+            member_y,
+            epochs=epochs,
+            learning_rate=learning_rate,
+            l2=l2,
+            sample_weights=_group_balanced_weights(member_examples),
+        )
+        member_weights.append(weights)
+        member_biases.append(bias)
+    model = CalibratedLinearValueEvaluator(
+        np.stack(member_weights),
+        np.asarray(member_biases),
+        1.0,
+        0.0,
+        horizon_floors=horizon_floors,
+        build_id=build_id,
+        feature_schema=feature_schema,
+        calibration_kind="identity",
+        calibration_status="rank_only_action_state_development",
+        search_eligible=False,
+    )
+    model.save(output)
+    validation_evaluation = evaluate_value_examples(model, grouped["validation"])
+    test_evaluation = evaluate_value_examples(model, grouped["test"])
+    report = {
+        "schema_version": 1,
+        "experiment": "rank_only_action_state_value_v1",
+        "model": str(Path(output)),
+        "model_sha256": _sha256_file(output),
+        "target": f"survive_next_{horizon_floors}_floors",
+        "training_source": "existing_first_party_deep_sets_headless_trajectories",
+        "search_labels_used": False,
+        "training_labels_emitted": False,
+        "probability_claim": False,
+        "corpus": {
+            "trajectories": corpus.trajectories,
+            "excluded_trajectories": corpus.excluded_trajectories,
+            "policy_filtered_trajectories": corpus.policy_filtered_trajectories,
+            "duplicate_states": corpus.duplicate_states,
+            "examples": len(corpus.examples),
+            "state_sampling": corpus.state_sampling,
+            "allowed_policies": list(corpus.allowed_policies),
+            "splits": {key: len(value) for key, value in grouped.items()},
+            "groups": {
+                key: len({example.group_sha256 for example in value})
+                for key, value in grouped.items()
+            },
+        },
+        "configuration": {
+            "architecture": "three-member group-balanced bootstrap nonlinear GAM ensemble",
+            "ensemble_seeds": list(ensemble_seeds),
+            "epochs": epochs,
+            "learning_rate": learning_rate,
+            "l2": l2,
+            "feature_schema": feature_schema,
+            "feature_count": len(model.feature_names),
+            "split": "per_character_sha256_ranked_seed_groups_80_10_10",
+            "calibration": "identity_rank_only",
+        },
+        "authorization": {
+            "checkpoint_search_eligible": False,
+            "evaluation_scope": RANK_ONLY_EVALUATION_SCOPE,
+            "requires_frozen_sha256": True,
+            "next_gate": "five_character_paired_search_correctness_smoke",
+        },
+        "diagnostics_only": {
+            "validation": validation_evaluation,
+            "test": test_evaluation,
+            "caveat": (
+                "Identity probabilities are uncalibrated diagnostics; this checkpoint is "
+                "authorized only for within-state branch ordering in a hash-bound paired test."
+            ),
+        },
     }
     if metrics_output is not None:
         _atomic_json(Path(metrics_output), report)

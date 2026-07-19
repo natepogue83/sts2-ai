@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "experiment": "rank_only_action_state_value_v1",
+  "status": "precommitted_before_fit",
+  "build_id": "v0.107.1",
+  "inputs": [
+    "data/raw/value-calibration-v3/development",
+    "data/raw/value-calibration-v3/audit",
+    "data/headless-combat-deepsets-online-baseline-v0.107.1-a10-n10",
+    "data/raw/headless/powered-deepsets-vs-dagger-r1-v0.107.1-a10.n40"
+  ],
+  "corpus_contract": {
+    "allowed_policies": [
+      "combat_deepsets_greedy_noncombat_v1"
+    ],
+    "state_sampling": "all_combat_decisions",
+    "target": "survive_next_3_floors",
+    "expected_completed_trajectories": 400,
+    "observed_pre_fit_examples": 30125,
+    "search_labels_used": false
+  },
+  "fit": {
+    "architecture": "three-member group-balanced bootstrap nonlinear GAM ensemble",
+    "feature_schema": "character_nonlinear_v3",
+    "ensemble_seeds": [
+      401,
+      503,
+      607
+    ],
+    "epochs": 150,
+    "learning_rate": 0.02,
+    "l2": 0.003,
+    "split": "per_character_sha256_ranked_seed_groups_80_10_10",
+    "calibration": "identity_rank_only"
+  },
+  "claims_and_gates": {
+    "probability_claim": false,
+    "checkpoint_search_eligible": false,
+    "rank_evaluation_requires_frozen_sha256": true,
+    "next_gate": "one fresh case per character paired search correctness smoke",
+    "if_clean": "freeze and run the prepowered 40-case-per-character paired search test",
+    "if_dirty": "stop without tuning or opening the powered pool"
+  }
+}

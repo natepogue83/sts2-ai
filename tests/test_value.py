@@ -228,6 +228,59 @@ class ValueTests(unittest.TestCase):
         self.assertEqual(sum(example.label for example in corpus.examples), 6.0)
         self.assertTrue(all(len(example.group_sha256) == 64 for example in corpus.examples))
 
+    def test_corpus_can_sample_every_combat_decision_and_filter_policy(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for index in range(12):
+                policy = (
+                    "combat_deepsets_greedy_noncombat_v1"
+                    if index < 10
+                    else "combat_bc_greedy_noncombat_v1"
+                )
+                start = {
+                    "event_type": "episode_start",
+                    "character": "CHARACTER.IRONCLAD",
+                    "seed": f"ACTION-{index}",
+                    "policy": policy,
+                }
+                first = {
+                    "event_type": "transition",
+                    "observation": observation(seed=start["seed"]),
+                }
+                second = json.loads(json.dumps(first))
+                second["observation"]["player"]["block"] = 9
+                end = {
+                    "event_type": "episode_end",
+                    "terminated": True,
+                    "truncated": False,
+                    "victory": False,
+                    "floor": 8,
+                }
+                (root / f"case-{index}.jsonl").write_text(
+                    "\n".join(json.dumps(item) for item in (start, first, second, end)) + "\n",
+                    encoding="utf-8",
+                )
+
+            round_start = build_value_corpus(
+                [root],
+                allowed_policies=["combat_deepsets_greedy_noncombat_v1"],
+            )
+            every_action = build_value_corpus(
+                [root],
+                state_sampling="all_combat_decisions",
+                allowed_policies=["combat_deepsets_greedy_noncombat_v1"],
+            )
+
+        self.assertEqual(round_start.trajectories, 10)
+        self.assertEqual(round_start.policy_filtered_trajectories, 2)
+        self.assertEqual(len(round_start.examples), 10)
+        self.assertEqual(len(every_action.examples), 20)
+        self.assertEqual(every_action.state_sampling, "all_combat_decisions")
+        self.assertEqual(
+            every_action.allowed_policies,
+            ("combat_deepsets_greedy_noncombat_v1",),
+        )
+
     def test_calibration_metrics_report_brier_ece_and_bins(self) -> None:
         metrics = calibration_metrics(
             np.asarray([0.0, 0.0, 1.0, 1.0]),

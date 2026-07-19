@@ -365,6 +365,34 @@ def make_parser() -> argparse.ArgumentParser:
     value_v4_train_parser.add_argument("--l2", type=float, default=3e-3)
     value_v4_train_parser.add_argument("--build-id", default="v0.107.1")
 
+    rank_value_train_parser = subparsers.add_parser(
+        "train-rank-value-model",
+        help="Train a policy-filtered all-action-state value for rank-only search tests",
+    )
+    rank_value_train_parser.add_argument(
+        "--input",
+        action="append",
+        type=Path,
+        required=True,
+        help="Existing first-party trajectory file or directory. Repeatable.",
+    )
+    rank_value_train_parser.add_argument("--output", type=Path, required=True)
+    rank_value_train_parser.add_argument("--metrics-output", type=Path, required=True)
+    rank_value_train_parser.add_argument(
+        "--allowed-policy",
+        action="append",
+        default=[],
+        help=(
+            "Episode-start policy admitted to the corpus. Repeatable; defaults to the "
+            "Deep Sets policy."
+        ),
+    )
+    rank_value_train_parser.add_argument("--horizon-floors", type=int, default=3)
+    rank_value_train_parser.add_argument("--epochs", type=int, default=150)
+    rank_value_train_parser.add_argument("--learning-rate", type=float, default=0.02)
+    rank_value_train_parser.add_argument("--l2", type=float, default=3e-3)
+    rank_value_train_parser.add_argument("--build-id", default="v0.107.1")
+
     value_evaluate_parser = subparsers.add_parser(
         "evaluate-value-model",
         help="Measure held-out calibration of a public-state survival value",
@@ -1045,6 +1073,24 @@ def main(argv: Sequence[str] | None = None) -> int:
                 l2=args.l2,
                 build_id=args.build_id,
                 require_independent_audit=True,
+            )
+            print(json.dumps(payload, indent=2, sort_keys=True))
+            return 0
+        elif args.command == "train-rank-value-model":
+            from stsai.value import train_rank_value_model
+
+            payload = train_rank_value_model(
+                args.input,
+                args.output,
+                metrics_output=args.metrics_output,
+                allowed_policies=(
+                    args.allowed_policy or ["combat_deepsets_greedy_noncombat_v1"]
+                ),
+                horizon_floors=args.horizon_floors,
+                epochs=args.epochs,
+                learning_rate=args.learning_rate,
+                l2=args.l2,
+                build_id=args.build_id,
             )
             print(json.dumps(payload, indent=2, sort_keys=True))
             return 0
