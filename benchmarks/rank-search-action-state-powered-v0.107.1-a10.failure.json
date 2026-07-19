@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "evaluation": "frozen_paired_rank_only_one_ply_search",
+  "status": "failed_safety_gate_before_strength_aggregation",
+  "manifest": "benchmarks/rank-search-action-state-powered-v0.107.1-a10.precommit.json",
+  "manifest_sha256": "a97423f528099ba97ce46f2240a7c51f76389b2fb536183c208397e23e662a8a",
+  "value_checkpoint_sha256": "55ef3baac4c0c20c32903bb8748397a497b9d493170b5190f18d37af2b38a748",
+  "execution": {
+    "scheduled_pairs": 200,
+    "scheduled_jobs": 400,
+    "parallel_workers": 4,
+    "parallel_search_branches": 4,
+    "max_search_nodes": 8,
+    "baseline_completed": 200,
+    "search_completed": 183,
+    "baseline_runtime_failures": 0,
+    "search_runtime_failures": 17,
+    "search_completion_rate": 0.915
+  },
+  "failure_counts_by_character": {
+    "CHARACTER.IRONCLAD": 6,
+    "CHARACTER.SILENT": 1,
+    "CHARACTER.DEFECT": 1,
+    "CHARACTER.NECROBINDER": 5,
+    "CHARACTER.REGENT": 4
+  },
+  "failure_categories_nonexclusive": {
+    "transcript_or_final_state_hash_divergence_cases": 16,
+    "semantic_checkpoint_divergence_cases": 1,
+    "replay_invalid_card_action_cases": 2
+  },
+  "representative_errors": [
+    "Native fork diverged at its final transcript step",
+    "Forked native semantic checkpoint diverged",
+    "Cannot play card HighFive: BlockedByCardLogic",
+    "Cannot play card AscendersBane: HasUnplayableKeyword"
+  ],
+  "failed_cases": [
+    {
+      "case_index": 0,
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR2I000000",
+      "classification": "transcript_hash_divergence"
+    },
+    {
+      "case_index": 4,
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR2I000004",
+      "classification": "transcript_hash_divergence"
+    },
+    {
+      "case_index": 15,
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR2I000015",
+      "classification": "transcript_hash_divergence"
+    },
+    {
+      "case_index": 17,
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR2I000017",
+      "classification": "transcript_hash_divergence"
+    },
+    {
+      "case_index": 20,
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR2I000020",
+      "classification": "transcript_hash_divergence"
+    },
+    {
+      "case_index": 34,
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR2I000034",
+      "classification": "replay_invalid_action_and_transcript_divergence"
+    },
+    {
+      "case_index": 57,
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR2S000017",
+      "classification": "semantic_checkpoint_divergence"
+    },
+    {
+      "case_index": 116,
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR2D000036",
+      "classification": "replay_invalid_action_and_transcript_divergence"
+    },
+    {
+      "case_index": 122,
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR2N000002",
+      "classification": "transcript_hash_divergence"
+    },
+    {
+      "case_index": 128,
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR2N000008",
+      "classification": "transcript_hash_divergence"
+    },
+    {
+      "case_index": 141,
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR2N000021",
+      "classification": "transcript_hash_divergence"
+    },
+    {
+      "case_index": 143,
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR2N000023",
+      "classification": "transcript_hash_divergence"
+    },
+    {
+      "case_index": 159,
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR2N000039",
+      "classification": "transcript_hash_divergence"
+    },
+    {
+      "case_index": 168,
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR2R000008",
+      "classification": "transcript_hash_divergence"
+    },
+    {
+      "case_index": 173,
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR2R000013",
+      "classification": "transcript_hash_divergence"
+    },
+    {
+      "case_index": 174,
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR2R000014",
+      "classification": "transcript_hash_divergence"
+    },
+    {
+      "case_index": 181,
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR2R000021",
+      "classification": "transcript_hash_divergence"
+    }
+  ],
+  "integrity": {
+    "strength_aggregate_produced": false,
+    "surviving_183_search_outcomes_inspected": false,
+    "failed_cases_rerun_before_this_report": false,
+    "training_labels_authorized": false,
+    "training_labels_emitted": false
+  },
+  "promotion": {
+    "passed": false,
+    "reason": "Candidate runtime failures exceeded baseline and the exact paired set was incomplete.",
+    "decision": "do_not_promote_rank_search_v1"
+  },
+  "next_bounded_action": {
+    "policy_version": "combat_deepsets_one_ply_rank_v2",
+    "branch_failure_mode": "fallback_to_base_on_any_branch_error",
+    "required_validation": "targeted failure-mode tests plus replay of all 17 failed seeds without strength aggregation",
+    "value_retraining": false
+  }
+}

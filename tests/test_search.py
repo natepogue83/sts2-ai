@@ -83,6 +83,27 @@ class FakeTreeEnv:
         self.close()
 
 
+class FailingTreeEnv(FakeTreeEnv):
+    def __init__(self, *, branch_error: Exception, **kwargs):
+        super().__init__(**kwargs)
+        self.branch_error = branch_error
+
+    def fork(self, snapshot):
+        self.fork_count += 1
+        child = FailingTreeEnv(
+            branch_error=self.branch_error,
+            hidden_rng=snapshot.hidden_rng,
+            actions=self._legal_actions,
+        )
+        child._raw_state = copy.deepcopy(snapshot.state)
+        return child
+
+    def step(self, action_index):
+        if self._legal_actions[action_index] == STRIKE:
+            raise self.branch_error
+        return super().step(action_index)
+
+
 class StubValueEvaluator:
     def evaluate(self, env):
         hp = env.raw_state["enemies"][0]["hp"]
@@ -160,6 +181,33 @@ class SearchTests(unittest.TestCase):
             [branch["action_index"] for branch in info["search"]["branches"]],
             [1, 0],
         )
+
+    def test_any_branch_validation_failure_falls_back_to_base_action(self) -> None:
+        failure_messages = (
+            "Native fork diverged at its final transcript step 7",
+            "Forked native semantic checkpoint diverged",
+            "Cannot play card HighFive: BlockedByCardLogic",
+        )
+        for message in failure_messages:
+            with self.subTest(message=message):
+                env = FailingTreeEnv(branch_error=RuntimeError(message))
+                selected, info = OnePlyForkSearchPolicy(
+                    FixedPolicy(1),
+                    StubValueEvaluator(),
+                    config=OnePlySearchConfig(parallel_branches=2),
+                ).select(env)
+
+                self.assertEqual(selected, 1)
+                self.assertFalse(info["search"]["used"])
+                self.assertEqual(
+                    info["search"]["reason"],
+                    "branch_validation_failed_fallback",
+                )
+                self.assertEqual(info["search"]["attempted_nodes"], 2)
+                self.assertEqual(info["search"]["successful_nodes"], 1)
+                self.assertEqual(info["search"]["failed_nodes"], 1)
+                self.assertIn(message, info["search"]["failed_branches"][0]["error_message"])
+                self.assertFalse(info["search"]["training_labels_emitted"])
 
     def test_unsafe_base_action_falls_back_without_opening_forks(self) -> None:
         env = FakeTreeEnv()

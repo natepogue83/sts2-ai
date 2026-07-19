@@ -32,7 +32,7 @@ from stsai.value import RankOnlyPublicValueEvaluator
 
 
 BASE_POLICY_NAME = "combat_deepsets_greedy_noncombat_v1"
-SEARCH_POLICY_NAME = "combat_deepsets_one_ply_rank_v1"
+SEARCH_POLICY_NAME = "combat_deepsets_one_ply_rank_v2"
 _CHARACTER_CODES = {
     "Defect": "D",
     "Ironclad": "I",
@@ -181,6 +181,7 @@ def create_rank_search_manifest(
             "rank_invariant_positive_slopes": list(ranker.rank_invariant_slopes),
             "absolute_probability_claimed": False,
             "training_labels_emitted": False,
+            "branch_failure_mode": "fallback_to_base_on_any_branch_error",
         },
         "power": {
             "paired_cases": len(cases),
@@ -268,6 +269,7 @@ def run_rank_search_rollout(
             "parallel_branches": parallel_branches,
             "safe_potion_ids": ["POTION.ATTACK_POTION"],
             "training_labels_emitted": False,
+            "branch_failure_mode": "fallback_to_base_on_any_branch_error",
         },
         max_steps=max_steps,
         config=config,
@@ -280,6 +282,8 @@ def _search_coverage(path: Path) -> dict[str, Any]:
     used = 0
     changed = 0
     nodes = 0
+    failed_nodes = 0
+    branch_failure_fallbacks = 0
     reasons: Counter[str] = Counter()
     with path.open("r", encoding="utf-8-sig") as handle:
         for line in handle:
@@ -299,6 +303,10 @@ def _search_coverage(path: Path) -> dict[str, Any]:
             if not isinstance(search, Mapping):
                 continue
             metadata_decisions += 1
+            failed_nodes += int(search.get("failed_nodes") or 0)
+            branch_failure_fallbacks += int(
+                search.get("reason") == "branch_validation_failed_fallback"
+            )
             if search.get("used") is True:
                 used += 1
                 nodes += int(search.get("nodes") or 0)
@@ -313,6 +321,8 @@ def _search_coverage(path: Path) -> dict[str, Any]:
         "search_used_decisions": used,
         "search_changed_action_decisions": changed,
         "branch_nodes": nodes,
+        "failed_branch_nodes": failed_nodes,
+        "branch_failure_fallback_decisions": branch_failure_fallbacks,
         "search_used_fraction_of_combat_decisions": (
             round(used / combat_decisions, 6) if combat_decisions else 0.0
         ),
@@ -492,19 +502,39 @@ def evaluate_rank_search_pair(
             }
         )
     aggregate = aggregate_combat_model_pair(rows)
+    coverage_keys = (
+        "combat_decisions",
+        "decisions_with_search_metadata",
+        "search_used_decisions",
+        "search_changed_action_decisions",
+        "branch_nodes",
+        "failed_branch_nodes",
+        "branch_failure_fallback_decisions",
+    )
     coverage = {
         key: sum(int(row["candidate"]["search_coverage"].get(key) or 0) for row in rows)
-        for key in (
-            "combat_decisions",
-            "decisions_with_search_metadata",
-            "search_used_decisions",
-            "search_changed_action_decisions",
-            "branch_nodes",
-        )
+        for key in coverage_keys
     }
     coverage["cases_with_search_used"] = sum(
         int(row["candidate"]["search_coverage"]["search_used_decisions"] > 0) for row in rows
     )
+    coverage_by_character: dict[str, dict[str, Any]] = {}
+    for character in HEADLESS_CHARACTERS:
+        canonical = canonical_character(character)
+        selected_rows = [row for row in rows if row["canonical_character"] == canonical]
+        character_coverage = {
+            key: sum(
+                int(row["candidate"]["search_coverage"].get(key) or 0)
+                for row in selected_rows
+            )
+            for key in coverage_keys
+        }
+        decisions = character_coverage["combat_decisions"]
+        fallbacks = character_coverage["branch_failure_fallback_decisions"]
+        character_coverage["branch_failure_fallback_fraction_of_combat_decisions"] = (
+            round(fallbacks / decisions, 6) if decisions else 0.0
+        )
+        coverage_by_character[character] = character_coverage
     overall = aggregate["overall"]
     by_character = aggregate["by_character"]
     interval = overall["descriptive_paired_95_interval"]
@@ -555,6 +585,7 @@ def evaluate_rank_search_pair(
         "aggregate": aggregate,
         "combat_action_counts": _pair_combat_action_counts(rows),
         "search_coverage": coverage,
+        "search_coverage_by_character": coverage_by_character,
         "promotion_gate": {
             "passed": passed,
             "criteria": criteria,

@@ -117,6 +117,33 @@ class SearchBenchmarkTests(unittest.TestCase):
             self.assertEqual(coverage["branch_nodes"], 3)
             self.assertEqual(coverage["fallback_reasons"], {"noncombat_fallback": 1})
 
+    def test_search_coverage_counts_fail_closed_branch_errors(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "fallback.jsonl"
+            event = {
+                "event_type": "transition",
+                "observation": {"decision_type": "combat_play"},
+                "info": {
+                    "policy": {
+                        "search": {
+                            "used": False,
+                            "reason": "branch_validation_failed_fallback",
+                            "failed_nodes": 3,
+                        }
+                    }
+                },
+            }
+            path.write_text(json.dumps(event) + "\n", encoding="utf-8")
+
+            coverage = _search_coverage(path)
+
+        self.assertEqual(coverage["failed_branch_nodes"], 3)
+        self.assertEqual(coverage["branch_failure_fallback_decisions"], 1)
+        self.assertEqual(
+            coverage["fallback_reasons"],
+            {"branch_validation_failed_fallback": 1},
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

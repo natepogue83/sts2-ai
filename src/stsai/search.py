@@ -204,15 +204,68 @@ class OnePlyForkSearchPolicy:
             for action_index in safe_indices
         ]
         branch_report = HeadlessBatchManager(self.config.parallel_branches).run(branch_jobs)
-        evaluated = list(branch_report.values())
+        evaluated = [
+            outcome.value
+            for outcome in branch_report.outcomes
+            if outcome.succeeded and outcome.value is not None
+        ]
+        failed_branches = [
+            {
+                "action_index": int(outcome.key),
+                "action": env.legal_actions[int(outcome.key)].as_dict(),
+                "error_type": type(outcome.error).__name__,
+                "error_message": str(outcome.error),
+            }
+            for outcome in branch_report.failures
+        ]
 
         current_parent_state = json.dumps(
             env.raw_state, sort_keys=True, separators=(",", ":"), ensure_ascii=False
         )
         if current_parent_state != parent_state or env.legal_actions != parent_actions:
             raise RuntimeError("Search branches mutated the parent environment")
+        excluded = [
+            {
+                "action_index": index,
+                "action": env.legal_actions[index].as_dict(),
+                "reason": reason,
+            }
+            for index, (allowed, reason) in enumerate(safety)
+            if not allowed
+        ]
+        if failed_branches:
+            return base_index, {
+                **dict(base_info),
+                "search": {
+                    "used": False,
+                    "reason": "branch_validation_failed_fallback",
+                    "attempted_nodes": len(branch_report.outcomes),
+                    "successful_nodes": len(evaluated),
+                    "failed_nodes": len(failed_branches),
+                    "parallel_branches": self.config.parallel_branches,
+                    "visibility_mode": self.config.visibility_mode,
+                    "base_action_index": base_index,
+                    "failed_branches": failed_branches,
+                    "excluded_actions": excluded,
+                    "training_labels_emitted": False,
+                },
+            }
         if not evaluated:
-            raise RuntimeError("Public-deterministic search had no evaluable branches")
+            return base_index, {
+                **dict(base_info),
+                "search": {
+                    "used": False,
+                    "reason": "no_evaluable_branches_fallback",
+                    "attempted_nodes": len(branch_report.outcomes),
+                    "successful_nodes": 0,
+                    "failed_nodes": 0,
+                    "parallel_branches": self.config.parallel_branches,
+                    "visibility_mode": self.config.visibility_mode,
+                    "base_action_index": base_index,
+                    "excluded_actions": excluded,
+                    "training_labels_emitted": False,
+                },
+            }
 
         chosen = max(
             evaluated,
@@ -223,17 +276,8 @@ class OnePlyForkSearchPolicy:
             ),
         )
         chosen_index = int(chosen["action_index"])
-        excluded = [
-            {
-                "action_index": index,
-                "action": env.legal_actions[index].as_dict(),
-                "reason": reason,
-            }
-            for index, (allowed, reason) in enumerate(safety)
-            if not allowed
-        ]
         return chosen_index, {
-            "source": "public_deterministic_one_ply_search",
+            "source": "public_deterministic_one_ply_search_v2",
             "base_policy": dict(base_info),
             "search": {
                 "used": True,
