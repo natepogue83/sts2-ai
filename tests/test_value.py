@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import json
 from pathlib import Path
 import tempfile
@@ -13,6 +14,7 @@ from stsai.value import (
     VALUE_INTERACTION_FEATURE_NAMES,
     VALUE_NONLINEAR_FEATURE_NAMES,
     CalibratedLinearValueEvaluator,
+    RankOnlyPublicValueEvaluator,
     audit_value_model,
     build_value_corpus,
     calibration_metrics,
@@ -143,6 +145,50 @@ class ValueTests(unittest.TestCase):
 
         self.assertAlmostEqual(restored_estimate.value, estimate.value)
         np.testing.assert_array_equal(restored.weights, weights)
+
+    def test_rank_only_adapter_binds_checkpoint_and_requires_positive_slopes(self) -> None:
+        weights = np.zeros((3, len(VALUE_NONLINEAR_FEATURE_NAMES)))
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "value-v4.npz"
+            model = CalibratedLinearValueEvaluator(
+                weights,
+                np.zeros(3),
+                np.asarray([0.8, 0.9, 1.0, 1.1, 1.2]),
+                np.zeros(5),
+                horizon_floors=3,
+                feature_schema="character_nonlinear_v3",
+                calibration_kind="per_character_platt",
+                calibration_status="rejected_held_out_gate",
+                search_eligible=False,
+            )
+            model.save(path)
+            digest = hashlib.sha256(path.read_bytes()).hexdigest()
+            ranker = RankOnlyPublicValueEvaluator(path, expected_sha256=digest)
+            estimate = ranker.evaluate(FakeEnv(observation("CHARACTER.REGENT")))
+
+            self.assertTrue(ranker.search_eligible)
+            self.assertFalse(estimate.metadata["uses_hidden_state"])
+            self.assertFalse(estimate.metadata["training_labels_emitted"])
+            self.assertEqual(
+                estimate.metadata["original_calibration_status"],
+                "rejected_held_out_gate",
+            )
+            with self.assertRaisesRegex(ValueError, "frozen hash"):
+                RankOnlyPublicValueEvaluator(path, expected_sha256="0" * 64)
+
+            rejected = CalibratedLinearValueEvaluator(
+                weights,
+                np.zeros(3),
+                np.asarray([0.8, 0.9, 0.0, 1.1, 1.2]),
+                np.zeros(5),
+                horizon_floors=3,
+                feature_schema="character_nonlinear_v3",
+                calibration_kind="per_character_platt",
+            )
+            rejected.save(path)
+            rejected_digest = hashlib.sha256(path.read_bytes()).hexdigest()
+            with self.assertRaisesRegex(ValueError, "preserve within-character ranking"):
+                RankOnlyPublicValueEvaluator(path, expected_sha256=rejected_digest)
 
     def test_corpus_labels_future_survival_and_groups_by_seed(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

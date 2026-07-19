@@ -634,6 +634,40 @@ def make_parser() -> argparse.ArgumentParser:
     chip_evaluate_parser.add_argument("--startup-timeout", type=float, default=60.0)
     chip_evaluate_parser.add_argument("--command-timeout", type=float, default=30.0)
 
+    rank_search_manifest_parser = subparsers.add_parser(
+        "create-headless-rank-search-manifest",
+        help="Freeze a no-label Deep Sets versus rank-only one-ply search comparison",
+    )
+    rank_search_manifest_parser.add_argument("--output", type=Path, required=True)
+    rank_search_manifest_parser.add_argument("--macro-model", type=Path, required=True)
+    rank_search_manifest_parser.add_argument("--combat-model", type=Path, required=True)
+    rank_search_manifest_parser.add_argument("--value-model", type=Path, required=True)
+    rank_search_manifest_parser.add_argument("--seed-prefix", required=True)
+    rank_search_manifest_parser.add_argument("--count-per-character", type=int, required=True)
+    rank_search_manifest_parser.add_argument("--max-nodes", type=int, default=8)
+    rank_search_manifest_parser.add_argument(
+        "--exclude-manifest", type=Path, action="append", default=[]
+    )
+    rank_search_manifest_parser.add_argument("--build-id", default="v0.107.1")
+    rank_search_manifest_parser.add_argument("--ascension", type=int, default=10)
+
+    rank_search_parser = subparsers.add_parser(
+        "evaluate-headless-rank-search",
+        help="Pair base Deep Sets and rank-only one-ply search on frozen seeds",
+    )
+    rank_search_parser.add_argument("--manifest", type=Path, required=True)
+    rank_search_parser.add_argument("--macro-model", type=Path, required=True)
+    rank_search_parser.add_argument("--combat-model", type=Path, required=True)
+    rank_search_parser.add_argument("--value-model", type=Path, required=True)
+    rank_search_parser.add_argument("--output", type=Path, required=True)
+    rank_search_parser.add_argument("--trajectory-dir", type=Path, required=True)
+    rank_search_parser.add_argument("--workers", type=int, default=4)
+    rank_search_parser.add_argument("--max-steps", type=int, default=1000)
+    rank_search_parser.add_argument("--build-id", default="v0.107.1")
+    rank_search_parser.add_argument("--runtime", type=Path)
+    rank_search_parser.add_argument("--startup-timeout", type=float, default=60.0)
+    rank_search_parser.add_argument("--command-timeout", type=float, default=30.0)
+
     bridge_parser = subparsers.add_parser(
         "bridge-state", help="Read the current state from a local STS2MCP mod"
     )
@@ -1300,6 +1334,47 @@ def main(argv: Sequence[str] | None = None) -> int:
                 config=config,
             )
             print(json.dumps(payload, indent=2, sort_keys=True))
+            return 0
+        elif args.command == "create-headless-rank-search-manifest":
+            from stsai.search_benchmark import create_rank_search_manifest
+
+            payload = create_rank_search_manifest(
+                args.output,
+                macro_model_path=args.macro_model,
+                combat_model_path=args.combat_model,
+                value_model_path=args.value_model,
+                seed_prefix=args.seed_prefix,
+                count_per_character=args.count_per_character,
+                max_nodes=args.max_nodes,
+                excluded_manifests=args.exclude_manifest,
+                build_id=args.build_id,
+                ascension=args.ascension,
+            )
+            print(json.dumps(payload, indent=2, sort_keys=True))
+            return 0
+        elif args.command == "evaluate-headless-rank-search":
+            from stsai.headless import HeadlessConfig
+            from stsai.search_benchmark import evaluate_rank_search_pair
+
+            config = HeadlessConfig(
+                runtime=args.runtime or HeadlessConfig().runtime,
+                startup_timeout=args.startup_timeout,
+                command_timeout=args.command_timeout,
+            )
+            payload = evaluate_rank_search_pair(
+                manifest_path=args.manifest,
+                macro_model_path=args.macro_model,
+                combat_model_path=args.combat_model,
+                value_model_path=args.value_model,
+                output=args.output,
+                trajectory_dir=args.trajectory_dir,
+                parallel_workers=args.workers,
+                max_steps=args.max_steps,
+                build_id=args.build_id,
+                config=config,
+            )
+            print(json.dumps(payload["aggregate"], indent=2, sort_keys=True))
+            print(json.dumps(payload["search_coverage"], indent=2, sort_keys=True))
             return 0
         elif args.command == "bridge-state":
             from stsai.bridge import BridgeConfig, STS2MCPClient

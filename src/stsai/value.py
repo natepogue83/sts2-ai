@@ -698,6 +698,68 @@ class CalibratedLinearValueEvaluator:
             )
 
 
+RANK_ONLY_EVALUATION_SCOPE = "paired_strength_evaluation_no_labels"
+
+
+class RankOnlyPublicValueEvaluator:
+    """Use a frozen public value only for within-state branch ordering.
+
+    Calibration quality controls whether a score may be interpreted as a
+    probability. It does not change branch order when every calibration slope
+    is positive. This adapter leaves the original checkpoint untouched and
+    authorizes only a no-label paired strength evaluation bound to its hash.
+    """
+
+    search_eligible = True
+
+    def __init__(
+        self,
+        path: str | os.PathLike[str],
+        *,
+        expected_sha256: str,
+        authorization_scope: str = RANK_ONLY_EVALUATION_SCOPE,
+    ):
+        if authorization_scope != RANK_ONLY_EVALUATION_SCOPE:
+            raise ValueError("Rank-only evaluator is limited to paired no-label evaluation")
+        checkpoint = Path(path)
+        digest = hashlib.sha256(checkpoint.read_bytes()).hexdigest()
+        if digest != expected_sha256:
+            raise ValueError("Rank-only value checkpoint does not match its frozen hash")
+        model = CalibratedLinearValueEvaluator.load(checkpoint)
+        slopes = np.asarray(model.calibration_slope, dtype=np.float64).reshape(-1)
+        if not slopes.size or not np.all(np.isfinite(slopes)) or np.any(slopes <= 0.0):
+            raise ValueError("Value calibration must preserve within-character ranking")
+        self.model = model
+        self.checkpoint = checkpoint
+        self.checkpoint_sha256 = digest
+        self.authorization_scope = authorization_scope
+        self.rank_invariant_slopes = tuple(float(value) for value in slopes)
+
+    def evaluate(self, env: Any) -> PolicyValueEstimate:
+        observation = env.observation
+        features = public_value_features(
+            observation,
+            feature_schema=self.model.feature_schema,
+        )
+        value = float(self.model.raw_probabilities(features))
+        return PolicyValueEstimate(
+            value=value,
+            metadata={
+                "source": "frozen_public_value_rank_only_v1",
+                "target": f"survive_next_{self.model.horizon_floors}_floors",
+                "character": _canonical_character(observation.get("character")),
+                "checkpoint_sha256": self.checkpoint_sha256,
+                "original_calibration_status": self.model.calibration_status,
+                "original_search_eligible": self.model.search_eligible,
+                "rank_invariant_positive_slopes": list(self.rank_invariant_slopes),
+                "uses_hidden_state": False,
+                "interpretable_as_calibrated_probability": False,
+                "authorization_scope": self.authorization_scope,
+                "training_labels_emitted": False,
+            },
+        )
+
+
 def _matrix(examples: Iterable[ValueExample]) -> tuple[np.ndarray, np.ndarray]:
     values = list(examples)
     return (
