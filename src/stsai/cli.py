@@ -645,6 +645,7 @@ def make_parser() -> argparse.ArgumentParser:
     rank_search_manifest_parser.add_argument("--seed-prefix", required=True)
     rank_search_manifest_parser.add_argument("--count-per-character", type=int, required=True)
     rank_search_manifest_parser.add_argument("--max-nodes", type=int, default=8)
+    rank_search_manifest_parser.add_argument("--parallel-branches", type=int, default=1)
     rank_search_manifest_parser.add_argument(
         "--exclude-manifest", type=Path, action="append", default=[]
     )
@@ -1346,6 +1347,7 @@ def main(argv: Sequence[str] | None = None) -> int:
                 seed_prefix=args.seed_prefix,
                 count_per_character=args.count_per_character,
                 max_nodes=args.max_nodes,
+                parallel_branches=args.parallel_branches,
                 excluded_manifests=args.exclude_manifest,
                 build_id=args.build_id,
                 ascension=args.ascension,

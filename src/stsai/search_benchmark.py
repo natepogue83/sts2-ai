@@ -93,14 +93,15 @@ def create_rank_search_manifest(
     build_id: str = "v0.107.1",
     ascension: int = 10,
     max_nodes: int = 8,
+    parallel_branches: int = 1,
 ) -> dict[str, Any]:
     """Freeze models, seeds, power target, and promotion gate before outcomes."""
 
     destination = Path(output)
     if destination.exists():
         raise FileExistsError(f"Rank-search manifest already exists: {destination}")
-    if count_per_character <= 0 or max_nodes <= 0:
-        raise ValueError("Counts and max_nodes must be positive")
+    if count_per_character <= 0 or max_nodes <= 0 or parallel_branches <= 0:
+        raise ValueError("Counts, max_nodes, and parallel_branches must be positive")
     if not seed_prefix:
         raise ValueError("A non-empty seed prefix is required")
     macro_sha = _sha256(macro_model_path)
@@ -146,6 +147,7 @@ def create_rank_search_manifest(
             "name": SEARCH_POLICY_NAME,
             "depth": 1,
             "max_nodes": max_nodes,
+            "parallel_branches": parallel_branches,
             "visibility_mode": "public_deterministic_only",
             "value_checkpoint_sha256": value_sha,
             "value_feature_schema": ranker.model.feature_schema,
@@ -187,6 +189,7 @@ def run_rank_search_rollout(
     ascension: int,
     seed: str,
     max_nodes: int,
+    parallel_branches: int,
     max_steps: int = 1_000,
     build_id: str = "v0.107.1",
     config: HeadlessConfig | None = None,
@@ -209,7 +212,10 @@ def run_rank_search_rollout(
     search_policy = OnePlyForkSearchPolicy(
         base_policy,
         ranker,
-        config=OnePlySearchConfig(max_nodes=max_nodes),
+        config=OnePlySearchConfig(
+            max_nodes=max_nodes,
+            parallel_branches=parallel_branches,
+        ),
     )
     return run_headless_rollout(
         output=output,
@@ -228,6 +234,7 @@ def run_rank_search_rollout(
             "visibility_mode": "public_deterministic_only",
             "depth": 1,
             "max_nodes": max_nodes,
+            "parallel_branches": parallel_branches,
             "safe_potion_ids": ["POTION.ATTACK_POTION"],
             "training_labels_emitted": False,
         },
@@ -329,6 +336,7 @@ def evaluate_rank_search_pair(
     if str(frozen_search.get("value_checkpoint_sha256")) != value_sha:
         raise ValueError("Value checkpoint does not match rank-search manifest")
     max_nodes = int(frozen_search.get("max_nodes") or 0)
+    parallel_branches = int(frozen_search.get("parallel_branches") or 1)
     RankOnlyPublicValueEvaluator(value_model_path, expected_sha256=value_sha)
 
     destination = Path(output)
@@ -419,6 +427,7 @@ def evaluate_rank_search_pair(
                     ascension=ascension,
                     seed=seed,
                     max_nodes=max_nodes,
+                    parallel_branches=parallel_branches,
                     max_steps=max_steps,
                     build_id=build_id,
                     config=config,
@@ -506,6 +515,7 @@ def evaluate_rank_search_pair(
             "parallel_workers": parallel_workers,
             "submitted_jobs": len(jobs),
             "max_search_nodes": max_nodes,
+            "parallel_search_branches": parallel_branches,
         },
         "resume": {
             "reused_completed_trajectories": reused,

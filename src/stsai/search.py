@@ -11,6 +11,7 @@ from dataclasses import dataclass
 import json
 from typing import Any, Mapping, Protocol
 
+from stsai.headless_batch import HeadlessBatchJob, HeadlessBatchManager
 from stsai.headless_env import HeadlessAction, Sts2Env
 
 
@@ -40,14 +41,15 @@ class PolicyValueEvaluator(Protocol):
 class OnePlySearchConfig:
     visibility_mode: str = PUBLIC_DETERMINISTIC_MODE
     max_nodes: int = 32
+    parallel_branches: int = 1
 
     def __post_init__(self) -> None:
         if self.visibility_mode != PUBLIC_DETERMINISTIC_MODE:
-            raise ValueError(
-                "The first search milestone only supports public_deterministic_only"
-            )
+            raise ValueError("The first search milestone only supports public_deterministic_only")
         if self.max_nodes <= 0:
             raise ValueError("max_nodes must be positive")
+        if self.parallel_branches <= 0:
+            raise ValueError("parallel_branches must be positive")
 
 
 def public_deterministic_action(action: HeadlessAction) -> tuple[bool, str]:
@@ -84,9 +86,7 @@ class PublicCombatHeuristicEvaluator:
                 metadata={"source": self.name, "terminal": True},
             )
         if state.get("decision") != "combat_play":
-            raise ValueError(
-                "Public combat heuristic only evaluates combat_play or game_over"
-            )
+            raise ValueError("Public combat heuristic only evaluates combat_play or game_over")
 
         player = state.get("player")
         player = player if isinstance(player, Mapping) else {}
@@ -141,9 +141,7 @@ class OnePlyForkSearchPolicy:
 
     def select(self, env: Sts2Env, step: int = 0) -> tuple[int, Mapping[str, Any]]:
         if getattr(self.evaluator, "search_eligible", True) is not True:
-            raise RuntimeError(
-                "Value evaluator did not pass its held-out search-eligibility gate"
-            )
+            raise RuntimeError("Value evaluator did not pass its held-out search-eligibility gate")
         base_index, base_info = self.base_policy.select(env, step)
         if base_index < 0 or base_index >= len(env.legal_actions):
             raise IndexError("Base policy selected an illegal action")
@@ -181,8 +179,8 @@ class OnePlyForkSearchPolicy:
             env.raw_state, sort_keys=True, separators=(",", ":"), ensure_ascii=False
         )
         parent_actions = env.legal_actions
-        evaluated: list[dict[str, Any]] = []
-        for action_index in safe_indices:
+
+        def evaluate_branch(action_index: int) -> dict[str, Any]:
             action = env.legal_actions[action_index]
             with env.fork(root_snapshot) as branch:
                 try:
@@ -193,15 +191,20 @@ class OnePlyForkSearchPolicy:
                     ) from exc
                 result = branch.step(branch_index)
                 estimate = self.evaluator.evaluate(branch)
-                evaluated.append(
-                    {
-                        "action_index": action_index,
-                        "action": action.as_dict(),
-                        "leaf_value": float(estimate.value),
-                        "terminated": result.terminated,
-                        "evaluator": dict(estimate.metadata or {}),
-                    }
-                )
+                return {
+                    "action_index": action_index,
+                    "action": action.as_dict(),
+                    "leaf_value": float(estimate.value),
+                    "terminated": result.terminated,
+                    "evaluator": dict(estimate.metadata or {}),
+                }
+
+        branch_jobs = [
+            HeadlessBatchJob(str(action_index), lambda index=action_index: evaluate_branch(index))
+            for action_index in safe_indices
+        ]
+        branch_report = HeadlessBatchManager(self.config.parallel_branches).run(branch_jobs)
+        evaluated = list(branch_report.values())
 
         current_parent_state = json.dumps(
             env.raw_state, sort_keys=True, separators=(",", ":"), ensure_ascii=False
@@ -236,6 +239,7 @@ class OnePlyForkSearchPolicy:
                 "used": True,
                 "depth": 1,
                 "nodes": len(evaluated),
+                "parallel_branches": self.config.parallel_branches,
                 "visibility_mode": self.config.visibility_mode,
                 "selected_action_index": chosen_index,
                 "base_action_index": base_index,

@@ -1,0 +1,92 @@
+{
+  "base_policy": {
+    "combat_model_sha256": "5bbb35de90351827374c9188351cc11c5ce867053c057e1a45978a60bb7633e1",
+    "macro_model_sha256": "476701d84a7f6cf85b1aa6a910877334c13f52ea637af967a8f6da400ca878f9",
+    "name": "combat_deepsets_greedy_noncombat_v1",
+    "safe_potion_ids": [
+      "POTION.ATTACK_POTION"
+    ]
+  },
+  "cases": [
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SMKR2I000000"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SMKR2S000000"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SMKR2D000000"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SMKR2N000000"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SMKR2R000000"
+    }
+  ],
+  "created_at": "2026-07-19T22:02:22.721082+00:00",
+  "name": "stsai-frozen-rank-only-one-ply-search-pair",
+  "power": {
+    "approximate_power_for_practical_effect": 0.983,
+    "conservative_paired_floor_sd": 2.6,
+    "paired_cases": 5,
+    "practical_effect_floor_delta": 0.75,
+    "small_effects_are_out_of_scope": true,
+    "two_sided_alpha": 0.05
+  },
+  "promotion_gate": {
+    "candidate_truncations_at_most_baseline": true,
+    "candidate_victories_at_least_baseline": true,
+    "every_character_mean_delta_at_least": -0.5,
+    "paired_floor_delta_interval_lower_above": 0.0,
+    "search_used_in_at_least_one_case": true,
+    "training_labels_remain_disabled_until_gate_passes": true
+  },
+  "schema_version": 1,
+  "search_policy": {
+    "absolute_probability_claimed": false,
+    "depth": 1,
+    "max_nodes": 8,
+    "name": "combat_deepsets_one_ply_rank_v1",
+    "original_calibration_status": "rejected_held_out_gate",
+    "parallel_branches": 4,
+    "rank_invariant_positive_slopes": [
+      1.016758184904255,
+      1.1897516473080976,
+      1.463320621467723,
+      2.158702453877302,
+      1.3116570974040431
+    ],
+    "training_labels_emitted": false,
+    "value_checkpoint_sha256": "339d6dc2323d041c0dab880b5c88b80b71fcc3d0ca68f40dc1bc56ef6691bb56",
+    "value_feature_schema": "character_nonlinear_v3",
+    "visibility_mode": "public_deterministic_only"
+  },
+  "selection": {
+    "count_per_character": 1,
+    "excluded_manifests": [
+      {
+        "path": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\rank-search-smoke-v0.107.1-a10.precommit.json",
+        "sha256": "dec19d3597f8efc52bdcb48de708de1d12d03ece2f1ddcea37b50415c2c647d6"
+      },
+      {
+        "path": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\v0.107.1-a10-search-paired-precommit.json",
+        "sha256": "6bc9573386e450b37f2fb34e456c554f077edcfb1a8de99c186b1721b28f9fae"
+      }
+    ],
+    "excluded_seed_count": 15,
+    "method": "fresh-prefix-seeds-selected-before-outcomes",
+    "outcomes_inspected": false,
+    "seed_prefix": "SMKR2",
+    "total_cases": 5
+  },
+  "target": {
+    "ascension": 10,
+    "build_id": "v0.107.1"
+  }
+}

@@ -7,15 +7,14 @@ import unittest
 from stsai.headless_env import HeadlessAction, StepResult
 from stsai.search import (
     OnePlyForkSearchPolicy,
+    OnePlySearchConfig,
     PolicyValueEstimate,
     PublicCombatHeuristicEvaluator,
     public_deterministic_action,
 )
 
 
-STRIKE = HeadlessAction.create(
-    "play_card", "CARD.STRIKE_IRONCLAD", card_index=0, target_index=0
-)
+STRIKE = HeadlessAction.create("play_card", "CARD.STRIKE_IRONCLAD", card_index=0, target_index=0)
 DEFEND = HeadlessAction.create("play_card", "CARD.DEFEND_IRONCLAD", card_index=1)
 END_TURN = HeadlessAction.create("end_turn", "END_TURN")
 
@@ -144,11 +143,27 @@ class SearchTests(unittest.TestCase):
         second, _ = policy.select(FakeTreeEnv(hidden_rng=999_999))
         self.assertEqual(first, second)
 
+    def test_parallel_branches_preserve_order_and_choice(self) -> None:
+        env = FakeTreeEnv(hidden_rng=17)
+        policy = OnePlyForkSearchPolicy(
+            FixedPolicy(1),
+            StubValueEvaluator(),
+            config=OnePlySearchConfig(parallel_branches=2),
+        )
+
+        selected, info = policy.select(env)
+
+        self.assertEqual(selected, 0)
+        self.assertEqual(env.fork_count, 2)
+        self.assertEqual(info["search"]["parallel_branches"], 2)
+        self.assertEqual(
+            [branch["action_index"] for branch in info["search"]["branches"]],
+            [1, 0],
+        )
+
     def test_unsafe_base_action_falls_back_without_opening_forks(self) -> None:
         env = FakeTreeEnv()
-        selected, info = OnePlyForkSearchPolicy(
-            FixedPolicy(2), StubValueEvaluator()
-        ).select(env)
+        selected, info = OnePlyForkSearchPolicy(FixedPolicy(2), StubValueEvaluator()).select(env)
         self.assertEqual(selected, 2)
         self.assertEqual(env.fork_count, 0)
         self.assertFalse(info["search"]["used"])
@@ -166,9 +181,7 @@ class SearchTests(unittest.TestCase):
 
     def test_rejected_value_checkpoint_cannot_drive_search(self) -> None:
         with self.assertRaisesRegex(RuntimeError, "search-eligibility"):
-            OnePlyForkSearchPolicy(
-                FixedPolicy(1), RejectedValueEvaluator()
-            ).select(FakeTreeEnv())
+            OnePlyForkSearchPolicy(FixedPolicy(1), RejectedValueEvaluator()).select(FakeTreeEnv())
 
 
 if __name__ == "__main__":
