@@ -1,0 +1,520 @@
+{
+  "cases": [
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "CBTI000000",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "CBTI000001",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "CBTI000002",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "CBTI000003",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "CBTI000004",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "CBTI000005",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "CBTI000006",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "CBTI000007",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "CBTI000008",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "CBTI000009",
+      "split": "test"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "CBTI000010",
+      "split": "test"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "CBTI000011",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "CBTI000012",
+      "split": "validation"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "CBTI000013",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "CBTI000014",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "CBTI000024",
+      "split": "validation"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "CBTI000025",
+      "split": "validation"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "CBTI000035",
+      "split": "test"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "CBTI000040",
+      "split": "validation"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "CBTI000050",
+      "split": "test"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "CBTS000000",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "CBTS000001",
+      "split": "validation"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "CBTS000002",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "CBTS000003",
+      "split": "validation"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "CBTS000004",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "CBTS000005",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "CBTS000006",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "CBTS000007",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "CBTS000008",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "CBTS000009",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "CBTS000010",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "CBTS000011",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "CBTS000012",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "CBTS000013",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "CBTS000018",
+      "split": "validation"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "CBTS000035",
+      "split": "test"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "CBTS000041",
+      "split": "validation"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "CBTS000046",
+      "split": "test"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "CBTS000058",
+      "split": "test"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "CBTS000077",
+      "split": "test"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "CBTD000000",
+      "split": "test"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "CBTD000001",
+      "split": "test"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "CBTD000002",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "CBTD000003",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "CBTD000004",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "CBTD000005",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "CBTD000006",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "CBTD000007",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "CBTD000008",
+      "split": "test"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "CBTD000009",
+      "split": "test"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "CBTD000010",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "CBTD000011",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "CBTD000012",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "CBTD000013",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "CBTD000014",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "CBTD000015",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "CBTD000018",
+      "split": "validation"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "CBTD000040",
+      "split": "validation"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "CBTD000043",
+      "split": "validation"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "CBTD000046",
+      "split": "validation"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "CBTN000000",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "CBTN000001",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "CBTN000002",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "CBTN000003",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "CBTN000004",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "CBTN000005",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "CBTN000006",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "CBTN000007",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "CBTN000008",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "CBTN000009",
+      "split": "validation"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "CBTN000010",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "CBTN000011",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "CBTN000012",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "CBTN000013",
+      "split": "test"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "CBTN000024",
+      "split": "test"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "CBTN000025",
+      "split": "validation"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "CBTN000028",
+      "split": "validation"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "CBTN000029",
+      "split": "validation"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "CBTN000051",
+      "split": "test"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "CBTN000058",
+      "split": "test"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "CBTR000000",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "CBTR000001",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "CBTR000002",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "CBTR000003",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "CBTR000004",
+      "split": "validation"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "CBTR000005",
+      "split": "test"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "CBTR000006",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "CBTR000007",
+      "split": "validation"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "CBTR000008",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "CBTR000009",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "CBTR000010",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "CBTR000011",
+      "split": "validation"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "CBTR000012",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "CBTR000013",
+      "split": "validation"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "CBTR000014",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "CBTR000015",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "CBTR000016",
+      "split": "test"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "CBTR000017",
+      "split": "train"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "CBTR000023",
+      "split": "test"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "CBTR000032",
+      "split": "test"
+    }
+  ],
+  "created_at": "2026-07-14T01:08:18.153377+00:00",
+  "label_source": "deterministic_heuristic_distillation",
+  "name": "stsai-headless-combat-heuristic-bootstrap",
+  "schema_version": 1,
+  "selection": {
+    "method": "fresh-prefix-seeds-selected-by-stable-split-only",
+    "outcomes_inspected": false,
+    "seed_prefix": "CBT",
+    "test_per_character": 4,
+    "train_per_character": 12,
+    "validation_per_character": 4
+  },
+  "target": {
+    "ascension": 10,
+    "build_id": "v0.107.1"
+  }
+}

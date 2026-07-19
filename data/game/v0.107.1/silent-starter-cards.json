@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "patch": "v0.107.1",
+  "character": "CHARACTER.SILENT",
+  "source": "installed sts2.dll model implementations",
+  "cards": {
+    "CARD.STRIKE_SILENT": {
+      "cost": 1,
+      "target": "any_enemy",
+      "effects": [
+        {"op": "damage", "amount": 6}
+      ],
+      "upgraded_effects": [
+        {"op": "damage", "amount": 9}
+      ]
+    },
+    "CARD.DEFEND_SILENT": {
+      "cost": 1,
+      "target": "self",
+      "effects": [
+        {"op": "block", "amount": 5}
+      ],
+      "upgraded_effects": [
+        {"op": "block", "amount": 8}
+      ]
+    },
+    "CARD.NEUTRALIZE": {
+      "cost": 0,
+      "target": "any_enemy",
+      "effects": [
+        {"op": "damage", "amount": 3},
+        {"op": "apply_power", "power": "WEAK", "amount": 1}
+      ],
+      "upgraded_effects": [
+        {"op": "damage", "amount": 4},
+        {"op": "apply_power", "power": "WEAK", "amount": 2}
+      ]
+    },
+    "CARD.SURVIVOR": {
+      "cost": 1,
+      "target": "self",
+      "effects": [
+        {"op": "block", "amount": 8},
+        {"op": "discard_from_hand", "amount": 1}
+      ],
+      "upgraded_effects": [
+        {"op": "block", "amount": 11},
+        {"op": "discard_from_hand", "amount": 1}
+      ]
+    },
+    "CARD.RICOCHET": {
+      "cost": 2,
+      "target": "random_enemy",
+      "effects": [
+        {"op": "random_damage", "amount": 3, "hits": 4}
+      ],
+      "upgraded_effects": [
+        {"op": "random_damage", "amount": 3, "hits": 5}
+      ]
+    },
+    "CARD.ASCENDERS_BANE": {
+      "cost": -1,
+      "target": "none",
+      "playable": false,
+      "keywords": ["ETERNAL", "UNPLAYABLE", "ETHEREAL"],
+      "effects": [],
+      "upgraded_effects": []
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "by_action": {
+    "end_turn": {
+      "decisions": 384,
+      "loss": 0.069034,
+      "mean_reciprocal_rank": 0.986545,
+      "random_top1_accuracy": 0.813976,
+      "top1_accuracy": 0.973958
+    },
+    "play_card": {
+      "decisions": 1313,
+      "loss": 0.687677,
+      "mean_reciprocal_rank": 0.919294,
+      "random_top1_accuracy": 0.209885,
+      "top1_accuracy": 0.852247
+    },
+    "use_potion": {
+      "decisions": 43,
+      "loss": 3.825834,
+      "mean_reciprocal_rank": 0.53552,
+      "random_top1_accuracy": 0.136611,
+      "top1_accuracy": 0.27907
+    }
+  },
+  "by_character": {
+    "CHARACTER.DEFECT": {
+      "decisions": 379,
+      "loss": 0.514745,
+      "mean_reciprocal_rank": 0.937492,
+      "random_top1_accuracy": 0.365766,
+      "top1_accuracy": 0.889182
+    },
+    "CHARACTER.IRONCLAD": {
+      "decisions": 339,
+      "loss": 0.703432,
+      "mean_reciprocal_rank": 0.913201,
+      "random_top1_accuracy": 0.304298,
+      "top1_accuracy": 0.843658
+    },
+    "CHARACTER.NECROBINDER": {
+      "decisions": 446,
+      "loss": 0.730726,
+      "mean_reciprocal_rank": 0.912631,
+      "random_top1_accuracy": 0.355005,
+      "top1_accuracy": 0.843049
+    },
+    "CHARACTER.REGENT": {
+      "decisions": 274,
+      "loss": 0.5854,
+      "mean_reciprocal_rank": 0.939086,
+      "random_top1_accuracy": 0.358533,
+      "top1_accuracy": 0.890511
+    },
+    "CHARACTER.SILENT": {
+      "decisions": 302,
+      "loss": 0.576439,
+      "mean_reciprocal_rank": 0.926049,
+      "random_top1_accuracy": 0.316779,
+      "top1_accuracy": 0.86755
+    }
+  },
+  "overall": {
+    "decisions": 1740,
+    "loss": 0.628701,
+    "mean_reciprocal_rank": 0.924652,
+    "random_top1_accuracy": 0.341391,
+    "top1_accuracy": 0.864943
+  },
+  "split": "test"
+}

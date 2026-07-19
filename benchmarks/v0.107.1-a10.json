@@ -1,0 +1,417 @@
+{
+  "schema_version": 1,
+  "name": "stsai-v0.107.1-a10",
+  "created_at": "2026-07-13T20:14:37.834874+00:00",
+  "started_after_unix": 1783973677,
+  "target": {
+    "build_id": "v0.107.1",
+    "ascension": 10
+  },
+  "selection": {
+    "method": "sha256-ranked-without-outcome",
+    "count_per_character": 20,
+    "source_build_id": null
+  },
+  "cases": [
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "V19KSU3386"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "Q1GFGM1ABA"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "7DJLY5SHNE"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "U3W1R3P0UF"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "5X2X4E9WPY"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "MXC71BYMES"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "08JKQKYUZ5"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "LP53PD0AF3"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "D7WPRHAWPJ"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "BMURP3BJYB"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "P07AHGFERP"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "HUH3PHAKDT"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "BZLLKJS31F"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "A6YGHM84Y8"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "DPR3EWABJ7"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "LJJLA4JJQ1"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "LHD70CYZF1"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "UCQGJQ0DNE"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "XZLDV9D4UC"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "TYZEPKBURE"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "RNE9NT10SM"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "CHJPTFA12G"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "RN49CUGG2P"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "YNJJL481MW"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "NYJMWA5BXR"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "GY146KV3S1"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "RUB79J9PW8"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "6RU3YLQCW5"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "EGPDKBQ8V1"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "K523WDXHFC"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "C6Z7LS67YR"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "98RUAW2KE7"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "6YVX3YWPYR"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "2AZJVAN1JL"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "YQGJHXYT4Q"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "R9HZQP3EEH"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "MC5BWVD5SK"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "XB7K5QHXQJ"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "FWFX68RKRP"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "XYEJWLR0B2"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "F38ZW32F7L"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "QRNX5DXVUW"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "YL7WB91W9K"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "S508PPQUX4"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "N6WHKCZ54L"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "7S7VFATXHH"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "ND4VF9TK19"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "QRQA6FVE9T"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "B8N1D24D1T"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "FVKE9M1254"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "93DKZW7BA2"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "XAZ8ADL3XY"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "18EQSFL3MR"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "JTEBY4C641"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "F5BSCBTQZR"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "FG26JPHNWC"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "CVQVFAAY9A"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "GRAC8SX1XP"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "A890MTPZTC"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "DE3M1YTN8P"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "HLMVH109EZ"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "GA7GJ7FU2N"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "VNM11K2ZYG"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "FG5W9XZL9X"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "J36UPW5Y8G"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "5MRCWG1TMN"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "DRYA7YLJCC"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "8H8V5G9EC0"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "EZTZVEDNG3"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "LMGR9KWZUG"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "MKK70EH4Q2"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "WMQMSPKVCF"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "49BT7LV4VW"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PDZTWS77TH"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "MHLAS2X562"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "E8B97BJQU5"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "ALCFT8E0ZL"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "VBVVF6JQ3Z"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "QK5KFTBFJK"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "EQFE96PSHU"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "R54QW50LET"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "GARLRTYW5U"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "A8EKZS7G6W"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "S4P1450F78"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "DQAZW11C0H"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "LS0MKGU87K"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "5ZT4UMM7SX"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "0ZXSNYAWY3"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "C4Z5CZA97H"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "55UBW2DK04"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "3MWSL70WKF"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "N38ZF7SNG9"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "07DAYZLB15"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "US4487DQ76"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SMR1E9TJLW"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "E73EB8SV61"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "1LZ0E6X0NG"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "P0DUSFXACA"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "21U1YJGMU7"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "WVG6XW67Y7"
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "name": "stsai-v0.107.1-a10-policy-vs-one-ply-search-precommit",
+  "target": {
+    "build_id": "v0.107.1",
+    "ascension": 10,
+    "protocol_version": "0.3.0",
+    "runtime_bundle_sha256": "b8e70e8faaec989d227d7763466521eaa6b7ed382e4f550abbae3ded1b15b80a"
+  },
+  "selection": {
+    "method": "synthetic-character-balanced-seeds-frozen-before-search-outcomes",
+    "count_per_character": 2,
+    "outcomes_inspected": false,
+    "prior_training_overlap": 0
+  },
+  "cases": [
+    {"character": "CHARACTER.IRONCLAD", "seed": "SEARCHV1I000000"},
+    {"character": "CHARACTER.IRONCLAD", "seed": "SEARCHV1I000001"},
+    {"character": "CHARACTER.SILENT", "seed": "SEARCHV1S000000"},
+    {"character": "CHARACTER.SILENT", "seed": "SEARCHV1S000001"},
+    {"character": "CHARACTER.DEFECT", "seed": "SEARCHV1D000000"},
+    {"character": "CHARACTER.DEFECT", "seed": "SEARCHV1D000001"},
+    {"character": "CHARACTER.NECROBINDER", "seed": "SEARCHV1N000000"},
+    {"character": "CHARACTER.NECROBINDER", "seed": "SEARCHV1N000001"},
+    {"character": "CHARACTER.REGENT", "seed": "SEARCHV1R000000"},
+    {"character": "CHARACTER.REGENT", "seed": "SEARCHV1R000001"}
+  ],
+  "base_policy": {
+    "macro_model_sha256": "476701d84a7f6cf85b1aa6a910877334c13f52ea637af967a8f6da400ca878f9",
+    "combat_model_sha256": "5bbb35de90351827374c9188351cc11c5ce867053c057e1a45978a60bb7633e1"
+  },
+  "search_policy": {
+    "depth": 1,
+    "visibility_mode": "public_deterministic_only",
+    "training_labels_emitted": false,
+    "required_value_target": "survive_next_3_floors",
+    "required_calibration_gate": {
+      "overall_ece_improved": true,
+      "brier_degradation_at_most": 0.002,
+      "every_character_ece_at_most": 0.15
+    }
+  },
+  "prior_value_candidate": {
+    "feature_schema": "linear_v1",
+    "checkpoint_sha256": "91876700d1410e28da04c763830dfb98f4c7c8c060dcef38a2a08dd674060744",
+    "calibration_report_sha256": "88d3a45981898c0d204ade1032015ce6c64f73c4b30c572ede98aee017ee51a1",
+    "gate_passed": false,
+    "failed_criterion": "every_character_ece_at_most_0.15",
+    "search_eligible": false
+  },
+  "current_value_candidate": {
+    "feature_schema": "character_interactions_v2",
+    "checkpoint_sha256": "9184fb97c77763661ed56ea3ccdd98de912ecd8c3cf829c07dd15b5d4d41f5f9",
+    "calibration_report_sha256": "14c89df1bfeb3079ff00ba8f3d88d7741e2fcd78d5646081ee9d4bcde130fe84",
+    "gate_passed": false,
+    "failed_criteria": [
+      "overall_ece_improved",
+      "every_character_ece_at_most_0.15"
+    ],
+    "search_eligible": false
+  },
+  "audited_value_candidate": {
+    "feature_schema": "character_interactions_v2",
+    "checkpoint_sha256": "cc2410fc52a27ae3563d563ccfcacf91cf15e0740ec523108a6e5b347e00873f",
+    "frozen_preaudit_checkpoint_sha256": "6a9a7ae0e33d354c096115456216fa67d967179d3273c982e6bf291f7f9b9f79",
+    "development_report_sha256": "f8dd1c7f0d2f45716bd5cba861ce39f483f76f5637a2f7805cb901867660439b",
+    "independent_audit_report_sha256": "97c792859999d5c4717706334fe5fdc3f6986b7d22dba05d8368d046d4604748",
+    "independent_audit_groups": 75,
+    "independent_audit_examples": 1448,
+    "gate_passed": false,
+    "failed_criteria": [
+      "overall_ece_improved",
+      "brier_degradation_at_most_0.002",
+      "every_character_ece_at_most_0.15"
+    ],
+    "search_eligible": false,
+    "calibration_status": "rejected_independent_audit_gate"
+  },
+  "bounded_value_v4_candidate": {
+    "feature_schema": "character_nonlinear_v3",
+    "architecture": "three-member group-balanced bootstrap nonlinear GAM ensemble",
+    "selected_calibrator": "per_character_platt",
+    "checkpoint_sha256": "339d6dc2323d041c0dab880b5c88b80b71fcc3d0ca68f40dc1bc56ef6691bb56",
+    "development_report_sha256": "321d1b519c331369410ef3f5878e3607f680d117c7b96314709fb7c0ca1e1b5c",
+    "development_test_groups": 60,
+    "development_test_examples": 1782,
+    "gate_passed": false,
+    "failed_criteria": [
+      "overall_ece_improved",
+      "brier_degradation_at_most_0.002",
+      "every_character_ece_at_most_0.15"
+    ],
+    "search_eligible": false,
+    "calibration_status": "rejected_held_out_gate",
+    "fresh_audit_collected": false,
+    "fresh_audit_opened": false
+  },
+  "evaluation": {
+    "paired_on_same_seed": true,
+    "first_attempt_only": true,
+    "primary_metric": "paired_floor_delta_search_minus_base",
+    "secondary_metrics": ["victories", "truncations", "steps"],
+    "max_steps": 1000,
+    "minimum_report": "overall_and_per_character",
+    "execution_authorized": false,
+    "execution_blocker": "The bounded value-v4 candidate failed all three internal promotion criteria; its fresh audit remains uncollected."
+  }
+}

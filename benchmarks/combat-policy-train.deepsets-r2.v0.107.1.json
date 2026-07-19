@@ -1,0 +1,31 @@
+{
+  "configuration": {
+    "batch_size": 128,
+    "embedding_dim": 32,
+    "entity_hidden": 64,
+    "epochs": 12,
+    "global_hidden": 64,
+    "hash_buckets": 8192,
+    "learning_rate": 0.001,
+    "numeric_hidden": 32,
+    "score_hidden": 128,
+    "seed": 7,
+    "weight_decay": 1e-05
+  },
+  "model": "checkpoints\\combat_policy.deepsets-r2.v0.107.1.pt",
+  "model_type": "typed_deep_sets_candidate_scorer",
+  "parameter_count": 325409,
+  "train_final": {
+    "decisions": 21961,
+    "epoch": 12,
+    "loss": 0.380054,
+    "top1_accuracy": 0.927553
+  },
+  "validation": {
+    "decisions": 2005,
+    "loss": 0.463981,
+    "mean_reciprocal_rank": 0.939558,
+    "random_top1_accuracy": 0.330737,
+    "top1_accuracy": 0.892768
+  }
+}

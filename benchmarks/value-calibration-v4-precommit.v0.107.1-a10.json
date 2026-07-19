@@ -1,0 +1,421 @@
+{
+  "audit_protocol": {
+    "audit_is_opened_once": true,
+    "audit_pool_must_not_be_read_until_checkpoint_is_frozen": true,
+    "collection_is_outcome_blind": true,
+    "development_pool_may_be_used_for_training": false,
+    "promotion_gate": {
+      "brier_degradation_at_most": 0.002,
+      "every_character_ece_at_most": 0.15,
+      "overall_ece_improved": true
+    }
+  },
+  "cases": [
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "pool": "audit",
+      "seed": "VCAL4AI000000"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "pool": "audit",
+      "seed": "VCAL4AI000001"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "pool": "audit",
+      "seed": "VCAL4AI000002"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "pool": "audit",
+      "seed": "VCAL4AI000003"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "pool": "audit",
+      "seed": "VCAL4AI000004"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "pool": "audit",
+      "seed": "VCAL4AI000005"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "pool": "audit",
+      "seed": "VCAL4AI000006"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "pool": "audit",
+      "seed": "VCAL4AI000007"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "pool": "audit",
+      "seed": "VCAL4AI000008"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "pool": "audit",
+      "seed": "VCAL4AI000009"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "pool": "audit",
+      "seed": "VCAL4AI000010"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "pool": "audit",
+      "seed": "VCAL4AI000011"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "pool": "audit",
+      "seed": "VCAL4AI000012"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "pool": "audit",
+      "seed": "VCAL4AI000013"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "pool": "audit",
+      "seed": "VCAL4AI000014"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "pool": "audit",
+      "seed": "VCAL4AS000000"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "pool": "audit",
+      "seed": "VCAL4AS000001"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "pool": "audit",
+      "seed": "VCAL4AS000002"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "pool": "audit",
+      "seed": "VCAL4AS000003"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "pool": "audit",
+      "seed": "VCAL4AS000004"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "pool": "audit",
+      "seed": "VCAL4AS000005"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "pool": "audit",
+      "seed": "VCAL4AS000006"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "pool": "audit",
+      "seed": "VCAL4AS000007"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "pool": "audit",
+      "seed": "VCAL4AS000008"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "pool": "audit",
+      "seed": "VCAL4AS000009"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "pool": "audit",
+      "seed": "VCAL4AS000010"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "pool": "audit",
+      "seed": "VCAL4AS000011"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "pool": "audit",
+      "seed": "VCAL4AS000012"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "pool": "audit",
+      "seed": "VCAL4AS000013"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "pool": "audit",
+      "seed": "VCAL4AS000014"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "pool": "audit",
+      "seed": "VCAL4AD000000"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "pool": "audit",
+      "seed": "VCAL4AD000001"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "pool": "audit",
+      "seed": "VCAL4AD000002"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "pool": "audit",
+      "seed": "VCAL4AD000003"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "pool": "audit",
+      "seed": "VCAL4AD000004"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "pool": "audit",
+      "seed": "VCAL4AD000005"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "pool": "audit",
+      "seed": "VCAL4AD000006"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "pool": "audit",
+      "seed": "VCAL4AD000007"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "pool": "audit",
+      "seed": "VCAL4AD000008"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "pool": "audit",
+      "seed": "VCAL4AD000009"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "pool": "audit",
+      "seed": "VCAL4AD000010"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "pool": "audit",
+      "seed": "VCAL4AD000011"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "pool": "audit",
+      "seed": "VCAL4AD000012"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "pool": "audit",
+      "seed": "VCAL4AD000013"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "pool": "audit",
+      "seed": "VCAL4AD000014"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "pool": "audit",
+      "seed": "VCAL4AN000000"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "pool": "audit",
+      "seed": "VCAL4AN000001"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "pool": "audit",
+      "seed": "VCAL4AN000002"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "pool": "audit",
+      "seed": "VCAL4AN000003"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "pool": "audit",
+      "seed": "VCAL4AN000004"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "pool": "audit",
+      "seed": "VCAL4AN000005"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "pool": "audit",
+      "seed": "VCAL4AN000006"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "pool": "audit",
+      "seed": "VCAL4AN000007"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "pool": "audit",
+      "seed": "VCAL4AN000008"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "pool": "audit",
+      "seed": "VCAL4AN000009"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "pool": "audit",
+      "seed": "VCAL4AN000010"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "pool": "audit",
+      "seed": "VCAL4AN000011"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "pool": "audit",
+      "seed": "VCAL4AN000012"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "pool": "audit",
+      "seed": "VCAL4AN000013"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "pool": "audit",
+      "seed": "VCAL4AN000014"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "pool": "audit",
+      "seed": "VCAL4AR000000"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "pool": "audit",
+      "seed": "VCAL4AR000001"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "pool": "audit",
+      "seed": "VCAL4AR000002"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "pool": "audit",
+      "seed": "VCAL4AR000003"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "pool": "audit",
+      "seed": "VCAL4AR000004"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "pool": "audit",
+      "seed": "VCAL4AR000005"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "pool": "audit",
+      "seed": "VCAL4AR000006"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "pool": "audit",
+      "seed": "VCAL4AR000007"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "pool": "audit",
+      "seed": "VCAL4AR000008"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "pool": "audit",
+      "seed": "VCAL4AR000009"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "pool": "audit",
+      "seed": "VCAL4AR000010"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "pool": "audit",
+      "seed": "VCAL4AR000011"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "pool": "audit",
+      "seed": "VCAL4AR000012"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "pool": "audit",
+      "seed": "VCAL4AR000013"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "pool": "audit",
+      "seed": "VCAL4AR000014"
+    }
+  ],
+  "created_at": "2026-07-14T19:52:10.128292+00:00",
+  "name": "stsai-value-calibration-vcal4-independent-audit",
+  "schema_version": 1,
+  "selection": {
+    "audit_per_character": 15,
+    "development_per_character": 0,
+    "excluded_manifests": [
+      {
+        "path": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\v0.107.1-a10-search-paired-precommit.json",
+        "sha256": "6d6ca8553547c20d05af81ec60ae1f5ab4fd968ba8d249d427a7c342e086eba1"
+      },
+      {
+        "path": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\value-calibration-v3-precommit.v0.107.1-a10.json",
+        "sha256": "2794d9e4d3359f4caa968c484f38e5c7848a2fa4626c8af10e89774498a28af7"
+      },
+      {
+        "path": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\headless-combat-deepsets-online-baseline-v0.107.1-a10.precommit.json",
+        "sha256": "ca7dc8312dc1685dff371a87cd3d241d0c9ebc509d869c22feb7a8a86a6affe7"
+      }
+    ],
+    "excluded_seed_count": 210,
+    "method": "synthetic-character-balanced-seeds-frozen-before-outcomes",
+    "outcomes_inspected": false,
+    "pools_disjoint": true,
+    "seed_prefix": "VCAL4"
+  },
+  "target": {
+    "ascension": 10,
+    "build_id": "v0.107.1",
+    "value": "survive_next_3_floors"
+  }
+}

@@ -1,0 +1,971 @@
+{
+  "audit": "runreplays_provenance_and_trainability",
+  "by_character": {
+    "CHARACTER.DEFECT": {
+      "ambiguous_trajectory_groups": 0,
+      "combat_action_identity": {
+        "by_type": {
+          "EndTurn": 79,
+          "PlayCard": 500,
+          "UsePotion": 12
+        },
+        "eligible": 591,
+        "syntactically_parsed": 591
+      },
+      "duplicate_snapshot_commands": 696,
+      "effective_replay_streams": 1,
+      "files": 3,
+      "files_matching_expected_build": 3,
+      "files_with_missing_headers": 0,
+      "invalid_combat_commands": 0,
+      "legal_action_reconstruction": {
+        "eligible": 591,
+        "rate": 0.0,
+        "success": 0
+      },
+      "prefix_conforming_snapshots": 3,
+      "raw_commands": 1500,
+      "raw_diagnostic_prestate_coverage": {
+        "by_type": {
+          "EndTurn": {
+            "commands": 177,
+            "with_diagnostic_prestate": 0
+          },
+          "PlayCard": {
+            "commands": 894,
+            "with_diagnostic_prestate": 889
+          },
+          "UsePotion": {
+            "commands": 21,
+            "with_diagnostic_prestate": 15
+          }
+        },
+        "combat_commands": 1092,
+        "rate": 0.827839,
+        "with_diagnostic_prestate": 904
+      },
+      "run_save_sidecars": {
+        "all_crosschecks_passed": 3,
+        "present": 3,
+        "schema_versions": {
+          "16": 3
+        },
+        "solo": 3,
+        "standard_game_mode": 3,
+        "valid": 3
+      },
+      "snapshot_dedup_rate": 0.469636,
+      "snapshot_prefix_conflicts": 0,
+      "supported_commands": 1482,
+      "trainable_combat_decisions": 0,
+      "trajectory_identity_groups": 1,
+      "unique_command_types": {
+        "BuyCard": 3,
+        "BuyCardRemoval": 3,
+        "BuyRelic": 2,
+        "ChooseEventOption": 21,
+        "ChooseRestSiteOption": 8,
+        "ClaimReward": 59,
+        "DiscardPotion": 1,
+        "EndTurn": 79,
+        "MoveToMapCoord": 47,
+        "OpenChest": 5,
+        "OpenShop": 4,
+        "PlayCard": 500,
+        "ProceedToNextAct": 4,
+        "SelectGridCard": 12,
+        "TakeCard": 21,
+        "TakeChestRelic": 5,
+        "UsePotion": 12
+      },
+      "unique_commands_after_snapshot_dedup": 786,
+      "unknown_commands": 0,
+      "unsupported_command_types": {
+        "NetPickRelicAction": 12,
+        "VoteForMapCoordAction": 6
+      },
+      "unsupported_commands": 18
+    },
+    "CHARACTER.IRONCLAD": {
+      "ambiguous_trajectory_groups": 0,
+      "combat_action_identity": {
+        "by_type": {
+          "EndTurn": 83,
+          "PlayCard": 410,
+          "UsePotion": 8
+        },
+        "eligible": 501,
+        "syntactically_parsed": 501
+      },
+      "duplicate_snapshot_commands": 671,
+      "effective_replay_streams": 1,
+      "files": 3,
+      "files_matching_expected_build": 3,
+      "files_with_missing_headers": 0,
+      "invalid_combat_commands": 0,
+      "legal_action_reconstruction": {
+        "eligible": 501,
+        "rate": 0.0,
+        "success": 0
+      },
+      "prefix_conforming_snapshots": 3,
+      "raw_commands": 1395,
+      "raw_diagnostic_prestate_coverage": {
+        "by_type": {
+          "EndTurn": {
+            "commands": 172,
+            "with_diagnostic_prestate": 0
+          },
+          "PlayCard": {
+            "commands": 759,
+            "with_diagnostic_prestate": 512
+          },
+          "UsePotion": {
+            "commands": 13,
+            "with_diagnostic_prestate": 9
+          }
+        },
+        "combat_commands": 944,
+        "rate": 0.551907,
+        "with_diagnostic_prestate": 521
+      },
+      "run_save_sidecars": {
+        "all_crosschecks_passed": 3,
+        "present": 3,
+        "schema_versions": {
+          "16": 3
+        },
+        "solo": 3,
+        "standard_game_mode": 3,
+        "valid": 3
+      },
+      "snapshot_dedup_rate": 0.483778,
+      "snapshot_prefix_conflicts": 0,
+      "supported_commands": 1387,
+      "trainable_combat_decisions": 0,
+      "trajectory_identity_groups": 1,
+      "unique_command_types": {
+        "BuyCard": 2,
+        "BuyCardRemoval": 5,
+        "BuyPotion": 1,
+        "ChooseEventOption": 15,
+        "ChooseRestSiteOption": 8,
+        "ClaimReward": 72,
+        "EndTurn": 83,
+        "MoveToMapCoord": 47,
+        "OpenChest": 3,
+        "OpenShop": 6,
+        "PlayCard": 410,
+        "ProceedToNextAct": 4,
+        "SelectCardFromScreen": 4,
+        "SelectGridCard": 17,
+        "SelectHandCards": 3,
+        "TakeCard": 25,
+        "TakeChestRelic": 3,
+        "UsePotion": 8
+      },
+      "unique_commands_after_snapshot_dedup": 716,
+      "unknown_commands": 0,
+      "unsupported_command_types": {
+        "NetPickRelicAction": 4,
+        "VoteForMapCoordAction": 4
+      },
+      "unsupported_commands": 8
+    },
+    "CHARACTER.NECROBINDER": {
+      "ambiguous_trajectory_groups": 0,
+      "combat_action_identity": {
+        "by_type": {
+          "EndTurn": 65,
+          "PlayCard": 465,
+          "UsePotion": 19
+        },
+        "eligible": 549,
+        "syntactically_parsed": 549
+      },
+      "duplicate_snapshot_commands": 657,
+      "effective_replay_streams": 1,
+      "files": 3,
+      "files_matching_expected_build": 3,
+      "files_with_missing_headers": 0,
+      "invalid_combat_commands": 0,
+      "legal_action_reconstruction": {
+        "eligible": 549,
+        "rate": 0.0,
+        "success": 0
+      },
+      "prefix_conforming_snapshots": 3,
+      "raw_commands": 1441,
+      "raw_diagnostic_prestate_coverage": {
+        "by_type": {
+          "EndTurn": {
+            "commands": 130,
+            "with_diagnostic_prestate": 0
+          },
+          "PlayCard": {
+            "commands": 835,
+            "with_diagnostic_prestate": 824
+          },
+          "UsePotion": {
+            "commands": 24,
+            "with_diagnostic_prestate": 24
+          }
+        },
+        "combat_commands": 989,
+        "rate": 0.857432,
+        "with_diagnostic_prestate": 848
+      },
+      "run_save_sidecars": {
+        "all_crosschecks_passed": 3,
+        "present": 3,
+        "schema_versions": {
+          "16": 3
+        },
+        "solo": 3,
+        "standard_game_mode": 3,
+        "valid": 3
+      },
+      "snapshot_dedup_rate": 0.459762,
+      "snapshot_prefix_conflicts": 0,
+      "supported_commands": 1429,
+      "trainable_combat_decisions": 0,
+      "trajectory_identity_groups": 1,
+      "unique_command_types": {
+        "BuyCard": 3,
+        "BuyCardRemoval": 4,
+        "BuyRelic": 3,
+        "ChooseEventOption": 18,
+        "ChooseRestSiteOption": 9,
+        "ClaimReward": 68,
+        "DiscardPotion": 9,
+        "EndTurn": 65,
+        "MoveToMapCoord": 47,
+        "OpenChest": 3,
+        "OpenFakeShop": 1,
+        "OpenShop": 5,
+        "PlayCard": 465,
+        "ProceedToNextAct": 4,
+        "SelectCardFromScreen": 5,
+        "SelectGridCard": 15,
+        "SelectHandCards": 1,
+        "TakeCard": 25,
+        "TakeChestRelic": 3,
+        "UsePotion": 19
+      },
+      "unique_commands_after_snapshot_dedup": 772,
+      "unknown_commands": 0,
+      "unsupported_command_types": {
+        "NetPickRelicAction": 6,
+        "VoteForMapCoordAction": 6
+      },
+      "unsupported_commands": 12
+    },
+    "CHARACTER.REGENT": {
+      "ambiguous_trajectory_groups": 0,
+      "combat_action_identity": {
+        "by_type": {
+          "EndTurn": 64,
+          "PlayCard": 290,
+          "UsePotion": 8
+        },
+        "eligible": 362,
+        "syntactically_parsed": 362
+      },
+      "duplicate_snapshot_commands": 541,
+      "effective_replay_streams": 1,
+      "files": 3,
+      "files_matching_expected_build": 3,
+      "files_with_missing_headers": 0,
+      "invalid_combat_commands": 0,
+      "legal_action_reconstruction": {
+        "eligible": 362,
+        "rate": 0.0,
+        "success": 0
+      },
+      "prefix_conforming_snapshots": 3,
+      "raw_commands": 1143,
+      "raw_diagnostic_prestate_coverage": {
+        "by_type": {
+          "EndTurn": {
+            "commands": 124,
+            "with_diagnostic_prestate": 0
+          },
+          "PlayCard": {
+            "commands": 540,
+            "with_diagnostic_prestate": 535
+          },
+          "UsePotion": {
+            "commands": 14,
+            "with_diagnostic_prestate": 14
+          }
+        },
+        "combat_commands": 678,
+        "rate": 0.809735,
+        "with_diagnostic_prestate": 549
+      },
+      "run_save_sidecars": {
+        "all_crosschecks_passed": 3,
+        "present": 3,
+        "schema_versions": {
+          "16": 3
+        },
+        "solo": 3,
+        "standard_game_mode": 3,
+        "valid": 3
+      },
+      "snapshot_dedup_rate": 0.47961,
+      "snapshot_prefix_conflicts": 0,
+      "supported_commands": 1128,
+      "trainable_combat_decisions": 0,
+      "trajectory_identity_groups": 1,
+      "unique_command_types": {
+        "BuyCard": 2,
+        "BuyCardRemoval": 5,
+        "BuyPotion": 1,
+        "BuyRelic": 5,
+        "ChooseEventOption": 24,
+        "ChooseRestSiteOption": 17,
+        "ClaimReward": 65,
+        "EndTurn": 64,
+        "MoveToMapCoord": 47,
+        "OpenChest": 4,
+        "OpenShop": 6,
+        "PlayCard": 290,
+        "ProceedToNextAct": 4,
+        "SelectCardFromScreen": 2,
+        "SelectGridCard": 19,
+        "TakeCard": 20,
+        "TakeChestRelic": 4,
+        "UsePotion": 8
+      },
+      "unique_commands_after_snapshot_dedup": 587,
+      "unknown_commands": 0,
+      "unsupported_command_types": {
+        "NetPickRelicAction": 9,
+        "VoteForMapCoordAction": 6
+      },
+      "unsupported_commands": 15
+    },
+    "CHARACTER.SILENT": {
+      "ambiguous_trajectory_groups": 0,
+      "combat_action_identity": {
+        "by_type": {
+          "EndTurn": 42,
+          "PlayCard": 377,
+          "UsePotion": 4
+        },
+        "eligible": 423,
+        "syntactically_parsed": 423
+      },
+      "duplicate_snapshot_commands": 929,
+      "effective_replay_streams": 1,
+      "files": 3,
+      "files_matching_expected_build": 3,
+      "files_with_missing_headers": 0,
+      "invalid_combat_commands": 0,
+      "legal_action_reconstruction": {
+        "eligible": 423,
+        "rate": 0.0,
+        "success": 0
+      },
+      "prefix_conforming_snapshots": 3,
+      "raw_commands": 1685,
+      "raw_diagnostic_prestate_coverage": {
+        "by_type": {
+          "EndTurn": {
+            "commands": 110,
+            "with_diagnostic_prestate": 0
+          },
+          "PlayCard": {
+            "commands": 845,
+            "with_diagnostic_prestate": 322
+          },
+          "UsePotion": {
+            "commands": 9,
+            "with_diagnostic_prestate": 3
+          }
+        },
+        "combat_commands": 964,
+        "rate": 0.337137,
+        "with_diagnostic_prestate": 325
+      },
+      "run_save_sidecars": {
+        "all_crosschecks_passed": 3,
+        "present": 3,
+        "schema_versions": {
+          "16": 3
+        },
+        "solo": 3,
+        "standard_game_mode": 3,
+        "valid": 3
+      },
+      "snapshot_dedup_rate": 0.552976,
+      "snapshot_prefix_conflicts": 0,
+      "supported_commands": 1680,
+      "trainable_combat_decisions": 0,
+      "trajectory_identity_groups": 1,
+      "unique_command_types": {
+        "BuyCardRemoval": 4,
+        "ChooseEventOption": 18,
+        "ChooseRestSiteOption": 9,
+        "ClaimReward": 60,
+        "EndTurn": 42,
+        "MoveToMapCoord": 47,
+        "OpenChest": 3,
+        "OpenFakeShop": 1,
+        "OpenShop": 4,
+        "PlayCard": 377,
+        "ProceedToNextAct": 4,
+        "SelectCardFromScreen": 1,
+        "SelectGridCard": 16,
+        "SelectHandCards": 136,
+        "TakeCard": 22,
+        "TakeChestRelic": 3,
+        "UsePotion": 4
+      },
+      "unique_commands_after_snapshot_dedup": 751,
+      "unknown_commands": 0,
+      "unsupported_command_types": {
+        "NetPickRelicAction": 2,
+        "VoteForMapCoordAction": 3
+      },
+      "unsupported_commands": 5
+    }
+  },
+  "created_at": "2026-07-14T03:02:24.275512+00:00",
+  "dry_run_only": true,
+  "exact_build_gate": {
+    "expected_build": "v0.107.1",
+    "matching_files": 15,
+    "passed": true,
+    "total_files": 15
+  },
+  "expected_build": "v0.107.1",
+  "overall": {
+    "ambiguous_trajectory_groups": 0,
+    "combat_action_identity": {
+      "by_type": {
+        "EndTurn": 333,
+        "PlayCard": 2042,
+        "UsePotion": 51
+      },
+      "eligible": 2426,
+      "syntactically_parsed": 2426
+    },
+    "duplicate_snapshot_commands": 3494,
+    "effective_replay_streams": 5,
+    "files": 15,
+    "files_matching_expected_build": 15,
+    "files_with_missing_headers": 0,
+    "invalid_combat_commands": 0,
+    "legal_action_reconstruction": {
+      "eligible": 2426,
+      "rate": 0.0,
+      "success": 0
+    },
+    "prefix_conforming_snapshots": 15,
+    "raw_commands": 7164,
+    "raw_diagnostic_prestate_coverage": {
+      "by_type": {
+        "EndTurn": {
+          "commands": 713,
+          "with_diagnostic_prestate": 0
+        },
+        "PlayCard": {
+          "commands": 3873,
+          "with_diagnostic_prestate": 3082
+        },
+        "UsePotion": {
+          "commands": 81,
+          "with_diagnostic_prestate": 65
+        }
+      },
+      "combat_commands": 4667,
+      "rate": 0.674309,
+      "with_diagnostic_prestate": 3147
+    },
+    "run_save_sidecars": {
+      "all_crosschecks_passed": 15,
+      "present": 15,
+      "schema_versions": {
+        "16": 15
+      },
+      "solo": 15,
+      "standard_game_mode": 15,
+      "valid": 15
+    },
+    "snapshot_dedup_rate": 0.491697,
+    "snapshot_prefix_conflicts": 0,
+    "supported_commands": 7106,
+    "trainable_combat_decisions": 0,
+    "trajectory_identity_groups": 5,
+    "unique_command_types": {
+      "BuyCard": 10,
+      "BuyCardRemoval": 21,
+      "BuyPotion": 2,
+      "BuyRelic": 10,
+      "ChooseEventOption": 96,
+      "ChooseRestSiteOption": 51,
+      "ClaimReward": 324,
+      "DiscardPotion": 10,
+      "EndTurn": 333,
+      "MoveToMapCoord": 235,
+      "OpenChest": 18,
+      "OpenFakeShop": 2,
+      "OpenShop": 25,
+      "PlayCard": 2042,
+      "ProceedToNextAct": 20,
+      "SelectCardFromScreen": 12,
+      "SelectGridCard": 79,
+      "SelectHandCards": 140,
+      "TakeCard": 113,
+      "TakeChestRelic": 18,
+      "UsePotion": 51
+    },
+    "unique_commands_after_snapshot_dedup": 3612,
+    "unknown_commands": 0,
+    "unsupported_command_types": {
+      "NetPickRelicAction": 33,
+      "VoteForMapCoordAction": 25
+    },
+    "unsupported_commands": 58
+  },
+  "privacy": {
+    "inline_comments_persisted": false,
+    "raw_commands_persisted": false,
+    "raw_seeds_persisted": false,
+    "trajectory_identity": "sha256(game_build, character, seed)"
+  },
+  "provenance": {
+    "files": [
+      {
+        "ascension": "1",
+        "build_id": "v0.107.1",
+        "character": "CHARACTER.IRONCLAD",
+        "commands": 214,
+        "file_sha256": "1c7e7a6f0f207ddcdbf0be3d5488aac146b38fc6f08b99dbf66f536922b652d6",
+        "missing_headers": [],
+        "mod_version": "0.1.0",
+        "run_save": {
+          "all_crosschecks_passed": true,
+          "crosschecks": {
+            "acts": true,
+            "ascension": true,
+            "character": true,
+            "floor": true,
+            "seed": true
+          },
+          "file_sha256": "76e6eb7cf94675fa4ca4ccfbeb0a773786111a8feb4ee4008a1c8a87e2af7c4a",
+          "game_mode": "standard",
+          "platform_type": "steam",
+          "player_count": 1,
+          "schema_version": 16,
+          "status": "checked"
+        },
+        "snapshot_floor": 18,
+        "trajectory_key": "fef5fdc9464986bb1a5269e645986e5cc1023c17075fddfc75ec388c3ef50e0d"
+      },
+      {
+        "ascension": "1",
+        "build_id": "v0.107.1",
+        "character": "CHARACTER.IRONCLAD",
+        "commands": 463,
+        "file_sha256": "79af329c98d3adf6674dac9124e515fd2d78bb4dd010872e99d5d68ced7c4a7f",
+        "missing_headers": [],
+        "mod_version": "0.1.0",
+        "run_save": {
+          "all_crosschecks_passed": true,
+          "crosschecks": {
+            "acts": true,
+            "ascension": true,
+            "character": true,
+            "floor": true,
+            "seed": true
+          },
+          "file_sha256": "4a3947008e9bfcd4837bd57940e7b56bb71596c2ce9b93480916710a3bae3db1",
+          "game_mode": "standard",
+          "platform_type": "steam",
+          "player_count": 1,
+          "schema_version": 16,
+          "status": "checked"
+        },
+        "snapshot_floor": 34,
+        "trajectory_key": "fef5fdc9464986bb1a5269e645986e5cc1023c17075fddfc75ec388c3ef50e0d"
+      },
+      {
+        "ascension": "1",
+        "build_id": "v0.107.1",
+        "character": "CHARACTER.IRONCLAD",
+        "commands": 718,
+        "file_sha256": "6d6b4558b5c2bdac99d26720ac77bf00c96b1272c5e81347cfcce0120a55eb7f",
+        "missing_headers": [],
+        "mod_version": "0.1.0",
+        "run_save": {
+          "all_crosschecks_passed": true,
+          "crosschecks": {
+            "acts": true,
+            "ascension": true,
+            "character": true,
+            "floor": true,
+            "seed": true
+          },
+          "file_sha256": "becc18ced65cf6757e071627814ba60a5eecfc39e70e94f8b844f6cd3c95c500",
+          "game_mode": "standard",
+          "platform_type": "steam",
+          "player_count": 1,
+          "schema_version": 16,
+          "status": "checked"
+        },
+        "snapshot_floor": 49,
+        "trajectory_key": "fef5fdc9464986bb1a5269e645986e5cc1023c17075fddfc75ec388c3ef50e0d"
+      },
+      {
+        "ascension": "0",
+        "build_id": "v0.107.1",
+        "character": "CHARACTER.REGENT",
+        "commands": 161,
+        "file_sha256": "2c5e2a28480d089f3c1d2932fe202c3b0aadceff075f46f5fe9e8a5ece828d18",
+        "missing_headers": [],
+        "mod_version": "0.1.0",
+        "run_save": {
+          "all_crosschecks_passed": true,
+          "crosschecks": {
+            "acts": true,
+            "ascension": true,
+            "character": true,
+            "floor": true,
+            "seed": true
+          },
+          "file_sha256": "9d0e2fd6b78ac60e3ee95751cb0c2e6114da120411e3578d74f58bd6934d8c7d",
+          "game_mode": "standard",
+          "platform_type": "steam",
+          "player_count": 1,
+          "schema_version": 16,
+          "status": "checked"
+        },
+        "snapshot_floor": 18,
+        "trajectory_key": "5d19e6228b05679f62dcd4f99c73dbda2c5923ca0c13454c8aa1064aa8eab638"
+      },
+      {
+        "ascension": "0",
+        "build_id": "v0.107.1",
+        "character": "CHARACTER.REGENT",
+        "commands": 388,
+        "file_sha256": "7f58e13f10384a3e17cae26d0fc05e313d1991c7ba8cb43fab011aa19cacf278",
+        "missing_headers": [],
+        "mod_version": "0.1.0",
+        "run_save": {
+          "all_crosschecks_passed": true,
+          "crosschecks": {
+            "acts": true,
+            "ascension": true,
+            "character": true,
+            "floor": true,
+            "seed": true
+          },
+          "file_sha256": "ff581c21d672581ae7002805fdcd555fc6c236e5beda38d63424b127aca57480",
+          "game_mode": "standard",
+          "platform_type": "steam",
+          "player_count": 1,
+          "schema_version": 16,
+          "status": "checked"
+        },
+        "snapshot_floor": 34,
+        "trajectory_key": "5d19e6228b05679f62dcd4f99c73dbda2c5923ca0c13454c8aa1064aa8eab638"
+      },
+      {
+        "ascension": "0",
+        "build_id": "v0.107.1",
+        "character": "CHARACTER.REGENT",
+        "commands": 594,
+        "file_sha256": "06a3e28cf41f3d4f9286358903971eb97c9a1812066abd09f6575ece4e4f6d2a",
+        "missing_headers": [],
+        "mod_version": "0.1.0",
+        "run_save": {
+          "all_crosschecks_passed": true,
+          "crosschecks": {
+            "acts": true,
+            "ascension": true,
+            "character": true,
+            "floor": true,
+            "seed": true
+          },
+          "file_sha256": "0a9c8468dd807ffd6edfc0c2e7c8b7820a7c55385bc146f794dda86f43ca7748",
+          "game_mode": "standard",
+          "platform_type": "steam",
+          "player_count": 1,
+          "schema_version": 16,
+          "status": "checked"
+        },
+        "snapshot_floor": 49,
+        "trajectory_key": "5d19e6228b05679f62dcd4f99c73dbda2c5923ca0c13454c8aa1064aa8eab638"
+      },
+      {
+        "ascension": "1",
+        "build_id": "v0.107.1",
+        "character": "CHARACTER.SILENT",
+        "commands": 354,
+        "file_sha256": "1804de5528a96fe0cc401792d84baf4aee20452c518066c78c6ee9866454303c",
+        "missing_headers": [],
+        "mod_version": "0.1.0",
+        "run_save": {
+          "all_crosschecks_passed": true,
+          "crosschecks": {
+            "acts": true,
+            "ascension": true,
+            "character": true,
+            "floor": true,
+            "seed": true
+          },
+          "file_sha256": "1c7b1346ef3c39a27c9fc125250165dfd4cc875877c47c36319490526616d2b6",
+          "game_mode": "standard",
+          "platform_type": "steam",
+          "player_count": 1,
+          "schema_version": 16,
+          "status": "checked"
+        },
+        "snapshot_floor": 18,
+        "trajectory_key": "cb64072966a0b1f9ceefb45a3441b701e62ddf5c7bdba8f3a54ee0cb92cb54ff"
+      },
+      {
+        "ascension": "1",
+        "build_id": "v0.107.1",
+        "character": "CHARACTER.SILENT",
+        "commands": 578,
+        "file_sha256": "d3f635a580afa249c60d74eaae21af60cbf2210a4b709ced796538439371f69a",
+        "missing_headers": [],
+        "mod_version": "0.1.0",
+        "run_save": {
+          "all_crosschecks_passed": true,
+          "crosschecks": {
+            "acts": true,
+            "ascension": true,
+            "character": true,
+            "floor": true,
+            "seed": true
+          },
+          "file_sha256": "6d8a1104eb0f7f96c89aa0c49bb950e59a2eda7828d905403ae72cbe14ce190f",
+          "game_mode": "standard",
+          "platform_type": "steam",
+          "player_count": 1,
+          "schema_version": 16,
+          "status": "checked"
+        },
+        "snapshot_floor": 34,
+        "trajectory_key": "cb64072966a0b1f9ceefb45a3441b701e62ddf5c7bdba8f3a54ee0cb92cb54ff"
+      },
+      {
+        "ascension": "1",
+        "build_id": "v0.107.1",
+        "character": "CHARACTER.SILENT",
+        "commands": 753,
+        "file_sha256": "1688be73fd7224ce442a9298fb69f14e9d988298b65fc65e2930a8cb0e3a1aa5",
+        "missing_headers": [],
+        "mod_version": "0.1.0",
+        "run_save": {
+          "all_crosschecks_passed": true,
+          "crosschecks": {
+            "acts": true,
+            "ascension": true,
+            "character": true,
+            "floor": true,
+            "seed": true
+          },
+          "file_sha256": "f086a68d8e4d06f68281e11efbc1bb1c8c566e6e5562d026b15e46e68f836209",
+          "game_mode": "standard",
+          "platform_type": "steam",
+          "player_count": 1,
+          "schema_version": 16,
+          "status": "checked"
+        },
+        "snapshot_floor": 49,
+        "trajectory_key": "cb64072966a0b1f9ceefb45a3441b701e62ddf5c7bdba8f3a54ee0cb92cb54ff"
+      },
+      {
+        "ascension": "1",
+        "build_id": "v0.107.1",
+        "character": "CHARACTER.NECROBINDER",
+        "commands": 213,
+        "file_sha256": "7d8fa3ed9983585e86aff0e4757371e76d59c864058cf759ce366af9630a60a4",
+        "missing_headers": [],
+        "mod_version": "0.1.0",
+        "run_save": {
+          "all_crosschecks_passed": true,
+          "crosschecks": {
+            "acts": true,
+            "ascension": true,
+            "character": true,
+            "floor": true,
+            "seed": true
+          },
+          "file_sha256": "4f78763b3bf67b6b7f1e39b55b1f83893204d1046a994c6b62ef37a4bac71579",
+          "game_mode": "standard",
+          "platform_type": "steam",
+          "player_count": 1,
+          "schema_version": 16,
+          "status": "checked"
+        },
+        "snapshot_floor": 18,
+        "trajectory_key": "63b2e575491d5f1f3f905db90de81f315c286087f26cb1a67259382a916133e9"
+      },
+      {
+        "ascension": "1",
+        "build_id": "v0.107.1",
+        "character": "CHARACTER.NECROBINDER",
+        "commands": 450,
+        "file_sha256": "e5f593d6b4b25c05fe5109dfe69fe485c0e5aacd4dc170763235f06936ced88d",
+        "missing_headers": [],
+        "mod_version": "0.1.0",
+        "run_save": {
+          "all_crosschecks_passed": true,
+          "crosschecks": {
+            "acts": true,
+            "ascension": true,
+            "character": true,
+            "floor": true,
+            "seed": true
+          },
+          "file_sha256": "4e7b6038f7a1421dac10c7de4e3b30ef1e470b487a98359a5b4bbaaed07b3820",
+          "game_mode": "standard",
+          "platform_type": "steam",
+          "player_count": 1,
+          "schema_version": 16,
+          "status": "checked"
+        },
+        "snapshot_floor": 34,
+        "trajectory_key": "63b2e575491d5f1f3f905db90de81f315c286087f26cb1a67259382a916133e9"
+      },
+      {
+        "ascension": "1",
+        "build_id": "v0.107.1",
+        "character": "CHARACTER.NECROBINDER",
+        "commands": 778,
+        "file_sha256": "6e6caf0d48c120020a447f9ac42f535ea74ee6c1e5807a24fab83b9c22cb014d",
+        "missing_headers": [],
+        "mod_version": "0.1.0",
+        "run_save": {
+          "all_crosschecks_passed": true,
+          "crosschecks": {
+            "acts": true,
+            "ascension": true,
+            "character": true,
+            "floor": true,
+            "seed": true
+          },
+          "file_sha256": "2bc3ea6c85d8553e1c1d7b39116613289bf58f8d70f45bcc867f5c755aeeda52",
+          "game_mode": "standard",
+          "platform_type": "steam",
+          "player_count": 1,
+          "schema_version": 16,
+          "status": "checked"
+        },
+        "snapshot_floor": 49,
+        "trajectory_key": "63b2e575491d5f1f3f905db90de81f315c286087f26cb1a67259382a916133e9"
+      },
+      {
+        "ascension": "1",
+        "build_id": "v0.107.1",
+        "character": "CHARACTER.DEFECT",
+        "commands": 256,
+        "file_sha256": "4af49e2a7f4a310d1a72a2320d809f51a30d6cde0ca4bac6705250f543c8e751",
+        "missing_headers": [],
+        "mod_version": "0.1.0",
+        "run_save": {
+          "all_crosschecks_passed": true,
+          "crosschecks": {
+            "acts": true,
+            "ascension": true,
+            "character": true,
+            "floor": true,
+            "seed": true
+          },
+          "file_sha256": "844efd432ec5f0ddfb5aeded7ab5ebe5dc3488e30fd51da3cfac37bc55ee991b",
+          "game_mode": "standard",
+          "platform_type": "steam",
+          "player_count": 1,
+          "schema_version": 16,
+          "status": "checked"
+        },
+        "snapshot_floor": 18,
+        "trajectory_key": "a7bf4c72a9e73e2af6392f14e7baa3e3bda8e503fe0c723bb2d473a6c48a2bb6"
+      },
+      {
+        "ascension": "1",
+        "build_id": "v0.107.1",
+        "character": "CHARACTER.DEFECT",
+        "commands": 450,
+        "file_sha256": "0ab8fe3ff053e38e1287ca2dbc310466fa5cff8d56a58b81bfcd2f997fd2ae58",
+        "missing_headers": [],
+        "mod_version": "0.1.0",
+        "run_save": {
+          "all_crosschecks_passed": true,
+          "crosschecks": {
+            "acts": true,
+            "ascension": true,
+            "character": true,
+            "floor": true,
+            "seed": true
+          },
+          "file_sha256": "69638642fa400595d49535408d8dd690b249614c84fa40520ad32eb7523f79bb",
+          "game_mode": "standard",
+          "platform_type": "steam",
+          "player_count": 1,
+          "schema_version": 16,
+          "status": "checked"
+        },
+        "snapshot_floor": 34,
+        "trajectory_key": "a7bf4c72a9e73e2af6392f14e7baa3e3bda8e503fe0c723bb2d473a6c48a2bb6"
+      },
+      {
+        "ascension": "1",
+        "build_id": "v0.107.1",
+        "character": "CHARACTER.DEFECT",
+        "commands": 794,
+        "file_sha256": "3f84427a71ac27297ca02215888c1a0cbdbf2ea1d17f857a0e024ad31aef3bcd",
+        "missing_headers": [],
+        "mod_version": "0.1.0",
+        "run_save": {
+          "all_crosschecks_passed": true,
+          "crosschecks": {
+            "acts": true,
+            "ascension": true,
+            "character": true,
+            "floor": true,
+            "seed": true
+          },
+          "file_sha256": "fe51a48b03a8b1c26b9819c34d4c877785b8da4f7f10356697b17303917ace83",
+          "game_mode": "standard",
+          "platform_type": "steam",
+          "player_count": 1,
+          "schema_version": 16,
+          "status": "checked"
+        },
+        "snapshot_floor": 49,
+        "trajectory_key": "a7bf4c72a9e73e2af6392f14e7baa3e3bda8e503fe0c723bb2d473a6c48a2bb6"
+      }
+    ],
+    "input_roots": 1,
+    "license": {
+      "file_sha256": "9c2c4846925b9ff769f1e42d3bb237c0661574b9341bdd3d49cbe926adf890dc",
+      "repository_license_verified": true,
+      "scope_caveat": "Repository licensing does not establish rights to unrelated third-party replay collections.",
+      "spdx": "MIT"
+    },
+    "source_name": "RunReplays",
+    "source_revision": "b0d2302ee69bf2ad735e0b6b51aea02408e9ef62",
+    "source_uri": "https://github.com/boardengineer/RunReplays"
+  },
+  "schema_version": 1,
+  "trainability_gate": {
+    "missing_per_decision_fields": [
+      "pre_action_observation",
+      "complete_legal_actions",
+      "combat_card_id_to_hand_index_mapping",
+      "model_table_hash_for_modded_replay"
+    ],
+    "next_required_step": "Replay commands on the exact game build while instrumenting every pre-action state and legal candidate set, then audit the reconstructed records before training.",
+    "passed": false,
+    "reason": "RunReplays command snapshots identify chosen commands but do not contain exact pre-action observations or complete legal-action masks."
+  },
+  "training_authorized": false
+}

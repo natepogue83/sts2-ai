@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "name": "stsai-bounded-value-v4-design-precommit",
+  "created_at": "2026-07-14T19:52:33.7318225Z",
+  "target": {
+    "build_id": "v0.107.1",
+    "ascension": 10,
+    "value": "survive_next_3_floors"
+  },
+  "scope": {
+    "attempts": 1,
+    "v5_allowed_if_gate_fails": false,
+    "searchv1_allowed_only_after_all_internal_and_independent_audit_gates_pass": true
+  },
+  "development_data": {
+    "first_party_only": true,
+    "search_labels_used": false,
+    "inputs": [
+      "data/raw/headless",
+      "data/raw/value-calibration-v3/development",
+      "data/raw/value-calibration-v3/audit"
+    ],
+    "opened_v3_audit_reclassified_as_development": true,
+    "v3_development_collection_receipt_sha256": "90ec8b05abb450a152515a4ce745419e9cce507063b94ba53a9b26ad9a4dc873",
+    "v3_audit_collection_receipt_sha256": "f74da5c55798b289d476b04cf8bc24ff2b965a071035ab9241408dc1847756ff"
+  },
+  "candidate": {
+    "architecture": "three-member group-balanced bootstrap nonlinear GAM ensemble",
+    "feature_schema": "character_nonlinear_v3",
+    "public_state_only": true,
+    "character_conditioned": true,
+    "explainable": true,
+    "ensemble_seeds": [101, 211, 307],
+    "epochs": 400,
+    "learning_rate": 0.02,
+    "l2": 0.003,
+    "basis": {
+      "existing_character_interactions": true,
+      "piecewise_linear_hinges": true,
+      "explicit_state_indicators": true,
+      "explicit_risk_products": true
+    }
+  },
+  "calibrator_selection": {
+    "candidates": [
+      "identity",
+      "global_platt",
+      "per_character_platt"
+    ],
+    "method": "five-fold character-balanced seed-group out-of-fold predictions on validation groups",
+    "admissibility": {
+      "overall_ece_no_worse_than_identity": true,
+      "brier_degradation_from_identity_at_most": 0.002,
+      "every_character_ece_at_most": 0.15
+    },
+    "selection_rule": "among admissible candidates minimize worst-character ECE, then Brier, then overall ECE; if none are admissible, select identity",
+    "internal_test_visible_during_selection": false,
+    "internal_test_passes": 1
+  },
+  "promotion_gate": {
+    "overall_ece_no_worse_than_raw": true,
+    "brier_degradation_from_raw_at_most": 0.002,
+    "every_character_ece_at_most": 0.15
+  },
+  "independent_audit": {
+    "manifest": "benchmarks/value-calibration-v4-precommit.v0.107.1-a10.json",
+    "manifest_sha256": "b61ffe6ff43135e8fb3819b1a39990f7dea2ad3bcb1d1a448041548a6ac3c657",
+    "seed_prefix": "VCAL4",
+    "runs_per_character": 15,
+    "total_runs": 75,
+    "character_balanced": true,
+    "collected": false,
+    "opened": false,
+    "parameters_frozen_before_collection": true,
+    "open_count": 1
+  },
+  "implementation_snapshot": {
+    "value_py_sha256": "7012440c581280cbdf83cafba4e01f7ab70630b98a3a88dea596633bc17ae132",
+    "correctness_only_fixes_before_first_completed_fit_must_be_recorded": true
+  }
+}

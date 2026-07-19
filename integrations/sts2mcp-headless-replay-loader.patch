@@ -1,0 +1,229 @@
+diff --git a/McpMod.cs b/McpMod.cs
+--- a/McpMod.cs
++++ b/McpMod.cs
+@@ -269,6 +269,13 @@ public static partial class McpMod
+                 else
+                     SendError(response, 405, "Method not allowed");
+             }
++            else if (path == "/api/v1/replay/latest/load")
++            {
++                if (request.HttpMethod == "POST")
++                    HandleLoadLatestReplay(response);
++                else
++                    SendError(response, 405, "Method not allowed");
++            }
+             else
+             {
+                 SendError(response, 404, "Not found");
+diff --git a/McpMod.Replay.cs b/McpMod.Replay.cs
+--- a/McpMod.Replay.cs
++++ b/McpMod.Replay.cs
+@@ -3,17 +3,147 @@ using System.Collections.Generic;
+ using System.IO;
+ using System.Linq;
+ using System.Net;
++using System.Reflection;
++using System.Threading.Tasks;
+ using Godot;
++using MegaCrit.Sts2.Core.Assets;
++using MegaCrit.Sts2.Core.Combat;
+ using MegaCrit.Sts2.Core.Entities.Multiplayer;
++using MegaCrit.Sts2.Core.Entities.Players;
+ using MegaCrit.Sts2.Core.GameActions;
++using MegaCrit.Sts2.Core.Helpers;
+ using MegaCrit.Sts2.Core.Multiplayer.Replay;
+ using MegaCrit.Sts2.Core.Multiplayer.Serialization;
++using MegaCrit.Sts2.Core.Nodes;
++using MegaCrit.Sts2.Core.Nodes.Audio;
++using MegaCrit.Sts2.Core.Rooms;
++using MegaCrit.Sts2.Core.Runs;
+ using MegaCrit.Sts2.Core.Saves;
+ 
+ namespace STS2_MCP;
+ 
+ public static partial class McpMod
+ {
++    private static void HandleLoadLatestReplay(HttpListenerResponse response)
++    {
++        try
++        {
++            var task = RunOnMainThreadAsync(LoadLatestReplayInitialState);
++            SendJson(response, task.GetAwaiter().GetResult());
++        }
++        catch (FileNotFoundException ex)
++        {
++            SendError(response, 404, ex.Message);
++        }
++        catch (InvalidDataException ex)
++        {
++            SendError(response, 409, ex.Message);
++        }
++        catch (InvalidOperationException ex)
++        {
++            SendError(response, 409, ex.Message);
++        }
++        catch (TimeoutException ex)
++        {
++            SendError(response, 504, ex.Message);
++        }
++        catch (Exception ex)
++        {
++            GD.PrintErr($"[STS2 MCP] HandleLoadLatestReplay: {ex}");
++            SendError(response, 500, $"Failed to load latest combat replay: {ex.Message}");
++        }
++    }
++
++    private static Task<T> RunOnMainThreadAsync<T>(Func<Task<T>> func)
++    {
++        var completion = new TaskCompletionSource<T>(
++            TaskCreationOptions.RunContinuationsAsynchronously);
++        _mainThreadQueue.Enqueue(() =>
++        {
++            _ = CompleteAsync();
++            async Task CompleteAsync()
++            {
++                try
++                {
++                    completion.SetResult(await func());
++                }
++                catch (Exception ex)
++                {
++                    completion.SetException(ex);
++                }
++            }
++        });
++        return completion.Task;
++    }
++
++    private static async Task<Dictionary<string, object?>> LoadLatestReplayInitialState()
++    {
++        if (RunManager.Instance.IsInProgress)
++        {
++            throw new InvalidOperationException(
++                "A run is already loaded. Restart the headless worker before loading a replay.");
++        }
++
++        CombatReplay replay = ReadLatestReplay();
++        RunState runState = RunState.FromSerializable(replay.serializableRun);
++        RunManager manager = RunManager.Instance;
++        manager.SetUpReplay(runState, replay);
++
++        // The game's debug replay path enables saving. This oracle must be isolated
++        // from the player's current run and from the source replay on disk.
++        PropertyInfo? shouldSave = typeof(RunManager).GetProperty(
++            nameof(RunManager.ShouldSave),
++            BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
++        shouldSave?.SetValue(manager, false);
++        if (manager.ShouldSave)
++            throw new InvalidOperationException("Could not disable saving for the replay oracle.");
++        manager.CombatReplayWriter.IsEnabled = false;
++        manager.CombatStateSynchronizer.IsDisabled = true;
++        if (replay.checksumData.Count == 0)
++            manager.ChecksumTracker.IsEnabled = false;
++
++        await PreloadManager.LoadRunAssets(
++            runState.Players.Select((Player player) => player.Character));
++        await PreloadManager.LoadActAssets(runState.Act);
++        manager.Launch();
++        NAudioManager.Instance?.StopMusic();
++        NGame game = NGame.Instance
++            ?? throw new InvalidOperationException("The game root is not initialized.");
++        game.RootSceneContainer.SetCurrentScene(NRun.Create(runState));
++        await manager.GenerateMap();
++        manager.ActionQueueSet.FastForwardNextActionId(replay.nextActionId);
++        manager.ActionQueueSynchronizer.FastForwardHookId(replay.nextHookId);
++        if (replay.checksumData.Count > 0)
++        {
++            manager.ChecksumTracker.LoadReplayChecksums(
++                replay.checksumData, replay.nextChecksumId);
++        }
++        manager.PlayerChoiceSynchronizer.FastForwardChoiceIds(replay.choiceIds);
++        manager.RewardsSetSynchronizer.FastForwardRewardIds(replay.rewardIds);
++        await manager.LoadIntoLatestMapCoord(
++            AbstractRoom.FromSerializable(replay.serializableRun.PreFinishedRoom, runState));
++
++        var sceneTree = (SceneTree)Engine.GetMainLoop();
++        int remainingFrames = 1800;
++        while (manager.ActionExecutor.IsPaused && remainingFrames-- > 0)
++            await sceneTree.ToSignal(sceneTree, SceneTree.SignalName.ProcessFrame);
++        if (manager.ActionExecutor.IsPaused)
++            throw new TimeoutException("Replay combat did not become ready within 1,800 frames.");
++        if (!CombatManager.Instance.IsInProgress)
++            throw new InvalidOperationException("Replay loaded, but no combat became active.");
++
++        return new Dictionary<string, object?>
++        {
++            ["schema_version"] = 1,
++            ["format"] = "sts2_native_replay_initial_state",
++            ["source"] = "game_native_latest_replay",
++            ["saving_enabled"] = manager.ShouldSave,
++            ["replay_writer_enabled"] = manager.CombatReplayWriter.IsEnabled,
++            ["remaining_replay_events"] = replay.events.Count,
++            ["state"] = BuildGameState()
++        };
++    }
++
+     private static void HandleGetLatestReplay(HttpListenerResponse response)
+     {
+         try
+@@ -41,18 +171,7 @@ public static partial class McpMod
+ 
+     private static Dictionary<string, object?> BuildLatestReplaySummary()
+     {
+-        string replayPath = SaveManager.Instance.GetProfileScopedPath("replays/latest.mcr");
+-        if (!Godot.FileAccess.FileExists(replayPath))
+-            throw new FileNotFoundException("No completed combat replay is available for this profile.");
+-
+-        byte[] bytes;
+-        using (var stream = new FileAccessStream(replayPath, Godot.FileAccess.ModeFlags.Read))
+-        {
+-            if (stream.Length > 64 * 1024 * 1024)
+-                throw new InvalidDataException("Replay exceeds the 64 MiB safety limit.");
+-            bytes = new byte[stream.Length];
+-            stream.ReadExactly(bytes);
+-        }
++        byte[] bytes = ReadLatestReplayBytes();
+ 
+         var headerReader = new PacketReader();
+         headerReader.Reset(bytes);
+@@ -208,6 +327,40 @@ public static partial class McpMod
+         };
+     }
+ 
++    private static CombatReplay ReadLatestReplay()
++    {
++        byte[] bytes = ReadLatestReplayBytes();
++        var headerReader = new PacketReader();
++        headerReader.Reset(bytes);
++        headerReader.ReadString();
++        headerReader.ReadString();
++        uint modelIdHash = headerReader.ReadUInt();
++        if (modelIdHash != ModelIdSerializationCache.Hash)
++        {
++            throw new InvalidDataException(
++                $"Replay model table hash is {modelIdHash}, but the active table is "
++                + $"{ModelIdSerializationCache.Hash}. Restore the replay's exact mod set.");
++        }
++
++        var reader = new PacketReader();
++        reader.Reset(bytes);
++        return reader.Read<CombatReplay>();
++    }
++
++    private static byte[] ReadLatestReplayBytes()
++    {
++        string replayPath = SaveManager.Instance.GetProfileScopedPath("replays/latest.mcr");
++        if (!Godot.FileAccess.FileExists(replayPath))
++            throw new FileNotFoundException("No completed combat replay is available for this profile.");
++
++        using var stream = new FileAccessStream(replayPath, Godot.FileAccess.ModeFlags.Read);
++        if (stream.Length > 64 * 1024 * 1024)
++            throw new InvalidDataException("Replay exceeds the 64 MiB safety limit.");
++        byte[] bytes = new byte[stream.Length];
++        stream.ReadExactly(bytes);
++        return bytes;
++    }
++
+     private static Dictionary<string, object?> BuildCheckpoint(
+         int index,
+         ReplayChecksumData checksum,

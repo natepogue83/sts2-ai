@@ -1,0 +1,120 @@
+{
+  "aggregate": {
+    "all_masks_complete_and_chosen_legal": true,
+    "all_validation_gates": true,
+    "buy_card_removals_reconstructed": 2,
+    "buy_cards_reconstructed": 1,
+    "buy_relics_reconstructed": 1,
+    "characters": 4,
+    "claim_rewards_reconstructed": 35,
+    "combat_decisions_reconstructed": 178,
+    "commands_attempted": 281,
+    "commands_reconstructed": 279,
+    "discard_potions_reconstructed": 1,
+    "open_shops_reconstructed": 3,
+    "reconstruction_rate_of_attempted": 0.992883,
+    "rest_site_options_reconstructed": 3,
+    "shop_map_two_stage_adapters_reconstructed": 2,
+    "stop_statuses": {
+      "mapping_failure": 2,
+      "max_commands_reached": 2
+    },
+    "stop_types": {
+      "ClaimReward": 1,
+      "OpenFakeShop": 1
+    },
+    "take_cards_reconstructed": 11
+  },
+  "benchmark": "runreplays_reward_parity_buy_card_4char",
+  "cases": [
+    {
+      "all_masks_complete_and_chosen_legal": true,
+      "all_validation_gates": true,
+      "artifact_file": "runreplays-reward-parity-open-shop-discard-v0.107.1/defect.json",
+      "artifact_sha256": "a15a59454ce573128dc52352daf126f2abedd6c1ebeeb57d1901564bb7af8f05",
+      "character": "CHARACTER.DEFECT",
+      "claim_rewards_reconstructed": 3,
+      "combat_decisions": 27,
+      "commands_attempted": 42,
+      "commands_reconstructed": 41,
+      "discard_potions_reconstructed": 1,
+      "status": "mapping_failure",
+      "stop_code": "wrong_decision",
+      "stop_command_type": "ClaimReward",
+      "take_cards_reconstructed": 1
+    },
+    {
+      "all_masks_complete_and_chosen_legal": true,
+      "all_validation_gates": true,
+      "artifact_file": "runreplays-reward-parity-combat-tokens-v0.107.1/ironclad.json",
+      "artifact_sha256": "b03971b2d7ad505170ec5183f7423704a614a7ab49bef092bfb45aa0269b0b9e",
+      "buy_card_removals_reconstructed": 1,
+      "character": "CHARACTER.IRONCLAD",
+      "claim_rewards_reconstructed": 13,
+      "combat_decisions": 66,
+      "commands_attempted": 100,
+      "commands_reconstructed": 100,
+      "open_shops_reconstructed": 1,
+      "rest_site_options_reconstructed": 1,
+      "shop_map_two_stage_adapters_reconstructed": 1,
+      "status": "max_commands_reached",
+      "take_cards_reconstructed": 5
+    },
+    {
+      "all_masks_complete_and_chosen_legal": true,
+      "all_validation_gates": true,
+      "artifact_file": "runreplays-reward-parity-buy-card-v0.107.1/necrobinder.json",
+      "artifact_sha256": "5df84eae9d6a99e8be5b3ff1cd52b096fa585acf02a877343c328c0cc257aa5a",
+      "buy_card_removals_reconstructed": 1,
+      "buy_cards_reconstructed": 1,
+      "character": "CHARACTER.NECROBINDER",
+      "claim_rewards_reconstructed": 3,
+      "combat_decisions": 20,
+      "commands_attempted": 39,
+      "commands_reconstructed": 38,
+      "open_shops_reconstructed": 1,
+      "status": "mapping_failure",
+      "stop_code": "unsupported_command",
+      "stop_command_type": "OpenFakeShop",
+      "take_cards_reconstructed": 1
+    },
+    {
+      "all_masks_complete_and_chosen_legal": true,
+      "all_validation_gates": true,
+      "artifact_file": "runreplays-reward-parity-miniature-tent-v0.107.1/regent.json",
+      "artifact_sha256": "fae87c922e4ffcb28f6f9b45cbef0276a8369da7c83b7c73177430fb898e7d24",
+      "buy_relics_reconstructed": 1,
+      "character": "CHARACTER.REGENT",
+      "claim_rewards_reconstructed": 16,
+      "combat_decisions": 65,
+      "commands_attempted": 100,
+      "commands_reconstructed": 100,
+      "open_shops_reconstructed": 1,
+      "rest_site_options_reconstructed": 2,
+      "shop_map_two_stage_adapters_reconstructed": 1,
+      "status": "max_commands_reached",
+      "take_cards_reconstructed": 4
+    }
+  ],
+  "created_at": "2026-07-14T04:16:44.4262444Z",
+  "dry_run_only": true,
+  "excluded_artifacts": [
+    {
+      "artifact_file": "runreplays-reward-parity-combat-tokens-v0.107.1/necrobinder.json",
+      "artifact_sha256": "a6f4df4cac44383d5fd4479217f4279f1a33956abf27da56480a6ffc8c2ca036",
+      "observed_character": "CHARACTER.SILENT",
+      "reason": "case_selection_mismatch",
+      "training_authorized": false
+    }
+  ],
+  "expected_build": "v0.107.1",
+  "predecessor_artifact": "runreplays-reward-parity-combat-tokens-v0.107.1.json",
+  "predecessor_sha256": "919d23f6a1f58b523a270676fbc44e0647929de94d568aa6b5215c96a3dacb0b",
+  "privacy": {
+    "raw_paths_persisted": false,
+    "raw_seed_persisted": false
+  },
+  "schema_version": 1,
+  "source_revision": "b0d2302ee69bf2ad735e0b6b51aea02408e9ef62",
+  "training_authorized": false
+}

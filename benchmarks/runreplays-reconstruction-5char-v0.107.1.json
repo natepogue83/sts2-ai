@@ -1,0 +1,102 @@
+{
+  "aggregate": {
+    "all_reconstructed_masks_complete_and_chosen_legal": true,
+    "all_runtime_validation_gates": true,
+    "characters_attempted": 5,
+    "characters_precommitted": 5,
+    "characters_with_combat_decisions": 4,
+    "characters_with_runtime_probe": 4,
+    "combat_decisions_reconstructed": 61,
+    "commands_attempted": 78,
+    "commands_reconstructed": 74,
+    "stop_types": {
+      "ClaimReward": 4,
+      "validation_failure": 1
+    }
+  },
+  "benchmark": "runreplays_headless_reconstruction_5char",
+  "cases": [
+    {
+      "all_masks_complete_and_chosen_legal": true,
+      "all_validation_gates": true,
+      "artifact_file": "defect.json",
+      "artifact_sha256": "26400ac7d96fbd31ad8670906f5dadf2785e513fe59502b053ebe42053c55a90",
+      "character": "CHARACTER.DEFECT",
+      "combat_decisions": 27,
+      "commands_attempted": 32,
+      "commands_reconstructed": 31,
+      "reconstructed_noops": 1,
+      "status": "mapping_failure",
+      "stop_code": "unsupported_command",
+      "stop_command_type": "ClaimReward"
+    },
+    {
+      "all_masks_complete_and_chosen_legal": true,
+      "all_validation_gates": true,
+      "artifact_file": "ironclad.json",
+      "artifact_sha256": "31144b3a1515992afdaa6d4b97ff6543d9e6b16a7038284f0a268e26207624cf",
+      "character": "CHARACTER.IRONCLAD",
+      "combat_decisions": 8,
+      "commands_attempted": 12,
+      "commands_reconstructed": 11,
+      "reconstructed_noops": 1,
+      "status": "mapping_failure",
+      "stop_code": "unsupported_command",
+      "stop_command_type": "ClaimReward"
+    },
+    {
+      "all_masks_complete_and_chosen_legal": true,
+      "all_validation_gates": true,
+      "artifact_file": "necrobinder.json",
+      "artifact_sha256": "53989d28caa47228d9caa777766b4fbddcdc478b3d93de11ce31c91e19324d1f",
+      "character": "CHARACTER.NECROBINDER",
+      "combat_decisions": 20,
+      "commands_attempted": 24,
+      "commands_reconstructed": 23,
+      "reconstructed_noops": 1,
+      "status": "mapping_failure",
+      "stop_code": "unsupported_command",
+      "stop_command_type": "ClaimReward"
+    },
+    {
+      "all_masks_complete_and_chosen_legal": true,
+      "all_validation_gates": true,
+      "artifact_file": "regent.json",
+      "artifact_sha256": "718fbab47605ddf8784c0318cbb0f4a8e47dee314f9c760f738960d43dcdbf62",
+      "character": "CHARACTER.REGENT",
+      "combat_decisions": 6,
+      "commands_attempted": 10,
+      "commands_reconstructed": 9,
+      "reconstructed_noops": 1,
+      "status": "mapping_failure",
+      "stop_code": "unsupported_command",
+      "stop_command_type": "ClaimReward"
+    },
+    {
+      "all_masks_complete_and_chosen_legal": true,
+      "all_validation_gates": false,
+      "artifact_file": "silent.json",
+      "artifact_sha256": "19f2f2ed869f1e986fc899dc68f7039ca5c4b1d7d9e0497b590bf805394edfcd",
+      "character": "CHARACTER.SILENT",
+      "combat_decisions": 0,
+      "commands_attempted": 0,
+      "commands_reconstructed": 0,
+      "reconstructed_noops": 0,
+      "status": "validation_failure",
+      "stop_code": null,
+      "stop_command_type": null,
+      "validation_error": "Replay reconstruction validation failed: raw_prefix"
+    }
+  ],
+  "created_at": "2026-07-14T03:32:14.177338+00:00",
+  "dry_run_only": true,
+  "expected_build": "v0.107.1",
+  "manifest_sha256": "395a9a0567bac26914d7721d2e9b67c55943995b6d1d844d39f8ff31e6077290",
+  "privacy": {
+    "raw_paths_persisted": false,
+    "raw_seed_persisted": false
+  },
+  "schema_version": 1,
+  "source_revision": "b0d2302ee69bf2ad735e0b6b51aea02408e9ef62",
+  "training_authorized": false
+}

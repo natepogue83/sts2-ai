@@ -1,0 +1,1446 @@
+{
+  "aggregate": {
+    "by_character": {
+      "Defect": {
+        "cases": 10,
+        "max_floor": 12,
+        "mean_floor": 7.8,
+        "mean_steps": 93.9,
+        "median_floor": 8.0,
+        "min_floor": 6,
+        "runtime_failures": 0,
+        "truncations": 0,
+        "victories": 0,
+        "win_rate": 0.0
+      },
+      "Ironclad": {
+        "cases": 10,
+        "max_floor": 15,
+        "mean_floor": 8.9,
+        "mean_steps": 90.4,
+        "median_floor": 7.0,
+        "min_floor": 7,
+        "runtime_failures": 0,
+        "truncations": 0,
+        "victories": 0,
+        "win_rate": 0.0
+      },
+      "Necrobinder": {
+        "cases": 10,
+        "max_floor": 12,
+        "mean_floor": 6.7,
+        "mean_steps": 70.2,
+        "median_floor": 6.0,
+        "min_floor": 4,
+        "runtime_failures": 0,
+        "truncations": 0,
+        "victories": 0,
+        "win_rate": 0.0
+      },
+      "Regent": {
+        "cases": 10,
+        "max_floor": 13,
+        "mean_floor": 8.1,
+        "mean_steps": 103.7,
+        "median_floor": 7.0,
+        "min_floor": 5,
+        "runtime_failures": 0,
+        "truncations": 0,
+        "victories": 0,
+        "win_rate": 0.0
+      },
+      "Silent": {
+        "cases": 10,
+        "max_floor": 17,
+        "mean_floor": 8.5,
+        "mean_steps": 111.1,
+        "median_floor": 7.5,
+        "min_floor": 5,
+        "runtime_failures": 0,
+        "truncations": 0,
+        "victories": 0,
+        "win_rate": 0.0
+      }
+    },
+    "overall": {
+      "cases": 50,
+      "max_floor": 17,
+      "mean_floor": 8.0,
+      "mean_steps": 93.86,
+      "median_floor": 7.0,
+      "min_floor": 4,
+      "runtime_failures": 0,
+      "truncations": 0,
+      "victories": 0,
+      "win_rate": 0.0
+    }
+  },
+  "ascension": 10,
+  "build_id": "v0.107.1",
+  "cases": [
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 0,
+      "character": "Ironclad",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 20,
+          "play_card": 54
+        },
+        "floor": 12,
+        "policy_sources": {
+          "combat_deepsets": 74,
+          "heuristic": 31
+        },
+        "steps": 105,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\000.ironclad.BASEV1I000000.policy.jsonl",
+        "trajectory_id": "9806c62fe88746ee8ec5bc8f3641bac2",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1I000000"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 1,
+      "character": "Ironclad",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 13,
+          "play_card": 51
+        },
+        "floor": 7,
+        "policy_sources": {
+          "combat_deepsets": 64,
+          "heuristic": 21
+        },
+        "steps": 85,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\001.ironclad.BASEV1I000001.policy.jsonl",
+        "trajectory_id": "809a04202b89466d809a996b216865bd",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1I000001"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 2,
+      "character": "Ironclad",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 12,
+          "play_card": 39
+        },
+        "floor": 7,
+        "policy_sources": {
+          "combat_deepsets": 51,
+          "heuristic": 15
+        },
+        "steps": 66,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\002.ironclad.BASEV1I000002.policy.jsonl",
+        "trajectory_id": "cdc99ac4bc3245f8b5b8a15a4f68956e",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1I000002"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 3,
+      "character": "Ironclad",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 19,
+          "play_card": 87
+        },
+        "floor": 11,
+        "policy_sources": {
+          "combat_deepsets": 106,
+          "heuristic": 28
+        },
+        "steps": 134,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\003.ironclad.BASEV1I000003.policy.jsonl",
+        "trajectory_id": "f09b5e2764d145dca445a2b3eafc0f82",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1I000003"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 4,
+      "character": "Ironclad",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 28,
+          "play_card": 99,
+          "use_potion": 1
+        },
+        "floor": 15,
+        "policy_sources": {
+          "combat_deepsets": 128,
+          "heuristic": 38
+        },
+        "steps": 166,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\004.ironclad.BASEV1I000004.policy.jsonl",
+        "trajectory_id": "56dac837650047ba8650a69809cbe0b4",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1I000004"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 5,
+      "character": "Ironclad",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 13,
+          "play_card": 45
+        },
+        "floor": 9,
+        "policy_sources": {
+          "combat_deepsets": 58,
+          "heuristic": 27
+        },
+        "steps": 85,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\005.ironclad.BASEV1I000005.policy.jsonl",
+        "trajectory_id": "bd8fb8bad9f649bea13dce9f2aa8d0ce",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1I000005"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 6,
+      "character": "Ironclad",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 10,
+          "play_card": 24
+        },
+        "floor": 7,
+        "policy_sources": {
+          "combat_deepsets": 34,
+          "heuristic": 14
+        },
+        "steps": 48,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\006.ironclad.BASEV1I000006.policy.jsonl",
+        "trajectory_id": "39044b66073b402fa21f65967c68af1e",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1I000006"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 7,
+      "character": "Ironclad",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 14,
+          "play_card": 47
+        },
+        "floor": 7,
+        "policy_sources": {
+          "combat_deepsets": 61,
+          "heuristic": 15
+        },
+        "steps": 76,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\007.ironclad.BASEV1I000007.policy.jsonl",
+        "trajectory_id": "9eac4c4356024619af5cd74ff1ae3576",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1I000007"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 8,
+      "character": "Ironclad",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 15,
+          "play_card": 47
+        },
+        "floor": 7,
+        "policy_sources": {
+          "combat_deepsets": 62,
+          "heuristic": 13
+        },
+        "steps": 75,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\008.ironclad.BASEV1I000008.policy.jsonl",
+        "trajectory_id": "cca8a25d27844ffab9f31585806c6040",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1I000008"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 9,
+      "character": "Ironclad",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 11,
+          "play_card": 34
+        },
+        "floor": 7,
+        "policy_sources": {
+          "combat_deepsets": 45,
+          "heuristic": 19
+        },
+        "steps": 64,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\009.ironclad.BASEV1I000009.policy.jsonl",
+        "trajectory_id": "ed360641620a4042b9826d1d6b33d4c3",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1I000009"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 10,
+      "character": "Silent",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 13,
+          "play_card": 48
+        },
+        "floor": 5,
+        "policy_sources": {
+          "combat_deepsets": 61,
+          "heuristic": 15
+        },
+        "steps": 76,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\010.silent.BASEV1S000000.policy.jsonl",
+        "trajectory_id": "0c135e3d367f405690b390a8ee580340",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1S000000"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 11,
+      "character": "Silent",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 22,
+          "play_card": 86,
+          "use_potion": 1
+        },
+        "floor": 9,
+        "policy_sources": {
+          "combat_deepsets": 109,
+          "heuristic": 32
+        },
+        "steps": 141,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\011.silent.BASEV1S000001.policy.jsonl",
+        "trajectory_id": "2378aa7b5f814390896a361874eac828",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1S000001"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 12,
+      "character": "Silent",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 17,
+          "play_card": 69
+        },
+        "floor": 6,
+        "policy_sources": {
+          "combat_deepsets": 86,
+          "heuristic": 20
+        },
+        "steps": 106,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\012.silent.BASEV1S000002.policy.jsonl",
+        "trajectory_id": "334223ed2d674145a2acc062f7ae3cf7",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1S000002"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 13,
+      "character": "Silent",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 15,
+          "play_card": 50,
+          "use_potion": 1
+        },
+        "floor": 9,
+        "policy_sources": {
+          "combat_deepsets": 66,
+          "heuristic": 30
+        },
+        "steps": 96,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\013.silent.BASEV1S000003.policy.jsonl",
+        "trajectory_id": "97aa39bed68f4662b40a32d223652f1f",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1S000003"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 14,
+      "character": "Silent",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 13,
+          "play_card": 53
+        },
+        "floor": 6,
+        "policy_sources": {
+          "combat_deepsets": 66,
+          "heuristic": 19
+        },
+        "steps": 85,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\014.silent.BASEV1S000004.policy.jsonl",
+        "trajectory_id": "fc5c54cb468f46b996efcb8294adf508",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1S000004"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 15,
+      "character": "Silent",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 26,
+          "play_card": 93
+        },
+        "floor": 17,
+        "policy_sources": {
+          "combat_deepsets": 119,
+          "heuristic": 52
+        },
+        "steps": 171,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\015.silent.BASEV1S000005.policy.jsonl",
+        "trajectory_id": "017978fe85a940faaf4d197ddedde228",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1S000005"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 16,
+      "character": "Silent",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 21,
+          "play_card": 89
+        },
+        "floor": 12,
+        "policy_sources": {
+          "combat_deepsets": 110,
+          "heuristic": 48
+        },
+        "steps": 158,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\016.silent.BASEV1S000006.policy.jsonl",
+        "trajectory_id": "8ce5d1da58f947968ad79e5b362d0ea6",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1S000006"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 17,
+      "character": "Silent",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 18,
+          "play_card": 69
+        },
+        "floor": 6,
+        "policy_sources": {
+          "combat_deepsets": 87,
+          "heuristic": 16
+        },
+        "steps": 103,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\017.silent.BASEV1S000007.policy.jsonl",
+        "trajectory_id": "f5daf2d93437493cb95816b96144ccd4",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1S000007"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 18,
+      "character": "Silent",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 17,
+          "play_card": 64
+        },
+        "floor": 8,
+        "policy_sources": {
+          "combat_deepsets": 81,
+          "heuristic": 23
+        },
+        "steps": 104,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\018.silent.BASEV1S000008.policy.jsonl",
+        "trajectory_id": "6b1da3f815884217850ab6f5134bd14a",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1S000008"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 19,
+      "character": "Silent",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 12,
+          "play_card": 41
+        },
+        "floor": 7,
+        "policy_sources": {
+          "combat_deepsets": 53,
+          "heuristic": 18
+        },
+        "steps": 71,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\019.silent.BASEV1S000009.policy.jsonl",
+        "trajectory_id": "6df0e32118c94658b55292d649374363",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1S000009"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 20,
+      "character": "Defect",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 13,
+          "play_card": 47
+        },
+        "floor": 6,
+        "policy_sources": {
+          "combat_deepsets": 60,
+          "heuristic": 17
+        },
+        "steps": 77,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\020.defect.BASEV1D000000.policy.jsonl",
+        "trajectory_id": "4dd3186a934f47c3b3905b582a6e59b4",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1D000000"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 21,
+      "character": "Defect",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 17,
+          "play_card": 64
+        },
+        "floor": 8,
+        "policy_sources": {
+          "combat_deepsets": 81,
+          "heuristic": 19
+        },
+        "steps": 100,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\021.defect.BASEV1D000001.policy.jsonl",
+        "trajectory_id": "6ec434b3a4af4100ba548956542e90ff",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1D000001"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 22,
+      "character": "Defect",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 18,
+          "play_card": 59
+        },
+        "floor": 6,
+        "policy_sources": {
+          "combat_deepsets": 77,
+          "heuristic": 11
+        },
+        "steps": 88,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\022.defect.BASEV1D000002.policy.jsonl",
+        "trajectory_id": "7545027324f042148f6f65a7750abd86",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1D000002"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 23,
+      "character": "Defect",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 15,
+          "play_card": 55
+        },
+        "floor": 9,
+        "policy_sources": {
+          "combat_deepsets": 70,
+          "heuristic": 20
+        },
+        "steps": 90,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\023.defect.BASEV1D000003.policy.jsonl",
+        "trajectory_id": "e3f92bf447d84e6abcafce319f61d626",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1D000003"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 24,
+      "character": "Defect",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 16,
+          "play_card": 57
+        },
+        "floor": 8,
+        "policy_sources": {
+          "combat_deepsets": 73,
+          "heuristic": 22
+        },
+        "steps": 95,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\024.defect.BASEV1D000004.policy.jsonl",
+        "trajectory_id": "d3dda964135e4fa7be981f31493d98df",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1D000004"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 25,
+      "character": "Defect",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 16,
+          "play_card": 46
+        },
+        "floor": 8,
+        "policy_sources": {
+          "combat_deepsets": 62,
+          "heuristic": 17
+        },
+        "steps": 79,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\025.defect.BASEV1D000005.policy.jsonl",
+        "trajectory_id": "21489ffea41e4fb4ab3aa7303436658e",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1D000005"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 26,
+      "character": "Defect",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 15,
+          "play_card": 64
+        },
+        "floor": 8,
+        "policy_sources": {
+          "combat_deepsets": 79,
+          "heuristic": 26
+        },
+        "steps": 105,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\026.defect.BASEV1D000006.policy.jsonl",
+        "trajectory_id": "a2e4d1ee6975483aadc8503e38247193",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1D000006"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 27,
+      "character": "Defect",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 22,
+          "play_card": 90
+        },
+        "floor": 12,
+        "policy_sources": {
+          "combat_deepsets": 112,
+          "heuristic": 36
+        },
+        "steps": 148,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\027.defect.BASEV1D000007.policy.jsonl",
+        "trajectory_id": "7cc476b45f5c4fdc8d86bc8aedc152cf",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1D000007"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 28,
+      "character": "Defect",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 14,
+          "play_card": 47
+        },
+        "floor": 6,
+        "policy_sources": {
+          "combat_deepsets": 61,
+          "heuristic": 11
+        },
+        "steps": 72,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\028.defect.BASEV1D000008.policy.jsonl",
+        "trajectory_id": "8244a1d9f5c945138627360aa2e44653",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1D000008"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 29,
+      "character": "Defect",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 16,
+          "play_card": 56
+        },
+        "floor": 7,
+        "policy_sources": {
+          "combat_deepsets": 72,
+          "heuristic": 13
+        },
+        "steps": 85,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\029.defect.BASEV1D000009.policy.jsonl",
+        "trajectory_id": "70799d7465fb41f38559fe5e8819e345",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1D000009"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 30,
+      "character": "Necrobinder",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 10,
+          "play_card": 32
+        },
+        "floor": 7,
+        "policy_sources": {
+          "combat_deepsets": 42,
+          "heuristic": 17
+        },
+        "steps": 59,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\030.necrobinder.BASEV1N000000.policy.jsonl",
+        "trajectory_id": "b6f35cc0191744aa8e4e99cdd893900e",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1N000000"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 31,
+      "character": "Necrobinder",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 12,
+          "play_card": 40
+        },
+        "floor": 5,
+        "policy_sources": {
+          "combat_deepsets": 52,
+          "heuristic": 9
+        },
+        "steps": 61,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\031.necrobinder.BASEV1N000001.policy.jsonl",
+        "trajectory_id": "48d48e73392c4faaa5727a17dcc56b03",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1N000001"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 32,
+      "character": "Necrobinder",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 13,
+          "play_card": 45
+        },
+        "floor": 5,
+        "policy_sources": {
+          "combat_deepsets": 58,
+          "heuristic": 9
+        },
+        "steps": 67,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\032.necrobinder.BASEV1N000002.policy.jsonl",
+        "trajectory_id": "c6156d9ce00a4943bfebc3978e0288b7",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1N000002"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 33,
+      "character": "Necrobinder",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 19,
+          "play_card": 52,
+          "use_potion": 1
+        },
+        "floor": 12,
+        "policy_sources": {
+          "combat_deepsets": 72,
+          "heuristic": 34
+        },
+        "steps": 106,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\033.necrobinder.BASEV1N000003.policy.jsonl",
+        "trajectory_id": "9d579c6f21304228b1a5c08c6c2ecf28",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1N000003"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 34,
+      "character": "Necrobinder",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 7,
+          "play_card": 26
+        },
+        "floor": 4,
+        "policy_sources": {
+          "combat_deepsets": 33,
+          "heuristic": 13
+        },
+        "steps": 46,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\034.necrobinder.BASEV1N000004.policy.jsonl",
+        "trajectory_id": "7120f191e05d404abace40bd5265e872",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1N000004"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 35,
+      "character": "Necrobinder",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 11,
+          "play_card": 37
+        },
+        "floor": 6,
+        "policy_sources": {
+          "combat_deepsets": 48,
+          "heuristic": 12
+        },
+        "steps": 60,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\035.necrobinder.BASEV1N000005.policy.jsonl",
+        "trajectory_id": "32201b02bc6a4da7b82fdecf68a59994",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1N000005"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 36,
+      "character": "Necrobinder",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 12,
+          "play_card": 42
+        },
+        "floor": 5,
+        "policy_sources": {
+          "combat_deepsets": 54,
+          "heuristic": 9
+        },
+        "steps": 63,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\036.necrobinder.BASEV1N000006.policy.jsonl",
+        "trajectory_id": "89996a63e9ab4bd3b3727835aa049815",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1N000006"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 37,
+      "character": "Necrobinder",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 15,
+          "play_card": 48
+        },
+        "floor": 6,
+        "policy_sources": {
+          "combat_deepsets": 63,
+          "heuristic": 15
+        },
+        "steps": 78,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\037.necrobinder.BASEV1N000007.policy.jsonl",
+        "trajectory_id": "65a299ca780c4fbc8bb9391b57258ebb",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1N000007"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 38,
+      "character": "Necrobinder",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 14,
+          "play_card": 51,
+          "use_potion": 1
+        },
+        "floor": 8,
+        "policy_sources": {
+          "combat_deepsets": 66,
+          "heuristic": 19
+        },
+        "steps": 85,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\038.necrobinder.BASEV1N000008.policy.jsonl",
+        "trajectory_id": "d2dafc0f422f4b2d9382e99cafbd8ef5",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1N000008"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 39,
+      "character": "Necrobinder",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 11,
+          "play_card": 35
+        },
+        "floor": 9,
+        "policy_sources": {
+          "combat_deepsets": 46,
+          "heuristic": 31
+        },
+        "steps": 77,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\039.necrobinder.BASEV1N000009.policy.jsonl",
+        "trajectory_id": "dc75677735a44bfe9b3c474bdfd7fd3e",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1N000009"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 40,
+      "character": "Regent",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 14,
+          "play_card": 53
+        },
+        "floor": 6,
+        "policy_sources": {
+          "combat_deepsets": 67,
+          "heuristic": 12
+        },
+        "steps": 79,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\040.regent.BASEV1R000000.policy.jsonl",
+        "trajectory_id": "83ab389ce71445c1a4a98768b799f32c",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1R000000"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 41,
+      "character": "Regent",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 27,
+          "play_card": 106
+        },
+        "floor": 13,
+        "policy_sources": {
+          "combat_deepsets": 133,
+          "heuristic": 44
+        },
+        "steps": 177,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\041.regent.BASEV1R000001.policy.jsonl",
+        "trajectory_id": "fe92c8cb8b4b4625b5c694f673f41d62",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1R000001"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 42,
+      "character": "Regent",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 14,
+          "play_card": 51
+        },
+        "floor": 7,
+        "policy_sources": {
+          "combat_deepsets": 65,
+          "heuristic": 24
+        },
+        "steps": 89,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\042.regent.BASEV1R000002.policy.jsonl",
+        "trajectory_id": "06cbc88ead09407b83aea73fa562706b",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1R000002"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 43,
+      "character": "Regent",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 23,
+          "play_card": 83
+        },
+        "floor": 11,
+        "policy_sources": {
+          "combat_deepsets": 106,
+          "heuristic": 33
+        },
+        "steps": 139,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\043.regent.BASEV1R000003.policy.jsonl",
+        "trajectory_id": "596465ada94c44fb8a09018f2d08d7e8",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1R000003"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 44,
+      "character": "Regent",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 15,
+          "play_card": 58
+        },
+        "floor": 6,
+        "policy_sources": {
+          "combat_deepsets": 73,
+          "heuristic": 15
+        },
+        "steps": 88,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\044.regent.BASEV1R000004.policy.jsonl",
+        "trajectory_id": "88743391014e458792fc65787c6f60b9",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1R000004"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 45,
+      "character": "Regent",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 17,
+          "play_card": 67
+        },
+        "floor": 7,
+        "policy_sources": {
+          "combat_deepsets": 84,
+          "heuristic": 16
+        },
+        "steps": 100,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\045.regent.BASEV1R000005.policy.jsonl",
+        "trajectory_id": "7f016c26c46f41eca0518e150b13b9f3",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1R000005"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 46,
+      "character": "Regent",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 12,
+          "play_card": 42
+        },
+        "floor": 7,
+        "policy_sources": {
+          "combat_deepsets": 54,
+          "heuristic": 24
+        },
+        "steps": 78,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\046.regent.BASEV1R000006.policy.jsonl",
+        "trajectory_id": "264d09978f6d4c5c96c4a38abbb5a0c0",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1R000006"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 47,
+      "character": "Regent",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 22,
+          "play_card": 76
+        },
+        "floor": 12,
+        "policy_sources": {
+          "combat_deepsets": 98,
+          "heuristic": 27
+        },
+        "steps": 125,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\047.regent.BASEV1R000007.policy.jsonl",
+        "trajectory_id": "8182182ad5ba4d24909bd817f70e5c82",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1R000007"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 48,
+      "character": "Regent",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 16,
+          "play_card": 54
+        },
+        "floor": 7,
+        "policy_sources": {
+          "combat_deepsets": 70,
+          "heuristic": 15
+        },
+        "steps": 85,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\048.regent.BASEV1R000008.policy.jsonl",
+        "trajectory_id": "34ebef27dd95436a80e3fd2a6eb05d8c",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1R000008"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 49,
+      "character": "Regent",
+      "policy": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 15,
+          "play_card": 53
+        },
+        "floor": 5,
+        "policy_sources": {
+          "combat_deepsets": 68,
+          "heuristic": 9
+        },
+        "steps": 77,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\headless-combat-deepsets-online-baseline-v0.107.1-a10-n10\\049.regent.BASEV1R000009.policy.jsonl",
+        "trajectory_id": "e38966a6ecdf4fd6a2d97a49fb61185a",
+        "truncated": false,
+        "victory": false
+      },
+      "seed": "BASEV1R000009"
+    }
+  ],
+  "combat_action_counts": {
+    "by_character": {
+      "Defect": {
+        "end_turn": 162,
+        "play_card": 585
+      },
+      "Ironclad": {
+        "end_turn": 155,
+        "play_card": 527,
+        "use_potion": 1
+      },
+      "Necrobinder": {
+        "end_turn": 124,
+        "play_card": 408,
+        "use_potion": 2
+      },
+      "Regent": {
+        "end_turn": 175,
+        "play_card": 643
+      },
+      "Silent": {
+        "end_turn": 174,
+        "play_card": 662,
+        "use_potion": 2
+      }
+    },
+    "overall": {
+      "end_turn": 790,
+      "play_card": 2825,
+      "use_potion": 5
+    }
+  },
+  "combat_kind": "set",
+  "combat_model": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\checkpoints\\combat_policy.deepsets-r2.v0.107.1.pt",
+  "combat_model_sha256": "5bbb35de90351827374c9188351cc11c5ce867053c057e1a45978a60bb7633e1",
+  "count_per_character": 10,
+  "evaluation": "frozen_online_combat_policy_baseline",
+  "limitations": [
+    "10 frozen seeds per character are a cheap online baseline, not a final statistical claim.",
+    "Runtime errors are retained as truncations and counted against the policy.",
+    "This measurement does not promote or tune a policy."
+  ],
+  "macro_model": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\checkpoints\\combat_policy.dagger-r2.v0.107.1.npz",
+  "macro_model_sha256": "4ac9a667dc1c34e918c40cd21c0a24e2adb2178547477b32ab0268be6b8242aa",
+  "manifest": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\headless-combat-deepsets-online-baseline-v0.107.1-a10.precommit.json",
+  "manifest_name": "stsai-frozen-online-combat-policy-baseline",
+  "manifest_sha256": "ca7dc8312dc1685dff371a87cd3d241d0c9ebc509d869c22feb7a8a86a6affe7",
+  "max_steps": 1000,
+  "policy_constraints": {
+    "safe_potion_ids": [
+      "POTION.ATTACK_POTION"
+    ]
+  },
+  "resume": {
+    "discarded_matching_incomplete_trajectories": 0,
+    "reused_completed_trajectories": 0
+  },
+  "schema_version": 1,
+  "selection": "all precommitted cases in manifest order; outcomes opened after completion"
+}

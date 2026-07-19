@@ -1,0 +1,1137 @@
+{
+  "aggregate": {
+    "by_character": {
+      "Defect": {
+        "baseline": {
+          "mean_floor": 7.6,
+          "mean_steps": 117.4,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "candidate": {
+          "mean_floor": 10.2,
+          "mean_steps": 107.4,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "cases": 5,
+        "descriptive_paired_95_interval": [
+          -2.496,
+          7.696
+        ],
+        "improved": 1,
+        "paired_floor_delta": 2.6,
+        "tied": 4,
+        "worse": 0
+      },
+      "Ironclad": {
+        "baseline": {
+          "mean_floor": 6.2,
+          "mean_steps": 68.2,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "candidate": {
+          "mean_floor": 7.8,
+          "mean_steps": 80.2,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "cases": 5,
+        "descriptive_paired_95_interval": [
+          -1.7721,
+          4.9721
+        ],
+        "improved": 2,
+        "paired_floor_delta": 1.6,
+        "tied": 2,
+        "worse": 1
+      },
+      "Necrobinder": {
+        "baseline": {
+          "mean_floor": 10.4,
+          "mean_steps": 102.6,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "candidate": {
+          "mean_floor": 10.4,
+          "mean_steps": 93.4,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "cases": 5,
+        "descriptive_paired_95_interval": [
+          0.0,
+          0.0
+        ],
+        "improved": 0,
+        "paired_floor_delta": 0.0,
+        "tied": 5,
+        "worse": 0
+      },
+      "Regent": {
+        "baseline": {
+          "mean_floor": 8.2,
+          "mean_steps": 86.8,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "candidate": {
+          "mean_floor": 10.6,
+          "mean_steps": 122.0,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "cases": 5,
+        "descriptive_paired_95_interval": [
+          -0.4806,
+          5.2806
+        ],
+        "improved": 3,
+        "paired_floor_delta": 2.4,
+        "tied": 2,
+        "worse": 0
+      },
+      "Silent": {
+        "baseline": {
+          "mean_floor": 7.4,
+          "mean_steps": 102.8,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "candidate": {
+          "mean_floor": 7.0,
+          "mean_steps": 110.0,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "cases": 5,
+        "descriptive_paired_95_interval": [
+          -2.3204,
+          1.5204
+        ],
+        "improved": 1,
+        "paired_floor_delta": -0.4,
+        "tied": 3,
+        "worse": 1
+      }
+    },
+    "overall": {
+      "baseline": {
+        "mean_floor": 7.96,
+        "mean_steps": 95.56,
+        "runtime_failures": 0,
+        "truncations": 0,
+        "victories": 0
+      },
+      "candidate": {
+        "mean_floor": 9.2,
+        "mean_steps": 102.6,
+        "runtime_failures": 0,
+        "truncations": 0,
+        "victories": 0
+      },
+      "cases": 25,
+      "descriptive_paired_95_interval": [
+        -0.1333,
+        2.6133
+      ],
+      "improved": 7,
+      "paired_floor_delta": 1.24,
+      "tied": 16,
+      "worse": 2
+    }
+  },
+  "ascension": 10,
+  "baseline_model": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\checkpoints\\combat_policy.heuristic.v0.107.1.npz",
+  "baseline_model_sha256": "34e522e653130c6af724f8de1ac72a1559eb13d07ef700d93bbc009d0b46b9d2",
+  "build_id": "v0.107.1",
+  "candidate_model": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\checkpoints\\combat_policy.dagger-r1.v0.107.1.npz",
+  "candidate_model_sha256": "2b13007cd1b372bfc7c873b20f01907674c5c6b31783ada56a34d0f04685b065",
+  "cases": [
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "floor": 5,
+        "policy_sources": {
+          "combat_bc": 44,
+          "heuristic": 12
+        },
+        "steps": 56,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\000.ironclad.DGR1I000020.baseline.jsonl",
+        "trajectory_id": "ff1d714feaf3457fab7dce653c7c62ea",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "floor": 5,
+        "policy_sources": {
+          "combat_bc": 46,
+          "heuristic": 12
+        },
+        "steps": 58,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\000.ironclad.DGR1I000020.candidate.jsonl",
+        "trajectory_id": "66eb7c845ed1426eb04d3eed29427dac",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 0,
+      "character": "Ironclad",
+      "paired_floor_delta": 0,
+      "seed": "DGR1I000020"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "floor": 7,
+        "policy_sources": {
+          "combat_bc": 53,
+          "heuristic": 19
+        },
+        "steps": 72,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\001.ironclad.DGR1I000021.baseline.jsonl",
+        "trajectory_id": "9648fb4021dd48999c898166753663b8",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "floor": 15,
+        "policy_sources": {
+          "combat_bc": 94,
+          "heuristic": 34
+        },
+        "steps": 128,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\001.ironclad.DGR1I000021.candidate.jsonl",
+        "trajectory_id": "2c3cb133ca284e84bd937b82fad46753",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 1,
+      "character": "Ironclad",
+      "paired_floor_delta": 8,
+      "seed": "DGR1I000021"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "floor": 6,
+        "policy_sources": {
+          "combat_bc": 58,
+          "heuristic": 11
+        },
+        "steps": 69,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\002.ironclad.DGR1I000022.baseline.jsonl",
+        "trajectory_id": "f3c2615f3d344f5fab1fd41168887f9a",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "floor": 6,
+        "policy_sources": {
+          "combat_bc": 58,
+          "heuristic": 11
+        },
+        "steps": 69,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\002.ironclad.DGR1I000022.candidate.jsonl",
+        "trajectory_id": "c947a15a0dc349f68d23d1c2552c4f20",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 2,
+      "character": "Ironclad",
+      "paired_floor_delta": 0,
+      "seed": "DGR1I000022"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "floor": 7,
+        "policy_sources": {
+          "combat_bc": 71,
+          "heuristic": 11
+        },
+        "steps": 82,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\003.ironclad.DGR1I000023.baseline.jsonl",
+        "trajectory_id": "d159f57c8ac14c72a9753fdf31543ce9",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "floor": 5,
+        "policy_sources": {
+          "combat_bc": 54,
+          "heuristic": 8
+        },
+        "steps": 62,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\003.ironclad.DGR1I000023.candidate.jsonl",
+        "trajectory_id": "f70cc44e64984514b6ec469accc11ce3",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 3,
+      "character": "Ironclad",
+      "paired_floor_delta": -2,
+      "seed": "DGR1I000023"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "floor": 6,
+        "policy_sources": {
+          "combat_bc": 51,
+          "heuristic": 11
+        },
+        "steps": 62,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\004.ironclad.DGR1I000024.baseline.jsonl",
+        "trajectory_id": "927d839861be4042bda5789d8f81e730",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "floor": 8,
+        "policy_sources": {
+          "combat_bc": 69,
+          "heuristic": 15
+        },
+        "steps": 84,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\004.ironclad.DGR1I000024.candidate.jsonl",
+        "trajectory_id": "0404724af86e4b85a7c604718375edef",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 4,
+      "character": "Ironclad",
+      "paired_floor_delta": 2,
+      "seed": "DGR1I000024"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "floor": 5,
+        "policy_sources": {
+          "combat_bc": 87,
+          "heuristic": 14
+        },
+        "steps": 101,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\005.silent.DGR1S000020.baseline.jsonl",
+        "trajectory_id": "73094ca6b0394d83aab3cd061e3a08fe",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "floor": 7,
+        "policy_sources": {
+          "combat_bc": 104,
+          "heuristic": 20
+        },
+        "steps": 124,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\005.silent.DGR1S000020.candidate.jsonl",
+        "trajectory_id": "48855220fa994a72af5f6299417ffb22",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 5,
+      "character": "Silent",
+      "paired_floor_delta": 2,
+      "seed": "DGR1S000020"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "floor": 7,
+        "policy_sources": {
+          "combat_bc": 82,
+          "heuristic": 21
+        },
+        "steps": 103,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\006.silent.DGR1S000021.baseline.jsonl",
+        "trajectory_id": "121e20c1ef2c4d82b2328aab1ae21d71",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "floor": 7,
+        "policy_sources": {
+          "combat_bc": 89,
+          "heuristic": 21
+        },
+        "steps": 110,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\006.silent.DGR1S000021.candidate.jsonl",
+        "trajectory_id": "317898c06a4044438e1b284ed7e9a1cd",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 6,
+      "character": "Silent",
+      "paired_floor_delta": 0,
+      "seed": "DGR1S000021"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "floor": 6,
+        "policy_sources": {
+          "combat_bc": 73,
+          "heuristic": 16
+        },
+        "steps": 89,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\007.silent.DGR1S000022.baseline.jsonl",
+        "trajectory_id": "7eda3634bccf41cc9ab5c44a28e41cce",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "floor": 6,
+        "policy_sources": {
+          "combat_bc": 79,
+          "heuristic": 18
+        },
+        "steps": 97,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\007.silent.DGR1S000022.candidate.jsonl",
+        "trajectory_id": "9f11090d2eff4ca98cdf9670262b3bd8",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 7,
+      "character": "Silent",
+      "paired_floor_delta": 0,
+      "seed": "DGR1S000022"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "floor": 12,
+        "policy_sources": {
+          "combat_bc": 104,
+          "heuristic": 33
+        },
+        "steps": 137,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\008.silent.DGR1S000023.baseline.jsonl",
+        "trajectory_id": "470d5b066f7848be9a62b1f139ea539a",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "floor": 8,
+        "policy_sources": {
+          "combat_bc": 92,
+          "heuristic": 20
+        },
+        "steps": 112,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\008.silent.DGR1S000023.candidate.jsonl",
+        "trajectory_id": "04b5fafbf5c3450eb00e8c4d68318756",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 8,
+      "character": "Silent",
+      "paired_floor_delta": -4,
+      "seed": "DGR1S000023"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "floor": 7,
+        "policy_sources": {
+          "combat_bc": 68,
+          "heuristic": 16
+        },
+        "steps": 84,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\009.silent.DGR1S000024.baseline.jsonl",
+        "trajectory_id": "153c21857e6e4290a4c9289f7e247ef6",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "floor": 7,
+        "policy_sources": {
+          "combat_bc": 89,
+          "heuristic": 18
+        },
+        "steps": 107,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\009.silent.DGR1S000024.candidate.jsonl",
+        "trajectory_id": "ec20f8db0157478991c0cb9cd842bfe5",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 9,
+      "character": "Silent",
+      "paired_floor_delta": 0,
+      "seed": "DGR1S000024"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 2,
+        "floor": 4,
+        "policy_sources": {
+          "combat_bc": 139,
+          "heuristic": 45
+        },
+        "steps": 184,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\010.defect.DGR1D000020.baseline.jsonl",
+        "trajectory_id": "4031a229b096445bac6baf7218328bcc",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "floor": 17,
+        "policy_sources": {
+          "combat_bc": 93,
+          "heuristic": 38
+        },
+        "steps": 131,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\010.defect.DGR1D000020.candidate.jsonl",
+        "trajectory_id": "631396ddf2e64773bb7033cb00a872ad",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 10,
+      "character": "Defect",
+      "paired_floor_delta": 13,
+      "seed": "DGR1D000020"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "floor": 9,
+        "policy_sources": {
+          "combat_bc": 90,
+          "heuristic": 18
+        },
+        "steps": 108,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\011.defect.DGR1D000021.baseline.jsonl",
+        "trajectory_id": "14715b26d3154ccbadca8e98f60258dd",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "floor": 9,
+        "policy_sources": {
+          "combat_bc": 96,
+          "heuristic": 18
+        },
+        "steps": 114,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\011.defect.DGR1D000021.candidate.jsonl",
+        "trajectory_id": "ddf8e5305f8e40b19180fd339420f56d",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 11,
+      "character": "Defect",
+      "paired_floor_delta": 0,
+      "seed": "DGR1D000021"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "floor": 7,
+        "policy_sources": {
+          "combat_bc": 54,
+          "heuristic": 12
+        },
+        "steps": 66,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\012.defect.DGR1D000022.baseline.jsonl",
+        "trajectory_id": "d4077971b1994defbabc078d110eebd1",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "floor": 7,
+        "policy_sources": {
+          "combat_bc": 49,
+          "heuristic": 12
+        },
+        "steps": 61,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\012.defect.DGR1D000022.candidate.jsonl",
+        "trajectory_id": "54dbcd99ee14413cbc63c93134c2185a",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 12,
+      "character": "Defect",
+      "paired_floor_delta": 0,
+      "seed": "DGR1D000022"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "floor": 7,
+        "policy_sources": {
+          "combat_bc": 83,
+          "heuristic": 13
+        },
+        "steps": 96,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\013.defect.DGR1D000023.baseline.jsonl",
+        "trajectory_id": "a08035f1f40a4a3a94be3631766bca9f",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "floor": 7,
+        "policy_sources": {
+          "combat_bc": 85,
+          "heuristic": 13
+        },
+        "steps": 98,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\013.defect.DGR1D000023.candidate.jsonl",
+        "trajectory_id": "83f9510e3d1447838c4392c1db37e229",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 13,
+      "character": "Defect",
+      "paired_floor_delta": 0,
+      "seed": "DGR1D000023"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "floor": 11,
+        "policy_sources": {
+          "combat_bc": 112,
+          "heuristic": 21
+        },
+        "steps": 133,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\014.defect.DGR1D000024.baseline.jsonl",
+        "trajectory_id": "be8b6b4f5944421b850cbc069af15499",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "floor": 11,
+        "policy_sources": {
+          "combat_bc": 112,
+          "heuristic": 21
+        },
+        "steps": 133,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\014.defect.DGR1D000024.candidate.jsonl",
+        "trajectory_id": "ba5e4a43eed14e36be5f4f9d466deebb",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 14,
+      "character": "Defect",
+      "paired_floor_delta": 0,
+      "seed": "DGR1D000024"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "floor": 8,
+        "policy_sources": {
+          "combat_bc": 56,
+          "heuristic": 21
+        },
+        "steps": 77,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\015.necrobinder.DGR1N000020.baseline.jsonl",
+        "trajectory_id": "e65a23eb866d4e6dbadea572a0de66af",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "floor": 8,
+        "policy_sources": {
+          "combat_bc": 39,
+          "heuristic": 21
+        },
+        "steps": 60,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\015.necrobinder.DGR1N000020.candidate.jsonl",
+        "trajectory_id": "ebe951a6ceb44395b2dfd44b1fc14da3",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 15,
+      "character": "Necrobinder",
+      "paired_floor_delta": 0,
+      "seed": "DGR1N000020"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "floor": 17,
+        "policy_sources": {
+          "combat_bc": 128,
+          "heuristic": 35
+        },
+        "steps": 163,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\016.necrobinder.DGR1N000021.baseline.jsonl",
+        "trajectory_id": "54ef146bcc6d46eeadd3dce9fa74ad05",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "floor": 17,
+        "policy_sources": {
+          "combat_bc": 115,
+          "heuristic": 35
+        },
+        "steps": 150,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\016.necrobinder.DGR1N000021.candidate.jsonl",
+        "trajectory_id": "75fde07c8a2a4108a6657f804595e66e",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 16,
+      "character": "Necrobinder",
+      "paired_floor_delta": 0,
+      "seed": "DGR1N000021"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "floor": 11,
+        "policy_sources": {
+          "combat_bc": 68,
+          "heuristic": 29
+        },
+        "steps": 97,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\017.necrobinder.DGR1N000022.baseline.jsonl",
+        "trajectory_id": "da5a368e15d24d17a92b871cec4e5449",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "floor": 11,
+        "policy_sources": {
+          "combat_bc": 66,
+          "heuristic": 28
+        },
+        "steps": 94,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\017.necrobinder.DGR1N000022.candidate.jsonl",
+        "trajectory_id": "d5587640bc6d414ab20dfafb51885252",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 17,
+      "character": "Necrobinder",
+      "paired_floor_delta": 0,
+      "seed": "DGR1N000022"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "floor": 8,
+        "policy_sources": {
+          "combat_bc": 92,
+          "heuristic": 16
+        },
+        "steps": 108,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\018.necrobinder.DGR1N000023.baseline.jsonl",
+        "trajectory_id": "a351a645c6ec47ecb420d4200fe4d7e9",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "floor": 8,
+        "policy_sources": {
+          "combat_bc": 79,
+          "heuristic": 16
+        },
+        "steps": 95,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\018.necrobinder.DGR1N000023.candidate.jsonl",
+        "trajectory_id": "b510fc265f4d4520925cf594aa5ba41e",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 18,
+      "character": "Necrobinder",
+      "paired_floor_delta": 0,
+      "seed": "DGR1N000023"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "floor": 8,
+        "policy_sources": {
+          "combat_bc": 51,
+          "heuristic": 17
+        },
+        "steps": 68,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\019.necrobinder.DGR1N000024.baseline.jsonl",
+        "trajectory_id": "a678d86f107f4d89ab6565cf866129a5",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "floor": 8,
+        "policy_sources": {
+          "combat_bc": 51,
+          "heuristic": 17
+        },
+        "steps": 68,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\019.necrobinder.DGR1N000024.candidate.jsonl",
+        "trajectory_id": "7c69859db32d4b06831a958220dbc45b",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 19,
+      "character": "Necrobinder",
+      "paired_floor_delta": 0,
+      "seed": "DGR1N000024"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "floor": 8,
+        "policy_sources": {
+          "combat_bc": 76,
+          "heuristic": 14
+        },
+        "steps": 90,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\020.regent.DGR1R000020.baseline.jsonl",
+        "trajectory_id": "fbf9231c683b4110a9603e5cd65aefa1",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "floor": 8,
+        "policy_sources": {
+          "combat_bc": 76,
+          "heuristic": 14
+        },
+        "steps": 90,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\020.regent.DGR1R000020.candidate.jsonl",
+        "trajectory_id": "15e0fecb6d6649dea9ed9fb264b03713",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 20,
+      "character": "Regent",
+      "paired_floor_delta": 0,
+      "seed": "DGR1R000020"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "floor": 6,
+        "policy_sources": {
+          "combat_bc": 60,
+          "heuristic": 13
+        },
+        "steps": 73,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\021.regent.DGR1R000021.baseline.jsonl",
+        "trajectory_id": "ab755a8c11864748b16e21ae15d18bbc",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "floor": 8,
+        "policy_sources": {
+          "combat_bc": 85,
+          "heuristic": 19
+        },
+        "steps": 104,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\021.regent.DGR1R000021.candidate.jsonl",
+        "trajectory_id": "243c59e17abb45a99c7c1c877ed1e10a",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 21,
+      "character": "Regent",
+      "paired_floor_delta": 2,
+      "seed": "DGR1R000021"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "floor": 9,
+        "policy_sources": {
+          "combat_bc": 53,
+          "heuristic": 23
+        },
+        "steps": 76,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\022.regent.DGR1R000022.baseline.jsonl",
+        "trajectory_id": "68f8ee84ac164b7eb5c1cb021628336c",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "floor": 17,
+        "policy_sources": {
+          "combat_bc": 130,
+          "heuristic": 42
+        },
+        "steps": 172,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\022.regent.DGR1R000022.candidate.jsonl",
+        "trajectory_id": "71ad3f1469f74293b9ca70fa0ef6452c",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 22,
+      "character": "Regent",
+      "paired_floor_delta": 8,
+      "seed": "DGR1R000022"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "floor": 7,
+        "policy_sources": {
+          "combat_bc": 73,
+          "heuristic": 14
+        },
+        "steps": 87,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\023.regent.DGR1R000023.baseline.jsonl",
+        "trajectory_id": "9258e3ba6119459ca2b6b8cf9b3a30ab",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "floor": 7,
+        "policy_sources": {
+          "combat_bc": 82,
+          "heuristic": 16
+        },
+        "steps": 98,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\023.regent.DGR1R000023.candidate.jsonl",
+        "trajectory_id": "cb208149211346aabde99d9171ffb284",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 23,
+      "character": "Regent",
+      "paired_floor_delta": 0,
+      "seed": "DGR1R000023"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "floor": 11,
+        "policy_sources": {
+          "combat_bc": 82,
+          "heuristic": 26
+        },
+        "steps": 108,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\024.regent.DGR1R000024.baseline.jsonl",
+        "trajectory_id": "4144f086764f46bab613ebded6b42493",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "floor": 13,
+        "policy_sources": {
+          "combat_bc": 117,
+          "heuristic": 29
+        },
+        "steps": 146,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-validation-v0.107.1-a10\\024.regent.DGR1R000024.candidate.jsonl",
+        "trajectory_id": "af0a8e9e33974c1db52cb911e0ceef84",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 24,
+      "character": "Regent",
+      "paired_floor_delta": 2,
+      "seed": "DGR1R000024"
+    }
+  ],
+  "count_per_character": 5,
+  "evaluation": "frozen_paired_headless_combat_checkpoint_comparison",
+  "limitations": [
+    "Five validation seeds per character are directional, not a final claim.",
+    "Runtime errors are retained as truncations and counted against their arm.",
+    "No policy is promoted by this validation comparison alone."
+  ],
+  "macro_model": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\checkpoints\\decision_policy.a10.npz",
+  "macro_model_sha256": "476701d84a7f6cf85b1aa6a910877334c13f52ea637af967a8f6da400ca878f9",
+  "manifest": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\headless-combat-dagger-r1-v0.107.1-a10.json",
+  "manifest_name": "stsai-headless-combat-dagger",
+  "manifest_pool": "validation",
+  "manifest_sha256": "34ecd2d7f82e1db1649f73ef2ec7424f4fcbfd0541c775660c7d047ae4dcfc30",
+  "max_steps": 1000,
+  "resume": {
+    "discarded_matching_incomplete_trajectories": 0,
+    "reused_completed_trajectories": {
+      "baseline": 0,
+      "candidate": 0
+    }
+  },
+  "schema_version": 1,
+  "selection": "named precommitted manifest pool in original order"
+}

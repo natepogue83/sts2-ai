@@ -1,0 +1,147 @@
+{
+  "combat_decisions": [],
+  "coverage": {
+    "attempted_by_type": {
+      "ChooseEventOption": 1,
+      "MoveToMapCoord": 1
+    },
+    "combat_decisions_reconstructed": 0,
+    "combat_decisions_with_complete_legal_mask": 0,
+    "commands_attempted": 2,
+    "commands_reconstructed": 1,
+    "commands_scheduled_with_overlap": 250,
+    "reconstructed_by_type": {
+      "MoveToMapCoord": 1
+    },
+    "reconstruction_rate_of_attempted": 0.5,
+    "suffix_commands": 249
+  },
+  "created_at": "2026-07-14T03:14:52.555855+00:00",
+  "dry_run_only": true,
+  "expected_build": "v0.107.1",
+  "initial_alignment": {
+    "loaded_state": {
+      "context": {
+        "act": 2,
+        "act_name": "Hive",
+        "boss": {
+          "id": "KNOWLEDGE_DEMON_BOSS",
+          "name": "Knowledge Demon"
+        },
+        "floor": 1,
+        "room_type": "Map"
+      },
+      "decision": "map_select",
+      "legal_actions": [
+        {
+          "action": "select_map_node",
+          "args": {
+            "col": 0,
+            "row": 1
+          },
+          "option_id": "MAP.MONSTER.0.1"
+        },
+        {
+          "action": "select_map_node",
+          "args": {
+            "col": 2,
+            "row": 1
+          },
+          "option_id": "MAP.MONSTER.2.1"
+        },
+        {
+          "action": "select_map_node",
+          "args": {
+            "col": 3,
+            "row": 1
+          },
+          "option_id": "MAP.MONSTER.3.1"
+        },
+        {
+          "action": "select_map_node",
+          "args": {
+            "col": 6,
+            "row": 1
+          },
+          "option_id": "MAP.MONSTER.6.1"
+        }
+      ]
+    },
+    "matched_command_index": 213,
+    "max_overlap": 3,
+    "overlap_commands": 1,
+    "tail_candidates": [
+      {
+        "code": "unsupported_command",
+        "command_index": 211,
+        "command_sha256": "cb5345915f92375d5ee95c58bed7ad86bd02b091fd065aaf63fff2504cefd311",
+        "command_type": "ProceedToNextAct",
+        "match": false
+      },
+      {
+        "code": "quarantined_command",
+        "command_index": 212,
+        "command_sha256": "beae621aaa9ca8b8fd46e2b42f1fe70c2e9bba9dc8d925de3cd3efdfb2bb6c4b",
+        "command_type": "VoteForMapCoordAction",
+        "match": false
+      },
+      {
+        "action": {
+          "action": "select_map_node",
+          "args": {
+            "col": 3,
+            "row": 1
+          },
+          "option_id": "MAP.MONSTER.3.1"
+        },
+        "command_index": 213,
+        "command_sha256": "39547ad3b4e7016ad4441d351e9721133cb69f47547ce8b64f63a58e3141b4e2",
+        "command_type": "MoveToMapCoord",
+        "match": true
+      }
+    ]
+  },
+  "privacy": {
+    "inline_comments_persisted": false,
+    "raw_replay_commands_persisted": false,
+    "raw_seed_persisted": false
+  },
+  "probe": "runreplays_headless_reconstruction",
+  "provenance": {
+    "ascension": 1,
+    "base_run_save_sha256": "76e6eb7cf94675fa4ca4ccfbeb0a773786111a8feb4ee4008a1c8a87e2af7c4a",
+    "base_snapshot_floor": 18,
+    "base_snapshot_sha256": "1c7e7a6f0f207ddcdbf0be3d5488aac146b38fc6f08b99dbf66f536922b652d6",
+    "character": "CHARACTER.IRONCLAD",
+    "source_name": "RunReplays",
+    "target_snapshot_floor": 34,
+    "target_snapshot_sha256": "79af329c98d3adf6674dac9124e515fd2d78bb4dd010872e99d5d68ced7c4a7f",
+    "trajectory_key": "fef5fdc9464986bb1a5269e645986e5cc1023c17075fddfc75ec388c3ef50e0d"
+  },
+  "runtime": {
+    "game_assembly_sha256": "7eced881ca7b7a4d4282fa40ff7cf27cc9a4466c4b759c2a2356a4743928fcbe",
+    "headless_runtime_sha256": "738606680b3c93d3382f2710f982c71e173983593cfd3f71f23f3e699d01ad2b",
+    "protocol_version": "0.2.0"
+  },
+  "schema_version": 1,
+  "stop": {
+    "code": "illegal_action",
+    "command_index": 214,
+    "command_sha256": "b16c2d2d489d9ce760249715d1496d4f93febf86c4c16f836068ab7d453875c5",
+    "command_type": "ChooseEventOption",
+    "message": "ChooseEventOption did not match any advertised legal action",
+    "status": "mapping_failure"
+  },
+  "training_authorized": false,
+  "validation": {
+    "base_save_crosschecks": true,
+    "complete_headers": true,
+    "exact_build": true,
+    "raw_prefix": true,
+    "same_ascension": true,
+    "same_character": true,
+    "same_trajectory": true,
+    "target_extends_base": true,
+    "target_save_crosschecks": true
+  }
+}

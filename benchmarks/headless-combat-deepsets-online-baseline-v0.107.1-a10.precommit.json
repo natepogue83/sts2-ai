@@ -1,0 +1,264 @@
+{
+  "cases": [
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "BASEV1I000000"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "BASEV1I000001"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "BASEV1I000002"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "BASEV1I000003"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "BASEV1I000004"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "BASEV1I000005"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "BASEV1I000006"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "BASEV1I000007"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "BASEV1I000008"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "BASEV1I000009"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "BASEV1S000000"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "BASEV1S000001"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "BASEV1S000002"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "BASEV1S000003"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "BASEV1S000004"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "BASEV1S000005"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "BASEV1S000006"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "BASEV1S000007"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "BASEV1S000008"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "BASEV1S000009"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "BASEV1D000000"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "BASEV1D000001"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "BASEV1D000002"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "BASEV1D000003"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "BASEV1D000004"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "BASEV1D000005"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "BASEV1D000006"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "BASEV1D000007"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "BASEV1D000008"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "BASEV1D000009"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "BASEV1N000000"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "BASEV1N000001"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "BASEV1N000002"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "BASEV1N000003"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "BASEV1N000004"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "BASEV1N000005"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "BASEV1N000006"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "BASEV1N000007"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "BASEV1N000008"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "BASEV1N000009"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "BASEV1R000000"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "BASEV1R000001"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "BASEV1R000002"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "BASEV1R000003"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "BASEV1R000004"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "BASEV1R000005"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "BASEV1R000006"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "BASEV1R000007"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "BASEV1R000008"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "BASEV1R000009"
+    }
+  ],
+  "created_at": "2026-07-14T19:42:09.069740+00:00",
+  "evaluation_precommit": {
+    "execution": "one first attempt per frozen case; completed exact resumes only",
+    "primary_metric": "per-character victory count and win rate",
+    "purpose": "measurement-only baseline; no policy promotion or tuning",
+    "secondary_metrics": [
+      "overall victory count and win rate",
+      "mean and median final floor",
+      "truncation and runtime-failure counts",
+      "mean steps"
+    ],
+    "stop_rule": "open the result only after all frozen cases finish"
+  },
+  "models": {
+    "combat": {
+      "filename": "combat_policy.deepsets-r2.v0.107.1.pt",
+      "kind": "set",
+      "sha256": "5bbb35de90351827374c9188351cc11c5ce867053c057e1a45978a60bb7633e1"
+    },
+    "macro": {
+      "filename": "combat_policy.dagger-r2.v0.107.1.npz",
+      "sha256": "4ac9a667dc1c34e918c40cd21c0a24e2adb2178547477b32ab0268be6b8242aa"
+    }
+  },
+  "name": "stsai-frozen-online-combat-policy-baseline",
+  "policy_constraints": {
+    "safe_potion_ids": [
+      "POTION.ATTACK_POTION"
+    ]
+  },
+  "schema_version": 1,
+  "selection": {
+    "count_per_character": 10,
+    "excluded_manifests": [
+      {
+        "path": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\v0.107.1-a10-search-paired-precommit.json",
+        "seed_count": 10,
+        "sha256": "6d6ca8553547c20d05af81ec60ae1f5ab4fd968ba8d249d427a7c342e086eba1"
+      },
+      {
+        "path": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\value-calibration-v3-precommit.v0.107.1-a10.json",
+        "seed_count": 150,
+        "sha256": "2794d9e4d3359f4caa968c484f38e5c7848a2fa4626c8af10e89774498a28af7"
+      },
+      {
+        "path": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\headless-combat-deepsets-vs-dagger-r1-v0.107.1-a10.json",
+        "seed_count": 25,
+        "sha256": "4d07f5538ea9dbdd815b53a667cf2428ec99f8b11350580287795eec7d65ac31"
+      }
+    ],
+    "excluded_seed_count": 185,
+    "method": "fresh-prefix-seeds-selected-before-outcomes",
+    "outcomes_inspected": false,
+    "overlap_count": 0,
+    "seed_prefix": "BASEV1"
+  },
+  "target": {
+    "ascension": 10,
+    "build_id": "v0.107.1"
+  }
+}

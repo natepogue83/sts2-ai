@@ -1,0 +1,107 @@
+{
+  "aggregate": {
+    "all_masks_complete_and_chosen_legal": true,
+    "all_validation_gates": true,
+    "buy_card_removals_reconstructed": 1,
+    "buy_relics_reconstructed": 1,
+    "characters": 4,
+    "claim_rewards_reconstructed": 24,
+    "combat_decisions_reconstructed": 133,
+    "commands_attempted": 202,
+    "commands_reconstructed": 199,
+    "discard_potions_reconstructed": 1,
+    "open_shops_reconstructed": 2,
+    "reconstruction_rate_of_attempted": 0.985149,
+    "rest_site_options_reconstructed": 2,
+    "shop_map_two_stage_adapters_reconstructed": 2,
+    "stop_statuses": {
+      "mapping_failure": 3,
+      "max_commands_reached": 1
+    },
+    "stop_types": {
+      "ClaimReward": 3
+    },
+    "take_cards_reconstructed": 6
+  },
+  "benchmark": "runreplays_reward_parity_miniature_tent_4char",
+  "cases": [
+    {
+      "all_masks_complete_and_chosen_legal": true,
+      "all_validation_gates": true,
+      "artifact_file": "runreplays-reward-parity-open-shop-discard-v0.107.1/defect.json",
+      "artifact_sha256": "a15a59454ce573128dc52352daf126f2abedd6c1ebeeb57d1901564bb7af8f05",
+      "character": "CHARACTER.DEFECT",
+      "claim_rewards_reconstructed": 3,
+      "combat_decisions": 27,
+      "commands_attempted": 42,
+      "commands_reconstructed": 41,
+      "discard_potions_reconstructed": 1,
+      "status": "mapping_failure",
+      "stop_code": "wrong_decision",
+      "stop_command_type": "ClaimReward",
+      "take_cards_reconstructed": 1
+    },
+    {
+      "all_masks_complete_and_chosen_legal": true,
+      "all_validation_gates": true,
+      "artifact_file": "runreplays-reward-parity-shop-map-adapter-v0.107.1/ironclad.json",
+      "artifact_sha256": "87675956e390e7a4452ce9af97f6acdd4201ee0b9eb5bd0ea1605d1b745cc257",
+      "buy_card_removals_reconstructed": 1,
+      "character": "CHARACTER.IRONCLAD",
+      "claim_rewards_reconstructed": 4,
+      "combat_decisions": 21,
+      "commands_attempted": 35,
+      "commands_reconstructed": 34,
+      "open_shops_reconstructed": 1,
+      "shop_map_two_stage_adapters_reconstructed": 1,
+      "status": "mapping_failure",
+      "stop_code": "illegal_reward_index",
+      "stop_command_type": "ClaimReward",
+      "take_cards_reconstructed": 1
+    },
+    {
+      "all_masks_complete_and_chosen_legal": true,
+      "all_validation_gates": true,
+      "artifact_file": "runreplays-reward-parity-v0.107.1/necrobinder.json",
+      "artifact_sha256": "73cdd4ecf9aa046b0659f6040a4a22bc8206672af13b06ecf6bee8b62910e5cb",
+      "character": "CHARACTER.NECROBINDER",
+      "claim_rewards_reconstructed": 1,
+      "combat_decisions": 20,
+      "commands_attempted": 25,
+      "commands_reconstructed": 24,
+      "status": "mapping_failure",
+      "stop_code": "unhandled_reward",
+      "stop_command_type": "ClaimReward",
+      "take_cards_reconstructed": 0
+    },
+    {
+      "all_masks_complete_and_chosen_legal": true,
+      "all_validation_gates": true,
+      "artifact_file": "runreplays-reward-parity-miniature-tent-v0.107.1/regent.json",
+      "artifact_sha256": "fae87c922e4ffcb28f6f9b45cbef0276a8369da7c83b7c73177430fb898e7d24",
+      "buy_relics_reconstructed": 1,
+      "character": "CHARACTER.REGENT",
+      "claim_rewards_reconstructed": 16,
+      "combat_decisions": 65,
+      "commands_attempted": 100,
+      "commands_reconstructed": 100,
+      "open_shops_reconstructed": 1,
+      "rest_site_options_reconstructed": 2,
+      "shop_map_two_stage_adapters_reconstructed": 1,
+      "status": "max_commands_reached",
+      "take_cards_reconstructed": 4
+    }
+  ],
+  "created_at": "2026-07-14T04:09:10.3275096Z",
+  "dry_run_only": true,
+  "expected_build": "v0.107.1",
+  "predecessor_artifact": "runreplays-reward-parity-rest-site-v0.107.1.json",
+  "predecessor_sha256": "877326240380bc34b40f081672ff3072dc69db580c05934ba7b889e509d9a254",
+  "privacy": {
+    "raw_paths_persisted": false,
+    "raw_seed_persisted": false
+  },
+  "schema_version": 1,
+  "source_revision": "b0d2302ee69bf2ad735e0b6b51aea02408e9ef62",
+  "training_authorized": false
+}

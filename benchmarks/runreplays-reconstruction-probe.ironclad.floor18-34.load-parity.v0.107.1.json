@@ -1,0 +1,111 @@
+{
+  "combat_decisions": [],
+  "coverage": {
+    "attempted_by_type": {
+      "ChooseEventOption": 2
+    },
+    "combat_decisions_reconstructed": 0,
+    "combat_decisions_with_complete_legal_mask": 0,
+    "commands_attempted": 2,
+    "commands_reconstructed": 1,
+    "commands_scheduled_with_overlap": 249,
+    "reconstructed_by_type": {
+      "ChooseEventOption": 1
+    },
+    "reconstruction_rate_of_attempted": 0.5,
+    "suffix_commands": 249
+  },
+  "created_at": "2026-07-14T03:26:13.574778+00:00",
+  "dry_run_only": true,
+  "expected_build": "v0.107.1",
+  "initial_alignment": {
+    "loaded_state": {
+      "context": {
+        "act": 2,
+        "act_name": "Hive",
+        "boss": {
+          "id": "KNOWLEDGE_DEMON_BOSS",
+          "name": "Knowledge Demon"
+        },
+        "current_map_coord": {
+          "col": 3,
+          "row": 0
+        },
+        "floor": 1,
+        "room_type": "Event",
+        "visited_map_coords": 1
+      },
+      "decision": "event_choice",
+      "legal_actions": [
+        {
+          "action": "choose_option",
+          "args": {
+            "option_index": 0
+          },
+          "option_id": "OPTION.DARV.pages.INITIAL.options.BLACK_STAR"
+        },
+        {
+          "action": "choose_option",
+          "args": {
+            "option_index": 1
+          },
+          "option_id": "OPTION.DARV.pages.INITIAL.options.PANDORAS_BOX"
+        },
+        {
+          "action": "choose_option",
+          "args": {
+            "option_index": 2
+          },
+          "option_id": "OPTION.DARV.pages.INITIAL.options.DUSTY_TOME"
+        }
+      ]
+    },
+    "matched_command_index": null,
+    "max_overlap": 0,
+    "overlap_commands": 0,
+    "tail_candidates": []
+  },
+  "privacy": {
+    "inline_comments_persisted": false,
+    "raw_replay_commands_persisted": false,
+    "raw_seed_persisted": false
+  },
+  "probe": "runreplays_headless_reconstruction",
+  "provenance": {
+    "ascension": 1,
+    "base_run_save_sha256": "76e6eb7cf94675fa4ca4ccfbeb0a773786111a8feb4ee4008a1c8a87e2af7c4a",
+    "base_snapshot_floor": 18,
+    "base_snapshot_sha256": "1c7e7a6f0f207ddcdbf0be3d5488aac146b38fc6f08b99dbf66f536922b652d6",
+    "character": "CHARACTER.IRONCLAD",
+    "source_name": "RunReplays",
+    "target_snapshot_floor": 34,
+    "target_snapshot_sha256": "79af329c98d3adf6674dac9124e515fd2d78bb4dd010872e99d5d68ced7c4a7f",
+    "trajectory_key": "fef5fdc9464986bb1a5269e645986e5cc1023c17075fddfc75ec388c3ef50e0d"
+  },
+  "runtime": {
+    "game_assembly_sha256": "7eced881ca7b7a4d4282fa40ff7cf27cc9a4466c4b759c2a2356a4743928fcbe",
+    "headless_runtime_sha256": "806bb9737e930de14fccf80fd512e6b8be4ebe0ae179a53601f65b2d17f1a158",
+    "protocol_version": "0.2.0"
+  },
+  "schema_version": 1,
+  "stop": {
+    "code": "illegal_action",
+    "command_index": 215,
+    "command_sha256": "83c714e319bbd5f7a4f0d88b0cb87d91bd90dbc6b423bda9afd0847e4e9f87f6",
+    "command_type": "ChooseEventOption",
+    "message": "ChooseEventOption did not match any advertised legal action",
+    "status": "mapping_failure"
+  },
+  "training_authorized": false,
+  "validation": {
+    "base_save_crosschecks": true,
+    "complete_headers": true,
+    "exact_build": true,
+    "raw_prefix": true,
+    "same_ascension": true,
+    "same_character": true,
+    "same_trajectory": true,
+    "target_extends_base": true,
+    "target_save_crosschecks": true
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "aggregate": {
+    "all_masks_complete_and_chosen_legal": true,
+    "all_validation_gates": true,
+    "characters": 4,
+    "claim_rewards_reconstructed": 13,
+    "combat_decisions_reconstructed": 70,
+    "commands_attempted": 111,
+    "commands_reconstructed": 107,
+    "stop_types": {
+      "ClaimReward": 1,
+      "DiscardPotion": 1,
+      "OpenShop": 2
+    },
+    "take_cards_reconstructed": 4
+  },
+  "benchmark": "runreplays_reward_parity_4char",
+  "cases": [
+    {
+      "all_masks_complete_and_chosen_legal": true,
+      "all_validation_gates": true,
+      "artifact_file": "defect.json",
+      "artifact_sha256": "2cb30bf41fdc354f4e36e825089cc2590fac8902c1d124ef6f9ba95c19fb0a68",
+      "character": "CHARACTER.DEFECT",
+      "claim_rewards_reconstructed": 3,
+      "combat_decisions": 27,
+      "commands_attempted": 40,
+      "commands_reconstructed": 39,
+      "status": "mapping_failure",
+      "stop_code": "unsupported_command",
+      "stop_command_type": "DiscardPotion",
+      "take_cards_reconstructed": 1
+    },
+    {
+      "all_masks_complete_and_chosen_legal": true,
+      "all_validation_gates": true,
+      "artifact_file": "runreplays-reconstruction-probe.ironclad.reward-parity.v0.107.1.json",
+      "artifact_sha256": "f6bacd9dc83ce3ed77f5715f0fc20efbaf549d28f270c494e93fb3f95507e3cc",
+      "character": "CHARACTER.IRONCLAD",
+      "claim_rewards_reconstructed": 2,
+      "combat_decisions": 8,
+      "commands_attempted": 16,
+      "commands_reconstructed": 15,
+      "status": "mapping_failure",
+      "stop_code": "unsupported_command",
+      "stop_command_type": "OpenShop",
+      "take_cards_reconstructed": 1
+    },
+    {
+      "all_masks_complete_and_chosen_legal": true,
+      "all_validation_gates": true,
+      "artifact_file": "necrobinder.json",
+      "artifact_sha256": "73cdd4ecf9aa046b0659f6040a4a22bc8206672af13b06ecf6bee8b62910e5cb",
+      "character": "CHARACTER.NECROBINDER",
+      "claim_rewards_reconstructed": 1,
+      "combat_decisions": 20,
+      "commands_attempted": 25,
+      "commands_reconstructed": 24,
+      "status": "mapping_failure",
+      "stop_code": "unhandled_reward",
+      "stop_command_type": "ClaimReward",
+      "take_cards_reconstructed": 0
+    },
+    {
+      "all_masks_complete_and_chosen_legal": true,
+      "all_validation_gates": true,
+      "artifact_file": "regent.json",
+      "artifact_sha256": "3b0645ae2d798b8ea5d6b0f97994a759781637a02eeccb4ea34702767d653a7b",
+      "character": "CHARACTER.REGENT",
+      "claim_rewards_reconstructed": 7,
+      "combat_decisions": 15,
+      "commands_attempted": 30,
+      "commands_reconstructed": 29,
+      "status": "mapping_failure",
+      "stop_code": "unsupported_command",
+      "stop_command_type": "OpenShop",
+      "take_cards_reconstructed": 2
+    }
+  ],
+  "created_at": "2026-07-14T03:41:46.953610+00:00",
+  "dry_run_only": true,
+  "expected_build": "v0.107.1",
+  "privacy": {
+    "raw_paths_persisted": false,
+    "raw_seed_persisted": false
+  },
+  "representative_ironclad_artifact_sha256": "f6bacd9dc83ce3ed77f5715f0fc20efbaf549d28f270c494e93fb3f95507e3cc",
+  "schema_version": 1,
+  "training_authorized": false
+}

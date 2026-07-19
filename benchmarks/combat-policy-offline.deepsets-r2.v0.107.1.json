@@ -1,0 +1,72 @@
+{
+  "by_action": {
+    "end_turn": {
+      "decisions": 384,
+      "loss": 0.023217,
+      "mean_reciprocal_rank": 0.996094,
+      "random_top1_accuracy": 0.813976,
+      "top1_accuracy": 0.992188
+    },
+    "play_card": {
+      "decisions": 1313,
+      "loss": 0.60882,
+      "mean_reciprocal_rank": 0.93065,
+      "random_top1_accuracy": 0.209885,
+      "top1_accuracy": 0.878142
+    },
+    "use_potion": {
+      "decisions": 43,
+      "loss": 0.350846,
+      "mean_reciprocal_rank": 0.931008,
+      "random_top1_accuracy": 0.136611,
+      "top1_accuracy": 0.883721
+    }
+  },
+  "by_character": {
+    "CHARACTER.DEFECT": {
+      "decisions": 379,
+      "loss": 0.36788,
+      "mean_reciprocal_rank": 0.95343,
+      "random_top1_accuracy": 0.365766,
+      "top1_accuracy": 0.918206
+    },
+    "CHARACTER.IRONCLAD": {
+      "decisions": 339,
+      "loss": 0.497946,
+      "mean_reciprocal_rank": 0.944199,
+      "random_top1_accuracy": 0.304298,
+      "top1_accuracy": 0.899705
+    },
+    "CHARACTER.NECROBINDER": {
+      "decisions": 446,
+      "loss": 0.61566,
+      "mean_reciprocal_rank": 0.922833,
+      "random_top1_accuracy": 0.355005,
+      "top1_accuracy": 0.863229
+    },
+    "CHARACTER.REGENT": {
+      "decisions": 274,
+      "loss": 0.329108,
+      "mean_reciprocal_rank": 0.972019,
+      "random_top1_accuracy": 0.358533,
+      "top1_accuracy": 0.948905
+    },
+    "CHARACTER.SILENT": {
+      "decisions": 302,
+      "loss": 0.497986,
+      "mean_reciprocal_rank": 0.944126,
+      "random_top1_accuracy": 0.316779,
+      "top1_accuracy": 0.907285
+    }
+  },
+  "model_type": "typed_deep_sets_candidate_scorer",
+  "overall": {
+    "decisions": 1740,
+    "loss": 0.473208,
+    "mean_reciprocal_rank": 0.944814,
+    "random_top1_accuracy": 0.341391,
+    "top1_accuracy": 0.902874
+  },
+  "parameter_count": 325409,
+  "split": "test"
+}

@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "name": "stsai-base-policy-v2-milestone-precommit",
+  "created_at": "2026-07-14T20:06:27.6713080Z",
+  "target": {
+    "build_id": "v0.107.1",
+    "ascension": 10,
+    "objective": "materially improve the character-balanced online base policy before reopening value-guided search"
+  },
+  "frozen_baseline": {
+    "manifest": "benchmarks/headless-combat-deepsets-online-baseline-v0.107.1-a10.precommit.json",
+    "manifest_sha256": "ca7dc8312dc1685dff371a87cd3d241d0c9ebc509d869c22feb7a8a86a6affe7",
+    "report": "benchmarks/headless-combat-deepsets-online-baseline-v0.107.1-a10.n10.json",
+    "report_sha256": "d2431baf7e1228f00302a61e71472d8af256a1aa371585ffed47ea6adcaa7efc",
+    "runs": 50,
+    "runs_per_character": 10,
+    "victories": 0,
+    "mean_floor": 8.0,
+    "median_floor": 7.0,
+    "runtime_failures": 0,
+    "truncations": 0
+  },
+  "diagnosis": {
+    "combat_deaths": 49,
+    "total_deaths": 50,
+    "mean_combat_start_hp_fraction_by_fight_ordinal": {
+      "1": 0.799,
+      "2": 0.684,
+      "3": 0.603,
+      "4": 0.522,
+      "5": 0.414
+    },
+    "conclusion": "tactical chip damage and teacher quality are the first bottleneck to test"
+  },
+  "stage_1_tactical_teacher_screen": {
+    "attempts": 1,
+    "baseline": "greedy_rules_v1",
+    "candidate": "greedy_rules_v2_chip_aware",
+    "only_candidate_change": "raise block-card priority by preventable incoming damage and give a lethal-damage prevention bonus",
+    "macro_interface_model": "checkpoints/decision_policy.a10.npz",
+    "macro_interface_model_sha256": "476701d84a7f6cf85b1aa6a910877334c13f52ea637af967a8f6da400ca878f9",
+    "learned_macro_scoring_enabled": false,
+    "safe_potion_ids": [
+      "POTION.ATTACK_POTION"
+    ],
+    "seed_prefix": "TACTV1",
+    "runs_per_character_per_arm": 10,
+    "paired": true,
+    "fresh_and_outcome_blind": true,
+    "promotion_gate": {
+      "overall_mean_paired_floor_delta_at_least": 0.75,
+      "every_character_mean_paired_floor_delta_at_least": -0.5,
+      "candidate_victories_at_least_baseline": true,
+      "candidate_truncations_at_most_baseline": true
+    },
+    "if_failed": "stop this tactical rule candidate and do not tune on TACTV1",
+    "if_passed": "use v2_chip_aware as the next DAgger teacher and train exactly one new character-balanced Deep Sets candidate"
+  },
+  "data_lanes": {
+    "public_run_snapshot": {
+      "path": "data/raw/runs-all-before-2026-06.json.gz",
+      "sha256": "1c207d44f497d867c2b227093fe75541cddae538ccf3c68886316a15b3ff6f32",
+      "allowed_labels": [
+        "card_reward",
+        "path_and_macro_choices_when_available"
+      ],
+      "combat_action_labels_allowed": false,
+      "patch_token_required": true,
+      "observed_accepted_runs": 6021,
+      "observed_card_reward_decisions": 105473,
+      "observed_latest_build": "v0.106.1"
+    },
+    "first_party_workshop_telemetry": {
+      "allowed_labels": [
+        "exact_combat_actions",
+        "legal_action_sets",
+        "public_state",
+        "outcomes"
+      ],
+      "character_condition_required": true,
+      "build_id_required": true
+    },
+    "balance": "sample or weight each training and evaluation stage equally across Ironclad, Silent, Defect, Necrobinder, and Regent"
+  },
+  "stage_2_learned_candidate_gate": {
+    "candidate_count": 1,
+    "architecture": "typed character-conditioned Deep Sets combat scorer",
+    "teacher": "the stage-1 winner only if the stage-1 gate passes",
+    "evaluation": "freeze the trained checkpoint, then run a new fresh paired character-balanced manifest",
+    "promotion_gate": {
+      "overall_mean_paired_floor_delta_at_least": 1.0,
+      "every_character_mean_paired_floor_delta_at_least": -0.5,
+      "candidate_victories_at_least_baseline": true,
+      "candidate_runtime_failures_at_most_baseline": true,
+      "candidate_truncations_at_most_baseline": true
+    }
+  },
+  "sealed_scope": {
+    "value_v5_allowed": false,
+    "collect_or_open_vcal4_allowed": false,
+    "execute_searchv1_allowed": false,
+    "reopen_condition": "a newly approved milestone after material base-policy improvement"
+  },
+  "implementation_snapshot": {
+    "headless_policy_py_sha256": "354802c9aba3452b32a396b79d74e3cf64c2bd9b2278fe35a00f9e883590514a",
+    "headless_benchmark_py_sha256": "c8f0ad79fd03ef99de22d1363c3feaa9dbb2ece955c818efdd941181049ff8b6"
+  }
+}

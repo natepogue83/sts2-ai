@@ -1,0 +1,2591 @@
+{
+  "calibration_promotion_gate": {
+    "criteria": {
+      "brier_degradation_at_most_0_002": false,
+      "every_character_ece_at_most_0_15": false,
+      "overall_ece_improved": false
+    },
+    "decision": "do_not_use_for_search",
+    "development_held_out_passed": false,
+    "independent_audit_required": true,
+    "passed": false,
+    "per_character_test_ece_10": {
+      "CHARACTER.DEFECT": 0.081561,
+      "CHARACTER.IRONCLAD": 0.15038,
+      "CHARACTER.NECROBINDER": 0.158724,
+      "CHARACTER.REGENT": 0.107686,
+      "CHARACTER.SILENT": 0.08035
+    }
+  },
+  "calibrator_selection": {
+    "candidates": {
+      "global_platt": {
+        "admissibility": {
+          "brier_degradation_from_identity_at_most_0_002": true,
+          "every_character_ece_at_most_0_15": false,
+          "overall_ece_no_worse_than_identity": true
+        },
+        "admissible": false,
+        "by_character_ece_10": {
+          "CHARACTER.DEFECT": 0.164385,
+          "CHARACTER.IRONCLAD": 0.182788,
+          "CHARACTER.NECROBINDER": 0.113449,
+          "CHARACTER.REGENT": 0.078505,
+          "CHARACTER.SILENT": 0.083307
+        },
+        "overall": {
+          "accuracy_at_0_5": 0.773907,
+          "bins": [
+            {
+              "examples": 133,
+              "lower": 0.0,
+              "mean_probability": 0.059315,
+              "observed_rate": 0.12782,
+              "upper": 0.1
+            },
+            {
+              "examples": 141,
+              "lower": 0.1,
+              "mean_probability": 0.150321,
+              "observed_rate": 0.347518,
+              "upper": 0.2
+            },
+            {
+              "examples": 126,
+              "lower": 0.2,
+              "mean_probability": 0.241163,
+              "observed_rate": 0.277778,
+              "upper": 0.3
+            },
+            {
+              "examples": 123,
+              "lower": 0.3,
+              "mean_probability": 0.352162,
+              "observed_rate": 0.373984,
+              "upper": 0.4
+            },
+            {
+              "examples": 94,
+              "lower": 0.4,
+              "mean_probability": 0.449239,
+              "observed_rate": 0.43617,
+              "upper": 0.5
+            },
+            {
+              "examples": 115,
+              "lower": 0.5,
+              "mean_probability": 0.547869,
+              "observed_rate": 0.53913,
+              "upper": 0.6
+            },
+            {
+              "examples": 122,
+              "lower": 0.6,
+              "mean_probability": 0.653339,
+              "observed_rate": 0.745902,
+              "upper": 0.7
+            },
+            {
+              "examples": 159,
+              "lower": 0.7,
+              "mean_probability": 0.755638,
+              "observed_rate": 0.81761,
+              "upper": 0.8
+            },
+            {
+              "examples": 241,
+              "lower": 0.8,
+              "mean_probability": 0.858518,
+              "observed_rate": 0.900415,
+              "upper": 0.9
+            },
+            {
+              "examples": 210,
+              "lower": 0.9,
+              "mean_probability": 0.929719,
+              "observed_rate": 0.971429,
+              "upper": 1.0
+            }
+          ],
+          "brier": 0.15995,
+          "ece_10": 0.05905,
+          "examples": 1464,
+          "log_loss": 0.489071,
+          "positive_rate": 0.60929
+        },
+        "worst_character_ece_10": 0.182788
+      },
+      "identity": {
+        "admissibility": {
+          "brier_degradation_from_identity_at_most_0_002": true,
+          "every_character_ece_at_most_0_15": false,
+          "overall_ece_no_worse_than_identity": true
+        },
+        "admissible": false,
+        "by_character_ece_10": {
+          "CHARACTER.DEFECT": 0.223487,
+          "CHARACTER.IRONCLAD": 0.235242,
+          "CHARACTER.NECROBINDER": 0.132267,
+          "CHARACTER.REGENT": 0.05312,
+          "CHARACTER.SILENT": 0.102984
+        },
+        "overall": {
+          "accuracy_at_0_5": 0.771175,
+          "bins": [
+            {
+              "examples": 79,
+              "lower": 0.0,
+              "mean_probability": 0.070245,
+              "observed_rate": 0.012658,
+              "upper": 0.1
+            },
+            {
+              "examples": 168,
+              "lower": 0.1,
+              "mean_probability": 0.14805,
+              "observed_rate": 0.27381,
+              "upper": 0.2
+            },
+            {
+              "examples": 180,
+              "lower": 0.2,
+              "mean_probability": 0.247147,
+              "observed_rate": 0.338889,
+              "upper": 0.3
+            },
+            {
+              "examples": 140,
+              "lower": 0.3,
+              "mean_probability": 0.351241,
+              "observed_rate": 0.392857,
+              "upper": 0.4
+            },
+            {
+              "examples": 138,
+              "lower": 0.4,
+              "mean_probability": 0.450553,
+              "observed_rate": 0.514493,
+              "upper": 0.5
+            },
+            {
+              "examples": 139,
+              "lower": 0.5,
+              "mean_probability": 0.550472,
+              "observed_rate": 0.683453,
+              "upper": 0.6
+            },
+            {
+              "examples": 169,
+              "lower": 0.6,
+              "mean_probability": 0.652735,
+              "observed_rate": 0.828402,
+              "upper": 0.7
+            },
+            {
+              "examples": 214,
+              "lower": 0.7,
+              "mean_probability": 0.757028,
+              "observed_rate": 0.892523,
+              "upper": 0.8
+            },
+            {
+              "examples": 222,
+              "lower": 0.8,
+              "mean_probability": 0.842478,
+              "observed_rate": 0.977477,
+              "upper": 0.9
+            },
+            {
+              "examples": 15,
+              "lower": 0.9,
+              "mean_probability": 0.922469,
+              "observed_rate": 1.0,
+              "upper": 1.0
+            }
+          ],
+          "brier": 0.165689,
+          "ece_10": 0.112801,
+          "examples": 1464,
+          "log_loss": 0.505544,
+          "positive_rate": 0.60929
+        },
+        "worst_character_ece_10": 0.235242
+      },
+      "per_character_platt": {
+        "admissibility": {
+          "brier_degradation_from_identity_at_most_0_002": true,
+          "every_character_ece_at_most_0_15": true,
+          "overall_ece_no_worse_than_identity": true
+        },
+        "admissible": true,
+        "by_character_ece_10": {
+          "CHARACTER.DEFECT": 0.086112,
+          "CHARACTER.IRONCLAD": 0.113337,
+          "CHARACTER.NECROBINDER": 0.055234,
+          "CHARACTER.REGENT": 0.056588,
+          "CHARACTER.SILENT": 0.121643
+        },
+        "overall": {
+          "accuracy_at_0_5": 0.780738,
+          "bins": [
+            {
+              "examples": 142,
+              "lower": 0.0,
+              "mean_probability": 0.049087,
+              "observed_rate": 0.112676,
+              "upper": 0.1
+            },
+            {
+              "examples": 131,
+              "lower": 0.1,
+              "mean_probability": 0.148185,
+              "observed_rate": 0.160305,
+              "upper": 0.2
+            },
+            {
+              "examples": 151,
+              "lower": 0.2,
+              "mean_probability": 0.247854,
+              "observed_rate": 0.331126,
+              "upper": 0.3
+            },
+            {
+              "examples": 111,
+              "lower": 0.3,
+              "mean_probability": 0.348774,
+              "observed_rate": 0.504505,
+              "upper": 0.4
+            },
+            {
+              "examples": 98,
+              "lower": 0.4,
+              "mean_probability": 0.448709,
+              "observed_rate": 0.489796,
+              "upper": 0.5
+            },
+            {
+              "examples": 98,
+              "lower": 0.5,
+              "mean_probability": 0.548088,
+              "observed_rate": 0.612245,
+              "upper": 0.6
+            },
+            {
+              "examples": 110,
+              "lower": 0.6,
+              "mean_probability": 0.651128,
+              "observed_rate": 0.681818,
+              "upper": 0.7
+            },
+            {
+              "examples": 142,
+              "lower": 0.7,
+              "mean_probability": 0.754443,
+              "observed_rate": 0.816901,
+              "upper": 0.8
+            },
+            {
+              "examples": 234,
+              "lower": 0.8,
+              "mean_probability": 0.851712,
+              "observed_rate": 0.910256,
+              "upper": 0.9
+            },
+            {
+              "examples": 247,
+              "lower": 0.9,
+              "mean_probability": 0.944894,
+              "observed_rate": 0.959514,
+              "upper": 1.0
+            }
+          ],
+          "brier": 0.150335,
+          "ece_10": 0.054882,
+          "examples": 1464,
+          "log_loss": 0.461941,
+          "positive_rate": 0.60929
+        },
+        "worst_character_ece_10": 0.121643
+      }
+    },
+    "internal_test_inspected_during_selection": false,
+    "method": "five-fold character-balanced seed-group out-of-fold selection",
+    "selected": "per_character_platt",
+    "selection_rule": "among admissible candidates minimize worst-character ECE, then Brier, then overall ECE; if none are admissible, select identity"
+  },
+  "configuration": {
+    "architecture": "three-member group-balanced bootstrap nonlinear GAM ensemble",
+    "ensemble_seeds": [
+      101,
+      211,
+      307
+    ],
+    "epochs": 400,
+    "explainable_features": [
+      "character:ironclad",
+      "character:silent",
+      "character:defect",
+      "character:necrobinder",
+      "character:regent",
+      "ascension_fraction",
+      "act_fraction",
+      "floor_fraction",
+      "player_hp_fraction",
+      "player_block_fraction",
+      "gold_fraction",
+      "deck_size_fraction",
+      "relic_count_fraction",
+      "potion_count_fraction",
+      "combat_round_fraction",
+      "energy_fraction",
+      "hand_size_fraction",
+      "playable_card_fraction",
+      "enemy_count_fraction",
+      "enemy_hp_fraction",
+      "enemy_block_fraction",
+      "incoming_damage_fraction",
+      "player_power_count_fraction",
+      "orb_count_fraction",
+      "stars_fraction",
+      "pet_hp_fraction",
+      "interaction:ironclad:floor_fraction",
+      "interaction:ironclad:player_hp_fraction",
+      "interaction:ironclad:player_block_fraction",
+      "interaction:ironclad:deck_size_fraction",
+      "interaction:ironclad:relic_count_fraction",
+      "interaction:ironclad:potion_count_fraction",
+      "interaction:ironclad:combat_round_fraction",
+      "interaction:ironclad:energy_fraction",
+      "interaction:ironclad:enemy_hp_fraction",
+      "interaction:ironclad:incoming_damage_fraction",
+      "interaction:ironclad:orb_count_fraction",
+      "interaction:ironclad:stars_fraction",
+      "interaction:ironclad:pet_hp_fraction",
+      "interaction:silent:floor_fraction",
+      "interaction:silent:player_hp_fraction",
+      "interaction:silent:player_block_fraction",
+      "interaction:silent:deck_size_fraction",
+      "interaction:silent:relic_count_fraction",
+      "interaction:silent:potion_count_fraction",
+      "interaction:silent:combat_round_fraction",
+      "interaction:silent:energy_fraction",
+      "interaction:silent:enemy_hp_fraction",
+      "interaction:silent:incoming_damage_fraction",
+      "interaction:silent:orb_count_fraction",
+      "interaction:silent:stars_fraction",
+      "interaction:silent:pet_hp_fraction",
+      "interaction:defect:floor_fraction",
+      "interaction:defect:player_hp_fraction",
+      "interaction:defect:player_block_fraction",
+      "interaction:defect:deck_size_fraction",
+      "interaction:defect:relic_count_fraction",
+      "interaction:defect:potion_count_fraction",
+      "interaction:defect:combat_round_fraction",
+      "interaction:defect:energy_fraction",
+      "interaction:defect:enemy_hp_fraction",
+      "interaction:defect:incoming_damage_fraction",
+      "interaction:defect:orb_count_fraction",
+      "interaction:defect:stars_fraction",
+      "interaction:defect:pet_hp_fraction",
+      "interaction:necrobinder:floor_fraction",
+      "interaction:necrobinder:player_hp_fraction",
+      "interaction:necrobinder:player_block_fraction",
+      "interaction:necrobinder:deck_size_fraction",
+      "interaction:necrobinder:relic_count_fraction",
+      "interaction:necrobinder:potion_count_fraction",
+      "interaction:necrobinder:combat_round_fraction",
+      "interaction:necrobinder:energy_fraction",
+      "interaction:necrobinder:enemy_hp_fraction",
+      "interaction:necrobinder:incoming_damage_fraction",
+      "interaction:necrobinder:orb_count_fraction",
+      "interaction:necrobinder:stars_fraction",
+      "interaction:necrobinder:pet_hp_fraction",
+      "interaction:regent:floor_fraction",
+      "interaction:regent:player_hp_fraction",
+      "interaction:regent:player_block_fraction",
+      "interaction:regent:deck_size_fraction",
+      "interaction:regent:relic_count_fraction",
+      "interaction:regent:potion_count_fraction",
+      "interaction:regent:combat_round_fraction",
+      "interaction:regent:energy_fraction",
+      "interaction:regent:enemy_hp_fraction",
+      "interaction:regent:incoming_damage_fraction",
+      "interaction:regent:orb_count_fraction",
+      "interaction:regent:stars_fraction",
+      "interaction:regent:pet_hp_fraction",
+      "hinge:floor_fraction>0.133333",
+      "hinge:floor_fraction>0.266667",
+      "hinge:player_hp_fraction>0.250000",
+      "hinge:player_hp_fraction>0.500000",
+      "hinge:player_hp_fraction>0.750000",
+      "hinge:player_block_fraction>0.100000",
+      "hinge:player_block_fraction>0.250000",
+      "hinge:deck_size_fraction>0.200000",
+      "hinge:deck_size_fraction>0.350000",
+      "hinge:relic_count_fraction>0.100000",
+      "hinge:relic_count_fraction>0.200000",
+      "hinge:potion_count_fraction>0.200000",
+      "hinge:potion_count_fraction>0.400000",
+      "hinge:combat_round_fraction>0.100000",
+      "hinge:combat_round_fraction>0.250000",
+      "hinge:enemy_hp_fraction>0.250000",
+      "hinge:enemy_hp_fraction>0.500000",
+      "hinge:enemy_hp_fraction>0.750000",
+      "hinge:incoming_damage_fraction>0.050000",
+      "hinge:incoming_damage_fraction>0.250000",
+      "indicator:incoming_damage_zero",
+      "indicator:player_hp_above_75pct",
+      "indicator:floor_above_8",
+      "indicator:combat_round_at_most_2",
+      "product:floor_x_missing_hp",
+      "product:unblocked_incoming_damage",
+      "product:combat_round_x_missing_hp",
+      "product:enemy_hp_x_incoming_damage",
+      "interaction:ironclad:hinge:floor_fraction>0.133333",
+      "interaction:ironclad:hinge:floor_fraction>0.266667",
+      "interaction:ironclad:hinge:player_hp_fraction>0.250000",
+      "interaction:ironclad:hinge:player_hp_fraction>0.500000",
+      "interaction:ironclad:hinge:player_hp_fraction>0.750000",
+      "interaction:ironclad:hinge:player_block_fraction>0.100000",
+      "interaction:ironclad:hinge:player_block_fraction>0.250000",
+      "interaction:ironclad:hinge:deck_size_fraction>0.200000",
+      "interaction:ironclad:hinge:deck_size_fraction>0.350000",
+      "interaction:ironclad:hinge:relic_count_fraction>0.100000",
+      "interaction:ironclad:hinge:relic_count_fraction>0.200000",
+      "interaction:ironclad:hinge:potion_count_fraction>0.200000",
+      "interaction:ironclad:hinge:potion_count_fraction>0.400000",
+      "interaction:ironclad:hinge:combat_round_fraction>0.100000",
+      "interaction:ironclad:hinge:combat_round_fraction>0.250000",
+      "interaction:ironclad:hinge:enemy_hp_fraction>0.250000",
+      "interaction:ironclad:hinge:enemy_hp_fraction>0.500000",
+      "interaction:ironclad:hinge:enemy_hp_fraction>0.750000",
+      "interaction:ironclad:hinge:incoming_damage_fraction>0.050000",
+      "interaction:ironclad:hinge:incoming_damage_fraction>0.250000",
+      "interaction:ironclad:indicator:incoming_damage_zero",
+      "interaction:ironclad:indicator:player_hp_above_75pct",
+      "interaction:ironclad:indicator:floor_above_8",
+      "interaction:ironclad:indicator:combat_round_at_most_2",
+      "interaction:ironclad:product:floor_x_missing_hp",
+      "interaction:ironclad:product:unblocked_incoming_damage",
+      "interaction:ironclad:product:combat_round_x_missing_hp",
+      "interaction:ironclad:product:enemy_hp_x_incoming_damage",
+      "interaction:silent:hinge:floor_fraction>0.133333",
+      "interaction:silent:hinge:floor_fraction>0.266667",
+      "interaction:silent:hinge:player_hp_fraction>0.250000",
+      "interaction:silent:hinge:player_hp_fraction>0.500000",
+      "interaction:silent:hinge:player_hp_fraction>0.750000",
+      "interaction:silent:hinge:player_block_fraction>0.100000",
+      "interaction:silent:hinge:player_block_fraction>0.250000",
+      "interaction:silent:hinge:deck_size_fraction>0.200000",
+      "interaction:silent:hinge:deck_size_fraction>0.350000",
+      "interaction:silent:hinge:relic_count_fraction>0.100000",
+      "interaction:silent:hinge:relic_count_fraction>0.200000",
+      "interaction:silent:hinge:potion_count_fraction>0.200000",
+      "interaction:silent:hinge:potion_count_fraction>0.400000",
+      "interaction:silent:hinge:combat_round_fraction>0.100000",
+      "interaction:silent:hinge:combat_round_fraction>0.250000",
+      "interaction:silent:hinge:enemy_hp_fraction>0.250000",
+      "interaction:silent:hinge:enemy_hp_fraction>0.500000",
+      "interaction:silent:hinge:enemy_hp_fraction>0.750000",
+      "interaction:silent:hinge:incoming_damage_fraction>0.050000",
+      "interaction:silent:hinge:incoming_damage_fraction>0.250000",
+      "interaction:silent:indicator:incoming_damage_zero",
+      "interaction:silent:indicator:player_hp_above_75pct",
+      "interaction:silent:indicator:floor_above_8",
+      "interaction:silent:indicator:combat_round_at_most_2",
+      "interaction:silent:product:floor_x_missing_hp",
+      "interaction:silent:product:unblocked_incoming_damage",
+      "interaction:silent:product:combat_round_x_missing_hp",
+      "interaction:silent:product:enemy_hp_x_incoming_damage",
+      "interaction:defect:hinge:floor_fraction>0.133333",
+      "interaction:defect:hinge:floor_fraction>0.266667",
+      "interaction:defect:hinge:player_hp_fraction>0.250000",
+      "interaction:defect:hinge:player_hp_fraction>0.500000",
+      "interaction:defect:hinge:player_hp_fraction>0.750000",
+      "interaction:defect:hinge:player_block_fraction>0.100000",
+      "interaction:defect:hinge:player_block_fraction>0.250000",
+      "interaction:defect:hinge:deck_size_fraction>0.200000",
+      "interaction:defect:hinge:deck_size_fraction>0.350000",
+      "interaction:defect:hinge:relic_count_fraction>0.100000",
+      "interaction:defect:hinge:relic_count_fraction>0.200000",
+      "interaction:defect:hinge:potion_count_fraction>0.200000",
+      "interaction:defect:hinge:potion_count_fraction>0.400000",
+      "interaction:defect:hinge:combat_round_fraction>0.100000",
+      "interaction:defect:hinge:combat_round_fraction>0.250000",
+      "interaction:defect:hinge:enemy_hp_fraction>0.250000",
+      "interaction:defect:hinge:enemy_hp_fraction>0.500000",
+      "interaction:defect:hinge:enemy_hp_fraction>0.750000",
+      "interaction:defect:hinge:incoming_damage_fraction>0.050000",
+      "interaction:defect:hinge:incoming_damage_fraction>0.250000",
+      "interaction:defect:indicator:incoming_damage_zero",
+      "interaction:defect:indicator:player_hp_above_75pct",
+      "interaction:defect:indicator:floor_above_8",
+      "interaction:defect:indicator:combat_round_at_most_2",
+      "interaction:defect:product:floor_x_missing_hp",
+      "interaction:defect:product:unblocked_incoming_damage",
+      "interaction:defect:product:combat_round_x_missing_hp",
+      "interaction:defect:product:enemy_hp_x_incoming_damage",
+      "interaction:necrobinder:hinge:floor_fraction>0.133333",
+      "interaction:necrobinder:hinge:floor_fraction>0.266667",
+      "interaction:necrobinder:hinge:player_hp_fraction>0.250000",
+      "interaction:necrobinder:hinge:player_hp_fraction>0.500000",
+      "interaction:necrobinder:hinge:player_hp_fraction>0.750000",
+      "interaction:necrobinder:hinge:player_block_fraction>0.100000",
+      "interaction:necrobinder:hinge:player_block_fraction>0.250000",
+      "interaction:necrobinder:hinge:deck_size_fraction>0.200000",
+      "interaction:necrobinder:hinge:deck_size_fraction>0.350000",
+      "interaction:necrobinder:hinge:relic_count_fraction>0.100000",
+      "interaction:necrobinder:hinge:relic_count_fraction>0.200000",
+      "interaction:necrobinder:hinge:potion_count_fraction>0.200000",
+      "interaction:necrobinder:hinge:potion_count_fraction>0.400000",
+      "interaction:necrobinder:hinge:combat_round_fraction>0.100000",
+      "interaction:necrobinder:hinge:combat_round_fraction>0.250000",
+      "interaction:necrobinder:hinge:enemy_hp_fraction>0.250000",
+      "interaction:necrobinder:hinge:enemy_hp_fraction>0.500000",
+      "interaction:necrobinder:hinge:enemy_hp_fraction>0.750000",
+      "interaction:necrobinder:hinge:incoming_damage_fraction>0.050000",
+      "interaction:necrobinder:hinge:incoming_damage_fraction>0.250000",
+      "interaction:necrobinder:indicator:incoming_damage_zero",
+      "interaction:necrobinder:indicator:player_hp_above_75pct",
+      "interaction:necrobinder:indicator:floor_above_8",
+      "interaction:necrobinder:indicator:combat_round_at_most_2",
+      "interaction:necrobinder:product:floor_x_missing_hp",
+      "interaction:necrobinder:product:unblocked_incoming_damage",
+      "interaction:necrobinder:product:combat_round_x_missing_hp",
+      "interaction:necrobinder:product:enemy_hp_x_incoming_damage",
+      "interaction:regent:hinge:floor_fraction>0.133333",
+      "interaction:regent:hinge:floor_fraction>0.266667",
+      "interaction:regent:hinge:player_hp_fraction>0.250000",
+      "interaction:regent:hinge:player_hp_fraction>0.500000",
+      "interaction:regent:hinge:player_hp_fraction>0.750000",
+      "interaction:regent:hinge:player_block_fraction>0.100000",
+      "interaction:regent:hinge:player_block_fraction>0.250000",
+      "interaction:regent:hinge:deck_size_fraction>0.200000",
+      "interaction:regent:hinge:deck_size_fraction>0.350000",
+      "interaction:regent:hinge:relic_count_fraction>0.100000",
+      "interaction:regent:hinge:relic_count_fraction>0.200000",
+      "interaction:regent:hinge:potion_count_fraction>0.200000",
+      "interaction:regent:hinge:potion_count_fraction>0.400000",
+      "interaction:regent:hinge:combat_round_fraction>0.100000",
+      "interaction:regent:hinge:combat_round_fraction>0.250000",
+      "interaction:regent:hinge:enemy_hp_fraction>0.250000",
+      "interaction:regent:hinge:enemy_hp_fraction>0.500000",
+      "interaction:regent:hinge:enemy_hp_fraction>0.750000",
+      "interaction:regent:hinge:incoming_damage_fraction>0.050000",
+      "interaction:regent:hinge:incoming_damage_fraction>0.250000",
+      "interaction:regent:indicator:incoming_damage_zero",
+      "interaction:regent:indicator:player_hp_above_75pct",
+      "interaction:regent:indicator:floor_above_8",
+      "interaction:regent:indicator:combat_round_at_most_2",
+      "interaction:regent:product:floor_x_missing_hp",
+      "interaction:regent:product:unblocked_incoming_damage",
+      "interaction:regent:product:combat_round_x_missing_hp",
+      "interaction:regent:product:enemy_hp_x_incoming_damage"
+    ],
+    "feature_count": 259,
+    "feature_schema": "character_nonlinear_v3",
+    "l2": 0.003,
+    "learning_rate": 0.02,
+    "split": "per_character_sha256_ranked_seed_groups_80_10_10"
+  },
+  "corpus": {
+    "duplicate_states": 4823,
+    "examples": 16089,
+    "excluded_trajectories": 13,
+    "groups": {
+      "test": 60,
+      "train": 458,
+      "validation": 60
+    },
+    "splits": {
+      "test": 1782,
+      "train": 12843,
+      "validation": 1464
+    },
+    "trajectories": 1030
+  },
+  "experiment": "bounded_value_v4",
+  "frozen_calibrator": {
+    "intercept": [
+      0.9183111915244948,
+      0.12534356718926876,
+      0.931432473501832,
+      -0.19891472878673072,
+      -0.26546432206850634
+    ],
+    "kind": "per_character_platt",
+    "slope": [
+      1.016758184904255,
+      1.1897516473080976,
+      1.463320621467723,
+      2.158702453877302,
+      1.3116570974040431
+    ]
+  },
+  "model": "checkpoints\\combat_value.survive3-nonlinear-ensemble-v4.v0.107.1.npz",
+  "opened_v3_audit_reclassified_as_development": true,
+  "schema_version": 1,
+  "search_labels_used": false,
+  "target": "survive_next_3_floors",
+  "test": {
+    "by_character": {
+      "CHARACTER.DEFECT": {
+        "calibrated": {
+          "accuracy_at_0_5": 0.765217,
+          "bins": [
+            {
+              "examples": 22,
+              "lower": 0.0,
+              "mean_probability": 0.05576,
+              "observed_rate": 0.0,
+              "upper": 0.1
+            },
+            {
+              "examples": 19,
+              "lower": 0.1,
+              "mean_probability": 0.154556,
+              "observed_rate": 0.315789,
+              "upper": 0.2
+            },
+            {
+              "examples": 20,
+              "lower": 0.2,
+              "mean_probability": 0.239993,
+              "observed_rate": 0.3,
+              "upper": 0.3
+            },
+            {
+              "examples": 22,
+              "lower": 0.3,
+              "mean_probability": 0.349138,
+              "observed_rate": 0.136364,
+              "upper": 0.4
+            },
+            {
+              "examples": 29,
+              "lower": 0.4,
+              "mean_probability": 0.452433,
+              "observed_rate": 0.37931,
+              "upper": 0.5
+            },
+            {
+              "examples": 24,
+              "lower": 0.5,
+              "mean_probability": 0.557775,
+              "observed_rate": 0.5,
+              "upper": 0.6
+            },
+            {
+              "examples": 23,
+              "lower": 0.6,
+              "mean_probability": 0.646062,
+              "observed_rate": 0.478261,
+              "upper": 0.7
+            },
+            {
+              "examples": 38,
+              "lower": 0.7,
+              "mean_probability": 0.765428,
+              "observed_rate": 0.710526,
+              "upper": 0.8
+            },
+            {
+              "examples": 45,
+              "lower": 0.8,
+              "mean_probability": 0.860484,
+              "observed_rate": 0.733333,
+              "upper": 0.9
+            },
+            {
+              "examples": 103,
+              "lower": 0.9,
+              "mean_probability": 0.949441,
+              "observed_rate": 0.92233,
+              "upper": 1.0
+            }
+          ],
+          "brier": 0.163856,
+          "ece_10": 0.081561,
+          "examples": 345,
+          "log_loss": 0.493665,
+          "positive_rate": 0.591304
+        },
+        "calibrated_ece_10_group_bootstrap_95_interval": [
+          0.054113,
+          0.209981
+        ],
+        "uncalibrated": {
+          "accuracy_at_0_5": 0.768116,
+          "bins": [
+            {
+              "examples": 20,
+              "lower": 0.0,
+              "mean_probability": 0.066926,
+              "observed_rate": 0.0,
+              "upper": 0.1
+            },
+            {
+              "examples": 36,
+              "lower": 0.1,
+              "mean_probability": 0.157448,
+              "observed_rate": 0.333333,
+              "upper": 0.2
+            },
+            {
+              "examples": 34,
+              "lower": 0.2,
+              "mean_probability": 0.259289,
+              "observed_rate": 0.117647,
+              "upper": 0.3
+            },
+            {
+              "examples": 41,
+              "lower": 0.3,
+              "mean_probability": 0.348844,
+              "observed_rate": 0.463415,
+              "upper": 0.4
+            },
+            {
+              "examples": 30,
+              "lower": 0.4,
+              "mean_probability": 0.441435,
+              "observed_rate": 0.5,
+              "upper": 0.5
+            },
+            {
+              "examples": 42,
+              "lower": 0.5,
+              "mean_probability": 0.551716,
+              "observed_rate": 0.714286,
+              "upper": 0.6
+            },
+            {
+              "examples": 38,
+              "lower": 0.6,
+              "mean_probability": 0.65835,
+              "observed_rate": 0.736842,
+              "upper": 0.7
+            },
+            {
+              "examples": 42,
+              "lower": 0.7,
+              "mean_probability": 0.747467,
+              "observed_rate": 0.833333,
+              "upper": 0.8
+            },
+            {
+              "examples": 62,
+              "lower": 0.8,
+              "mean_probability": 0.838938,
+              "observed_rate": 0.983871,
+              "upper": 0.9
+            }
+          ],
+          "brier": 0.166539,
+          "ece_10": 0.119836,
+          "examples": 345,
+          "log_loss": 0.506149,
+          "positive_rate": 0.591304
+        }
+      },
+      "CHARACTER.IRONCLAD": {
+        "calibrated": {
+          "accuracy_at_0_5": 0.746667,
+          "bins": [
+            {
+              "examples": 2,
+              "lower": 0.0,
+              "mean_probability": 0.090518,
+              "observed_rate": 0.0,
+              "upper": 0.1
+            },
+            {
+              "examples": 6,
+              "lower": 0.1,
+              "mean_probability": 0.164413,
+              "observed_rate": 0.0,
+              "upper": 0.2
+            },
+            {
+              "examples": 20,
+              "lower": 0.2,
+              "mean_probability": 0.257482,
+              "observed_rate": 0.05,
+              "upper": 0.3
+            },
+            {
+              "examples": 21,
+              "lower": 0.3,
+              "mean_probability": 0.34625,
+              "observed_rate": 0.142857,
+              "upper": 0.4
+            },
+            {
+              "examples": 16,
+              "lower": 0.4,
+              "mean_probability": 0.431926,
+              "observed_rate": 0.125,
+              "upper": 0.5
+            },
+            {
+              "examples": 24,
+              "lower": 0.5,
+              "mean_probability": 0.56446,
+              "observed_rate": 0.416667,
+              "upper": 0.6
+            },
+            {
+              "examples": 34,
+              "lower": 0.6,
+              "mean_probability": 0.652194,
+              "observed_rate": 0.264706,
+              "upper": 0.7
+            },
+            {
+              "examples": 46,
+              "lower": 0.7,
+              "mean_probability": 0.75325,
+              "observed_rate": 0.565217,
+              "upper": 0.8
+            },
+            {
+              "examples": 90,
+              "lower": 0.8,
+              "mean_probability": 0.853142,
+              "observed_rate": 0.877778,
+              "upper": 0.9
+            },
+            {
+              "examples": 41,
+              "lower": 0.9,
+              "mean_probability": 0.926184,
+              "observed_rate": 1.0,
+              "upper": 1.0
+            }
+          ],
+          "brier": 0.163466,
+          "ece_10": 0.15038,
+          "examples": 300,
+          "log_loss": 0.487209,
+          "positive_rate": 0.57
+        },
+        "calibrated_ece_10_group_bootstrap_95_interval": [
+          0.110059,
+          0.232139
+        ],
+        "uncalibrated": {
+          "accuracy_at_0_5": 0.813333,
+          "bins": [
+            {
+              "examples": 8,
+              "lower": 0.0,
+              "mean_probability": 0.066952,
+              "observed_rate": 0.0,
+              "upper": 0.1
+            },
+            {
+              "examples": 36,
+              "lower": 0.1,
+              "mean_probability": 0.14524,
+              "observed_rate": 0.083333,
+              "upper": 0.2
+            },
+            {
+              "examples": 23,
+              "lower": 0.2,
+              "mean_probability": 0.234901,
+              "observed_rate": 0.217391,
+              "upper": 0.3
+            },
+            {
+              "examples": 30,
+              "lower": 0.3,
+              "mean_probability": 0.359589,
+              "observed_rate": 0.3,
+              "upper": 0.4
+            },
+            {
+              "examples": 30,
+              "lower": 0.4,
+              "mean_probability": 0.449016,
+              "observed_rate": 0.333333,
+              "upper": 0.5
+            },
+            {
+              "examples": 37,
+              "lower": 0.5,
+              "mean_probability": 0.54816,
+              "observed_rate": 0.513514,
+              "upper": 0.6
+            },
+            {
+              "examples": 49,
+              "lower": 0.6,
+              "mean_probability": 0.648166,
+              "observed_rate": 0.795918,
+              "upper": 0.7
+            },
+            {
+              "examples": 56,
+              "lower": 0.7,
+              "mean_probability": 0.749259,
+              "observed_rate": 0.982143,
+              "upper": 0.8
+            },
+            {
+              "examples": 31,
+              "lower": 0.8,
+              "mean_probability": 0.843849,
+              "observed_rate": 1.0,
+              "upper": 0.9
+            }
+          ],
+          "brier": 0.144402,
+          "ece_10": 0.116097,
+          "examples": 300,
+          "log_loss": 0.457533,
+          "positive_rate": 0.57
+        }
+      },
+      "CHARACTER.NECROBINDER": {
+        "calibrated": {
+          "accuracy_at_0_5": 0.726688,
+          "bins": [
+            {
+              "examples": 72,
+              "lower": 0.0,
+              "mean_probability": 0.033947,
+              "observed_rate": 0.277778,
+              "upper": 0.1
+            },
+            {
+              "examples": 32,
+              "lower": 0.1,
+              "mean_probability": 0.137881,
+              "observed_rate": 0.25,
+              "upper": 0.2
+            },
+            {
+              "examples": 16,
+              "lower": 0.2,
+              "mean_probability": 0.248763,
+              "observed_rate": 0.25,
+              "upper": 0.3
+            },
+            {
+              "examples": 18,
+              "lower": 0.3,
+              "mean_probability": 0.342777,
+              "observed_rate": 0.222222,
+              "upper": 0.4
+            },
+            {
+              "examples": 18,
+              "lower": 0.4,
+              "mean_probability": 0.456003,
+              "observed_rate": 0.111111,
+              "upper": 0.5
+            },
+            {
+              "examples": 15,
+              "lower": 0.5,
+              "mean_probability": 0.553606,
+              "observed_rate": 0.333333,
+              "upper": 0.6
+            },
+            {
+              "examples": 17,
+              "lower": 0.6,
+              "mean_probability": 0.654265,
+              "observed_rate": 0.529412,
+              "upper": 0.7
+            },
+            {
+              "examples": 18,
+              "lower": 0.7,
+              "mean_probability": 0.739542,
+              "observed_rate": 0.555556,
+              "upper": 0.8
+            },
+            {
+              "examples": 45,
+              "lower": 0.8,
+              "mean_probability": 0.852697,
+              "observed_rate": 0.644444,
+              "upper": 0.9
+            },
+            {
+              "examples": 60,
+              "lower": 0.9,
+              "mean_probability": 0.945201,
+              "observed_rate": 0.916667,
+              "upper": 1.0
+            }
+          ],
+          "brier": 0.210986,
+          "ece_10": 0.158724,
+          "examples": 311,
+          "log_loss": 0.697822,
+          "positive_rate": 0.469453
+        },
+        "calibrated_ece_10_group_bootstrap_95_interval": [
+          0.102795,
+          0.265743
+        ],
+        "uncalibrated": {
+          "accuracy_at_0_5": 0.700965,
+          "bins": [
+            {
+              "examples": 12,
+              "lower": 0.0,
+              "mean_probability": 0.067163,
+              "observed_rate": 0.25,
+              "upper": 0.1
+            },
+            {
+              "examples": 32,
+              "lower": 0.1,
+              "mean_probability": 0.146063,
+              "observed_rate": 0.28125,
+              "upper": 0.2
+            },
+            {
+              "examples": 37,
+              "lower": 0.2,
+              "mean_probability": 0.250798,
+              "observed_rate": 0.324324,
+              "upper": 0.3
+            },
+            {
+              "examples": 31,
+              "lower": 0.3,
+              "mean_probability": 0.342427,
+              "observed_rate": 0.193548,
+              "upper": 0.4
+            },
+            {
+              "examples": 32,
+              "lower": 0.4,
+              "mean_probability": 0.445842,
+              "observed_rate": 0.1875,
+              "upper": 0.5
+            },
+            {
+              "examples": 38,
+              "lower": 0.5,
+              "mean_probability": 0.547907,
+              "observed_rate": 0.315789,
+              "upper": 0.6
+            },
+            {
+              "examples": 39,
+              "lower": 0.6,
+              "mean_probability": 0.654718,
+              "observed_rate": 0.564103,
+              "upper": 0.7
+            },
+            {
+              "examples": 59,
+              "lower": 0.7,
+              "mean_probability": 0.751268,
+              "observed_rate": 0.779661,
+              "upper": 0.8
+            },
+            {
+              "examples": 31,
+              "lower": 0.8,
+              "mean_probability": 0.836829,
+              "observed_rate": 0.967742,
+              "upper": 0.9
+            }
+          ],
+          "brier": 0.199642,
+          "ece_10": 0.129295,
+          "examples": 311,
+          "log_loss": 0.589692,
+          "positive_rate": 0.469453
+        }
+      },
+      "CHARACTER.REGENT": {
+        "calibrated": {
+          "accuracy_at_0_5": 0.717452,
+          "bins": [
+            {
+              "examples": 27,
+              "lower": 0.0,
+              "mean_probability": 0.045357,
+              "observed_rate": 0.111111,
+              "upper": 0.1
+            },
+            {
+              "examples": 52,
+              "lower": 0.1,
+              "mean_probability": 0.145172,
+              "observed_rate": 0.211538,
+              "upper": 0.2
+            },
+            {
+              "examples": 25,
+              "lower": 0.2,
+              "mean_probability": 0.227975,
+              "observed_rate": 0.16,
+              "upper": 0.3
+            },
+            {
+              "examples": 26,
+              "lower": 0.3,
+              "mean_probability": 0.353011,
+              "observed_rate": 0.230769,
+              "upper": 0.4
+            },
+            {
+              "examples": 17,
+              "lower": 0.4,
+              "mean_probability": 0.457543,
+              "observed_rate": 0.294118,
+              "upper": 0.5
+            },
+            {
+              "examples": 32,
+              "lower": 0.5,
+              "mean_probability": 0.554368,
+              "observed_rate": 0.375,
+              "upper": 0.6
+            },
+            {
+              "examples": 32,
+              "lower": 0.6,
+              "mean_probability": 0.657692,
+              "observed_rate": 0.375,
+              "upper": 0.7
+            },
+            {
+              "examples": 45,
+              "lower": 0.7,
+              "mean_probability": 0.757311,
+              "observed_rate": 0.555556,
+              "upper": 0.8
+            },
+            {
+              "examples": 88,
+              "lower": 0.8,
+              "mean_probability": 0.843884,
+              "observed_rate": 0.852273,
+              "upper": 0.9
+            },
+            {
+              "examples": 17,
+              "lower": 0.9,
+              "mean_probability": 0.918283,
+              "observed_rate": 1.0,
+              "upper": 1.0
+            }
+          ],
+          "brier": 0.185559,
+          "ece_10": 0.107686,
+          "examples": 361,
+          "log_loss": 0.551237,
+          "positive_rate": 0.470914
+        },
+        "calibrated_ece_10_group_bootstrap_95_interval": [
+          0.083259,
+          0.199121
+        ],
+        "uncalibrated": {
+          "accuracy_at_0_5": 0.700831,
+          "bins": [
+            {
+              "examples": 12,
+              "lower": 0.0,
+              "mean_probability": 0.072175,
+              "observed_rate": 0.083333,
+              "upper": 0.1
+            },
+            {
+              "examples": 23,
+              "lower": 0.1,
+              "mean_probability": 0.152342,
+              "observed_rate": 0.173913,
+              "upper": 0.2
+            },
+            {
+              "examples": 45,
+              "lower": 0.2,
+              "mean_probability": 0.248586,
+              "observed_rate": 0.2,
+              "upper": 0.3
+            },
+            {
+              "examples": 25,
+              "lower": 0.3,
+              "mean_probability": 0.32939,
+              "observed_rate": 0.2,
+              "upper": 0.4
+            },
+            {
+              "examples": 28,
+              "lower": 0.4,
+              "mean_probability": 0.441857,
+              "observed_rate": 0.214286,
+              "upper": 0.5
+            },
+            {
+              "examples": 35,
+              "lower": 0.5,
+              "mean_probability": 0.557912,
+              "observed_rate": 0.342857,
+              "upper": 0.6
+            },
+            {
+              "examples": 43,
+              "lower": 0.6,
+              "mean_probability": 0.654133,
+              "observed_rate": 0.372093,
+              "upper": 0.7
+            },
+            {
+              "examples": 70,
+              "lower": 0.7,
+              "mean_probability": 0.761573,
+              "observed_rate": 0.628571,
+              "upper": 0.8
+            },
+            {
+              "examples": 78,
+              "lower": 0.8,
+              "mean_probability": 0.836998,
+              "observed_rate": 0.910256,
+              "upper": 0.9
+            },
+            {
+              "examples": 2,
+              "lower": 0.9,
+              "mean_probability": 0.907819,
+              "observed_rate": 1.0,
+              "upper": 1.0
+            }
+          ],
+          "brier": 0.191037,
+          "ece_10": 0.130987,
+          "examples": 361,
+          "log_loss": 0.561044,
+          "positive_rate": 0.470914
+        }
+      },
+      "CHARACTER.SILENT": {
+        "calibrated": {
+          "accuracy_at_0_5": 0.709677,
+          "bins": [
+            {
+              "examples": 40,
+              "lower": 0.0,
+              "mean_probability": 0.063271,
+              "observed_rate": 0.0,
+              "upper": 0.1
+            },
+            {
+              "examples": 46,
+              "lower": 0.1,
+              "mean_probability": 0.140605,
+              "observed_rate": 0.152174,
+              "upper": 0.2
+            },
+            {
+              "examples": 34,
+              "lower": 0.2,
+              "mean_probability": 0.247148,
+              "observed_rate": 0.382353,
+              "upper": 0.3
+            },
+            {
+              "examples": 32,
+              "lower": 0.3,
+              "mean_probability": 0.355475,
+              "observed_rate": 0.34375,
+              "upper": 0.4
+            },
+            {
+              "examples": 47,
+              "lower": 0.4,
+              "mean_probability": 0.449535,
+              "observed_rate": 0.340426,
+              "upper": 0.5
+            },
+            {
+              "examples": 43,
+              "lower": 0.5,
+              "mean_probability": 0.542527,
+              "observed_rate": 0.302326,
+              "upper": 0.6
+            },
+            {
+              "examples": 41,
+              "lower": 0.6,
+              "mean_probability": 0.65378,
+              "observed_rate": 0.512195,
+              "upper": 0.7
+            },
+            {
+              "examples": 71,
+              "lower": 0.7,
+              "mean_probability": 0.757644,
+              "observed_rate": 0.690141,
+              "upper": 0.8
+            },
+            {
+              "examples": 93,
+              "lower": 0.8,
+              "mean_probability": 0.846751,
+              "observed_rate": 0.827957,
+              "upper": 0.9
+            },
+            {
+              "examples": 18,
+              "lower": 0.9,
+              "mean_probability": 0.915256,
+              "observed_rate": 1.0,
+              "upper": 1.0
+            }
+          ],
+          "brier": 0.180859,
+          "ece_10": 0.08035,
+          "examples": 465,
+          "log_loss": 0.533137,
+          "positive_rate": 0.483871
+        },
+        "calibrated_ece_10_group_bootstrap_95_interval": [
+          0.070231,
+          0.237895
+        ],
+        "uncalibrated": {
+          "accuracy_at_0_5": 0.724731,
+          "bins": [
+            {
+              "examples": 22,
+              "lower": 0.0,
+              "mean_probability": 0.062006,
+              "observed_rate": 0.0,
+              "upper": 0.1
+            },
+            {
+              "examples": 59,
+              "lower": 0.1,
+              "mean_probability": 0.143972,
+              "observed_rate": 0.101695,
+              "upper": 0.2
+            },
+            {
+              "examples": 36,
+              "lower": 0.2,
+              "mean_probability": 0.249737,
+              "observed_rate": 0.388889,
+              "upper": 0.3
+            },
+            {
+              "examples": 48,
+              "lower": 0.3,
+              "mean_probability": 0.361703,
+              "observed_rate": 0.270833,
+              "upper": 0.4
+            },
+            {
+              "examples": 53,
+              "lower": 0.4,
+              "mean_probability": 0.458872,
+              "observed_rate": 0.377358,
+              "upper": 0.5
+            },
+            {
+              "examples": 42,
+              "lower": 0.5,
+              "mean_probability": 0.552685,
+              "observed_rate": 0.285714,
+              "upper": 0.6
+            },
+            {
+              "examples": 51,
+              "lower": 0.6,
+              "mean_probability": 0.650071,
+              "observed_rate": 0.647059,
+              "upper": 0.7
+            },
+            {
+              "examples": 102,
+              "lower": 0.7,
+              "mean_probability": 0.751913,
+              "observed_rate": 0.784314,
+              "upper": 0.8
+            },
+            {
+              "examples": 51,
+              "lower": 0.8,
+              "mean_probability": 0.836987,
+              "observed_rate": 0.901961,
+              "upper": 0.9
+            },
+            {
+              "examples": 1,
+              "lower": 0.9,
+              "mean_probability": 0.900669,
+              "observed_rate": 1.0,
+              "upper": 1.0
+            }
+          ],
+          "brier": 0.178167,
+          "ece_10": 0.076633,
+          "examples": 465,
+          "log_loss": 0.529672,
+          "positive_rate": 0.483871
+        }
+      }
+    },
+    "calibrated": {
+      "accuracy_at_0_5": 0.731201,
+      "bins": [
+        {
+          "examples": 163,
+          "lower": 0.0,
+          "mean_probability": 0.046671,
+          "observed_rate": 0.141104,
+          "upper": 0.1
+        },
+        {
+          "examples": 155,
+          "lower": 0.1,
+          "mean_probability": 0.144206,
+          "observed_rate": 0.206452,
+          "upper": 0.2
+        },
+        {
+          "examples": 115,
+          "lower": 0.2,
+          "mean_probability": 0.243758,
+          "observed_rate": 0.243478,
+          "upper": 0.3
+        },
+        {
+          "examples": 119,
+          "lower": 0.3,
+          "mean_probability": 0.350216,
+          "observed_rate": 0.226891,
+          "upper": 0.4
+        },
+        {
+          "examples": 127,
+          "lower": 0.4,
+          "mean_probability": 0.449967,
+          "observed_rate": 0.283465,
+          "upper": 0.5
+        },
+        {
+          "examples": 138,
+          "lower": 0.5,
+          "mean_probability": 0.552943,
+          "observed_rate": 0.376812,
+          "upper": 0.6
+        },
+        {
+          "examples": 147,
+          "lower": 0.6,
+          "mean_probability": 0.653113,
+          "observed_rate": 0.421769,
+          "upper": 0.7
+        },
+        {
+          "examples": 218,
+          "lower": 0.7,
+          "mean_probability": 0.75651,
+          "observed_rate": 0.62844,
+          "upper": 0.8
+        },
+        {
+          "examples": 361,
+          "lower": 0.8,
+          "mean_probability": 0.850098,
+          "observed_rate": 0.811634,
+          "upper": 0.9
+        },
+        {
+          "examples": 239,
+          "lower": 0.9,
+          "mean_probability": 0.939596,
+          "observed_rate": 0.945607,
+          "upper": 1.0
+        }
+      ],
+      "brier": 0.180849,
+      "ece_10": 0.091161,
+      "examples": 1782,
+      "log_loss": 0.550171,
+      "positive_rate": 0.514029
+    },
+    "uncalibrated": {
+      "accuracy_at_0_5": 0.739057,
+      "bins": [
+        {
+          "examples": 74,
+          "lower": 0.0,
+          "mean_probability": 0.066356,
+          "observed_rate": 0.054054,
+          "upper": 0.1
+        },
+        {
+          "examples": 186,
+          "lower": 0.1,
+          "mean_probability": 0.148221,
+          "observed_rate": 0.182796,
+          "upper": 0.2
+        },
+        {
+          "examples": 175,
+          "lower": 0.2,
+          "mean_probability": 0.249571,
+          "observed_rate": 0.251429,
+          "upper": 0.3
+        },
+        {
+          "examples": 175,
+          "lower": 0.3,
+          "mean_probability": 0.350297,
+          "observed_rate": 0.297143,
+          "upper": 0.4
+        },
+        {
+          "examples": 173,
+          "lower": 0.4,
+          "mean_probability": 0.448975,
+          "observed_rate": 0.32948,
+          "upper": 0.5
+        },
+        {
+          "examples": 194,
+          "lower": 0.5,
+          "mean_probability": 0.551619,
+          "observed_rate": 0.438144,
+          "upper": 0.6
+        },
+        {
+          "examples": 220,
+          "lower": 0.6,
+          "mean_probability": 0.652694,
+          "observed_rate": 0.627273,
+          "upper": 0.7
+        },
+        {
+          "examples": 329,
+          "lower": 0.7,
+          "mean_probability": 0.752833,
+          "observed_rate": 0.790274,
+          "upper": 0.8
+        },
+        {
+          "examples": 253,
+          "lower": 0.8,
+          "mean_probability": 0.83829,
+          "observed_rate": 0.944664,
+          "upper": 0.9
+        },
+        {
+          "examples": 3,
+          "lower": 0.9,
+          "mean_probability": 0.905436,
+          "observed_rate": 1.0,
+          "upper": 1.0
+        }
+      ],
+      "brier": 0.176587,
+      "ece_10": 0.058789,
+      "examples": 1782,
+      "log_loss": 0.529803,
+      "positive_rate": 0.514029
+    }
+  },
+  "training_source": "first_party_headless_trajectories",
+  "validation": {
+    "by_character": {
+      "CHARACTER.DEFECT": {
+        "calibrated": {
+          "accuracy_at_0_5": 0.827119,
+          "bins": [
+            {
+              "examples": 24,
+              "lower": 0.0,
+              "mean_probability": 0.060722,
+              "observed_rate": 0.0,
+              "upper": 0.1
+            },
+            {
+              "examples": 27,
+              "lower": 0.1,
+              "mean_probability": 0.147243,
+              "observed_rate": 0.222222,
+              "upper": 0.2
+            },
+            {
+              "examples": 23,
+              "lower": 0.2,
+              "mean_probability": 0.250949,
+              "observed_rate": 0.391304,
+              "upper": 0.3
+            },
+            {
+              "examples": 16,
+              "lower": 0.3,
+              "mean_probability": 0.350924,
+              "observed_rate": 0.5625,
+              "upper": 0.4
+            },
+            {
+              "examples": 14,
+              "lower": 0.4,
+              "mean_probability": 0.453515,
+              "observed_rate": 0.642857,
+              "upper": 0.5
+            },
+            {
+              "examples": 18,
+              "lower": 0.5,
+              "mean_probability": 0.543642,
+              "observed_rate": 0.833333,
+              "upper": 0.6
+            },
+            {
+              "examples": 24,
+              "lower": 0.6,
+              "mean_probability": 0.654153,
+              "observed_rate": 0.666667,
+              "upper": 0.7
+            },
+            {
+              "examples": 30,
+              "lower": 0.7,
+              "mean_probability": 0.761905,
+              "observed_rate": 0.766667,
+              "upper": 0.8
+            },
+            {
+              "examples": 41,
+              "lower": 0.8,
+              "mean_probability": 0.859371,
+              "observed_rate": 1.0,
+              "upper": 0.9
+            },
+            {
+              "examples": 78,
+              "lower": 0.9,
+              "mean_probability": 0.957351,
+              "observed_rate": 1.0,
+              "upper": 1.0
+            }
+          ],
+          "brier": 0.116059,
+          "ece_10": 0.093207,
+          "examples": 295,
+          "log_loss": 0.360097,
+          "positive_rate": 0.698305
+        },
+        "calibrated_ece_10_group_bootstrap_95_interval": [
+          0.07784,
+          0.173176
+        ],
+        "uncalibrated": {
+          "accuracy_at_0_5": 0.762712,
+          "bins": [
+            {
+              "examples": 21,
+              "lower": 0.0,
+              "mean_probability": 0.07034,
+              "observed_rate": 0.0,
+              "upper": 0.1
+            },
+            {
+              "examples": 38,
+              "lower": 0.1,
+              "mean_probability": 0.142878,
+              "observed_rate": 0.184211,
+              "upper": 0.2
+            },
+            {
+              "examples": 35,
+              "lower": 0.2,
+              "mean_probability": 0.242311,
+              "observed_rate": 0.571429,
+              "upper": 0.3
+            },
+            {
+              "examples": 27,
+              "lower": 0.3,
+              "mean_probability": 0.355363,
+              "observed_rate": 0.740741,
+              "upper": 0.4
+            },
+            {
+              "examples": 26,
+              "lower": 0.4,
+              "mean_probability": 0.450473,
+              "observed_rate": 0.653846,
+              "upper": 0.5
+            },
+            {
+              "examples": 32,
+              "lower": 0.5,
+              "mean_probability": 0.54637,
+              "observed_rate": 0.8125,
+              "upper": 0.6
+            },
+            {
+              "examples": 37,
+              "lower": 0.6,
+              "mean_probability": 0.651111,
+              "observed_rate": 1.0,
+              "upper": 0.7
+            },
+            {
+              "examples": 22,
+              "lower": 0.7,
+              "mean_probability": 0.756752,
+              "observed_rate": 1.0,
+              "upper": 0.8
+            },
+            {
+              "examples": 55,
+              "lower": 0.8,
+              "mean_probability": 0.841447,
+              "observed_rate": 1.0,
+              "upper": 0.9
+            },
+            {
+              "examples": 2,
+              "lower": 0.9,
+              "mean_probability": 0.913951,
+              "observed_rate": 1.0,
+              "upper": 1.0
+            }
+          ],
+          "brier": 0.16408,
+          "ece_10": 0.223487,
+          "examples": 295,
+          "log_loss": 0.495866,
+          "positive_rate": 0.698305
+        }
+      },
+      "CHARACTER.IRONCLAD": {
+        "calibrated": {
+          "accuracy_at_0_5": 0.750789,
+          "bins": [
+            {
+              "examples": 3,
+              "lower": 0.0,
+              "mean_probability": 0.079212,
+              "observed_rate": 0.0,
+              "upper": 0.1
+            },
+            {
+              "examples": 15,
+              "lower": 0.1,
+              "mean_probability": 0.152457,
+              "observed_rate": 0.0,
+              "upper": 0.2
+            },
+            {
+              "examples": 25,
+              "lower": 0.2,
+              "mean_probability": 0.254254,
+              "observed_rate": 0.32,
+              "upper": 0.3
+            },
+            {
+              "examples": 25,
+              "lower": 0.3,
+              "mean_probability": 0.344296,
+              "observed_rate": 0.8,
+              "upper": 0.4
+            },
+            {
+              "examples": 31,
+              "lower": 0.4,
+              "mean_probability": 0.438288,
+              "observed_rate": 0.645161,
+              "upper": 0.5
+            },
+            {
+              "examples": 21,
+              "lower": 0.5,
+              "mean_probability": 0.546025,
+              "observed_rate": 0.428571,
+              "upper": 0.6
+            },
+            {
+              "examples": 24,
+              "lower": 0.6,
+              "mean_probability": 0.656513,
+              "observed_rate": 0.708333,
+              "upper": 0.7
+            },
+            {
+              "examples": 26,
+              "lower": 0.7,
+              "mean_probability": 0.770529,
+              "observed_rate": 0.884615,
+              "upper": 0.8
+            },
+            {
+              "examples": 73,
+              "lower": 0.8,
+              "mean_probability": 0.86438,
+              "observed_rate": 0.917808,
+              "upper": 0.9
+            },
+            {
+              "examples": 74,
+              "lower": 0.9,
+              "mean_probability": 0.931304,
+              "observed_rate": 0.959459,
+              "upper": 1.0
+            }
+          ],
+          "brier": 0.143215,
+          "ece_10": 0.109256,
+          "examples": 317,
+          "log_loss": 0.440528,
+          "positive_rate": 0.741325
+        },
+        "calibrated_ece_10_group_bootstrap_95_interval": [
+          0.064394,
+          0.196992
+        ],
+        "uncalibrated": {
+          "accuracy_at_0_5": 0.728707,
+          "bins": [
+            {
+              "examples": 19,
+              "lower": 0.0,
+              "mean_probability": 0.065798,
+              "observed_rate": 0.0,
+              "upper": 0.1
+            },
+            {
+              "examples": 47,
+              "lower": 0.1,
+              "mean_probability": 0.149112,
+              "observed_rate": 0.553191,
+              "upper": 0.2
+            },
+            {
+              "examples": 37,
+              "lower": 0.2,
+              "mean_probability": 0.245286,
+              "observed_rate": 0.594595,
+              "upper": 0.3
+            },
+            {
+              "examples": 23,
+              "lower": 0.3,
+              "mean_probability": 0.347224,
+              "observed_rate": 0.521739,
+              "upper": 0.4
+            },
+            {
+              "examples": 18,
+              "lower": 0.4,
+              "mean_probability": 0.45337,
+              "observed_rate": 0.777778,
+              "upper": 0.5
+            },
+            {
+              "examples": 22,
+              "lower": 0.5,
+              "mean_probability": 0.566457,
+              "observed_rate": 0.863636,
+              "upper": 0.6
+            },
+            {
+              "examples": 29,
+              "lower": 0.6,
+              "mean_probability": 0.656791,
+              "observed_rate": 0.896552,
+              "upper": 0.7
+            },
+            {
+              "examples": 65,
+              "lower": 0.7,
+              "mean_probability": 0.755029,
+              "observed_rate": 0.953846,
+              "upper": 0.8
+            },
+            {
+              "examples": 50,
+              "lower": 0.8,
+              "mean_probability": 0.848114,
+              "observed_rate": 0.94,
+              "upper": 0.9
+            },
+            {
+              "examples": 7,
+              "lower": 0.9,
+              "mean_probability": 0.922334,
+              "observed_rate": 1.0,
+              "upper": 1.0
+            }
+          ],
+          "brier": 0.195696,
+          "ece_10": 0.235242,
+          "examples": 317,
+          "log_loss": 0.578271,
+          "positive_rate": 0.741325
+        }
+      },
+      "CHARACTER.NECROBINDER": {
+        "calibrated": {
+          "accuracy_at_0_5": 0.823009,
+          "bins": [
+            {
+              "examples": 45,
+              "lower": 0.0,
+              "mean_probability": 0.041453,
+              "observed_rate": 0.0,
+              "upper": 0.1
+            },
+            {
+              "examples": 19,
+              "lower": 0.1,
+              "mean_probability": 0.143893,
+              "observed_rate": 0.157895,
+              "upper": 0.2
+            },
+            {
+              "examples": 21,
+              "lower": 0.2,
+              "mean_probability": 0.248911,
+              "observed_rate": 0.095238,
+              "upper": 0.3
+            },
+            {
+              "examples": 13,
+              "lower": 0.3,
+              "mean_probability": 0.342348,
+              "observed_rate": 0.538462,
+              "upper": 0.4
+            },
+            {
+              "examples": 13,
+              "lower": 0.4,
+              "mean_probability": 0.443948,
+              "observed_rate": 0.538462,
+              "upper": 0.5
+            },
+            {
+              "examples": 10,
+              "lower": 0.5,
+              "mean_probability": 0.545703,
+              "observed_rate": 0.5,
+              "upper": 0.6
+            },
+            {
+              "examples": 17,
+              "lower": 0.6,
+              "mean_probability": 0.660764,
+              "observed_rate": 0.764706,
+              "upper": 0.7
+            },
+            {
+              "examples": 18,
+              "lower": 0.7,
+              "mean_probability": 0.761009,
+              "observed_rate": 0.555556,
+              "upper": 0.8
+            },
+            {
+              "examples": 12,
+              "lower": 0.8,
+              "mean_probability": 0.847277,
+              "observed_rate": 0.833333,
+              "upper": 0.9
+            },
+            {
+              "examples": 58,
+              "lower": 0.9,
+              "mean_probability": 0.959238,
+              "observed_rate": 0.965517,
+              "upper": 1.0
+            }
+          ],
+          "brier": 0.115239,
+          "ece_10": 0.068984,
+          "examples": 226,
+          "log_loss": 0.355163,
+          "positive_rate": 0.5
+        },
+        "calibrated_ece_10_group_bootstrap_95_interval": [
+          0.063601,
+          0.148564
+        ],
+        "uncalibrated": {
+          "accuracy_at_0_5": 0.840708,
+          "bins": [
+            {
+              "examples": 5,
+              "lower": 0.0,
+              "mean_probability": 0.070243,
+              "observed_rate": 0.0,
+              "upper": 0.1
+            },
+            {
+              "examples": 19,
+              "lower": 0.1,
+              "mean_probability": 0.157264,
+              "observed_rate": 0.0,
+              "upper": 0.2
+            },
+            {
+              "examples": 26,
+              "lower": 0.2,
+              "mean_probability": 0.2525,
+              "observed_rate": 0.038462,
+              "upper": 0.3
+            },
+            {
+              "examples": 26,
+              "lower": 0.3,
+              "mean_probability": 0.356563,
+              "observed_rate": 0.076923,
+              "upper": 0.4
+            },
+            {
+              "examples": 29,
+              "lower": 0.4,
+              "mean_probability": 0.446161,
+              "observed_rate": 0.37931,
+              "upper": 0.5
+            },
+            {
+              "examples": 23,
+              "lower": 0.5,
+              "mean_probability": 0.548531,
+              "observed_rate": 0.608696,
+              "upper": 0.6
+            },
+            {
+              "examples": 34,
+              "lower": 0.6,
+              "mean_probability": 0.645928,
+              "observed_rate": 0.705882,
+              "upper": 0.7
+            },
+            {
+              "examples": 19,
+              "lower": 0.7,
+              "mean_probability": 0.766437,
+              "observed_rate": 0.842105,
+              "upper": 0.8
+            },
+            {
+              "examples": 42,
+              "lower": 0.8,
+              "mean_probability": 0.840524,
+              "observed_rate": 1.0,
+              "upper": 0.9
+            },
+            {
+              "examples": 3,
+              "lower": 0.9,
+              "mean_probability": 0.926352,
+              "observed_rate": 1.0,
+              "upper": 1.0
+            }
+          ],
+          "brier": 0.133532,
+          "ece_10": 0.132267,
+          "examples": 226,
+          "log_loss": 0.430578,
+          "positive_rate": 0.5
+        }
+      },
+      "CHARACTER.REGENT": {
+        "calibrated": {
+          "accuracy_at_0_5": 0.772308,
+          "bins": [
+            {
+              "examples": 33,
+              "lower": 0.0,
+              "mean_probability": 0.049362,
+              "observed_rate": 0.0,
+              "upper": 0.1
+            },
+            {
+              "examples": 37,
+              "lower": 0.1,
+              "mean_probability": 0.148717,
+              "observed_rate": 0.135135,
+              "upper": 0.2
+            },
+            {
+              "examples": 40,
+              "lower": 0.2,
+              "mean_probability": 0.249854,
+              "observed_rate": 0.35,
+              "upper": 0.3
+            },
+            {
+              "examples": 30,
+              "lower": 0.3,
+              "mean_probability": 0.349527,
+              "observed_rate": 0.366667,
+              "upper": 0.4
+            },
+            {
+              "examples": 29,
+              "lower": 0.4,
+              "mean_probability": 0.453183,
+              "observed_rate": 0.482759,
+              "upper": 0.5
+            },
+            {
+              "examples": 19,
+              "lower": 0.5,
+              "mean_probability": 0.560643,
+              "observed_rate": 0.631579,
+              "upper": 0.6
+            },
+            {
+              "examples": 29,
+              "lower": 0.6,
+              "mean_probability": 0.653627,
+              "observed_rate": 0.689655,
+              "upper": 0.7
+            },
+            {
+              "examples": 43,
+              "lower": 0.7,
+              "mean_probability": 0.763368,
+              "observed_rate": 0.767442,
+              "upper": 0.8
+            },
+            {
+              "examples": 51,
+              "lower": 0.8,
+              "mean_probability": 0.848504,
+              "observed_rate": 0.921569,
+              "upper": 0.9
+            },
+            {
+              "examples": 14,
+              "lower": 0.9,
+              "mean_probability": 0.92136,
+              "observed_rate": 1.0,
+              "upper": 1.0
+            }
+          ],
+          "brier": 0.157625,
+          "ece_10": 0.045859,
+          "examples": 325,
+          "log_loss": 0.475155,
+          "positive_rate": 0.523077
+        },
+        "calibrated_ece_10_group_bootstrap_95_interval": [
+          0.04947,
+          0.157656
+        ],
+        "uncalibrated": {
+          "accuracy_at_0_5": 0.756923,
+          "bins": [
+            {
+              "examples": 16,
+              "lower": 0.0,
+              "mean_probability": 0.068491,
+              "observed_rate": 0.0,
+              "upper": 0.1
+            },
+            {
+              "examples": 19,
+              "lower": 0.1,
+              "mean_probability": 0.152177,
+              "observed_rate": 0.0,
+              "upper": 0.2
+            },
+            {
+              "examples": 37,
+              "lower": 0.2,
+              "mean_probability": 0.249627,
+              "observed_rate": 0.189189,
+              "upper": 0.3
+            },
+            {
+              "examples": 40,
+              "lower": 0.3,
+              "mean_probability": 0.350337,
+              "observed_rate": 0.325,
+              "upper": 0.4
+            },
+            {
+              "examples": 38,
+              "lower": 0.4,
+              "mean_probability": 0.449737,
+              "observed_rate": 0.447368,
+              "upper": 0.5
+            },
+            {
+              "examples": 31,
+              "lower": 0.5,
+              "mean_probability": 0.550039,
+              "observed_rate": 0.483871,
+              "upper": 0.6
+            },
+            {
+              "examples": 35,
+              "lower": 0.6,
+              "mean_probability": 0.653689,
+              "observed_rate": 0.685714,
+              "upper": 0.7
+            },
+            {
+              "examples": 60,
+              "lower": 0.7,
+              "mean_probability": 0.759639,
+              "observed_rate": 0.766667,
+              "upper": 0.8
+            },
+            {
+              "examples": 46,
+              "lower": 0.8,
+              "mean_probability": 0.845283,
+              "observed_rate": 0.978261,
+              "upper": 0.9
+            },
+            {
+              "examples": 3,
+              "lower": 0.9,
+              "mean_probability": 0.924582,
+              "observed_rate": 1.0,
+              "upper": 1.0
+            }
+          ],
+          "brier": 0.159543,
+          "ece_10": 0.05312,
+          "examples": 325,
+          "log_loss": 0.486555,
+          "positive_rate": 0.523077
+        }
+      },
+      "CHARACTER.SILENT": {
+        "calibrated": {
+          "accuracy_at_0_5": 0.790698,
+          "bins": [
+            {
+              "examples": 33,
+              "lower": 0.0,
+              "mean_probability": 0.070161,
+              "observed_rate": 0.212121,
+              "upper": 0.1
+            },
+            {
+              "examples": 37,
+              "lower": 0.1,
+              "mean_probability": 0.148562,
+              "observed_rate": 0.189189,
+              "upper": 0.2
+            },
+            {
+              "examples": 39,
+              "lower": 0.2,
+              "mean_probability": 0.241602,
+              "observed_rate": 0.282051,
+              "upper": 0.3
+            },
+            {
+              "examples": 20,
+              "lower": 0.3,
+              "mean_probability": 0.34096,
+              "observed_rate": 0.3,
+              "upper": 0.4
+            },
+            {
+              "examples": 21,
+              "lower": 0.4,
+              "mean_probability": 0.452039,
+              "observed_rate": 0.428571,
+              "upper": 0.5
+            },
+            {
+              "examples": 30,
+              "lower": 0.5,
+              "mean_probability": 0.548238,
+              "observed_rate": 0.633333,
+              "upper": 0.6
+            },
+            {
+              "examples": 22,
+              "lower": 0.6,
+              "mean_probability": 0.654928,
+              "observed_rate": 0.727273,
+              "upper": 0.7
+            },
+            {
+              "examples": 40,
+              "lower": 0.7,
+              "mean_probability": 0.75056,
+              "observed_rate": 0.95,
+              "upper": 0.8
+            },
+            {
+              "examples": 52,
+              "lower": 0.8,
+              "mean_probability": 0.848424,
+              "observed_rate": 0.923077,
+              "upper": 0.9
+            },
+            {
+              "examples": 7,
+              "lower": 0.9,
+              "mean_probability": 0.911919,
+              "observed_rate": 1.0,
+              "upper": 1.0
+            }
+          ],
+          "brier": 0.160551,
+          "ece_10": 0.085375,
+          "examples": 301,
+          "log_loss": 0.501413,
+          "positive_rate": 0.55814
+        },
+        "calibrated_ece_10_group_bootstrap_95_interval": [
+          0.065803,
+          0.203763
+        ],
+        "uncalibrated": {
+          "accuracy_at_0_5": 0.787375,
+          "bins": [
+            {
+              "examples": 18,
+              "lower": 0.0,
+              "mean_probability": 0.076389,
+              "observed_rate": 0.055556,
+              "upper": 0.1
+            },
+            {
+              "examples": 45,
+              "lower": 0.1,
+              "mean_probability": 0.145675,
+              "observed_rate": 0.288889,
+              "upper": 0.2
+            },
+            {
+              "examples": 45,
+              "lower": 0.2,
+              "mean_probability": 0.247308,
+              "observed_rate": 0.244444,
+              "upper": 0.3
+            },
+            {
+              "examples": 24,
+              "lower": 0.3,
+              "mean_probability": 0.346193,
+              "observed_rate": 0.333333,
+              "upper": 0.4
+            },
+            {
+              "examples": 27,
+              "lower": 0.4,
+              "mean_probability": 0.454616,
+              "observed_rate": 0.444444,
+              "upper": 0.5
+            },
+            {
+              "examples": 31,
+              "lower": 0.5,
+              "mean_probability": 0.545237,
+              "observed_rate": 0.677419,
+              "upper": 0.6
+            },
+            {
+              "examples": 34,
+              "lower": 0.6,
+              "mean_probability": 0.656869,
+              "observed_rate": 0.852941,
+              "upper": 0.7
+            },
+            {
+              "examples": 48,
+              "lower": 0.7,
+              "mean_probability": 0.752874,
+              "observed_rate": 0.9375,
+              "upper": 0.8
+            },
+            {
+              "examples": 29,
+              "lower": 0.8,
+              "mean_probability": 0.833097,
+              "observed_rate": 0.965517,
+              "upper": 0.9
+            }
+          ],
+          "brier": 0.166442,
+          "ece_10": 0.102984,
+          "examples": 301,
+          "log_loss": 0.515224,
+          "positive_rate": 0.55814
+        }
+      }
+    },
+    "calibrated": {
+      "accuracy_at_0_5": 0.790301,
+      "bins": [
+        {
+          "examples": 138,
+          "lower": 0.0,
+          "mean_probability": 0.054381,
+          "observed_rate": 0.050725,
+          "upper": 0.1
+        },
+        {
+          "examples": 135,
+          "lower": 0.1,
+          "mean_probability": 0.148116,
+          "observed_rate": 0.155556,
+          "upper": 0.2
+        },
+        {
+          "examples": 148,
+          "lower": 0.2,
+          "mean_probability": 0.248459,
+          "observed_rate": 0.297297,
+          "upper": 0.3
+        },
+        {
+          "examples": 104,
+          "lower": 0.3,
+          "mean_probability": 0.34594,
+          "observed_rate": 0.509615,
+          "upper": 0.4
+        },
+        {
+          "examples": 108,
+          "lower": 0.4,
+          "mean_probability": 0.447616,
+          "observed_rate": 0.546296,
+          "upper": 0.5
+        },
+        {
+          "examples": 98,
+          "lower": 0.5,
+          "mean_probability": 0.549066,
+          "observed_rate": 0.612245,
+          "upper": 0.6
+        },
+        {
+          "examples": 116,
+          "lower": 0.6,
+          "mean_probability": 0.655626,
+          "observed_rate": 0.706897,
+          "upper": 0.7
+        },
+        {
+          "examples": 157,
+          "lower": 0.7,
+          "mean_probability": 0.760741,
+          "observed_rate": 0.808917,
+          "upper": 0.8
+        },
+        {
+          "examples": 229,
+          "lower": 0.8,
+          "mean_probability": 0.855428,
+          "observed_rate": 0.930131,
+          "upper": 0.9
+        },
+        {
+          "examples": 231,
+          "lower": 0.9,
+          "mean_probability": 0.945923,
+          "observed_rate": 0.978355,
+          "upper": 1.0
+        }
+      ],
+      "brier": 0.140187,
+      "ece_10": 0.055135,
+      "examples": 1464,
+      "log_loss": 0.431348,
+      "positive_rate": 0.60929
+    },
+    "uncalibrated": {
+      "accuracy_at_0_5": 0.771175,
+      "bins": [
+        {
+          "examples": 79,
+          "lower": 0.0,
+          "mean_probability": 0.070245,
+          "observed_rate": 0.012658,
+          "upper": 0.1
+        },
+        {
+          "examples": 168,
+          "lower": 0.1,
+          "mean_probability": 0.14805,
+          "observed_rate": 0.27381,
+          "upper": 0.2
+        },
+        {
+          "examples": 180,
+          "lower": 0.2,
+          "mean_probability": 0.247147,
+          "observed_rate": 0.338889,
+          "upper": 0.3
+        },
+        {
+          "examples": 140,
+          "lower": 0.3,
+          "mean_probability": 0.351241,
+          "observed_rate": 0.392857,
+          "upper": 0.4
+        },
+        {
+          "examples": 138,
+          "lower": 0.4,
+          "mean_probability": 0.450553,
+          "observed_rate": 0.514493,
+          "upper": 0.5
+        },
+        {
+          "examples": 139,
+          "lower": 0.5,
+          "mean_probability": 0.550472,
+          "observed_rate": 0.683453,
+          "upper": 0.6
+        },
+        {
+          "examples": 169,
+          "lower": 0.6,
+          "mean_probability": 0.652735,
+          "observed_rate": 0.828402,
+          "upper": 0.7
+        },
+        {
+          "examples": 214,
+          "lower": 0.7,
+          "mean_probability": 0.757028,
+          "observed_rate": 0.892523,
+          "upper": 0.8
+        },
+        {
+          "examples": 222,
+          "lower": 0.8,
+          "mean_probability": 0.842478,
+          "observed_rate": 0.977477,
+          "upper": 0.9
+        },
+        {
+          "examples": 15,
+          "lower": 0.9,
+          "mean_probability": 0.922469,
+          "observed_rate": 1.0,
+          "upper": 1.0
+        }
+      ],
+      "brier": 0.165689,
+      "ece_10": 0.112801,
+      "examples": 1464,
+      "log_loss": 0.505544,
+      "positive_rate": 0.60929
+    }
+  }
+}

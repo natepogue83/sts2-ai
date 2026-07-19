@@ -1,0 +1,106 @@
+{
+  "cases": [],
+  "created_at": "2026-07-14T20:27:35.501348+00:00",
+  "exclusions": {
+    "comparison_is_hash_only": true,
+    "manifests": [
+      {
+        "path": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\v0.107.1-a10-search-paired-precommit.json",
+        "seed_count": 10,
+        "sha256": "6bc9573386e450b37f2fb34e456c554f077edcfb1a8de99c186b1721b28f9fae"
+      },
+      {
+        "path": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\value-calibration-v3-precommit.v0.107.1-a10.json",
+        "seed_count": 150,
+        "sha256": "2794d9e4d3359f4caa968c484f38e5c7848a2fa4626c8af10e89774498a28af7"
+      },
+      {
+        "path": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\value-calibration-v4-precommit.v0.107.1-a10.json",
+        "seed_count": 75,
+        "sha256": "b61ffe6ff43135e8fb3819b1a39990f7dea2ad3bcb1d1a448041548a6ac3c657"
+      },
+      {
+        "path": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\headless-combat-deepsets-online-baseline-v0.107.1-a10.precommit.json",
+        "seed_count": 50,
+        "sha256": "ca7dc8312dc1685dff371a87cd3d241d0c9ebc509d869c22feb7a8a86a6affe7"
+      },
+      {
+        "path": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\headless-chip-aware-heuristic-v0.107.1-a10.precommit.json",
+        "seed_count": 50,
+        "sha256": "a6fdfefb17bf2ba25279558ef60d3ba0bb4669652ac4dd19684bfcaa38676a7b"
+      },
+      {
+        "path": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\headless-combat-dagger-r1-v0.107.1-a10.json",
+        "seed_count": 125,
+        "sha256": "34ecd2d7f82e1db1649f73ef2ec7424f4fcbfd0541c775660c7d047ae4dcfc30"
+      },
+      {
+        "path": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\headless-combat-dagger-r2-v0.107.1-a10.json",
+        "seed_count": 125,
+        "sha256": "6c791e248108806126280df0197bc122c790e8bf02ee2c3de60d991bd4bb7b73"
+      },
+      {
+        "path": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\headless-combat-deepsets-vs-dagger-r1-v0.107.1-a10.json",
+        "seed_count": 25,
+        "sha256": "4d07f5538ea9dbdd815b53a667cf2428ec99f8b11350580287795eec7d65ac31"
+      }
+    ],
+    "reserved_seed_hash_count": 610
+  },
+  "name": "stsai-frozen-first-party-human-combat-corpus",
+  "promotion_gate": {
+    "candidate_runtime_failures_at_most_baseline": true,
+    "candidate_truncations_at_most_baseline": true,
+    "candidate_victories_at_least_baseline": true,
+    "evaluation": "fresh paired character-balanced headless seeds after checkpoint freeze",
+    "every_character_mean_paired_floor_delta_at_least": -0.5,
+    "if_failed": "reject the candidate without tuning on its evaluation seeds",
+    "overall_mean_paired_floor_delta_at_least": 1.0
+  },
+  "quality_gate": {
+    "balanced_selection": "stable-hash sample exactly the target per character",
+    "canonical_character_id_required": true,
+    "chosen_action_must_be_uniquely_legal": true,
+    "duplicate_events_allowed": false,
+    "fail_closed": true,
+    "mixed_builds_allowed": false,
+    "mixed_game_assemblies_allowed": false,
+    "monotonic_event_step_required": true,
+    "next_observation_semantics": "not_recorded_for_pre_action_behavior_cloning",
+    "output_split": "train",
+    "run_scoped_anonymous_trajectory_required": true
+  },
+  "schema_version": 1,
+  "source": {
+    "bridge_actions_allowed": false,
+    "bridge_dll_sha256": "e22136744a8d6f42fac1b21a827ec28a817867715cd76ea7741520281c547fcc",
+    "collector": "STS2MCP",
+    "event_schema_version": 2,
+    "event_type": "human_combat_action",
+    "game_assembly_sha256": "a1f9e653f1e28e4076558fee1e60d218619cb7e057b887c6417f62c62c6d7a52",
+    "ownership": "first_party_opt_in_user_gameplay",
+    "policy_suggestions_allowed_during_collection": false,
+    "source": "game_ui",
+    "telemetry_patch_sha256": "5f074062f8bdf956bfba552e0fea28de913e32f50f550291dae47cf8b4915034"
+  },
+  "target": {
+    "ascension": 10,
+    "build_id": "v0.107.1",
+    "characters": [
+      "CHARACTER.IRONCLAD",
+      "CHARACTER.SILENT",
+      "CHARACTER.DEFECT",
+      "CHARACTER.NECROBINDER",
+      "CHARACTER.REGENT"
+    ],
+    "decisions_per_character": 100,
+    "mode": "singleplayer",
+    "total_decisions": 500
+  },
+  "training": {
+    "architecture": "typed character-conditioned Deep Sets combat scorer",
+    "base_validation_and_test_splits_remain_frozen": true,
+    "candidate_count": 1,
+    "human_rows_are_train_only": true
+  }
+}

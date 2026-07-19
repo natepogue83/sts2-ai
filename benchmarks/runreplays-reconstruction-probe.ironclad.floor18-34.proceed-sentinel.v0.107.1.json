@@ -1,0 +1,6237 @@
+{
+  "combat_decisions": [
+    {
+      "chosen_action": {
+        "action": "play_card",
+        "args": {
+          "card_index": 7
+        },
+        "option_id": "CARD.CONFLAGRATION"
+      },
+      "chosen_legal_index": 12,
+      "legal_action_mask": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "legal_actions": [
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 0,
+            "target_index": 0
+          },
+          "option_id": "CARD.FEED|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 0,
+            "target_index": 1
+          },
+          "option_id": "CARD.FEED|TARGET.1"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 1,
+            "target_index": 0
+          },
+          "option_id": "CARD.BASH|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 1,
+            "target_index": 1
+          },
+          "option_id": "CARD.BASH|TARGET.1"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 2,
+            "target_index": 0
+          },
+          "option_id": "CARD.UNRELENTING|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 2,
+            "target_index": 1
+          },
+          "option_id": "CARD.UNRELENTING|TARGET.1"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 3
+          },
+          "option_id": "CARD.DEMON_FORM"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 4
+          },
+          "option_id": "CARD.STONE_ARMOR"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 5,
+            "target_index": 0
+          },
+          "option_id": "CARD.HEADBUTT|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 5,
+            "target_index": 1
+          },
+          "option_id": "CARD.HEADBUTT|TARGET.1"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 6,
+            "target_index": 0
+          },
+          "option_id": "CARD.UPPERCUT|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 6,
+            "target_index": 1
+          },
+          "option_id": "CARD.UPPERCUT|TARGET.1"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 7
+          },
+          "option_id": "CARD.CONFLAGRATION"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 0
+          },
+          "option_id": "POTION.DEXTERITY_POTION"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 1
+          },
+          "option_id": "POTION.TOUCH_OF_INSANITY"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 2
+          },
+          "option_id": "POTION.FLEX_POTION"
+        },
+        {
+          "action": "end_turn",
+          "option_id": "END_TURN"
+        }
+      ],
+      "pre_action_observation": {
+        "ascension": 1,
+        "character": "CHARACTER.IRONCLAD",
+        "context": {
+          "act": 2,
+          "act_name": "Hive",
+          "boss": {
+            "id": "KNOWLEDGE_DEMON_BOSS",
+            "name": "Knowledge Demon"
+          },
+          "current_map_coord": {
+            "col": 0,
+            "row": 1
+          },
+          "floor": 2,
+          "room_type": "Monster",
+          "visited_map_coords": 2
+        },
+        "decision_state": {
+          "discard_pile_count": 0,
+          "draw_pile_count": 12,
+          "encounter_id": "ENCOUNTER.BOWLBUGS_WEAK",
+          "enemies": [
+            {
+              "block": 0,
+              "combat_id": 1,
+              "hp": 45,
+              "id": "MONSTER.BOWLBUG_ROCK",
+              "index": 0,
+              "intends_attack": true,
+              "intents": [
+                {
+                  "damage": 15,
+                  "type": "Attack"
+                }
+              ],
+              "max_hp": 45,
+              "name": "Bowlbug (Rock)",
+              "powers": [
+                {
+                  "amount": 1,
+                  "name": "Imbalanced"
+                }
+              ]
+            },
+            {
+              "block": 0,
+              "combat_id": 2,
+              "hp": 36,
+              "id": "MONSTER.BOWLBUG_NECTAR",
+              "index": 1,
+              "intends_attack": true,
+              "intents": [
+                {
+                  "damage": 3,
+                  "type": "Attack"
+                }
+              ],
+              "max_hp": 36,
+              "name": "Bowlbug (Nectar)",
+              "powers": null
+            }
+          ],
+          "energy": 3,
+          "hand": [
+            {
+              "can_play": true,
+              "combat_card_id": 0,
+              "cost": 1,
+              "damage_by_target": [
+                {
+                  "damage": 10,
+                  "name": "Bowlbug (Rock)",
+                  "target_index": 0
+                },
+                {
+                  "damage": 10,
+                  "name": "Bowlbug (Nectar)",
+                  "target_index": 1
+                }
+              ],
+              "id": "CARD.FEED",
+              "index": 0,
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Feed",
+              "rarity": "Rare",
+              "stats": {
+                "damage": 10,
+                "maxhp": 3
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 1,
+              "cost": 2,
+              "damage_by_target": [
+                {
+                  "damage": 10,
+                  "name": "Bowlbug (Rock)",
+                  "target_index": 0
+                },
+                {
+                  "damage": 10,
+                  "name": "Bowlbug (Nectar)",
+                  "target_index": 1
+                }
+              ],
+              "id": "CARD.BASH",
+              "index": 1,
+              "name": "Bash",
+              "rarity": "Basic",
+              "stats": {
+                "damage": 10,
+                "vulnerablepower": 3
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 2,
+              "cost": 2,
+              "damage_by_target": [
+                {
+                  "damage": 14,
+                  "name": "Bowlbug (Rock)",
+                  "target_index": 0
+                },
+                {
+                  "damage": 14,
+                  "name": "Bowlbug (Nectar)",
+                  "target_index": 1
+                }
+              ],
+              "id": "CARD.UNRELENTING",
+              "index": 2,
+              "name": "Unrelenting",
+              "rarity": "Uncommon",
+              "stats": {
+                "damage": 14
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 3,
+              "cost": 3,
+              "id": "CARD.DEMON_FORM",
+              "index": 3,
+              "name": "Demon Form",
+              "rarity": "Rare",
+              "stats": {
+                "strengthpower": 2
+              },
+              "target_type": "Self",
+              "type": "Power"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 4,
+              "cost": 1,
+              "id": "CARD.STONE_ARMOR",
+              "index": 4,
+              "name": "Stone Armor",
+              "rarity": "Uncommon",
+              "stats": {
+                "platingpower": 6
+              },
+              "target_type": "Self",
+              "type": "Power"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 5,
+              "cost": 1,
+              "damage_by_target": [
+                {
+                  "damage": 9,
+                  "name": "Bowlbug (Rock)",
+                  "target_index": 0
+                },
+                {
+                  "damage": 9,
+                  "name": "Bowlbug (Nectar)",
+                  "target_index": 1
+                }
+              ],
+              "id": "CARD.HEADBUTT",
+              "index": 5,
+              "name": "Headbutt",
+              "rarity": "Common",
+              "stats": {
+                "damage": 9
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 6,
+              "cost": 2,
+              "damage_by_target": [
+                {
+                  "damage": 13,
+                  "name": "Bowlbug (Rock)",
+                  "target_index": 0
+                },
+                {
+                  "damage": 13,
+                  "name": "Bowlbug (Nectar)",
+                  "target_index": 1
+                }
+              ],
+              "id": "CARD.UPPERCUT",
+              "index": 6,
+              "name": "Uppercut",
+              "rarity": "Uncommon",
+              "stats": {
+                "damage": 13,
+                "power": 1
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 19,
+              "cost": 0,
+              "damage_by_target": [
+                {
+                  "damage": 2,
+                  "name": "Bowlbug (Rock)",
+                  "repeat": 4,
+                  "target_index": 0,
+                  "total_damage": 8
+                },
+                {
+                  "damage": 2,
+                  "name": "Bowlbug (Nectar)",
+                  "repeat": 4,
+                  "target_index": 1,
+                  "total_damage": 8
+                }
+              ],
+              "id": "CARD.CONFLAGRATION",
+              "index": 7,
+              "name": "Conflagration",
+              "rarity": "Rare",
+              "stats": {
+                "damage": 2,
+                "repeat": 4
+              },
+              "target_type": "AllEnemies",
+              "type": "Attack"
+            }
+          ],
+          "max_energy": 3,
+          "player_powers": null,
+          "round": 1
+        },
+        "decision_type": "combat_play",
+        "player": {
+          "block": 0,
+          "character": "CHARACTER.IRONCLAD",
+          "deck": [
+            {
+              "after_upgrade": null,
+              "cost": 2,
+              "id": "CARD.BASH",
+              "keywords": null,
+              "name": "Bash",
+              "stats": {
+                "damage": 10,
+                "vulnerablepower": 3
+              },
+              "type": "Attack",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 3,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 42
+                }
+              },
+              "cost": 3,
+              "id": "CARD.BLUDGEON",
+              "keywords": null,
+              "name": "Bludgeon",
+              "stats": {
+                "damage": 32
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 2,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 20
+                }
+              },
+              "cost": 2,
+              "id": "CARD.UNRELENTING",
+              "keywords": null,
+              "name": "Unrelenting",
+              "stats": {
+                "damage": 14
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 12
+                }
+              },
+              "cost": 1,
+              "id": "CARD.HEADBUTT",
+              "keywords": null,
+              "name": "Headbutt",
+              "stats": {
+                "damage": 9
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": null,
+              "cost": 1,
+              "id": "CARD.STONE_ARMOR",
+              "keywords": null,
+              "name": "Stone Armor",
+              "stats": {
+                "platingpower": 6
+              },
+              "type": "Power",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": null,
+              "cost": 1,
+              "id": "CARD.TAUNT",
+              "keywords": null,
+              "name": "Taunt",
+              "stats": {
+                "block": 8,
+                "vulnerablepower": 2
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "cards": 2
+                }
+              },
+              "cost": 1,
+              "id": "CARD.VICIOUS",
+              "keywords": null,
+              "name": "Vicious",
+              "stats": {
+                "cards": 1
+              },
+              "type": "Power",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 2,
+                  "repeat": 5
+                }
+              },
+              "cost": 1,
+              "id": "CARD.CONFLAGRATION",
+              "keywords": null,
+              "name": "Conflagration",
+              "stats": {
+                "damage": 2,
+                "repeat": 4
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 6
+                }
+              },
+              "cost": 1,
+              "id": "CARD.THRASH",
+              "keywords": null,
+              "name": "Thrash",
+              "stats": {
+                "damage": 4
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": null,
+              "cost": 0,
+              "id": "CARD.OFFERING",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Offering",
+              "stats": {
+                "cards": 5,
+                "energy": 2,
+                "hploss": 6
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 12,
+                  "maxhp": 4
+                }
+              },
+              "cost": 1,
+              "id": "CARD.FEED",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Feed",
+              "stats": {
+                "damage": 10,
+                "maxhp": 3
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "strengthpervulnerable": 1,
+                  "vulnerablepower": 2
+                }
+              },
+              "cost": 1,
+              "id": "CARD.DOMINATE",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Dominate",
+              "stats": {
+                "strengthpervulnerable": 1,
+                "vulnerablepower": 1
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 13,
+                  "hploss": 1
+                }
+              },
+              "cost": 1,
+              "id": "CARD.BREAKTHROUGH",
+              "keywords": null,
+              "name": "Breakthrough",
+              "stats": {
+                "damage": 9,
+                "hploss": 1
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 2,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 40
+                }
+              },
+              "cost": 2,
+              "id": "CARD.IMPERVIOUS",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Impervious",
+              "stats": {
+                "block": 30
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 3,
+                "removed_keywords": null,
+                "stats": {
+                  "strengthpower": 3
+                }
+              },
+              "cost": 3,
+              "id": "CARD.DEMON_FORM",
+              "keywords": null,
+              "name": "Demon Form",
+              "stats": {
+                "strengthpower": 2
+              },
+              "type": "Power",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "power": 4
+                }
+              },
+              "cost": 1,
+              "id": "CARD.FEEL_NO_PAIN",
+              "keywords": null,
+              "name": "Feel No Pain",
+              "stats": {
+                "power": 3
+              },
+              "type": "Power",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "cards": 2,
+                  "damage": 10
+                }
+              },
+              "cost": 1,
+              "id": "CARD.POMMEL_STRIKE",
+              "keywords": null,
+              "name": "Pommel Strike",
+              "stats": {
+                "cards": 1,
+                "damage": 9
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 2,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 13,
+                  "power": 2
+                }
+              },
+              "cost": 2,
+              "id": "CARD.UPPERCUT",
+              "keywords": null,
+              "name": "Uppercut",
+              "stats": {
+                "damage": 13,
+                "power": 1
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 9
+                }
+              },
+              "cost": 1,
+              "id": "CARD.TRUE_GRIT",
+              "keywords": null,
+              "name": "True Grit",
+              "stats": {
+                "block": 7
+              },
+              "type": "Skill",
+              "upgraded": false
+            }
+          ],
+          "deck_size": 19,
+          "gold": 145,
+          "hp": 71,
+          "max_hp": 71,
+          "name": "The Ironclad",
+          "potions": [
+            {
+              "id": "POTION.DEXTERITY_POTION",
+              "index": 0,
+              "name": "Dexterity Potion",
+              "target_type": "AnyPlayer",
+              "vars": {
+                "DexterityPower": 2
+              }
+            },
+            {
+              "id": "POTION.TOUCH_OF_INSANITY",
+              "index": 1,
+              "name": "Touch of Insanity",
+              "target_type": "Self",
+              "vars": null
+            },
+            {
+              "id": "POTION.FLEX_POTION",
+              "index": 2,
+              "name": "Flex Potion",
+              "target_type": "AnyPlayer",
+              "vars": {
+                "StrengthPower": 5
+              }
+            }
+          ],
+          "relics": [
+            {
+              "id": "RELIC.BURNING_BLOOD",
+              "name": "Burning Blood",
+              "vars": {
+                "Heal": 6
+              }
+            },
+            {
+              "id": "RELIC.WINGED_BOOTS",
+              "name": "Winged Boots",
+              "vars": {
+                "Rooms": 2
+              }
+            },
+            {
+              "id": "RELIC.BOOK_OF_FIVE_RINGS",
+              "name": "Book of Five Rings",
+              "vars": {
+                "Cards": 5,
+                "Heal": 20
+              }
+            },
+            {
+              "id": "RELIC.BAG_OF_PREPARATION",
+              "name": "Bag of Preparation",
+              "vars": {
+                "Cards": 2
+              }
+            },
+            {
+              "id": "RELIC.ORICHALCUM",
+              "name": "Orichalcum",
+              "vars": {
+                "Block": 6
+              }
+            },
+            {
+              "id": "RELIC.VEXING_PUZZLEBOX",
+              "name": "Vexing Puzzlebox",
+              "vars": null
+            },
+            {
+              "id": "RELIC.PANDORA_S_BOX",
+              "name": "Pandora's Box",
+              "vars": null
+            }
+          ]
+        },
+        "schema_version": 1,
+        "seed": null,
+        "source": "sts2-cli"
+      },
+      "replay_command_index": 217,
+      "replay_command_sha256": "06fa4b0fda0714234391997bebb85be266e18a5b9367fc342f75dc0148dec956",
+      "replay_command_type": "PlayCard"
+    },
+    {
+      "chosen_action": {
+        "action": "play_card",
+        "args": {
+          "card_index": 2,
+          "target_index": 1
+        },
+        "option_id": "CARD.UNRELENTING|TARGET.1"
+      },
+      "chosen_legal_index": 5,
+      "legal_action_mask": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "legal_actions": [
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 0,
+            "target_index": 0
+          },
+          "option_id": "CARD.FEED|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 0,
+            "target_index": 1
+          },
+          "option_id": "CARD.FEED|TARGET.1"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 1,
+            "target_index": 0
+          },
+          "option_id": "CARD.BASH|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 1,
+            "target_index": 1
+          },
+          "option_id": "CARD.BASH|TARGET.1"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 2,
+            "target_index": 0
+          },
+          "option_id": "CARD.UNRELENTING|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 2,
+            "target_index": 1
+          },
+          "option_id": "CARD.UNRELENTING|TARGET.1"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 3
+          },
+          "option_id": "CARD.DEMON_FORM"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 4
+          },
+          "option_id": "CARD.STONE_ARMOR"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 5,
+            "target_index": 0
+          },
+          "option_id": "CARD.HEADBUTT|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 5,
+            "target_index": 1
+          },
+          "option_id": "CARD.HEADBUTT|TARGET.1"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 6,
+            "target_index": 0
+          },
+          "option_id": "CARD.UPPERCUT|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 6,
+            "target_index": 1
+          },
+          "option_id": "CARD.UPPERCUT|TARGET.1"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 0
+          },
+          "option_id": "POTION.DEXTERITY_POTION"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 1
+          },
+          "option_id": "POTION.TOUCH_OF_INSANITY"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 2
+          },
+          "option_id": "POTION.FLEX_POTION"
+        },
+        {
+          "action": "end_turn",
+          "option_id": "END_TURN"
+        }
+      ],
+      "pre_action_observation": {
+        "ascension": 1,
+        "character": "CHARACTER.IRONCLAD",
+        "context": {
+          "act": 2,
+          "act_name": "Hive",
+          "boss": {
+            "id": "KNOWLEDGE_DEMON_BOSS",
+            "name": "Knowledge Demon"
+          },
+          "current_map_coord": {
+            "col": 0,
+            "row": 1
+          },
+          "floor": 2,
+          "room_type": "Monster",
+          "visited_map_coords": 2
+        },
+        "decision_state": {
+          "discard_pile_count": 1,
+          "draw_pile_count": 12,
+          "encounter_id": "ENCOUNTER.BOWLBUGS_WEAK",
+          "enemies": [
+            {
+              "block": 0,
+              "combat_id": 1,
+              "hp": 37,
+              "id": "MONSTER.BOWLBUG_ROCK",
+              "index": 0,
+              "intends_attack": true,
+              "intents": [
+                {
+                  "damage": 15,
+                  "type": "Attack"
+                }
+              ],
+              "max_hp": 45,
+              "name": "Bowlbug (Rock)",
+              "powers": [
+                {
+                  "amount": 1,
+                  "name": "Imbalanced"
+                }
+              ]
+            },
+            {
+              "block": 0,
+              "combat_id": 2,
+              "hp": 28,
+              "id": "MONSTER.BOWLBUG_NECTAR",
+              "index": 1,
+              "intends_attack": true,
+              "intents": [
+                {
+                  "damage": 3,
+                  "type": "Attack"
+                }
+              ],
+              "max_hp": 36,
+              "name": "Bowlbug (Nectar)",
+              "powers": null
+            }
+          ],
+          "energy": 3,
+          "hand": [
+            {
+              "can_play": true,
+              "combat_card_id": 0,
+              "cost": 1,
+              "damage_by_target": [
+                {
+                  "damage": 10,
+                  "name": "Bowlbug (Rock)",
+                  "target_index": 0
+                },
+                {
+                  "damage": 10,
+                  "name": "Bowlbug (Nectar)",
+                  "target_index": 1
+                }
+              ],
+              "id": "CARD.FEED",
+              "index": 0,
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Feed",
+              "rarity": "Rare",
+              "stats": {
+                "damage": 10,
+                "maxhp": 3
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 1,
+              "cost": 2,
+              "damage_by_target": [
+                {
+                  "damage": 10,
+                  "name": "Bowlbug (Rock)",
+                  "target_index": 0
+                },
+                {
+                  "damage": 10,
+                  "name": "Bowlbug (Nectar)",
+                  "target_index": 1
+                }
+              ],
+              "id": "CARD.BASH",
+              "index": 1,
+              "name": "Bash",
+              "rarity": "Basic",
+              "stats": {
+                "damage": 10,
+                "vulnerablepower": 3
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 2,
+              "cost": 2,
+              "damage_by_target": [
+                {
+                  "damage": 14,
+                  "name": "Bowlbug (Rock)",
+                  "target_index": 0
+                },
+                {
+                  "damage": 14,
+                  "name": "Bowlbug (Nectar)",
+                  "target_index": 1
+                }
+              ],
+              "id": "CARD.UNRELENTING",
+              "index": 2,
+              "name": "Unrelenting",
+              "rarity": "Uncommon",
+              "stats": {
+                "damage": 14
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 3,
+              "cost": 3,
+              "id": "CARD.DEMON_FORM",
+              "index": 3,
+              "name": "Demon Form",
+              "rarity": "Rare",
+              "stats": {
+                "strengthpower": 2
+              },
+              "target_type": "Self",
+              "type": "Power"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 4,
+              "cost": 1,
+              "id": "CARD.STONE_ARMOR",
+              "index": 4,
+              "name": "Stone Armor",
+              "rarity": "Uncommon",
+              "stats": {
+                "platingpower": 6
+              },
+              "target_type": "Self",
+              "type": "Power"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 5,
+              "cost": 1,
+              "damage_by_target": [
+                {
+                  "damage": 9,
+                  "name": "Bowlbug (Rock)",
+                  "target_index": 0
+                },
+                {
+                  "damage": 9,
+                  "name": "Bowlbug (Nectar)",
+                  "target_index": 1
+                }
+              ],
+              "id": "CARD.HEADBUTT",
+              "index": 5,
+              "name": "Headbutt",
+              "rarity": "Common",
+              "stats": {
+                "damage": 9
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 6,
+              "cost": 2,
+              "damage_by_target": [
+                {
+                  "damage": 13,
+                  "name": "Bowlbug (Rock)",
+                  "target_index": 0
+                },
+                {
+                  "damage": 13,
+                  "name": "Bowlbug (Nectar)",
+                  "target_index": 1
+                }
+              ],
+              "id": "CARD.UPPERCUT",
+              "index": 6,
+              "name": "Uppercut",
+              "rarity": "Uncommon",
+              "stats": {
+                "damage": 13,
+                "power": 1
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            }
+          ],
+          "max_energy": 3,
+          "player_powers": null,
+          "round": 1
+        },
+        "decision_type": "combat_play",
+        "player": {
+          "block": 0,
+          "character": "CHARACTER.IRONCLAD",
+          "deck": [
+            {
+              "after_upgrade": null,
+              "cost": 2,
+              "id": "CARD.BASH",
+              "keywords": null,
+              "name": "Bash",
+              "stats": {
+                "damage": 10,
+                "vulnerablepower": 3
+              },
+              "type": "Attack",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 3,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 42
+                }
+              },
+              "cost": 3,
+              "id": "CARD.BLUDGEON",
+              "keywords": null,
+              "name": "Bludgeon",
+              "stats": {
+                "damage": 32
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 2,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 20
+                }
+              },
+              "cost": 2,
+              "id": "CARD.UNRELENTING",
+              "keywords": null,
+              "name": "Unrelenting",
+              "stats": {
+                "damage": 14
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 12
+                }
+              },
+              "cost": 1,
+              "id": "CARD.HEADBUTT",
+              "keywords": null,
+              "name": "Headbutt",
+              "stats": {
+                "damage": 9
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": null,
+              "cost": 1,
+              "id": "CARD.STONE_ARMOR",
+              "keywords": null,
+              "name": "Stone Armor",
+              "stats": {
+                "platingpower": 6
+              },
+              "type": "Power",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": null,
+              "cost": 1,
+              "id": "CARD.TAUNT",
+              "keywords": null,
+              "name": "Taunt",
+              "stats": {
+                "block": 8,
+                "vulnerablepower": 2
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "cards": 2
+                }
+              },
+              "cost": 1,
+              "id": "CARD.VICIOUS",
+              "keywords": null,
+              "name": "Vicious",
+              "stats": {
+                "cards": 1
+              },
+              "type": "Power",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 2,
+                  "repeat": 5
+                }
+              },
+              "cost": 1,
+              "id": "CARD.CONFLAGRATION",
+              "keywords": null,
+              "name": "Conflagration",
+              "stats": {
+                "damage": 2,
+                "repeat": 4
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 6
+                }
+              },
+              "cost": 1,
+              "id": "CARD.THRASH",
+              "keywords": null,
+              "name": "Thrash",
+              "stats": {
+                "damage": 4
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": null,
+              "cost": 0,
+              "id": "CARD.OFFERING",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Offering",
+              "stats": {
+                "cards": 5,
+                "energy": 2,
+                "hploss": 6
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 12,
+                  "maxhp": 4
+                }
+              },
+              "cost": 1,
+              "id": "CARD.FEED",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Feed",
+              "stats": {
+                "damage": 10,
+                "maxhp": 3
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "strengthpervulnerable": 1,
+                  "vulnerablepower": 2
+                }
+              },
+              "cost": 1,
+              "id": "CARD.DOMINATE",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Dominate",
+              "stats": {
+                "strengthpervulnerable": 1,
+                "vulnerablepower": 1
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 13,
+                  "hploss": 1
+                }
+              },
+              "cost": 1,
+              "id": "CARD.BREAKTHROUGH",
+              "keywords": null,
+              "name": "Breakthrough",
+              "stats": {
+                "damage": 9,
+                "hploss": 1
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 2,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 40
+                }
+              },
+              "cost": 2,
+              "id": "CARD.IMPERVIOUS",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Impervious",
+              "stats": {
+                "block": 30
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 3,
+                "removed_keywords": null,
+                "stats": {
+                  "strengthpower": 3
+                }
+              },
+              "cost": 3,
+              "id": "CARD.DEMON_FORM",
+              "keywords": null,
+              "name": "Demon Form",
+              "stats": {
+                "strengthpower": 2
+              },
+              "type": "Power",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "power": 4
+                }
+              },
+              "cost": 1,
+              "id": "CARD.FEEL_NO_PAIN",
+              "keywords": null,
+              "name": "Feel No Pain",
+              "stats": {
+                "power": 3
+              },
+              "type": "Power",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "cards": 2,
+                  "damage": 10
+                }
+              },
+              "cost": 1,
+              "id": "CARD.POMMEL_STRIKE",
+              "keywords": null,
+              "name": "Pommel Strike",
+              "stats": {
+                "cards": 1,
+                "damage": 9
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 2,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 13,
+                  "power": 2
+                }
+              },
+              "cost": 2,
+              "id": "CARD.UPPERCUT",
+              "keywords": null,
+              "name": "Uppercut",
+              "stats": {
+                "damage": 13,
+                "power": 1
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 9
+                }
+              },
+              "cost": 1,
+              "id": "CARD.TRUE_GRIT",
+              "keywords": null,
+              "name": "True Grit",
+              "stats": {
+                "block": 7
+              },
+              "type": "Skill",
+              "upgraded": false
+            }
+          ],
+          "deck_size": 19,
+          "gold": 145,
+          "hp": 71,
+          "max_hp": 71,
+          "name": "The Ironclad",
+          "potions": [
+            {
+              "id": "POTION.DEXTERITY_POTION",
+              "index": 0,
+              "name": "Dexterity Potion",
+              "target_type": "AnyPlayer",
+              "vars": {
+                "DexterityPower": 2
+              }
+            },
+            {
+              "id": "POTION.TOUCH_OF_INSANITY",
+              "index": 1,
+              "name": "Touch of Insanity",
+              "target_type": "Self",
+              "vars": null
+            },
+            {
+              "id": "POTION.FLEX_POTION",
+              "index": 2,
+              "name": "Flex Potion",
+              "target_type": "AnyPlayer",
+              "vars": {
+                "StrengthPower": 5
+              }
+            }
+          ],
+          "relics": [
+            {
+              "id": "RELIC.BURNING_BLOOD",
+              "name": "Burning Blood",
+              "vars": {
+                "Heal": 6
+              }
+            },
+            {
+              "id": "RELIC.WINGED_BOOTS",
+              "name": "Winged Boots",
+              "vars": {
+                "Rooms": 2
+              }
+            },
+            {
+              "id": "RELIC.BOOK_OF_FIVE_RINGS",
+              "name": "Book of Five Rings",
+              "vars": {
+                "Cards": 5,
+                "Heal": 20
+              }
+            },
+            {
+              "id": "RELIC.BAG_OF_PREPARATION",
+              "name": "Bag of Preparation",
+              "vars": {
+                "Cards": 2
+              }
+            },
+            {
+              "id": "RELIC.ORICHALCUM",
+              "name": "Orichalcum",
+              "vars": {
+                "Block": 6
+              }
+            },
+            {
+              "id": "RELIC.VEXING_PUZZLEBOX",
+              "name": "Vexing Puzzlebox",
+              "vars": null
+            },
+            {
+              "id": "RELIC.PANDORA_S_BOX",
+              "name": "Pandora's Box",
+              "vars": null
+            }
+          ]
+        },
+        "schema_version": 1,
+        "seed": null,
+        "source": "sts2-cli"
+      },
+      "replay_command_index": 218,
+      "replay_command_sha256": "2dd83ed3f9783d82b011e9b040535f19974457414b60934db65185ec6605edfb",
+      "replay_command_type": "PlayCard"
+    },
+    {
+      "chosen_action": {
+        "action": "play_card",
+        "args": {
+          "card_index": 1,
+          "target_index": 1
+        },
+        "option_id": "CARD.BASH|TARGET.1"
+      },
+      "chosen_legal_index": 3,
+      "legal_action_mask": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "legal_actions": [
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 0,
+            "target_index": 0
+          },
+          "option_id": "CARD.FEED|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 0,
+            "target_index": 1
+          },
+          "option_id": "CARD.FEED|TARGET.1"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 1,
+            "target_index": 0
+          },
+          "option_id": "CARD.BASH|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 1,
+            "target_index": 1
+          },
+          "option_id": "CARD.BASH|TARGET.1"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 3
+          },
+          "option_id": "CARD.STONE_ARMOR"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 4,
+            "target_index": 0
+          },
+          "option_id": "CARD.HEADBUTT|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 4,
+            "target_index": 1
+          },
+          "option_id": "CARD.HEADBUTT|TARGET.1"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 5,
+            "target_index": 0
+          },
+          "option_id": "CARD.UPPERCUT|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 5,
+            "target_index": 1
+          },
+          "option_id": "CARD.UPPERCUT|TARGET.1"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 0
+          },
+          "option_id": "POTION.DEXTERITY_POTION"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 1
+          },
+          "option_id": "POTION.TOUCH_OF_INSANITY"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 2
+          },
+          "option_id": "POTION.FLEX_POTION"
+        },
+        {
+          "action": "end_turn",
+          "option_id": "END_TURN"
+        }
+      ],
+      "pre_action_observation": {
+        "ascension": 1,
+        "character": "CHARACTER.IRONCLAD",
+        "context": {
+          "act": 2,
+          "act_name": "Hive",
+          "boss": {
+            "id": "KNOWLEDGE_DEMON_BOSS",
+            "name": "Knowledge Demon"
+          },
+          "current_map_coord": {
+            "col": 0,
+            "row": 1
+          },
+          "floor": 2,
+          "room_type": "Monster",
+          "visited_map_coords": 2
+        },
+        "decision_state": {
+          "discard_pile_count": 2,
+          "draw_pile_count": 12,
+          "encounter_id": "ENCOUNTER.BOWLBUGS_WEAK",
+          "enemies": [
+            {
+              "block": 0,
+              "combat_id": 1,
+              "hp": 37,
+              "id": "MONSTER.BOWLBUG_ROCK",
+              "index": 0,
+              "intends_attack": true,
+              "intents": [
+                {
+                  "damage": 15,
+                  "type": "Attack"
+                }
+              ],
+              "max_hp": 45,
+              "name": "Bowlbug (Rock)",
+              "powers": [
+                {
+                  "amount": 1,
+                  "name": "Imbalanced"
+                }
+              ]
+            },
+            {
+              "block": 0,
+              "combat_id": 2,
+              "hp": 14,
+              "id": "MONSTER.BOWLBUG_NECTAR",
+              "index": 1,
+              "intends_attack": true,
+              "intents": [
+                {
+                  "damage": 3,
+                  "type": "Attack"
+                }
+              ],
+              "max_hp": 36,
+              "name": "Bowlbug (Nectar)",
+              "powers": null
+            }
+          ],
+          "energy": 1,
+          "hand": [
+            {
+              "can_play": true,
+              "combat_card_id": 0,
+              "cost": 0,
+              "damage_by_target": [
+                {
+                  "damage": 10,
+                  "name": "Bowlbug (Rock)",
+                  "target_index": 0
+                },
+                {
+                  "damage": 10,
+                  "name": "Bowlbug (Nectar)",
+                  "target_index": 1
+                }
+              ],
+              "id": "CARD.FEED",
+              "index": 0,
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Feed",
+              "rarity": "Rare",
+              "stats": {
+                "damage": 10,
+                "maxhp": 3
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 1,
+              "cost": 0,
+              "damage_by_target": [
+                {
+                  "damage": 10,
+                  "name": "Bowlbug (Rock)",
+                  "target_index": 0
+                },
+                {
+                  "damage": 10,
+                  "name": "Bowlbug (Nectar)",
+                  "target_index": 1
+                }
+              ],
+              "id": "CARD.BASH",
+              "index": 1,
+              "name": "Bash",
+              "rarity": "Basic",
+              "stats": {
+                "damage": 10,
+                "vulnerablepower": 3
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            },
+            {
+              "can_play": false,
+              "combat_card_id": 3,
+              "cost": 3,
+              "id": "CARD.DEMON_FORM",
+              "index": 2,
+              "name": "Demon Form",
+              "rarity": "Rare",
+              "stats": {
+                "strengthpower": 2
+              },
+              "target_type": "Self",
+              "type": "Power"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 4,
+              "cost": 1,
+              "id": "CARD.STONE_ARMOR",
+              "index": 3,
+              "name": "Stone Armor",
+              "rarity": "Uncommon",
+              "stats": {
+                "platingpower": 6
+              },
+              "target_type": "Self",
+              "type": "Power"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 5,
+              "cost": 0,
+              "damage_by_target": [
+                {
+                  "damage": 9,
+                  "name": "Bowlbug (Rock)",
+                  "target_index": 0
+                },
+                {
+                  "damage": 9,
+                  "name": "Bowlbug (Nectar)",
+                  "target_index": 1
+                }
+              ],
+              "id": "CARD.HEADBUTT",
+              "index": 4,
+              "name": "Headbutt",
+              "rarity": "Common",
+              "stats": {
+                "damage": 9
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 6,
+              "cost": 0,
+              "damage_by_target": [
+                {
+                  "damage": 13,
+                  "name": "Bowlbug (Rock)",
+                  "target_index": 0
+                },
+                {
+                  "damage": 13,
+                  "name": "Bowlbug (Nectar)",
+                  "target_index": 1
+                }
+              ],
+              "id": "CARD.UPPERCUT",
+              "index": 5,
+              "name": "Uppercut",
+              "rarity": "Uncommon",
+              "stats": {
+                "damage": 13,
+                "power": 1
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            }
+          ],
+          "max_energy": 3,
+          "player_powers": [
+            {
+              "amount": 1,
+              "name": "Free Attack"
+            }
+          ],
+          "round": 1
+        },
+        "decision_type": "combat_play",
+        "player": {
+          "block": 0,
+          "character": "CHARACTER.IRONCLAD",
+          "deck": [
+            {
+              "after_upgrade": null,
+              "cost": 2,
+              "id": "CARD.BASH",
+              "keywords": null,
+              "name": "Bash",
+              "stats": {
+                "damage": 10,
+                "vulnerablepower": 3
+              },
+              "type": "Attack",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 3,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 42
+                }
+              },
+              "cost": 3,
+              "id": "CARD.BLUDGEON",
+              "keywords": null,
+              "name": "Bludgeon",
+              "stats": {
+                "damage": 32
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 2,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 20
+                }
+              },
+              "cost": 2,
+              "id": "CARD.UNRELENTING",
+              "keywords": null,
+              "name": "Unrelenting",
+              "stats": {
+                "damage": 14
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 12
+                }
+              },
+              "cost": 1,
+              "id": "CARD.HEADBUTT",
+              "keywords": null,
+              "name": "Headbutt",
+              "stats": {
+                "damage": 9
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": null,
+              "cost": 1,
+              "id": "CARD.STONE_ARMOR",
+              "keywords": null,
+              "name": "Stone Armor",
+              "stats": {
+                "platingpower": 6
+              },
+              "type": "Power",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": null,
+              "cost": 1,
+              "id": "CARD.TAUNT",
+              "keywords": null,
+              "name": "Taunt",
+              "stats": {
+                "block": 8,
+                "vulnerablepower": 2
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "cards": 2
+                }
+              },
+              "cost": 1,
+              "id": "CARD.VICIOUS",
+              "keywords": null,
+              "name": "Vicious",
+              "stats": {
+                "cards": 1
+              },
+              "type": "Power",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 2,
+                  "repeat": 5
+                }
+              },
+              "cost": 1,
+              "id": "CARD.CONFLAGRATION",
+              "keywords": null,
+              "name": "Conflagration",
+              "stats": {
+                "damage": 2,
+                "repeat": 4
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 6
+                }
+              },
+              "cost": 1,
+              "id": "CARD.THRASH",
+              "keywords": null,
+              "name": "Thrash",
+              "stats": {
+                "damage": 4
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": null,
+              "cost": 0,
+              "id": "CARD.OFFERING",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Offering",
+              "stats": {
+                "cards": 5,
+                "energy": 2,
+                "hploss": 6
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 12,
+                  "maxhp": 4
+                }
+              },
+              "cost": 1,
+              "id": "CARD.FEED",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Feed",
+              "stats": {
+                "damage": 10,
+                "maxhp": 3
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "strengthpervulnerable": 1,
+                  "vulnerablepower": 2
+                }
+              },
+              "cost": 1,
+              "id": "CARD.DOMINATE",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Dominate",
+              "stats": {
+                "strengthpervulnerable": 1,
+                "vulnerablepower": 1
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 13,
+                  "hploss": 1
+                }
+              },
+              "cost": 1,
+              "id": "CARD.BREAKTHROUGH",
+              "keywords": null,
+              "name": "Breakthrough",
+              "stats": {
+                "damage": 9,
+                "hploss": 1
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 2,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 40
+                }
+              },
+              "cost": 2,
+              "id": "CARD.IMPERVIOUS",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Impervious",
+              "stats": {
+                "block": 30
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 3,
+                "removed_keywords": null,
+                "stats": {
+                  "strengthpower": 3
+                }
+              },
+              "cost": 3,
+              "id": "CARD.DEMON_FORM",
+              "keywords": null,
+              "name": "Demon Form",
+              "stats": {
+                "strengthpower": 2
+              },
+              "type": "Power",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "power": 4
+                }
+              },
+              "cost": 1,
+              "id": "CARD.FEEL_NO_PAIN",
+              "keywords": null,
+              "name": "Feel No Pain",
+              "stats": {
+                "power": 3
+              },
+              "type": "Power",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "cards": 2,
+                  "damage": 10
+                }
+              },
+              "cost": 1,
+              "id": "CARD.POMMEL_STRIKE",
+              "keywords": null,
+              "name": "Pommel Strike",
+              "stats": {
+                "cards": 1,
+                "damage": 9
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 2,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 13,
+                  "power": 2
+                }
+              },
+              "cost": 2,
+              "id": "CARD.UPPERCUT",
+              "keywords": null,
+              "name": "Uppercut",
+              "stats": {
+                "damage": 13,
+                "power": 1
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 9
+                }
+              },
+              "cost": 1,
+              "id": "CARD.TRUE_GRIT",
+              "keywords": null,
+              "name": "True Grit",
+              "stats": {
+                "block": 7
+              },
+              "type": "Skill",
+              "upgraded": false
+            }
+          ],
+          "deck_size": 19,
+          "gold": 145,
+          "hp": 71,
+          "max_hp": 71,
+          "name": "The Ironclad",
+          "potions": [
+            {
+              "id": "POTION.DEXTERITY_POTION",
+              "index": 0,
+              "name": "Dexterity Potion",
+              "target_type": "AnyPlayer",
+              "vars": {
+                "DexterityPower": 2
+              }
+            },
+            {
+              "id": "POTION.TOUCH_OF_INSANITY",
+              "index": 1,
+              "name": "Touch of Insanity",
+              "target_type": "Self",
+              "vars": null
+            },
+            {
+              "id": "POTION.FLEX_POTION",
+              "index": 2,
+              "name": "Flex Potion",
+              "target_type": "AnyPlayer",
+              "vars": {
+                "StrengthPower": 5
+              }
+            }
+          ],
+          "relics": [
+            {
+              "id": "RELIC.BURNING_BLOOD",
+              "name": "Burning Blood",
+              "vars": {
+                "Heal": 6
+              }
+            },
+            {
+              "id": "RELIC.WINGED_BOOTS",
+              "name": "Winged Boots",
+              "vars": {
+                "Rooms": 2
+              }
+            },
+            {
+              "id": "RELIC.BOOK_OF_FIVE_RINGS",
+              "name": "Book of Five Rings",
+              "vars": {
+                "Cards": 5,
+                "Heal": 20
+              }
+            },
+            {
+              "id": "RELIC.BAG_OF_PREPARATION",
+              "name": "Bag of Preparation",
+              "vars": {
+                "Cards": 2
+              }
+            },
+            {
+              "id": "RELIC.ORICHALCUM",
+              "name": "Orichalcum",
+              "vars": {
+                "Block": 6
+              }
+            },
+            {
+              "id": "RELIC.VEXING_PUZZLEBOX",
+              "name": "Vexing Puzzlebox",
+              "vars": null
+            },
+            {
+              "id": "RELIC.PANDORA_S_BOX",
+              "name": "Pandora's Box",
+              "vars": null
+            }
+          ]
+        },
+        "schema_version": 1,
+        "seed": null,
+        "source": "sts2-cli"
+      },
+      "replay_command_index": 219,
+      "replay_command_sha256": "d085a1bf4fd8d21880c7865a76e7d5743e0f820bf342a087f76de79a992dd7bb",
+      "replay_command_type": "PlayCard"
+    },
+    {
+      "chosen_action": {
+        "action": "play_card",
+        "args": {
+          "card_index": 0,
+          "target_index": 1
+        },
+        "option_id": "CARD.FEED|TARGET.1"
+      },
+      "chosen_legal_index": 1,
+      "legal_action_mask": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "legal_actions": [
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 0,
+            "target_index": 0
+          },
+          "option_id": "CARD.FEED|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 0,
+            "target_index": 1
+          },
+          "option_id": "CARD.FEED|TARGET.1"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 2
+          },
+          "option_id": "CARD.STONE_ARMOR"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 3,
+            "target_index": 0
+          },
+          "option_id": "CARD.HEADBUTT|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 3,
+            "target_index": 1
+          },
+          "option_id": "CARD.HEADBUTT|TARGET.1"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 0
+          },
+          "option_id": "POTION.DEXTERITY_POTION"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 1
+          },
+          "option_id": "POTION.TOUCH_OF_INSANITY"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 2
+          },
+          "option_id": "POTION.FLEX_POTION"
+        },
+        {
+          "action": "end_turn",
+          "option_id": "END_TURN"
+        }
+      ],
+      "pre_action_observation": {
+        "ascension": 1,
+        "character": "CHARACTER.IRONCLAD",
+        "context": {
+          "act": 2,
+          "act_name": "Hive",
+          "boss": {
+            "id": "KNOWLEDGE_DEMON_BOSS",
+            "name": "Knowledge Demon"
+          },
+          "current_map_coord": {
+            "col": 0,
+            "row": 1
+          },
+          "floor": 2,
+          "room_type": "Monster",
+          "visited_map_coords": 2
+        },
+        "decision_state": {
+          "discard_pile_count": 3,
+          "draw_pile_count": 12,
+          "encounter_id": "ENCOUNTER.BOWLBUGS_WEAK",
+          "enemies": [
+            {
+              "block": 0,
+              "combat_id": 1,
+              "hp": 37,
+              "id": "MONSTER.BOWLBUG_ROCK",
+              "index": 0,
+              "intends_attack": true,
+              "intents": [
+                {
+                  "damage": 15,
+                  "type": "Attack"
+                }
+              ],
+              "max_hp": 45,
+              "name": "Bowlbug (Rock)",
+              "powers": [
+                {
+                  "amount": 1,
+                  "name": "Imbalanced"
+                }
+              ]
+            },
+            {
+              "block": 0,
+              "combat_id": 2,
+              "hp": 4,
+              "id": "MONSTER.BOWLBUG_NECTAR",
+              "index": 1,
+              "intends_attack": true,
+              "intents": [
+                {
+                  "damage": 3,
+                  "type": "Attack"
+                }
+              ],
+              "max_hp": 36,
+              "name": "Bowlbug (Nectar)",
+              "powers": [
+                {
+                  "amount": 3,
+                  "name": "Vulnerable"
+                }
+              ]
+            }
+          ],
+          "energy": 1,
+          "hand": [
+            {
+              "can_play": true,
+              "combat_card_id": 0,
+              "cost": 1,
+              "damage_by_target": [
+                {
+                  "damage": 10,
+                  "name": "Bowlbug (Rock)",
+                  "target_index": 0
+                },
+                {
+                  "damage": 15,
+                  "name": "Bowlbug (Nectar)",
+                  "target_index": 1
+                }
+              ],
+              "id": "CARD.FEED",
+              "index": 0,
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Feed",
+              "rarity": "Rare",
+              "stats": {
+                "damage": 10,
+                "maxhp": 3
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            },
+            {
+              "can_play": false,
+              "combat_card_id": 3,
+              "cost": 3,
+              "id": "CARD.DEMON_FORM",
+              "index": 1,
+              "name": "Demon Form",
+              "rarity": "Rare",
+              "stats": {
+                "strengthpower": 2
+              },
+              "target_type": "Self",
+              "type": "Power"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 4,
+              "cost": 1,
+              "id": "CARD.STONE_ARMOR",
+              "index": 2,
+              "name": "Stone Armor",
+              "rarity": "Uncommon",
+              "stats": {
+                "platingpower": 6
+              },
+              "target_type": "Self",
+              "type": "Power"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 5,
+              "cost": 1,
+              "damage_by_target": [
+                {
+                  "damage": 9,
+                  "name": "Bowlbug (Rock)",
+                  "target_index": 0
+                },
+                {
+                  "damage": 13,
+                  "name": "Bowlbug (Nectar)",
+                  "target_index": 1
+                }
+              ],
+              "id": "CARD.HEADBUTT",
+              "index": 3,
+              "name": "Headbutt",
+              "rarity": "Common",
+              "stats": {
+                "damage": 9
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            },
+            {
+              "can_play": false,
+              "combat_card_id": 6,
+              "cost": 2,
+              "damage_by_target": [
+                {
+                  "damage": 13,
+                  "name": "Bowlbug (Rock)",
+                  "target_index": 0
+                },
+                {
+                  "damage": 19,
+                  "name": "Bowlbug (Nectar)",
+                  "target_index": 1
+                }
+              ],
+              "id": "CARD.UPPERCUT",
+              "index": 4,
+              "name": "Uppercut",
+              "rarity": "Uncommon",
+              "stats": {
+                "damage": 13,
+                "power": 1
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            }
+          ],
+          "max_energy": 3,
+          "player_powers": null,
+          "round": 1
+        },
+        "decision_type": "combat_play",
+        "player": {
+          "block": 0,
+          "character": "CHARACTER.IRONCLAD",
+          "deck": [
+            {
+              "after_upgrade": null,
+              "cost": 2,
+              "id": "CARD.BASH",
+              "keywords": null,
+              "name": "Bash",
+              "stats": {
+                "damage": 10,
+                "vulnerablepower": 3
+              },
+              "type": "Attack",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 3,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 42
+                }
+              },
+              "cost": 3,
+              "id": "CARD.BLUDGEON",
+              "keywords": null,
+              "name": "Bludgeon",
+              "stats": {
+                "damage": 32
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 2,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 20
+                }
+              },
+              "cost": 2,
+              "id": "CARD.UNRELENTING",
+              "keywords": null,
+              "name": "Unrelenting",
+              "stats": {
+                "damage": 14
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 12
+                }
+              },
+              "cost": 1,
+              "id": "CARD.HEADBUTT",
+              "keywords": null,
+              "name": "Headbutt",
+              "stats": {
+                "damage": 9
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": null,
+              "cost": 1,
+              "id": "CARD.STONE_ARMOR",
+              "keywords": null,
+              "name": "Stone Armor",
+              "stats": {
+                "platingpower": 6
+              },
+              "type": "Power",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": null,
+              "cost": 1,
+              "id": "CARD.TAUNT",
+              "keywords": null,
+              "name": "Taunt",
+              "stats": {
+                "block": 8,
+                "vulnerablepower": 2
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "cards": 2
+                }
+              },
+              "cost": 1,
+              "id": "CARD.VICIOUS",
+              "keywords": null,
+              "name": "Vicious",
+              "stats": {
+                "cards": 1
+              },
+              "type": "Power",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 2,
+                  "repeat": 5
+                }
+              },
+              "cost": 1,
+              "id": "CARD.CONFLAGRATION",
+              "keywords": null,
+              "name": "Conflagration",
+              "stats": {
+                "damage": 2,
+                "repeat": 4
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 6
+                }
+              },
+              "cost": 1,
+              "id": "CARD.THRASH",
+              "keywords": null,
+              "name": "Thrash",
+              "stats": {
+                "damage": 4
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": null,
+              "cost": 0,
+              "id": "CARD.OFFERING",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Offering",
+              "stats": {
+                "cards": 5,
+                "energy": 2,
+                "hploss": 6
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 12,
+                  "maxhp": 4
+                }
+              },
+              "cost": 1,
+              "id": "CARD.FEED",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Feed",
+              "stats": {
+                "damage": 10,
+                "maxhp": 3
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "strengthpervulnerable": 1,
+                  "vulnerablepower": 2
+                }
+              },
+              "cost": 1,
+              "id": "CARD.DOMINATE",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Dominate",
+              "stats": {
+                "strengthpervulnerable": 1,
+                "vulnerablepower": 1
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 13,
+                  "hploss": 1
+                }
+              },
+              "cost": 1,
+              "id": "CARD.BREAKTHROUGH",
+              "keywords": null,
+              "name": "Breakthrough",
+              "stats": {
+                "damage": 9,
+                "hploss": 1
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 2,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 40
+                }
+              },
+              "cost": 2,
+              "id": "CARD.IMPERVIOUS",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Impervious",
+              "stats": {
+                "block": 30
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 3,
+                "removed_keywords": null,
+                "stats": {
+                  "strengthpower": 3
+                }
+              },
+              "cost": 3,
+              "id": "CARD.DEMON_FORM",
+              "keywords": null,
+              "name": "Demon Form",
+              "stats": {
+                "strengthpower": 2
+              },
+              "type": "Power",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "power": 4
+                }
+              },
+              "cost": 1,
+              "id": "CARD.FEEL_NO_PAIN",
+              "keywords": null,
+              "name": "Feel No Pain",
+              "stats": {
+                "power": 3
+              },
+              "type": "Power",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "cards": 2,
+                  "damage": 10
+                }
+              },
+              "cost": 1,
+              "id": "CARD.POMMEL_STRIKE",
+              "keywords": null,
+              "name": "Pommel Strike",
+              "stats": {
+                "cards": 1,
+                "damage": 9
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 2,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 13,
+                  "power": 2
+                }
+              },
+              "cost": 2,
+              "id": "CARD.UPPERCUT",
+              "keywords": null,
+              "name": "Uppercut",
+              "stats": {
+                "damage": 13,
+                "power": 1
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 9
+                }
+              },
+              "cost": 1,
+              "id": "CARD.TRUE_GRIT",
+              "keywords": null,
+              "name": "True Grit",
+              "stats": {
+                "block": 7
+              },
+              "type": "Skill",
+              "upgraded": false
+            }
+          ],
+          "deck_size": 19,
+          "gold": 145,
+          "hp": 71,
+          "max_hp": 71,
+          "name": "The Ironclad",
+          "potions": [
+            {
+              "id": "POTION.DEXTERITY_POTION",
+              "index": 0,
+              "name": "Dexterity Potion",
+              "target_type": "AnyPlayer",
+              "vars": {
+                "DexterityPower": 2
+              }
+            },
+            {
+              "id": "POTION.TOUCH_OF_INSANITY",
+              "index": 1,
+              "name": "Touch of Insanity",
+              "target_type": "Self",
+              "vars": null
+            },
+            {
+              "id": "POTION.FLEX_POTION",
+              "index": 2,
+              "name": "Flex Potion",
+              "target_type": "AnyPlayer",
+              "vars": {
+                "StrengthPower": 5
+              }
+            }
+          ],
+          "relics": [
+            {
+              "id": "RELIC.BURNING_BLOOD",
+              "name": "Burning Blood",
+              "vars": {
+                "Heal": 6
+              }
+            },
+            {
+              "id": "RELIC.WINGED_BOOTS",
+              "name": "Winged Boots",
+              "vars": {
+                "Rooms": 2
+              }
+            },
+            {
+              "id": "RELIC.BOOK_OF_FIVE_RINGS",
+              "name": "Book of Five Rings",
+              "vars": {
+                "Cards": 5,
+                "Heal": 20
+              }
+            },
+            {
+              "id": "RELIC.BAG_OF_PREPARATION",
+              "name": "Bag of Preparation",
+              "vars": {
+                "Cards": 2
+              }
+            },
+            {
+              "id": "RELIC.ORICHALCUM",
+              "name": "Orichalcum",
+              "vars": {
+                "Block": 6
+              }
+            },
+            {
+              "id": "RELIC.VEXING_PUZZLEBOX",
+              "name": "Vexing Puzzlebox",
+              "vars": null
+            },
+            {
+              "id": "RELIC.PANDORA_S_BOX",
+              "name": "Pandora's Box",
+              "vars": null
+            }
+          ]
+        },
+        "schema_version": 1,
+        "seed": null,
+        "source": "sts2-cli"
+      },
+      "replay_command_index": 220,
+      "replay_command_sha256": "93075fb7adeaca37ba8bd219db6fff982da62c917ded3e2ab5f69d47811329d3",
+      "replay_command_type": "PlayCard"
+    },
+    {
+      "chosen_action": {
+        "action": "end_turn",
+        "option_id": "END_TURN"
+      },
+      "chosen_legal_index": 3,
+      "legal_action_mask": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "legal_actions": [
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 0
+          },
+          "option_id": "POTION.DEXTERITY_POTION"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 1
+          },
+          "option_id": "POTION.TOUCH_OF_INSANITY"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 2
+          },
+          "option_id": "POTION.FLEX_POTION"
+        },
+        {
+          "action": "end_turn",
+          "option_id": "END_TURN"
+        }
+      ],
+      "pre_action_observation": {
+        "ascension": 1,
+        "character": "CHARACTER.IRONCLAD",
+        "context": {
+          "act": 2,
+          "act_name": "Hive",
+          "boss": {
+            "id": "KNOWLEDGE_DEMON_BOSS",
+            "name": "Knowledge Demon"
+          },
+          "current_map_coord": {
+            "col": 0,
+            "row": 1
+          },
+          "floor": 2,
+          "room_type": "Monster",
+          "visited_map_coords": 2
+        },
+        "decision_state": {
+          "discard_pile_count": 3,
+          "draw_pile_count": 12,
+          "encounter_id": "ENCOUNTER.BOWLBUGS_WEAK",
+          "enemies": [
+            {
+              "block": 0,
+              "combat_id": 1,
+              "hp": 37,
+              "id": "MONSTER.BOWLBUG_ROCK",
+              "index": 0,
+              "intends_attack": true,
+              "intents": [
+                {
+                  "damage": 15,
+                  "type": "Attack"
+                }
+              ],
+              "max_hp": 45,
+              "name": "Bowlbug (Rock)",
+              "powers": [
+                {
+                  "amount": 1,
+                  "name": "Imbalanced"
+                }
+              ]
+            }
+          ],
+          "energy": 0,
+          "hand": [
+            {
+              "can_play": false,
+              "combat_card_id": 3,
+              "cost": 3,
+              "id": "CARD.DEMON_FORM",
+              "index": 0,
+              "name": "Demon Form",
+              "rarity": "Rare",
+              "stats": {
+                "strengthpower": 2
+              },
+              "target_type": "Self",
+              "type": "Power"
+            },
+            {
+              "can_play": false,
+              "combat_card_id": 4,
+              "cost": 1,
+              "id": "CARD.STONE_ARMOR",
+              "index": 1,
+              "name": "Stone Armor",
+              "rarity": "Uncommon",
+              "stats": {
+                "platingpower": 6
+              },
+              "target_type": "Self",
+              "type": "Power"
+            },
+            {
+              "can_play": false,
+              "combat_card_id": 5,
+              "cost": 1,
+              "damage_by_target": [
+                {
+                  "damage": 9,
+                  "name": "Bowlbug (Rock)",
+                  "target_index": 0
+                }
+              ],
+              "id": "CARD.HEADBUTT",
+              "index": 2,
+              "name": "Headbutt",
+              "rarity": "Common",
+              "stats": {
+                "damage": 9
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            },
+            {
+              "can_play": false,
+              "combat_card_id": 6,
+              "cost": 2,
+              "damage_by_target": [
+                {
+                  "damage": 13,
+                  "name": "Bowlbug (Rock)",
+                  "target_index": 0
+                }
+              ],
+              "id": "CARD.UPPERCUT",
+              "index": 3,
+              "name": "Uppercut",
+              "rarity": "Uncommon",
+              "stats": {
+                "damage": 13,
+                "power": 1
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            }
+          ],
+          "max_energy": 3,
+          "player_powers": null,
+          "round": 1
+        },
+        "decision_type": "combat_play",
+        "player": {
+          "block": 0,
+          "character": "CHARACTER.IRONCLAD",
+          "deck": [
+            {
+              "after_upgrade": null,
+              "cost": 2,
+              "id": "CARD.BASH",
+              "keywords": null,
+              "name": "Bash",
+              "stats": {
+                "damage": 10,
+                "vulnerablepower": 3
+              },
+              "type": "Attack",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 3,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 42
+                }
+              },
+              "cost": 3,
+              "id": "CARD.BLUDGEON",
+              "keywords": null,
+              "name": "Bludgeon",
+              "stats": {
+                "damage": 32
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 2,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 20
+                }
+              },
+              "cost": 2,
+              "id": "CARD.UNRELENTING",
+              "keywords": null,
+              "name": "Unrelenting",
+              "stats": {
+                "damage": 14
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 12
+                }
+              },
+              "cost": 1,
+              "id": "CARD.HEADBUTT",
+              "keywords": null,
+              "name": "Headbutt",
+              "stats": {
+                "damage": 9
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": null,
+              "cost": 1,
+              "id": "CARD.STONE_ARMOR",
+              "keywords": null,
+              "name": "Stone Armor",
+              "stats": {
+                "platingpower": 6
+              },
+              "type": "Power",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": null,
+              "cost": 1,
+              "id": "CARD.TAUNT",
+              "keywords": null,
+              "name": "Taunt",
+              "stats": {
+                "block": 8,
+                "vulnerablepower": 2
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "cards": 2
+                }
+              },
+              "cost": 1,
+              "id": "CARD.VICIOUS",
+              "keywords": null,
+              "name": "Vicious",
+              "stats": {
+                "cards": 1
+              },
+              "type": "Power",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 2,
+                  "repeat": 5
+                }
+              },
+              "cost": 1,
+              "id": "CARD.CONFLAGRATION",
+              "keywords": null,
+              "name": "Conflagration",
+              "stats": {
+                "damage": 2,
+                "repeat": 4
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 6
+                }
+              },
+              "cost": 1,
+              "id": "CARD.THRASH",
+              "keywords": null,
+              "name": "Thrash",
+              "stats": {
+                "damage": 4
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": null,
+              "cost": 0,
+              "id": "CARD.OFFERING",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Offering",
+              "stats": {
+                "cards": 5,
+                "energy": 2,
+                "hploss": 6
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 12,
+                  "maxhp": 4
+                }
+              },
+              "cost": 1,
+              "id": "CARD.FEED",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Feed",
+              "stats": {
+                "damage": 10,
+                "maxhp": 3
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "strengthpervulnerable": 1,
+                  "vulnerablepower": 2
+                }
+              },
+              "cost": 1,
+              "id": "CARD.DOMINATE",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Dominate",
+              "stats": {
+                "strengthpervulnerable": 1,
+                "vulnerablepower": 1
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 13,
+                  "hploss": 1
+                }
+              },
+              "cost": 1,
+              "id": "CARD.BREAKTHROUGH",
+              "keywords": null,
+              "name": "Breakthrough",
+              "stats": {
+                "damage": 9,
+                "hploss": 1
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 2,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 40
+                }
+              },
+              "cost": 2,
+              "id": "CARD.IMPERVIOUS",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Impervious",
+              "stats": {
+                "block": 30
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 3,
+                "removed_keywords": null,
+                "stats": {
+                  "strengthpower": 3
+                }
+              },
+              "cost": 3,
+              "id": "CARD.DEMON_FORM",
+              "keywords": null,
+              "name": "Demon Form",
+              "stats": {
+                "strengthpower": 2
+              },
+              "type": "Power",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "power": 4
+                }
+              },
+              "cost": 1,
+              "id": "CARD.FEEL_NO_PAIN",
+              "keywords": null,
+              "name": "Feel No Pain",
+              "stats": {
+                "power": 3
+              },
+              "type": "Power",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "cards": 2,
+                  "damage": 10
+                }
+              },
+              "cost": 1,
+              "id": "CARD.POMMEL_STRIKE",
+              "keywords": null,
+              "name": "Pommel Strike",
+              "stats": {
+                "cards": 1,
+                "damage": 9
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 2,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 13,
+                  "power": 2
+                }
+              },
+              "cost": 2,
+              "id": "CARD.UPPERCUT",
+              "keywords": null,
+              "name": "Uppercut",
+              "stats": {
+                "damage": 13,
+                "power": 1
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 9
+                }
+              },
+              "cost": 1,
+              "id": "CARD.TRUE_GRIT",
+              "keywords": null,
+              "name": "True Grit",
+              "stats": {
+                "block": 7
+              },
+              "type": "Skill",
+              "upgraded": false
+            }
+          ],
+          "deck_size": 19,
+          "gold": 145,
+          "hp": 74,
+          "max_hp": 74,
+          "name": "The Ironclad",
+          "potions": [
+            {
+              "id": "POTION.DEXTERITY_POTION",
+              "index": 0,
+              "name": "Dexterity Potion",
+              "target_type": "AnyPlayer",
+              "vars": {
+                "DexterityPower": 2
+              }
+            },
+            {
+              "id": "POTION.TOUCH_OF_INSANITY",
+              "index": 1,
+              "name": "Touch of Insanity",
+              "target_type": "Self",
+              "vars": null
+            },
+            {
+              "id": "POTION.FLEX_POTION",
+              "index": 2,
+              "name": "Flex Potion",
+              "target_type": "AnyPlayer",
+              "vars": {
+                "StrengthPower": 5
+              }
+            }
+          ],
+          "relics": [
+            {
+              "id": "RELIC.BURNING_BLOOD",
+              "name": "Burning Blood",
+              "vars": {
+                "Heal": 6
+              }
+            },
+            {
+              "id": "RELIC.WINGED_BOOTS",
+              "name": "Winged Boots",
+              "vars": {
+                "Rooms": 2
+              }
+            },
+            {
+              "id": "RELIC.BOOK_OF_FIVE_RINGS",
+              "name": "Book of Five Rings",
+              "vars": {
+                "Cards": 5,
+                "Heal": 20
+              }
+            },
+            {
+              "id": "RELIC.BAG_OF_PREPARATION",
+              "name": "Bag of Preparation",
+              "vars": {
+                "Cards": 2
+              }
+            },
+            {
+              "id": "RELIC.ORICHALCUM",
+              "name": "Orichalcum",
+              "vars": {
+                "Block": 6
+              }
+            },
+            {
+              "id": "RELIC.VEXING_PUZZLEBOX",
+              "name": "Vexing Puzzlebox",
+              "vars": null
+            },
+            {
+              "id": "RELIC.PANDORA_S_BOX",
+              "name": "Pandora's Box",
+              "vars": null
+            }
+          ]
+        },
+        "schema_version": 1,
+        "seed": null,
+        "source": "sts2-cli"
+      },
+      "replay_command_index": 221,
+      "replay_command_sha256": "cfbc887a800cb9c6f602092e6d6dff1f9aaf254092d3cd1ec6ac6841436fbb3a",
+      "replay_command_type": "EndTurn"
+    },
+    {
+      "chosen_action": {
+        "action": "play_card",
+        "args": {
+          "card_index": 1
+        },
+        "option_id": "CARD.OFFERING"
+      },
+      "chosen_legal_index": 1,
+      "legal_action_mask": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "legal_actions": [
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 0
+          },
+          "option_id": "CARD.TRUE_GRIT"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 1
+          },
+          "option_id": "CARD.OFFERING"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 2
+          },
+          "option_id": "CARD.VICIOUS"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 3,
+            "target_index": 0
+          },
+          "option_id": "CARD.BLUDGEON|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 4
+          },
+          "option_id": "CARD.BREAKTHROUGH"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 0
+          },
+          "option_id": "POTION.DEXTERITY_POTION"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 1
+          },
+          "option_id": "POTION.TOUCH_OF_INSANITY"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 2
+          },
+          "option_id": "POTION.FLEX_POTION"
+        },
+        {
+          "action": "end_turn",
+          "option_id": "END_TURN"
+        }
+      ],
+      "pre_action_observation": {
+        "ascension": 1,
+        "character": "CHARACTER.IRONCLAD",
+        "context": {
+          "act": 2,
+          "act_name": "Hive",
+          "boss": {
+            "id": "KNOWLEDGE_DEMON_BOSS",
+            "name": "Knowledge Demon"
+          },
+          "current_map_coord": {
+            "col": 0,
+            "row": 1
+          },
+          "floor": 2,
+          "room_type": "Monster",
+          "visited_map_coords": 2
+        },
+        "decision_state": {
+          "discard_pile_count": 7,
+          "draw_pile_count": 7,
+          "encounter_id": "ENCOUNTER.BOWLBUGS_WEAK",
+          "enemies": [
+            {
+              "block": 0,
+              "combat_id": 1,
+              "hp": 37,
+              "id": "MONSTER.BOWLBUG_ROCK",
+              "index": 0,
+              "intends_attack": true,
+              "intents": [
+                {
+                  "damage": 15,
+                  "type": "Attack"
+                }
+              ],
+              "max_hp": 45,
+              "name": "Bowlbug (Rock)",
+              "powers": [
+                {
+                  "amount": 1,
+                  "name": "Imbalanced"
+                }
+              ]
+            }
+          ],
+          "energy": 3,
+          "hand": [
+            {
+              "can_play": true,
+              "combat_card_id": 7,
+              "cost": 1,
+              "id": "CARD.TRUE_GRIT",
+              "index": 0,
+              "name": "True Grit",
+              "rarity": "Common",
+              "stats": {
+                "block": 7
+              },
+              "target_type": "Self",
+              "type": "Skill"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 8,
+              "cost": 0,
+              "id": "CARD.OFFERING",
+              "index": 1,
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Offering",
+              "rarity": "Rare",
+              "stats": {
+                "cards": 5,
+                "energy": 2,
+                "hploss": 6
+              },
+              "target_type": "Self",
+              "type": "Skill"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 9,
+              "cost": 1,
+              "id": "CARD.VICIOUS",
+              "index": 2,
+              "name": "Vicious",
+              "rarity": "Uncommon",
+              "stats": {
+                "cards": 1
+              },
+              "target_type": "Self",
+              "type": "Power"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 10,
+              "cost": 3,
+              "damage_by_target": [
+                {
+                  "damage": 32,
+                  "name": "Bowlbug (Rock)",
+                  "target_index": 0
+                }
+              ],
+              "id": "CARD.BLUDGEON",
+              "index": 3,
+              "name": "Bludgeon",
+              "rarity": "Uncommon",
+              "stats": {
+                "damage": 32
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 11,
+              "cost": 1,
+              "damage_by_target": [
+                {
+                  "damage": 9,
+                  "name": "Bowlbug (Rock)",
+                  "target_index": 0
+                }
+              ],
+              "id": "CARD.BREAKTHROUGH",
+              "index": 4,
+              "name": "Breakthrough",
+              "rarity": "Common",
+              "stats": {
+                "damage": 9,
+                "hploss": 1
+              },
+              "target_type": "AllEnemies",
+              "type": "Attack"
+            }
+          ],
+          "max_energy": 3,
+          "player_powers": null,
+          "round": 2
+        },
+        "decision_type": "combat_play",
+        "player": {
+          "block": 0,
+          "character": "CHARACTER.IRONCLAD",
+          "deck": [
+            {
+              "after_upgrade": null,
+              "cost": 2,
+              "id": "CARD.BASH",
+              "keywords": null,
+              "name": "Bash",
+              "stats": {
+                "damage": 10,
+                "vulnerablepower": 3
+              },
+              "type": "Attack",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 3,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 42
+                }
+              },
+              "cost": 3,
+              "id": "CARD.BLUDGEON",
+              "keywords": null,
+              "name": "Bludgeon",
+              "stats": {
+                "damage": 32
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 2,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 20
+                }
+              },
+              "cost": 2,
+              "id": "CARD.UNRELENTING",
+              "keywords": null,
+              "name": "Unrelenting",
+              "stats": {
+                "damage": 14
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 12
+                }
+              },
+              "cost": 1,
+              "id": "CARD.HEADBUTT",
+              "keywords": null,
+              "name": "Headbutt",
+              "stats": {
+                "damage": 9
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": null,
+              "cost": 1,
+              "id": "CARD.STONE_ARMOR",
+              "keywords": null,
+              "name": "Stone Armor",
+              "stats": {
+                "platingpower": 6
+              },
+              "type": "Power",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": null,
+              "cost": 1,
+              "id": "CARD.TAUNT",
+              "keywords": null,
+              "name": "Taunt",
+              "stats": {
+                "block": 8,
+                "vulnerablepower": 2
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "cards": 2
+                }
+              },
+              "cost": 1,
+              "id": "CARD.VICIOUS",
+              "keywords": null,
+              "name": "Vicious",
+              "stats": {
+                "cards": 1
+              },
+              "type": "Power",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 2,
+                  "repeat": 5
+                }
+              },
+              "cost": 1,
+              "id": "CARD.CONFLAGRATION",
+              "keywords": null,
+              "name": "Conflagration",
+              "stats": {
+                "damage": 2,
+                "repeat": 4
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 6
+                }
+              },
+              "cost": 1,
+              "id": "CARD.THRASH",
+              "keywords": null,
+              "name": "Thrash",
+              "stats": {
+                "damage": 4
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": null,
+              "cost": 0,
+              "id": "CARD.OFFERING",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Offering",
+              "stats": {
+                "cards": 5,
+                "energy": 2,
+                "hploss": 6
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 12,
+                  "maxhp": 4
+                }
+              },
+              "cost": 1,
+              "id": "CARD.FEED",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Feed",
+              "stats": {
+                "damage": 10,
+                "maxhp": 3
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "strengthpervulnerable": 1,
+                  "vulnerablepower": 2
+                }
+              },
+              "cost": 1,
+              "id": "CARD.DOMINATE",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Dominate",
+              "stats": {
+                "strengthpervulnerable": 1,
+                "vulnerablepower": 1
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 13,
+                  "hploss": 1
+                }
+              },
+              "cost": 1,
+              "id": "CARD.BREAKTHROUGH",
+              "keywords": null,
+              "name": "Breakthrough",
+              "stats": {
+                "damage": 9,
+                "hploss": 1
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 2,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 40
+                }
+              },
+              "cost": 2,
+              "id": "CARD.IMPERVIOUS",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Impervious",
+              "stats": {
+                "block": 30
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 3,
+                "removed_keywords": null,
+                "stats": {
+                  "strengthpower": 3
+                }
+              },
+              "cost": 3,
+              "id": "CARD.DEMON_FORM",
+              "keywords": null,
+              "name": "Demon Form",
+              "stats": {
+                "strengthpower": 2
+              },
+              "type": "Power",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "power": 4
+                }
+              },
+              "cost": 1,
+              "id": "CARD.FEEL_NO_PAIN",
+              "keywords": null,
+              "name": "Feel No Pain",
+              "stats": {
+                "power": 3
+              },
+              "type": "Power",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "cards": 2,
+                  "damage": 10
+                }
+              },
+              "cost": 1,
+              "id": "CARD.POMMEL_STRIKE",
+              "keywords": null,
+              "name": "Pommel Strike",
+              "stats": {
+                "cards": 1,
+                "damage": 9
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 2,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 13,
+                  "power": 2
+                }
+              },
+              "cost": 2,
+              "id": "CARD.UPPERCUT",
+              "keywords": null,
+              "name": "Uppercut",
+              "stats": {
+                "damage": 13,
+                "power": 1
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 9
+                }
+              },
+              "cost": 1,
+              "id": "CARD.TRUE_GRIT",
+              "keywords": null,
+              "name": "True Grit",
+              "stats": {
+                "block": 7
+              },
+              "type": "Skill",
+              "upgraded": false
+            }
+          ],
+          "deck_size": 19,
+          "gold": 145,
+          "hp": 65,
+          "max_hp": 74,
+          "name": "The Ironclad",
+          "potions": [
+            {
+              "id": "POTION.DEXTERITY_POTION",
+              "index": 0,
+              "name": "Dexterity Potion",
+              "target_type": "AnyPlayer",
+              "vars": {
+                "DexterityPower": 2
+              }
+            },
+            {
+              "id": "POTION.TOUCH_OF_INSANITY",
+              "index": 1,
+              "name": "Touch of Insanity",
+              "target_type": "Self",
+              "vars": null
+            },
+            {
+              "id": "POTION.FLEX_POTION",
+              "index": 2,
+              "name": "Flex Potion",
+              "target_type": "AnyPlayer",
+              "vars": {
+                "StrengthPower": 5
+              }
+            }
+          ],
+          "relics": [
+            {
+              "id": "RELIC.BURNING_BLOOD",
+              "name": "Burning Blood",
+              "vars": {
+                "Heal": 6
+              }
+            },
+            {
+              "id": "RELIC.WINGED_BOOTS",
+              "name": "Winged Boots",
+              "vars": {
+                "Rooms": 2
+              }
+            },
+            {
+              "id": "RELIC.BOOK_OF_FIVE_RINGS",
+              "name": "Book of Five Rings",
+              "vars": {
+                "Cards": 5,
+                "Heal": 20
+              }
+            },
+            {
+              "id": "RELIC.BAG_OF_PREPARATION",
+              "name": "Bag of Preparation",
+              "vars": {
+                "Cards": 2
+              }
+            },
+            {
+              "id": "RELIC.ORICHALCUM",
+              "name": "Orichalcum",
+              "vars": {
+                "Block": 6
+              }
+            },
+            {
+              "id": "RELIC.VEXING_PUZZLEBOX",
+              "name": "Vexing Puzzlebox",
+              "vars": null
+            },
+            {
+              "id": "RELIC.PANDORA_S_BOX",
+              "name": "Pandora's Box",
+              "vars": null
+            }
+          ]
+        },
+        "schema_version": 1,
+        "seed": null,
+        "source": "sts2-cli"
+      },
+      "replay_command_index": 222,
+      "replay_command_sha256": "b4f9fa5440931c369a6121b55f5c12603f77089ac2ee0e23364e062f6d21d3d3",
+      "replay_command_type": "PlayCard"
+    },
+    {
+      "chosen_action": {
+        "action": "play_card",
+        "args": {
+          "card_index": 2,
+          "target_index": 0
+        },
+        "option_id": "CARD.BLUDGEON|TARGET.0"
+      },
+      "chosen_legal_index": 2,
+      "legal_action_mask": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "legal_actions": [
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 0
+          },
+          "option_id": "CARD.TRUE_GRIT"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 1
+          },
+          "option_id": "CARD.VICIOUS"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 2,
+            "target_index": 0
+          },
+          "option_id": "CARD.BLUDGEON|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 3
+          },
+          "option_id": "CARD.BREAKTHROUGH"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 4
+          },
+          "option_id": "CARD.IMPERVIOUS"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 5,
+            "target_index": 0
+          },
+          "option_id": "CARD.THRASH|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 6,
+            "target_index": 0
+          },
+          "option_id": "CARD.TAUNT|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 7,
+            "target_index": 0
+          },
+          "option_id": "CARD.POMMEL_STRIKE|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 8
+          },
+          "option_id": "CARD.CONFLAGRATION"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 0
+          },
+          "option_id": "POTION.DEXTERITY_POTION"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 1
+          },
+          "option_id": "POTION.TOUCH_OF_INSANITY"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 2
+          },
+          "option_id": "POTION.FLEX_POTION"
+        },
+        {
+          "action": "end_turn",
+          "option_id": "END_TURN"
+        }
+      ],
+      "pre_action_observation": {
+        "ascension": 1,
+        "character": "CHARACTER.IRONCLAD",
+        "context": {
+          "act": 2,
+          "act_name": "Hive",
+          "boss": {
+            "id": "KNOWLEDGE_DEMON_BOSS",
+            "name": "Knowledge Demon"
+          },
+          "current_map_coord": {
+            "col": 0,
+            "row": 1
+          },
+          "floor": 2,
+          "room_type": "Monster",
+          "visited_map_coords": 2
+        },
+        "decision_state": {
+          "discard_pile_count": 7,
+          "draw_pile_count": 2,
+          "encounter_id": "ENCOUNTER.BOWLBUGS_WEAK",
+          "enemies": [
+            {
+              "block": 0,
+              "combat_id": 1,
+              "hp": 37,
+              "id": "MONSTER.BOWLBUG_ROCK",
+              "index": 0,
+              "intends_attack": true,
+              "intents": [
+                {
+                  "damage": 15,
+                  "type": "Attack"
+                }
+              ],
+              "max_hp": 45,
+              "name": "Bowlbug (Rock)",
+              "powers": [
+                {
+                  "amount": 1,
+                  "name": "Imbalanced"
+                }
+              ]
+            }
+          ],
+          "energy": 5,
+          "hand": [
+            {
+              "can_play": true,
+              "combat_card_id": 7,
+              "cost": 1,
+              "id": "CARD.TRUE_GRIT",
+              "index": 0,
+              "name": "True Grit",
+              "rarity": "Common",
+              "stats": {
+                "block": 7
+              },
+              "target_type": "Self",
+              "type": "Skill"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 9,
+              "cost": 1,
+              "id": "CARD.VICIOUS",
+              "index": 1,
+              "name": "Vicious",
+              "rarity": "Uncommon",
+              "stats": {
+                "cards": 1
+              },
+              "target_type": "Self",
+              "type": "Power"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 10,
+              "cost": 3,
+              "damage_by_target": [
+                {
+                  "damage": 32,
+                  "name": "Bowlbug (Rock)",
+                  "target_index": 0
+                }
+              ],
+              "id": "CARD.BLUDGEON",
+              "index": 2,
+              "name": "Bludgeon",
+              "rarity": "Uncommon",
+              "stats": {
+                "damage": 32
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 11,
+              "cost": 1,
+              "damage_by_target": [
+                {
+                  "damage": 9,
+                  "name": "Bowlbug (Rock)",
+                  "target_index": 0
+                }
+              ],
+              "id": "CARD.BREAKTHROUGH",
+              "index": 3,
+              "name": "Breakthrough",
+              "rarity": "Common",
+              "stats": {
+                "damage": 9,
+                "hploss": 1
+              },
+              "target_type": "AllEnemies",
+              "type": "Attack"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 12,
+              "cost": 2,
+              "id": "CARD.IMPERVIOUS",
+              "index": 4,
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Impervious",
+              "rarity": "Rare",
+              "stats": {
+                "block": 30
+              },
+              "target_type": "Self",
+              "type": "Skill"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 13,
+              "cost": 1,
+              "damage_by_target": [
+                {
+                  "damage": 4,
+                  "name": "Bowlbug (Rock)",
+                  "target_index": 0
+                }
+              ],
+              "id": "CARD.THRASH",
+              "index": 5,
+              "name": "Thrash",
+              "rarity": "Rare",
+              "stats": {
+                "damage": 4
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 14,
+              "cost": 1,
+              "id": "CARD.TAUNT",
+              "index": 6,
+              "name": "Taunt",
+              "rarity": "Uncommon",
+              "stats": {
+                "block": 8,
+                "vulnerablepower": 2
+              },
+              "target_type": "AnyEnemy",
+              "type": "Skill"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 15,
+              "cost": 1,
+              "damage_by_target": [
+                {
+                  "damage": 9,
+                  "name": "Bowlbug (Rock)",
+                  "target_index": 0
+                }
+              ],
+              "id": "CARD.POMMEL_STRIKE",
+              "index": 7,
+              "name": "Pommel Strike",
+              "rarity": "Common",
+              "stats": {
+                "cards": 1,
+                "damage": 9
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 16,
+              "cost": 1,
+              "damage_by_target": [
+                {
+                  "damage": 2,
+                  "name": "Bowlbug (Rock)",
+                  "repeat": 4,
+                  "target_index": 0,
+                  "total_damage": 8
+                }
+              ],
+              "id": "CARD.CONFLAGRATION",
+              "index": 8,
+              "name": "Conflagration",
+              "rarity": "Rare",
+              "stats": {
+                "damage": 2,
+                "repeat": 4
+              },
+              "target_type": "AllEnemies",
+              "type": "Attack"
+            }
+          ],
+          "max_energy": 3,
+          "player_powers": null,
+          "round": 2
+        },
+        "decision_type": "combat_play",
+        "player": {
+          "block": 0,
+          "character": "CHARACTER.IRONCLAD",
+          "deck": [
+            {
+              "after_upgrade": null,
+              "cost": 2,
+              "id": "CARD.BASH",
+              "keywords": null,
+              "name": "Bash",
+              "stats": {
+                "damage": 10,
+                "vulnerablepower": 3
+              },
+              "type": "Attack",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 3,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 42
+                }
+              },
+              "cost": 3,
+              "id": "CARD.BLUDGEON",
+              "keywords": null,
+              "name": "Bludgeon",
+              "stats": {
+                "damage": 32
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 2,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 20
+                }
+              },
+              "cost": 2,
+              "id": "CARD.UNRELENTING",
+              "keywords": null,
+              "name": "Unrelenting",
+              "stats": {
+                "damage": 14
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 12
+                }
+              },
+              "cost": 1,
+              "id": "CARD.HEADBUTT",
+              "keywords": null,
+              "name": "Headbutt",
+              "stats": {
+                "damage": 9
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": null,
+              "cost": 1,
+              "id": "CARD.STONE_ARMOR",
+              "keywords": null,
+              "name": "Stone Armor",
+              "stats": {
+                "platingpower": 6
+              },
+              "type": "Power",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": null,
+              "cost": 1,
+              "id": "CARD.TAUNT",
+              "keywords": null,
+              "name": "Taunt",
+              "stats": {
+                "block": 8,
+                "vulnerablepower": 2
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "cards": 2
+                }
+              },
+              "cost": 1,
+              "id": "CARD.VICIOUS",
+              "keywords": null,
+              "name": "Vicious",
+              "stats": {
+                "cards": 1
+              },
+              "type": "Power",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 2,
+                  "repeat": 5
+                }
+              },
+              "cost": 1,
+              "id": "CARD.CONFLAGRATION",
+              "keywords": null,
+              "name": "Conflagration",
+              "stats": {
+                "damage": 2,
+                "repeat": 4
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 6
+                }
+              },
+              "cost": 1,
+              "id": "CARD.THRASH",
+              "keywords": null,
+              "name": "Thrash",
+              "stats": {
+                "damage": 4
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": null,
+              "cost": 0,
+              "id": "CARD.OFFERING",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Offering",
+              "stats": {
+                "cards": 5,
+                "energy": 2,
+                "hploss": 6
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 12,
+                  "maxhp": 4
+                }
+              },
+              "cost": 1,
+              "id": "CARD.FEED",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Feed",
+              "stats": {
+                "damage": 10,
+                "maxhp": 3
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "strengthpervulnerable": 1,
+                  "vulnerablepower": 2
+                }
+              },
+              "cost": 1,
+              "id": "CARD.DOMINATE",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Dominate",
+              "stats": {
+                "strengthpervulnerable": 1,
+                "vulnerablepower": 1
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 13,
+                  "hploss": 1
+                }
+              },
+              "cost": 1,
+              "id": "CARD.BREAKTHROUGH",
+              "keywords": null,
+              "name": "Breakthrough",
+              "stats": {
+                "damage": 9,
+                "hploss": 1
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 2,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 40
+                }
+              },
+              "cost": 2,
+              "id": "CARD.IMPERVIOUS",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Impervious",
+              "stats": {
+                "block": 30
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 3,
+                "removed_keywords": null,
+                "stats": {
+                  "strengthpower": 3
+                }
+              },
+              "cost": 3,
+              "id": "CARD.DEMON_FORM",
+              "keywords": null,
+              "name": "Demon Form",
+              "stats": {
+                "strengthpower": 2
+              },
+              "type": "Power",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "power": 4
+                }
+              },
+              "cost": 1,
+              "id": "CARD.FEEL_NO_PAIN",
+              "keywords": null,
+              "name": "Feel No Pain",
+              "stats": {
+                "power": 3
+              },
+              "type": "Power",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "cards": 2,
+                  "damage": 10
+                }
+              },
+              "cost": 1,
+              "id": "CARD.POMMEL_STRIKE",
+              "keywords": null,
+              "name": "Pommel Strike",
+              "stats": {
+                "cards": 1,
+                "damage": 9
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 2,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 13,
+                  "power": 2
+                }
+              },
+              "cost": 2,
+              "id": "CARD.UPPERCUT",
+              "keywords": null,
+              "name": "Uppercut",
+              "stats": {
+                "damage": 13,
+                "power": 1
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 9
+                }
+              },
+              "cost": 1,
+              "id": "CARD.TRUE_GRIT",
+              "keywords": null,
+              "name": "True Grit",
+              "stats": {
+                "block": 7
+              },
+              "type": "Skill",
+              "upgraded": false
+            }
+          ],
+          "deck_size": 19,
+          "gold": 145,
+          "hp": 59,
+          "max_hp": 74,
+          "name": "The Ironclad",
+          "potions": [
+            {
+              "id": "POTION.DEXTERITY_POTION",
+              "index": 0,
+              "name": "Dexterity Potion",
+              "target_type": "AnyPlayer",
+              "vars": {
+                "DexterityPower": 2
+              }
+            },
+            {
+              "id": "POTION.TOUCH_OF_INSANITY",
+              "index": 1,
+              "name": "Touch of Insanity",
+              "target_type": "Self",
+              "vars": null
+            },
+            {
+              "id": "POTION.FLEX_POTION",
+              "index": 2,
+              "name": "Flex Potion",
+              "target_type": "AnyPlayer",
+              "vars": {
+                "StrengthPower": 5
+              }
+            }
+          ],
+          "relics": [
+            {
+              "id": "RELIC.BURNING_BLOOD",
+              "name": "Burning Blood",
+              "vars": {
+                "Heal": 6
+              }
+            },
+            {
+              "id": "RELIC.WINGED_BOOTS",
+              "name": "Winged Boots",
+              "vars": {
+                "Rooms": 2
+              }
+            },
+            {
+              "id": "RELIC.BOOK_OF_FIVE_RINGS",
+              "name": "Book of Five Rings",
+              "vars": {
+                "Cards": 5,
+                "Heal": 20
+              }
+            },
+            {
+              "id": "RELIC.BAG_OF_PREPARATION",
+              "name": "Bag of Preparation",
+              "vars": {
+                "Cards": 2
+              }
+            },
+            {
+              "id": "RELIC.ORICHALCUM",
+              "name": "Orichalcum",
+              "vars": {
+                "Block": 6
+              }
+            },
+            {
+              "id": "RELIC.VEXING_PUZZLEBOX",
+              "name": "Vexing Puzzlebox",
+              "vars": null
+            },
+            {
+              "id": "RELIC.PANDORA_S_BOX",
+              "name": "Pandora's Box",
+              "vars": null
+            }
+          ]
+        },
+        "schema_version": 1,
+        "seed": null,
+        "source": "sts2-cli"
+      },
+      "replay_command_index": 223,
+      "replay_command_sha256": "537958b7b4480691f80f56b012da49b10036ce67a09ff47b21df9184df10b7d1",
+      "replay_command_type": "PlayCard"
+    },
+    {
+      "chosen_action": {
+        "action": "play_card",
+        "args": {
+          "card_index": 4,
+          "target_index": 0
+        },
+        "option_id": "CARD.THRASH|TARGET.0"
+      },
+      "chosen_legal_index": 4,
+      "legal_action_mask": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "legal_actions": [
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 0
+          },
+          "option_id": "CARD.TRUE_GRIT"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 1
+          },
+          "option_id": "CARD.VICIOUS"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 2
+          },
+          "option_id": "CARD.BREAKTHROUGH"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 3
+          },
+          "option_id": "CARD.IMPERVIOUS"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 4,
+            "target_index": 0
+          },
+          "option_id": "CARD.THRASH|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 5,
+            "target_index": 0
+          },
+          "option_id": "CARD.TAUNT|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 6,
+            "target_index": 0
+          },
+          "option_id": "CARD.POMMEL_STRIKE|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 7
+          },
+          "option_id": "CARD.CONFLAGRATION"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 0
+          },
+          "option_id": "POTION.DEXTERITY_POTION"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 1
+          },
+          "option_id": "POTION.TOUCH_OF_INSANITY"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 2
+          },
+          "option_id": "POTION.FLEX_POTION"
+        },
+        {
+          "action": "end_turn",
+          "option_id": "END_TURN"
+        }
+      ],
+      "pre_action_observation": {
+        "ascension": 1,
+        "character": "CHARACTER.IRONCLAD",
+        "context": {
+          "act": 2,
+          "act_name": "Hive",
+          "boss": {
+            "id": "KNOWLEDGE_DEMON_BOSS",
+            "name": "Knowledge Demon"
+          },
+          "current_map_coord": {
+            "col": 0,
+            "row": 1
+          },
+          "floor": 2,
+          "room_type": "Monster",
+          "visited_map_coords": 2
+        },
+        "decision_state": {
+          "discard_pile_count": 8,
+          "draw_pile_count": 2,
+          "encounter_id": "ENCOUNTER.BOWLBUGS_WEAK",
+          "enemies": [
+            {
+              "block": 0,
+              "combat_id": 1,
+              "hp": 5,
+              "id": "MONSTER.BOWLBUG_ROCK",
+              "index": 0,
+              "intends_attack": true,
+              "intents": [
+                {
+                  "damage": 15,
+                  "type": "Attack"
+                }
+              ],
+              "max_hp": 45,
+              "name": "Bowlbug (Rock)",
+              "powers": [
+                {
+                  "amount": 1,
+                  "name": "Imbalanced"
+                }
+              ]
+            }
+          ],
+          "energy": 2,
+          "hand": [
+            {
+              "can_play": true,
+              "combat_card_id": 7,
+              "cost": 1,
+              "id": "CARD.TRUE_GRIT",
+              "index": 0,
+              "name": "True Grit",
+              "rarity": "Common",
+              "stats": {
+                "block": 7
+              },
+              "target_type": "Self",
+              "type": "Skill"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 9,
+              "cost": 1,
+              "id": "CARD.VICIOUS",
+              "index": 1,
+              "name": "Vicious",
+              "rarity": "Uncommon",
+              "stats": {
+                "cards": 1
+              },
+              "target_type": "Self",
+              "type": "Power"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 11,
+              "cost": 1,
+              "damage_by_target": [
+                {
+                  "damage": 9,
+                  "name": "Bowlbug (Rock)",
+                  "target_index": 0
+                }
+              ],
+              "id": "CARD.BREAKTHROUGH",
+              "index": 2,
+              "name": "Breakthrough",
+              "rarity": "Common",
+              "stats": {
+                "damage": 9,
+                "hploss": 1
+              },
+              "target_type": "AllEnemies",
+              "type": "Attack"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 12,
+              "cost": 2,
+              "id": "CARD.IMPERVIOUS",
+              "index": 3,
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Impervious",
+              "rarity": "Rare",
+              "stats": {
+                "block": 30
+              },
+              "target_type": "Self",
+              "type": "Skill"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 13,
+              "cost": 1,
+              "damage_by_target": [
+                {
+                  "damage": 4,
+                  "name": "Bowlbug (Rock)",
+                  "target_index": 0
+                }
+              ],
+              "id": "CARD.THRASH",
+              "index": 4,
+              "name": "Thrash",
+              "rarity": "Rare",
+              "stats": {
+                "damage": 4
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 14,
+              "cost": 1,
+              "id": "CARD.TAUNT",
+              "index": 5,
+              "name": "Taunt",
+              "rarity": "Uncommon",
+              "stats": {
+                "block": 8,
+                "vulnerablepower": 2
+              },
+              "target_type": "AnyEnemy",
+              "type": "Skill"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 15,
+              "cost": 1,
+              "damage_by_target": [
+                {
+                  "damage": 9,
+                  "name": "Bowlbug (Rock)",
+                  "target_index": 0
+                }
+              ],
+              "id": "CARD.POMMEL_STRIKE",
+              "index": 6,
+              "name": "Pommel Strike",
+              "rarity": "Common",
+              "stats": {
+                "cards": 1,
+                "damage": 9
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 16,
+              "cost": 1,
+              "damage_by_target": [
+                {
+                  "damage": 2,
+                  "name": "Bowlbug (Rock)",
+                  "repeat": 4,
+                  "target_index": 0,
+                  "total_damage": 8
+                }
+              ],
+              "id": "CARD.CONFLAGRATION",
+              "index": 7,
+              "name": "Conflagration",
+              "rarity": "Rare",
+              "stats": {
+                "damage": 2,
+                "repeat": 4
+              },
+              "target_type": "AllEnemies",
+              "type": "Attack"
+            }
+          ],
+          "max_energy": 3,
+          "player_powers": null,
+          "round": 2
+        },
+        "decision_type": "combat_play",
+        "player": {
+          "block": 0,
+          "character": "CHARACTER.IRONCLAD",
+          "deck": [
+            {
+              "after_upgrade": null,
+              "cost": 2,
+              "id": "CARD.BASH",
+              "keywords": null,
+              "name": "Bash",
+              "stats": {
+                "damage": 10,
+                "vulnerablepower": 3
+              },
+              "type": "Attack",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 3,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 42
+                }
+              },
+              "cost": 3,
+              "id": "CARD.BLUDGEON",
+              "keywords": null,
+              "name": "Bludgeon",
+              "stats": {
+                "damage": 32
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 2,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 20
+                }
+              },
+              "cost": 2,
+              "id": "CARD.UNRELENTING",
+              "keywords": null,
+              "name": "Unrelenting",
+              "stats": {
+                "damage": 14
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 12
+                }
+              },
+              "cost": 1,
+              "id": "CARD.HEADBUTT",
+              "keywords": null,
+              "name": "Headbutt",
+              "stats": {
+                "damage": 9
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": null,
+              "cost": 1,
+              "id": "CARD.STONE_ARMOR",
+              "keywords": null,
+              "name": "Stone Armor",
+              "stats": {
+                "platingpower": 6
+              },
+              "type": "Power",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": null,
+              "cost": 1,
+              "id": "CARD.TAUNT",
+              "keywords": null,
+              "name": "Taunt",
+              "stats": {
+                "block": 8,
+                "vulnerablepower": 2
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "cards": 2
+                }
+              },
+              "cost": 1,
+              "id": "CARD.VICIOUS",
+              "keywords": null,
+              "name": "Vicious",
+              "stats": {
+                "cards": 1
+              },
+              "type": "Power",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 2,
+                  "repeat": 5
+                }
+              },
+              "cost": 1,
+              "id": "CARD.CONFLAGRATION",
+              "keywords": null,
+              "name": "Conflagration",
+              "stats": {
+                "damage": 2,
+                "repeat": 4
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 6
+                }
+              },
+              "cost": 1,
+              "id": "CARD.THRASH",
+              "keywords": null,
+              "name": "Thrash",
+              "stats": {
+                "damage": 4
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": null,
+              "cost": 0,
+              "id": "CARD.OFFERING",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Offering",
+              "stats": {
+                "cards": 5,
+                "energy": 2,
+                "hploss": 6
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 12,
+                  "maxhp": 4
+                }
+              },
+              "cost": 1,
+              "id": "CARD.FEED",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Feed",
+              "stats": {
+                "damage": 10,
+                "maxhp": 3
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "strengthpervulnerable": 1,
+                  "vulnerablepower": 2
+                }
+              },
+              "cost": 1,
+              "id": "CARD.DOMINATE",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Dominate",
+              "stats": {
+                "strengthpervulnerable": 1,
+                "vulnerablepower": 1
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 13,
+                  "hploss": 1
+                }
+              },
+              "cost": 1,
+              "id": "CARD.BREAKTHROUGH",
+              "keywords": null,
+              "name": "Breakthrough",
+              "stats": {
+                "damage": 9,
+                "hploss": 1
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 2,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 40
+                }
+              },
+              "cost": 2,
+              "id": "CARD.IMPERVIOUS",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Impervious",
+              "stats": {
+                "block": 30
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 3,
+                "removed_keywords": null,
+                "stats": {
+                  "strengthpower": 3
+                }
+              },
+              "cost": 3,
+              "id": "CARD.DEMON_FORM",
+              "keywords": null,
+              "name": "Demon Form",
+              "stats": {
+                "strengthpower": 2
+              },
+              "type": "Power",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "power": 4
+                }
+              },
+              "cost": 1,
+              "id": "CARD.FEEL_NO_PAIN",
+              "keywords": null,
+              "name": "Feel No Pain",
+              "stats": {
+                "power": 3
+              },
+              "type": "Power",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "cards": 2,
+                  "damage": 10
+                }
+              },
+              "cost": 1,
+              "id": "CARD.POMMEL_STRIKE",
+              "keywords": null,
+              "name": "Pommel Strike",
+              "stats": {
+                "cards": 1,
+                "damage": 9
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 2,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 13,
+                  "power": 2
+                }
+              },
+              "cost": 2,
+              "id": "CARD.UPPERCUT",
+              "keywords": null,
+              "name": "Uppercut",
+              "stats": {
+                "damage": 13,
+                "power": 1
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 9
+                }
+              },
+              "cost": 1,
+              "id": "CARD.TRUE_GRIT",
+              "keywords": null,
+              "name": "True Grit",
+              "stats": {
+                "block": 7
+              },
+              "type": "Skill",
+              "upgraded": false
+            }
+          ],
+          "deck_size": 19,
+          "gold": 145,
+          "hp": 59,
+          "max_hp": 74,
+          "name": "The Ironclad",
+          "potions": [
+            {
+              "id": "POTION.DEXTERITY_POTION",
+              "index": 0,
+              "name": "Dexterity Potion",
+              "target_type": "AnyPlayer",
+              "vars": {
+                "DexterityPower": 2
+              }
+            },
+            {
+              "id": "POTION.TOUCH_OF_INSANITY",
+              "index": 1,
+              "name": "Touch of Insanity",
+              "target_type": "Self",
+              "vars": null
+            },
+            {
+              "id": "POTION.FLEX_POTION",
+              "index": 2,
+              "name": "Flex Potion",
+              "target_type": "AnyPlayer",
+              "vars": {
+                "StrengthPower": 5
+              }
+            }
+          ],
+          "relics": [
+            {
+              "id": "RELIC.BURNING_BLOOD",
+              "name": "Burning Blood",
+              "vars": {
+                "Heal": 6
+              }
+            },
+            {
+              "id": "RELIC.WINGED_BOOTS",
+              "name": "Winged Boots",
+              "vars": {
+                "Rooms": 2
+              }
+            },
+            {
+              "id": "RELIC.BOOK_OF_FIVE_RINGS",
+              "name": "Book of Five Rings",
+              "vars": {
+                "Cards": 5,
+                "Heal": 20
+              }
+            },
+            {
+              "id": "RELIC.BAG_OF_PREPARATION",
+              "name": "Bag of Preparation",
+              "vars": {
+                "Cards": 2
+              }
+            },
+            {
+              "id": "RELIC.ORICHALCUM",
+              "name": "Orichalcum",
+              "vars": {
+                "Block": 6
+              }
+            },
+            {
+              "id": "RELIC.VEXING_PUZZLEBOX",
+              "name": "Vexing Puzzlebox",
+              "vars": null
+            },
+            {
+              "id": "RELIC.PANDORA_S_BOX",
+              "name": "Pandora's Box",
+              "vars": null
+            }
+          ]
+        },
+        "schema_version": 1,
+        "seed": null,
+        "source": "sts2-cli"
+      },
+      "replay_command_index": 224,
+      "replay_command_sha256": "407fc942373466239d51826649181b1a312b0784877398e8341f42a645e67570",
+      "replay_command_type": "PlayCard"
+    }
+  ],
+  "coverage": {
+    "attempted_by_type": {
+      "ChooseEventOption": 2,
+      "ClaimReward": 1,
+      "EndTurn": 1,
+      "MoveToMapCoord": 1,
+      "PlayCard": 7
+    },
+    "combat_decisions_reconstructed": 8,
+    "combat_decisions_with_complete_legal_mask": 8,
+    "commands_attempted": 12,
+    "commands_reconstructed": 11,
+    "commands_scheduled_with_overlap": 249,
+    "reconstructed_by_type": {
+      "ChooseEventOption": 2,
+      "EndTurn": 1,
+      "MoveToMapCoord": 1,
+      "PlayCard": 7
+    },
+    "reconstructed_noops": 1,
+    "reconstruction_rate_of_attempted": 0.916667,
+    "suffix_commands": 249
+  },
+  "created_at": "2026-07-14T03:28:25.009514+00:00",
+  "dry_run_only": true,
+  "expected_build": "v0.107.1",
+  "initial_alignment": {
+    "loaded_state": {
+      "context": {
+        "act": 2,
+        "act_name": "Hive",
+        "boss": {
+          "id": "KNOWLEDGE_DEMON_BOSS",
+          "name": "Knowledge Demon"
+        },
+        "current_map_coord": {
+          "col": 3,
+          "row": 0
+        },
+        "floor": 1,
+        "room_type": "Event",
+        "visited_map_coords": 1
+      },
+      "decision": "event_choice",
+      "legal_actions": [
+        {
+          "action": "choose_option",
+          "args": {
+            "option_index": 0
+          },
+          "option_id": "OPTION.DARV.pages.INITIAL.options.BLACK_STAR"
+        },
+        {
+          "action": "choose_option",
+          "args": {
+            "option_index": 1
+          },
+          "option_id": "OPTION.DARV.pages.INITIAL.options.PANDORAS_BOX"
+        },
+        {
+          "action": "choose_option",
+          "args": {
+            "option_index": 2
+          },
+          "option_id": "OPTION.DARV.pages.INITIAL.options.DUSTY_TOME"
+        }
+      ]
+    },
+    "matched_command_index": null,
+    "max_overlap": 0,
+    "overlap_commands": 0,
+    "tail_candidates": []
+  },
+  "privacy": {
+    "inline_comments_persisted": false,
+    "raw_replay_commands_persisted": false,
+    "raw_seed_persisted": false
+  },
+  "probe": "runreplays_headless_reconstruction",
+  "provenance": {
+    "ascension": 1,
+    "base_run_save_sha256": "76e6eb7cf94675fa4ca4ccfbeb0a773786111a8feb4ee4008a1c8a87e2af7c4a",
+    "base_snapshot_floor": 18,
+    "base_snapshot_sha256": "1c7e7a6f0f207ddcdbf0be3d5488aac146b38fc6f08b99dbf66f536922b652d6",
+    "character": "CHARACTER.IRONCLAD",
+    "source_name": "RunReplays",
+    "target_snapshot_floor": 34,
+    "target_snapshot_sha256": "79af329c98d3adf6674dac9124e515fd2d78bb4dd010872e99d5d68ced7c4a7f",
+    "trajectory_key": "fef5fdc9464986bb1a5269e645986e5cc1023c17075fddfc75ec388c3ef50e0d"
+  },
+  "runtime": {
+    "game_assembly_sha256": "7eced881ca7b7a4d4282fa40ff7cf27cc9a4466c4b759c2a2356a4743928fcbe",
+    "headless_runtime_sha256": "806bb9737e930de14fccf80fd512e6b8be4ebe0ae179a53601f65b2d17f1a158",
+    "protocol_version": "0.2.0"
+  },
+  "schema_version": 1,
+  "stop": {
+    "code": "unsupported_command",
+    "command_index": 225,
+    "command_sha256": "08e2faff521f34701c92e49a0a058eaab65665f1a70e5dfb012aad8545313cd2",
+    "command_type": "ClaimReward",
+    "message": "ClaimReward has no proven headless reconstruction mapping",
+    "state": {
+      "context": {
+        "act": 2,
+        "act_name": "Hive",
+        "boss": {
+          "id": "KNOWLEDGE_DEMON_BOSS",
+          "name": "Knowledge Demon"
+        },
+        "current_map_coord": {
+          "col": 0,
+          "row": 1
+        },
+        "floor": 2,
+        "room_type": "Monster",
+        "visited_map_coords": 2
+      },
+      "decision": "card_reward",
+      "legal_actions": [
+        {
+          "action": "select_card_reward",
+          "args": {
+            "card_index": 0
+          },
+          "option_id": "CARD.FIGHT_ME"
+        },
+        {
+          "action": "select_card_reward",
+          "args": {
+            "card_index": 1
+          },
+          "option_id": "CARD.TREMBLE"
+        },
+        {
+          "action": "select_card_reward",
+          "args": {
+            "card_index": 2
+          },
+          "option_id": "CARD.THUNDERCLAP"
+        },
+        {
+          "action": "skip_card_reward",
+          "option_id": "SKIP"
+        }
+      ]
+    },
+    "status": "mapping_failure"
+  },
+  "training_authorized": false,
+  "validation": {
+    "base_save_crosschecks": true,
+    "complete_headers": true,
+    "exact_build": true,
+    "raw_prefix": true,
+    "same_ascension": true,
+    "same_character": true,
+    "same_trajectory": true,
+    "target_extends_base": true,
+    "target_save_crosschecks": true
+  }
+}

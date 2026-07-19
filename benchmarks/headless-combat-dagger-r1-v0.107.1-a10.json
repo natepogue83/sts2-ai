@@ -1,0 +1,775 @@
+{
+  "cases": [
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "mixing_seed": 18183570207922605822,
+      "pool": "aggregate",
+      "seed": "DGR1I000000"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "mixing_seed": 3796746973207594238,
+      "pool": "aggregate",
+      "seed": "DGR1I000001"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "mixing_seed": 2908210559261598949,
+      "pool": "aggregate",
+      "seed": "DGR1I000002"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "mixing_seed": 18234373464470658591,
+      "pool": "aggregate",
+      "seed": "DGR1I000003"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "mixing_seed": 7877315601288873657,
+      "pool": "aggregate",
+      "seed": "DGR1I000004"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "mixing_seed": 4079485656130660242,
+      "pool": "aggregate",
+      "seed": "DGR1I000005"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "mixing_seed": 114007615866237051,
+      "pool": "aggregate",
+      "seed": "DGR1I000006"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "mixing_seed": 18368720598816368164,
+      "pool": "aggregate",
+      "seed": "DGR1I000007"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "mixing_seed": 14302645734433476697,
+      "pool": "aggregate",
+      "seed": "DGR1I000008"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "mixing_seed": 15391099989305516896,
+      "pool": "aggregate",
+      "seed": "DGR1I000009"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "mixing_seed": 17466747055179675103,
+      "pool": "aggregate",
+      "seed": "DGR1I000010"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "mixing_seed": 13403479157864288556,
+      "pool": "aggregate",
+      "seed": "DGR1I000011"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "mixing_seed": 17962344393953906135,
+      "pool": "aggregate",
+      "seed": "DGR1I000012"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "mixing_seed": 4028017634662239876,
+      "pool": "aggregate",
+      "seed": "DGR1I000013"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "mixing_seed": 7797834588576492679,
+      "pool": "aggregate",
+      "seed": "DGR1I000014"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "mixing_seed": 2467131335509505722,
+      "pool": "aggregate",
+      "seed": "DGR1I000015"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "mixing_seed": 13143603052173531208,
+      "pool": "aggregate",
+      "seed": "DGR1I000016"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "mixing_seed": 17190238712133269408,
+      "pool": "aggregate",
+      "seed": "DGR1I000017"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "mixing_seed": 9231489636672110724,
+      "pool": "aggregate",
+      "seed": "DGR1I000018"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "mixing_seed": 13306870292779364818,
+      "pool": "aggregate",
+      "seed": "DGR1I000019"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "mixing_seed": 9431991100085204110,
+      "pool": "validation",
+      "seed": "DGR1I000020"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "mixing_seed": 17773558851882718221,
+      "pool": "validation",
+      "seed": "DGR1I000021"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "mixing_seed": 10020799918628183376,
+      "pool": "validation",
+      "seed": "DGR1I000022"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "mixing_seed": 9837057313460077806,
+      "pool": "validation",
+      "seed": "DGR1I000023"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "mixing_seed": 7654060174203604230,
+      "pool": "validation",
+      "seed": "DGR1I000024"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "mixing_seed": 4829388133917467822,
+      "pool": "aggregate",
+      "seed": "DGR1S000000"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "mixing_seed": 13080486887795552522,
+      "pool": "aggregate",
+      "seed": "DGR1S000001"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "mixing_seed": 18219805447997056300,
+      "pool": "aggregate",
+      "seed": "DGR1S000002"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "mixing_seed": 11984434669436624087,
+      "pool": "aggregate",
+      "seed": "DGR1S000003"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "mixing_seed": 8770425515377641747,
+      "pool": "aggregate",
+      "seed": "DGR1S000004"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "mixing_seed": 7984298227947467087,
+      "pool": "aggregate",
+      "seed": "DGR1S000005"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "mixing_seed": 9369422490851181865,
+      "pool": "aggregate",
+      "seed": "DGR1S000006"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "mixing_seed": 17786380796867661309,
+      "pool": "aggregate",
+      "seed": "DGR1S000007"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "mixing_seed": 2991958124759814917,
+      "pool": "aggregate",
+      "seed": "DGR1S000008"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "mixing_seed": 16506348097807244155,
+      "pool": "aggregate",
+      "seed": "DGR1S000009"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "mixing_seed": 462441159829097262,
+      "pool": "aggregate",
+      "seed": "DGR1S000010"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "mixing_seed": 889692131857438146,
+      "pool": "aggregate",
+      "seed": "DGR1S000011"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "mixing_seed": 12863434484537035879,
+      "pool": "aggregate",
+      "seed": "DGR1S000012"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "mixing_seed": 1635701534076910524,
+      "pool": "aggregate",
+      "seed": "DGR1S000013"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "mixing_seed": 8627210392786634548,
+      "pool": "aggregate",
+      "seed": "DGR1S000014"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "mixing_seed": 18218899366601265137,
+      "pool": "aggregate",
+      "seed": "DGR1S000015"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "mixing_seed": 1011602301437265855,
+      "pool": "aggregate",
+      "seed": "DGR1S000016"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "mixing_seed": 1330250609364846170,
+      "pool": "aggregate",
+      "seed": "DGR1S000017"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "mixing_seed": 3092758669037628106,
+      "pool": "aggregate",
+      "seed": "DGR1S000018"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "mixing_seed": 11688104236040604030,
+      "pool": "aggregate",
+      "seed": "DGR1S000019"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "mixing_seed": 14428293604047608375,
+      "pool": "validation",
+      "seed": "DGR1S000020"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "mixing_seed": 13945365079937031672,
+      "pool": "validation",
+      "seed": "DGR1S000021"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "mixing_seed": 6169419544647840735,
+      "pool": "validation",
+      "seed": "DGR1S000022"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "mixing_seed": 6126885969784744125,
+      "pool": "validation",
+      "seed": "DGR1S000023"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "mixing_seed": 10662561787664857871,
+      "pool": "validation",
+      "seed": "DGR1S000024"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "mixing_seed": 484632961957600077,
+      "pool": "aggregate",
+      "seed": "DGR1D000000"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "mixing_seed": 14627784352864027131,
+      "pool": "aggregate",
+      "seed": "DGR1D000001"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "mixing_seed": 6724741732054854846,
+      "pool": "aggregate",
+      "seed": "DGR1D000002"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "mixing_seed": 12515630500153061112,
+      "pool": "aggregate",
+      "seed": "DGR1D000003"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "mixing_seed": 8236170936589390556,
+      "pool": "aggregate",
+      "seed": "DGR1D000004"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "mixing_seed": 14096513938980921308,
+      "pool": "aggregate",
+      "seed": "DGR1D000005"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "mixing_seed": 15437285751587935149,
+      "pool": "aggregate",
+      "seed": "DGR1D000006"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "mixing_seed": 13323223564664830015,
+      "pool": "aggregate",
+      "seed": "DGR1D000007"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "mixing_seed": 11319099944219941323,
+      "pool": "aggregate",
+      "seed": "DGR1D000008"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "mixing_seed": 4847950552744739855,
+      "pool": "aggregate",
+      "seed": "DGR1D000009"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "mixing_seed": 11275697649695643193,
+      "pool": "aggregate",
+      "seed": "DGR1D000010"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "mixing_seed": 1574845291579188202,
+      "pool": "aggregate",
+      "seed": "DGR1D000011"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "mixing_seed": 13048771806689215834,
+      "pool": "aggregate",
+      "seed": "DGR1D000012"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "mixing_seed": 1803512896401991381,
+      "pool": "aggregate",
+      "seed": "DGR1D000013"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "mixing_seed": 7710141861700454660,
+      "pool": "aggregate",
+      "seed": "DGR1D000014"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "mixing_seed": 2384240659932727736,
+      "pool": "aggregate",
+      "seed": "DGR1D000015"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "mixing_seed": 1589148007178790310,
+      "pool": "aggregate",
+      "seed": "DGR1D000016"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "mixing_seed": 10854540660869412690,
+      "pool": "aggregate",
+      "seed": "DGR1D000017"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "mixing_seed": 2916965895381262159,
+      "pool": "aggregate",
+      "seed": "DGR1D000018"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "mixing_seed": 15763036025636036622,
+      "pool": "aggregate",
+      "seed": "DGR1D000019"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "mixing_seed": 5488058890943245193,
+      "pool": "validation",
+      "seed": "DGR1D000020"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "mixing_seed": 15801305605843516125,
+      "pool": "validation",
+      "seed": "DGR1D000021"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "mixing_seed": 385250338474658474,
+      "pool": "validation",
+      "seed": "DGR1D000022"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "mixing_seed": 14118004544650973001,
+      "pool": "validation",
+      "seed": "DGR1D000023"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "mixing_seed": 5345956392415626312,
+      "pool": "validation",
+      "seed": "DGR1D000024"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "mixing_seed": 3534131415850684849,
+      "pool": "aggregate",
+      "seed": "DGR1N000000"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "mixing_seed": 7744842597547635667,
+      "pool": "aggregate",
+      "seed": "DGR1N000001"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "mixing_seed": 3285561744753929574,
+      "pool": "aggregate",
+      "seed": "DGR1N000002"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "mixing_seed": 12204887961238955084,
+      "pool": "aggregate",
+      "seed": "DGR1N000003"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "mixing_seed": 14906972708739416398,
+      "pool": "aggregate",
+      "seed": "DGR1N000004"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "mixing_seed": 5482760467401520499,
+      "pool": "aggregate",
+      "seed": "DGR1N000005"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "mixing_seed": 10584050157528352893,
+      "pool": "aggregate",
+      "seed": "DGR1N000006"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "mixing_seed": 2539815859828129511,
+      "pool": "aggregate",
+      "seed": "DGR1N000007"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "mixing_seed": 18175951641173507195,
+      "pool": "aggregate",
+      "seed": "DGR1N000008"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "mixing_seed": 208615961124562869,
+      "pool": "aggregate",
+      "seed": "DGR1N000009"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "mixing_seed": 10343534249980519690,
+      "pool": "aggregate",
+      "seed": "DGR1N000010"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "mixing_seed": 4608280019569179720,
+      "pool": "aggregate",
+      "seed": "DGR1N000011"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "mixing_seed": 1792230707151645664,
+      "pool": "aggregate",
+      "seed": "DGR1N000012"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "mixing_seed": 8778456922546413874,
+      "pool": "aggregate",
+      "seed": "DGR1N000013"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "mixing_seed": 5739867604210492611,
+      "pool": "aggregate",
+      "seed": "DGR1N000014"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "mixing_seed": 13681264049999185973,
+      "pool": "aggregate",
+      "seed": "DGR1N000015"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "mixing_seed": 11811008087502777046,
+      "pool": "aggregate",
+      "seed": "DGR1N000016"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "mixing_seed": 12303925891816247280,
+      "pool": "aggregate",
+      "seed": "DGR1N000017"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "mixing_seed": 10015529439563432093,
+      "pool": "aggregate",
+      "seed": "DGR1N000018"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "mixing_seed": 2447382370979739657,
+      "pool": "aggregate",
+      "seed": "DGR1N000019"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "mixing_seed": 9775054037272570517,
+      "pool": "validation",
+      "seed": "DGR1N000020"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "mixing_seed": 12416829647932550410,
+      "pool": "validation",
+      "seed": "DGR1N000021"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "mixing_seed": 3764114443452905702,
+      "pool": "validation",
+      "seed": "DGR1N000022"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "mixing_seed": 5358641083227819817,
+      "pool": "validation",
+      "seed": "DGR1N000023"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "mixing_seed": 3258807020750211998,
+      "pool": "validation",
+      "seed": "DGR1N000024"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "mixing_seed": 13289438942818119836,
+      "pool": "aggregate",
+      "seed": "DGR1R000000"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "mixing_seed": 9336774929071337058,
+      "pool": "aggregate",
+      "seed": "DGR1R000001"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "mixing_seed": 10152429564137085711,
+      "pool": "aggregate",
+      "seed": "DGR1R000002"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "mixing_seed": 2613509152783053582,
+      "pool": "aggregate",
+      "seed": "DGR1R000003"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "mixing_seed": 9284297413080668839,
+      "pool": "aggregate",
+      "seed": "DGR1R000004"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "mixing_seed": 12983111615278888828,
+      "pool": "aggregate",
+      "seed": "DGR1R000005"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "mixing_seed": 16689459792216431317,
+      "pool": "aggregate",
+      "seed": "DGR1R000006"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "mixing_seed": 8682485793132073759,
+      "pool": "aggregate",
+      "seed": "DGR1R000007"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "mixing_seed": 5716142910015453405,
+      "pool": "aggregate",
+      "seed": "DGR1R000008"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "mixing_seed": 11529873522913053887,
+      "pool": "aggregate",
+      "seed": "DGR1R000009"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "mixing_seed": 2651512149330525394,
+      "pool": "aggregate",
+      "seed": "DGR1R000010"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "mixing_seed": 16307852340529620563,
+      "pool": "aggregate",
+      "seed": "DGR1R000011"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "mixing_seed": 2626026615695569527,
+      "pool": "aggregate",
+      "seed": "DGR1R000012"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "mixing_seed": 16454255598509299502,
+      "pool": "aggregate",
+      "seed": "DGR1R000013"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "mixing_seed": 9975765012280908749,
+      "pool": "aggregate",
+      "seed": "DGR1R000014"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "mixing_seed": 18151354349775676172,
+      "pool": "aggregate",
+      "seed": "DGR1R000015"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "mixing_seed": 3685722823776605953,
+      "pool": "aggregate",
+      "seed": "DGR1R000016"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "mixing_seed": 18340205816734736616,
+      "pool": "aggregate",
+      "seed": "DGR1R000017"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "mixing_seed": 13020433700744135157,
+      "pool": "aggregate",
+      "seed": "DGR1R000018"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "mixing_seed": 2492055403711347823,
+      "pool": "aggregate",
+      "seed": "DGR1R000019"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "mixing_seed": 15371879532344599977,
+      "pool": "validation",
+      "seed": "DGR1R000020"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "mixing_seed": 18299081717681710932,
+      "pool": "validation",
+      "seed": "DGR1R000021"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "mixing_seed": 2556368909075493491,
+      "pool": "validation",
+      "seed": "DGR1R000022"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "mixing_seed": 16425480750333506890,
+      "pool": "validation",
+      "seed": "DGR1R000023"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "mixing_seed": 8556139931245306859,
+      "pool": "validation",
+      "seed": "DGR1R000024"
+    }
+  ],
+  "created_at": "2026-07-14T02:03:22.069138+00:00",
+  "dagger": {
+    "beta": 0.5,
+    "learner": "combat_policy.heuristic.v0.107.1",
+    "round": 1,
+    "teacher": "greedy_rules_v1"
+  },
+  "name": "stsai-headless-combat-dagger",
+  "schema_version": 1,
+  "selection": {
+    "aggregate_per_character": 20,
+    "method": "fresh-prefix-seeds-selected-before-outcomes",
+    "outcomes_inspected": false,
+    "seed_prefix": "DGR1",
+    "validation_aggregation_allowed": false,
+    "validation_per_character": 5
+  },
+  "target": {
+    "ascension": 10,
+    "build_id": "v0.107.1"
+  }
+}

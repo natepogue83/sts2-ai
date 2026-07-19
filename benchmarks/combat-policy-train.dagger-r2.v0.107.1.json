@@ -1,0 +1,25 @@
+{
+  "configuration": {
+    "batch_size": 64,
+    "dimension": 1024,
+    "epochs": 20,
+    "hidden": 128,
+    "learning_rate": 0.001,
+    "seed": 7
+  },
+  "model": "checkpoints\\combat_policy.dagger-r2.v0.107.1.npz",
+  "train_final": {
+    "decisions": 21961,
+    "loss": 0.234429,
+    "mean_reciprocal_rank": 0.0,
+    "random_top1_accuracy": 0.0,
+    "top1_accuracy": 0.979464
+  },
+  "validation": {
+    "decisions": 2005,
+    "loss": 0.622906,
+    "mean_reciprocal_rank": 0.928571,
+    "random_top1_accuracy": 0.330737,
+    "top1_accuracy": 0.870823
+  }
+}

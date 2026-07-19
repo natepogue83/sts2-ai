@@ -1,0 +1,21 @@
+{
+  "by_character": {
+    "CHARACTER.DEFECT": 15,
+    "CHARACTER.IRONCLAD": 15,
+    "CHARACTER.NECROBINDER": 15,
+    "CHARACTER.REGENT": 15,
+    "CHARACTER.SILENT": 15
+  },
+  "combat_model_sha256": "5bbb35de90351827374c9188351cc11c5ce867053c057e1a45978a60bb7633e1",
+  "completed_runs": 75,
+  "corpus_sha256": "dc2311ca2cb6d7d629f3f803e22c9de7dd167be7a7c91fbc872a3efb68a221a0",
+  "macro_model_sha256": "4ac9a667dc1c34e918c40cd21c0a24e2adb2178547477b32ab0268be6b8242aa",
+  "manifest": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\value-calibration-v3-precommit.v0.107.1-a10.json",
+  "manifest_sha256": "2794d9e4d3359f4caa968c484f38e5c7848a2fa4626c8af10e89774498a28af7",
+  "outcomes_reported": false,
+  "pool": "development",
+  "reused_completed_runs": 69,
+  "runs": 75,
+  "schema_version": 1,
+  "trajectory_dir": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\value-calibration-v3\\development"
+}

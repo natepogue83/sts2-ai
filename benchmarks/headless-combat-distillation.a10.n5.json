@@ -1,0 +1,1141 @@
+{
+  "aggregate": {
+    "by_character": {
+      "Defect": {
+        "cases": 5,
+        "combat_bc": {
+          "mean_floor": 9.4,
+          "mean_steps": 127.6,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "descriptive_paired_95_interval": [
+          -0.8857,
+          3.6857
+        ],
+        "heuristic": {
+          "mean_floor": 8.0,
+          "mean_steps": 113.0,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "improved": 2,
+        "paired_floor_delta": 1.4,
+        "tied": 3,
+        "worse": 0
+      },
+      "Ironclad": {
+        "cases": 5,
+        "combat_bc": {
+          "mean_floor": 7.8,
+          "mean_steps": 63.2,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "descriptive_paired_95_interval": [
+          -2.9293,
+          -0.2707
+        ],
+        "heuristic": {
+          "mean_floor": 9.4,
+          "mean_steps": 89.6,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "improved": 0,
+        "paired_floor_delta": -1.6,
+        "tied": 2,
+        "worse": 3
+      },
+      "Necrobinder": {
+        "cases": 5,
+        "combat_bc": {
+          "mean_floor": 9.2,
+          "mean_steps": 100.2,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "descriptive_paired_95_interval": [
+          -0.0801,
+          0.8801
+        ],
+        "heuristic": {
+          "mean_floor": 8.8,
+          "mean_steps": 91.4,
+          "runtime_failures": 1,
+          "truncations": 1,
+          "victories": 0
+        },
+        "improved": 2,
+        "paired_floor_delta": 0.4,
+        "tied": 3,
+        "worse": 0
+      },
+      "Regent": {
+        "cases": 5,
+        "combat_bc": {
+          "mean_floor": 10.8,
+          "mean_steps": 119.8,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "descriptive_paired_95_interval": [
+          -0.576,
+          1.776
+        ],
+        "heuristic": {
+          "mean_floor": 10.2,
+          "mean_steps": 150.0,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "improved": 1,
+        "paired_floor_delta": 0.6,
+        "tied": 4,
+        "worse": 0
+      },
+      "Silent": {
+        "cases": 5,
+        "combat_bc": {
+          "mean_floor": 14.4,
+          "mean_steps": 166.0,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "descriptive_paired_95_interval": [
+          -1.728,
+          5.328
+        ],
+        "heuristic": {
+          "mean_floor": 12.6,
+          "mean_steps": 140.4,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "improved": 1,
+        "paired_floor_delta": 1.8,
+        "tied": 4,
+        "worse": 0
+      }
+    },
+    "overall": {
+      "cases": 25,
+      "combat_bc": {
+        "mean_floor": 10.32,
+        "mean_steps": 115.36,
+        "runtime_failures": 0,
+        "truncations": 0,
+        "victories": 0
+      },
+      "descriptive_paired_95_interval": [
+        -0.441,
+        1.481
+      ],
+      "heuristic": {
+        "mean_floor": 9.8,
+        "mean_steps": 116.88,
+        "runtime_failures": 1,
+        "truncations": 1,
+        "victories": 0
+      },
+      "improved": 6,
+      "paired_floor_delta": 0.52,
+      "tied": 16,
+      "worse": 3
+    }
+  },
+  "ascension": 10,
+  "build_id": "v0.107.1",
+  "cases": [
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 0,
+      "character": "Defect",
+      "combat_bc": {
+        "act": 1,
+        "floor": 11,
+        "policy_sources": {
+          "combat_bc": 121,
+          "heuristic": 21
+        },
+        "runtime_error": null,
+        "steps": 142,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\000.defect.MXC71BYMES.combat-bc.jsonl",
+        "trajectory_id": "3943556366d24ff99c4fdf53726d38b6",
+        "truncated": false,
+        "victory": false
+      },
+      "heuristic": {
+        "act": 1,
+        "floor": 5,
+        "policy_sources": {
+          "heuristic": 84
+        },
+        "runtime_error": null,
+        "steps": 84,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\000.defect.MXC71BYMES.heuristic.jsonl",
+        "trajectory_id": "e60c26b7853e4750bea8a9fc2bdf410e",
+        "truncated": false,
+        "victory": false
+      },
+      "paired_floor_delta": 6,
+      "seed": "MXC71BYMES"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 1,
+      "character": "Defect",
+      "combat_bc": {
+        "act": 1,
+        "floor": 6,
+        "policy_sources": {
+          "combat_bc": 70,
+          "heuristic": 12
+        },
+        "runtime_error": null,
+        "steps": 82,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\001.defect.08JKQKYUZ5.combat-bc.jsonl",
+        "trajectory_id": "e1b5631ddf2243d3b3aaf0c835c0dd8e",
+        "truncated": false,
+        "victory": false
+      },
+      "heuristic": {
+        "act": 1,
+        "floor": 6,
+        "policy_sources": {
+          "heuristic": 86
+        },
+        "runtime_error": null,
+        "steps": 86,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\001.defect.08JKQKYUZ5.heuristic.jsonl",
+        "trajectory_id": "aeb3170dab634115b2c7f51e11bcab1d",
+        "truncated": false,
+        "victory": false
+      },
+      "paired_floor_delta": 0,
+      "seed": "08JKQKYUZ5"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 2,
+      "character": "Defect",
+      "combat_bc": {
+        "act": 1,
+        "floor": 7,
+        "policy_sources": {
+          "combat_bc": 76,
+          "heuristic": 13
+        },
+        "runtime_error": null,
+        "steps": 89,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\002.defect.LP53PD0AF3.combat-bc.jsonl",
+        "trajectory_id": "c67d0dcf8ee24a5b8441ba8e0fcf3702",
+        "truncated": false,
+        "victory": false
+      },
+      "heuristic": {
+        "act": 1,
+        "floor": 6,
+        "policy_sources": {
+          "heuristic": 71
+        },
+        "runtime_error": null,
+        "steps": 71,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\002.defect.LP53PD0AF3.heuristic.jsonl",
+        "trajectory_id": "09e72a5452c9472794eb307486cb2c55",
+        "truncated": false,
+        "victory": false
+      },
+      "paired_floor_delta": 1,
+      "seed": "LP53PD0AF3"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 3,
+      "character": "Defect",
+      "combat_bc": {
+        "act": 1,
+        "floor": 6,
+        "policy_sources": {
+          "combat_bc": 75,
+          "heuristic": 12
+        },
+        "runtime_error": null,
+        "steps": 87,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\003.defect.D7WPRHAWPJ.combat-bc.jsonl",
+        "trajectory_id": "6565f9ac26c244e98bed125ec8f1e2a9",
+        "truncated": false,
+        "victory": false
+      },
+      "heuristic": {
+        "act": 1,
+        "floor": 6,
+        "policy_sources": {
+          "heuristic": 87
+        },
+        "runtime_error": null,
+        "steps": 87,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\003.defect.D7WPRHAWPJ.heuristic.jsonl",
+        "trajectory_id": "02b4001664f548c191c98cae3b5c79b5",
+        "truncated": false,
+        "victory": false
+      },
+      "paired_floor_delta": 0,
+      "seed": "D7WPRHAWPJ"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 4,
+      "character": "Defect",
+      "combat_bc": {
+        "act": 1,
+        "floor": 17,
+        "policy_sources": {
+          "combat_bc": 202,
+          "heuristic": 36
+        },
+        "runtime_error": null,
+        "steps": 238,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\004.defect.BMURP3BJYB.combat-bc.jsonl",
+        "trajectory_id": "fce64175feea4c11869265efc32175c4",
+        "truncated": false,
+        "victory": false
+      },
+      "heuristic": {
+        "act": 1,
+        "floor": 17,
+        "policy_sources": {
+          "heuristic": 237
+        },
+        "runtime_error": null,
+        "steps": 237,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\004.defect.BMURP3BJYB.heuristic.jsonl",
+        "trajectory_id": "0917245c7673457c8ed800c94738f05e",
+        "truncated": false,
+        "victory": false
+      },
+      "paired_floor_delta": 0,
+      "seed": "BMURP3BJYB"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 5,
+      "character": "Ironclad",
+      "combat_bc": {
+        "act": 1,
+        "floor": 6,
+        "policy_sources": {
+          "combat_bc": 50,
+          "heuristic": 11
+        },
+        "runtime_error": null,
+        "steps": 61,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\005.ironclad.GY146KV3S1.combat-bc.jsonl",
+        "trajectory_id": "72c096730d32475ab97c1e4fe49c4453",
+        "truncated": false,
+        "victory": false
+      },
+      "heuristic": {
+        "act": 1,
+        "floor": 8,
+        "policy_sources": {
+          "heuristic": 95
+        },
+        "runtime_error": null,
+        "steps": 95,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\005.ironclad.GY146KV3S1.heuristic.jsonl",
+        "trajectory_id": "342baa45d9e8430d90386de48fce3352",
+        "truncated": false,
+        "victory": false
+      },
+      "paired_floor_delta": -2,
+      "seed": "GY146KV3S1"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 6,
+      "character": "Ironclad",
+      "combat_bc": {
+        "act": 1,
+        "floor": 11,
+        "policy_sources": {
+          "combat_bc": 50,
+          "heuristic": 29
+        },
+        "runtime_error": null,
+        "steps": 79,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\006.ironclad.RUB79J9PW8.combat-bc.jsonl",
+        "trajectory_id": "85bea863875545549a8058f382015f95",
+        "truncated": false,
+        "victory": false
+      },
+      "heuristic": {
+        "act": 1,
+        "floor": 14,
+        "policy_sources": {
+          "heuristic": 115
+        },
+        "runtime_error": null,
+        "steps": 115,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\006.ironclad.RUB79J9PW8.heuristic.jsonl",
+        "trajectory_id": "07f895d837dc47018148d6f26ca1bfd7",
+        "truncated": false,
+        "victory": false
+      },
+      "paired_floor_delta": -3,
+      "seed": "RUB79J9PW8"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 7,
+      "character": "Ironclad",
+      "combat_bc": {
+        "act": 1,
+        "floor": 8,
+        "policy_sources": {
+          "combat_bc": 36,
+          "heuristic": 17
+        },
+        "runtime_error": null,
+        "steps": 53,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\007.ironclad.6RU3YLQCW5.combat-bc.jsonl",
+        "trajectory_id": "13ce7fa436cc4abc905c162a56d5b3c2",
+        "truncated": false,
+        "victory": false
+      },
+      "heuristic": {
+        "act": 1,
+        "floor": 8,
+        "policy_sources": {
+          "heuristic": 53
+        },
+        "runtime_error": null,
+        "steps": 53,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\007.ironclad.6RU3YLQCW5.heuristic.jsonl",
+        "trajectory_id": "0a35a872ff2f417ebdd9d9439c8ac307",
+        "truncated": false,
+        "victory": false
+      },
+      "paired_floor_delta": 0,
+      "seed": "6RU3YLQCW5"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 8,
+      "character": "Ironclad",
+      "combat_bc": {
+        "act": 1,
+        "floor": 6,
+        "policy_sources": {
+          "combat_bc": 45,
+          "heuristic": 13
+        },
+        "runtime_error": null,
+        "steps": 58,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\008.ironclad.EGPDKBQ8V1.combat-bc.jsonl",
+        "trajectory_id": "ba1d7293fb234f87bfd794ffabaa3922",
+        "truncated": false,
+        "victory": false
+      },
+      "heuristic": {
+        "act": 1,
+        "floor": 9,
+        "policy_sources": {
+          "heuristic": 120
+        },
+        "runtime_error": null,
+        "steps": 120,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\008.ironclad.EGPDKBQ8V1.heuristic.jsonl",
+        "trajectory_id": "2d221badf39b4d1c8c6c347bfe697759",
+        "truncated": false,
+        "victory": false
+      },
+      "paired_floor_delta": -3,
+      "seed": "EGPDKBQ8V1"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 9,
+      "character": "Ironclad",
+      "combat_bc": {
+        "act": 1,
+        "floor": 8,
+        "policy_sources": {
+          "combat_bc": 50,
+          "heuristic": 15
+        },
+        "runtime_error": null,
+        "steps": 65,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\009.ironclad.K523WDXHFC.combat-bc.jsonl",
+        "trajectory_id": "83ae015245c24bf88401492976a770c3",
+        "truncated": false,
+        "victory": false
+      },
+      "heuristic": {
+        "act": 1,
+        "floor": 8,
+        "policy_sources": {
+          "heuristic": 65
+        },
+        "runtime_error": null,
+        "steps": 65,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\009.ironclad.K523WDXHFC.heuristic.jsonl",
+        "trajectory_id": "08ae1265d55542488e7f9d55272821fc",
+        "truncated": false,
+        "victory": false
+      },
+      "paired_floor_delta": 0,
+      "seed": "K523WDXHFC"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 10,
+      "character": "Necrobinder",
+      "combat_bc": {
+        "act": 1,
+        "floor": 8,
+        "policy_sources": {
+          "combat_bc": 63,
+          "heuristic": 15
+        },
+        "runtime_error": null,
+        "steps": 78,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\010.necrobinder.7S7VFATXHH.combat-bc.jsonl",
+        "trajectory_id": "4df3f9caa9ea4cca8c5b6a0c9cbf451b",
+        "truncated": false,
+        "victory": false
+      },
+      "heuristic": {
+        "act": 1,
+        "floor": 8,
+        "policy_sources": {
+          "heuristic": 81
+        },
+        "runtime_error": null,
+        "steps": 81,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\010.necrobinder.7S7VFATXHH.heuristic.jsonl",
+        "trajectory_id": "9e96b2f3663d4799aba843d4e5d3c2d4",
+        "truncated": false,
+        "victory": false
+      },
+      "paired_floor_delta": 0,
+      "seed": "7S7VFATXHH"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 11,
+      "character": "Necrobinder",
+      "combat_bc": {
+        "act": 1,
+        "floor": 6,
+        "policy_sources": {
+          "combat_bc": 47,
+          "heuristic": 14
+        },
+        "runtime_error": null,
+        "steps": 61,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\011.necrobinder.ND4VF9TK19.combat-bc.jsonl",
+        "trajectory_id": "c333f531db6d422aaae2d88b19ea01e1",
+        "truncated": false,
+        "victory": false
+      },
+      "heuristic": {
+        "act": 1,
+        "floor": 5,
+        "policy_sources": {
+          "heuristic": 59
+        },
+        "runtime_error": null,
+        "steps": 59,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\011.necrobinder.ND4VF9TK19.heuristic.jsonl",
+        "trajectory_id": "e5f8dd0a4b2a4090b087a30b33eca0fb",
+        "truncated": false,
+        "victory": false
+      },
+      "paired_floor_delta": 1,
+      "seed": "ND4VF9TK19"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 12,
+      "character": "Necrobinder",
+      "combat_bc": {
+        "act": 1,
+        "floor": 9,
+        "policy_sources": {
+          "combat_bc": 98,
+          "heuristic": 16
+        },
+        "runtime_error": null,
+        "steps": 114,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\012.necrobinder.QRQA6FVE9T.combat-bc.jsonl",
+        "trajectory_id": "f8bc13327ca04ad6843769b2f445512f",
+        "truncated": false,
+        "victory": false
+      },
+      "heuristic": {
+        "act": 1,
+        "floor": 8,
+        "policy_sources": {
+          "heuristic": 97
+        },
+        "runtime_error": null,
+        "steps": 97,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\012.necrobinder.QRQA6FVE9T.heuristic.jsonl",
+        "trajectory_id": "db3808ae7972485483eb51c9790b1513",
+        "truncated": false,
+        "victory": false
+      },
+      "paired_floor_delta": 1,
+      "seed": "QRQA6FVE9T"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 13,
+      "character": "Necrobinder",
+      "combat_bc": {
+        "act": 1,
+        "floor": 17,
+        "policy_sources": {
+          "combat_bc": 143,
+          "heuristic": 49
+        },
+        "steps": 192,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\013.necrobinder.B8N1D24D1T.combat-bc.jsonl",
+        "trajectory_id": "4fd0fece77bf4ab68a726d777c70704a",
+        "truncated": false,
+        "victory": false
+      },
+      "heuristic": {
+        "act": 1,
+        "floor": 17,
+        "policy_sources": {
+          "heuristic": 163
+        },
+        "runtime_error": {
+          "message": "Headless runtime did not respond within 15.0s",
+          "type": "TimeoutError"
+        },
+        "steps": 163,
+        "terminated": false,
+        "total_reward": 0.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\013.necrobinder.B8N1D24D1T.heuristic.jsonl",
+        "trajectory_id": "27ed4e8860e5437abb0f1f56d71ef95e",
+        "truncated": true,
+        "victory": null
+      },
+      "paired_floor_delta": 0,
+      "seed": "B8N1D24D1T"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 14,
+      "character": "Necrobinder",
+      "combat_bc": {
+        "act": 1,
+        "floor": 6,
+        "policy_sources": {
+          "combat_bc": 42,
+          "heuristic": 14
+        },
+        "steps": 56,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\014.necrobinder.FVKE9M1254.combat-bc.jsonl",
+        "trajectory_id": "396727b5d00c4d089f2cc9320c8826ad",
+        "truncated": false,
+        "victory": false
+      },
+      "heuristic": {
+        "act": 1,
+        "floor": 6,
+        "policy_sources": {
+          "heuristic": 57
+        },
+        "steps": 57,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\014.necrobinder.FVKE9M1254.heuristic.jsonl",
+        "trajectory_id": "aac24f1ff41f4658a5b198a4950bfe49",
+        "truncated": false,
+        "victory": false
+      },
+      "paired_floor_delta": 0,
+      "seed": "FVKE9M1254"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 15,
+      "character": "Regent",
+      "combat_bc": {
+        "act": 1,
+        "floor": 14,
+        "policy_sources": {
+          "combat_bc": 102,
+          "heuristic": 29
+        },
+        "steps": 131,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\015.regent.5MRCWG1TMN.combat-bc.jsonl",
+        "trajectory_id": "2dbb69c2a49548fea12814917c075a60",
+        "truncated": false,
+        "victory": false
+      },
+      "heuristic": {
+        "act": 1,
+        "floor": 14,
+        "policy_sources": {
+          "heuristic": 125
+        },
+        "steps": 125,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\015.regent.5MRCWG1TMN.heuristic.jsonl",
+        "trajectory_id": "83ca4ef1741d49779aa072511accde8a",
+        "truncated": false,
+        "victory": false
+      },
+      "paired_floor_delta": 0,
+      "seed": "5MRCWG1TMN"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 16,
+      "character": "Regent",
+      "combat_bc": {
+        "act": 1,
+        "floor": 6,
+        "policy_sources": {
+          "combat_bc": 49,
+          "heuristic": 13
+        },
+        "steps": 62,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\016.regent.DRYA7YLJCC.combat-bc.jsonl",
+        "trajectory_id": "5b5ec5e277a7431999250b7224e2264a",
+        "truncated": false,
+        "victory": false
+      },
+      "heuristic": {
+        "act": 2,
+        "floor": 3,
+        "policy_sources": {
+          "heuristic": 220
+        },
+        "steps": 220,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\016.regent.DRYA7YLJCC.heuristic.jsonl",
+        "trajectory_id": "51d377215e994332aa5d48e52c3113af",
+        "truncated": false,
+        "victory": false
+      },
+      "paired_floor_delta": 3,
+      "seed": "DRYA7YLJCC"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 17,
+      "character": "Regent",
+      "combat_bc": {
+        "act": 1,
+        "floor": 13,
+        "policy_sources": {
+          "combat_bc": 144,
+          "heuristic": 34
+        },
+        "steps": 178,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\017.regent.8H8V5G9EC0.combat-bc.jsonl",
+        "trajectory_id": "77dcc2c6d84242a0a8718bf43f5eabdc",
+        "truncated": false,
+        "victory": false
+      },
+      "heuristic": {
+        "act": 1,
+        "floor": 13,
+        "policy_sources": {
+          "heuristic": 169
+        },
+        "steps": 169,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\017.regent.8H8V5G9EC0.heuristic.jsonl",
+        "trajectory_id": "3a5c46eed17749228f62bd05856fa2cc",
+        "truncated": false,
+        "victory": false
+      },
+      "paired_floor_delta": 0,
+      "seed": "8H8V5G9EC0"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 18,
+      "character": "Regent",
+      "combat_bc": {
+        "act": 1,
+        "floor": 14,
+        "policy_sources": {
+          "combat_bc": 116,
+          "heuristic": 35
+        },
+        "steps": 151,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\018.regent.EZTZVEDNG3.combat-bc.jsonl",
+        "trajectory_id": "8e7bf48d26594506b3174179d820112a",
+        "truncated": false,
+        "victory": false
+      },
+      "heuristic": {
+        "act": 1,
+        "floor": 14,
+        "policy_sources": {
+          "heuristic": 146
+        },
+        "steps": 146,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\018.regent.EZTZVEDNG3.heuristic.jsonl",
+        "trajectory_id": "018376f496fb45408f586665d2a36a94",
+        "truncated": false,
+        "victory": false
+      },
+      "paired_floor_delta": 0,
+      "seed": "EZTZVEDNG3"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 19,
+      "character": "Regent",
+      "combat_bc": {
+        "act": 1,
+        "floor": 7,
+        "policy_sources": {
+          "combat_bc": 64,
+          "heuristic": 13
+        },
+        "steps": 77,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\019.regent.LMGR9KWZUG.combat-bc.jsonl",
+        "trajectory_id": "f55ff84c9fb244c180eb12a779d33ff2",
+        "truncated": false,
+        "victory": false
+      },
+      "heuristic": {
+        "act": 1,
+        "floor": 7,
+        "policy_sources": {
+          "heuristic": 90
+        },
+        "steps": 90,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\019.regent.LMGR9KWZUG.heuristic.jsonl",
+        "trajectory_id": "210d396bbc56478584b8493b347e59ce",
+        "truncated": false,
+        "victory": false
+      },
+      "paired_floor_delta": 0,
+      "seed": "LMGR9KWZUG"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 20,
+      "character": "Silent",
+      "combat_bc": {
+        "act": 1,
+        "floor": 14,
+        "policy_sources": {
+          "combat_bc": 102,
+          "heuristic": 37
+        },
+        "steps": 139,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\020.silent.LS0MKGU87K.combat-bc.jsonl",
+        "trajectory_id": "85e492d1556e41c685b2e4da47b980b5",
+        "truncated": false,
+        "victory": false
+      },
+      "heuristic": {
+        "act": 1,
+        "floor": 14,
+        "policy_sources": {
+          "heuristic": 130
+        },
+        "steps": 130,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\020.silent.LS0MKGU87K.heuristic.jsonl",
+        "trajectory_id": "42e0b70ec76f483697155c4dea61774e",
+        "truncated": false,
+        "victory": false
+      },
+      "paired_floor_delta": 0,
+      "seed": "LS0MKGU87K"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 21,
+      "character": "Silent",
+      "combat_bc": {
+        "act": 1,
+        "floor": 17,
+        "policy_sources": {
+          "combat_bc": 143,
+          "heuristic": 48
+        },
+        "steps": 191,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\021.silent.5ZT4UMM7SX.combat-bc.jsonl",
+        "trajectory_id": "e8e03fed8acd498ebcce0f2d5fec91a0",
+        "truncated": false,
+        "victory": false
+      },
+      "heuristic": {
+        "act": 1,
+        "floor": 8,
+        "policy_sources": {
+          "heuristic": 77
+        },
+        "steps": 77,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\021.silent.5ZT4UMM7SX.heuristic.jsonl",
+        "trajectory_id": "74b394b0ec73466298dfb62abe3371da",
+        "truncated": false,
+        "victory": false
+      },
+      "paired_floor_delta": 9,
+      "seed": "5ZT4UMM7SX"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 22,
+      "character": "Silent",
+      "combat_bc": {
+        "act": 1,
+        "floor": 17,
+        "policy_sources": {
+          "combat_bc": 169,
+          "heuristic": 36
+        },
+        "steps": 205,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\022.silent.0ZXSNYAWY3.combat-bc.jsonl",
+        "trajectory_id": "6990258fb2644f32a3f5b9933da0cfd4",
+        "truncated": false,
+        "victory": false
+      },
+      "heuristic": {
+        "act": 1,
+        "floor": 17,
+        "policy_sources": {
+          "heuristic": 194
+        },
+        "steps": 194,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\022.silent.0ZXSNYAWY3.heuristic.jsonl",
+        "trajectory_id": "74d22b68861146f78bb60bd9023f75cc",
+        "truncated": false,
+        "victory": false
+      },
+      "paired_floor_delta": 0,
+      "seed": "0ZXSNYAWY3"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 23,
+      "character": "Silent",
+      "combat_bc": {
+        "act": 1,
+        "floor": 13,
+        "policy_sources": {
+          "combat_bc": 138,
+          "heuristic": 34
+        },
+        "steps": 172,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\023.silent.C4Z5CZA97H.combat-bc.jsonl",
+        "trajectory_id": "9cbe43098a974c9d9764dd4a0e3518c6",
+        "truncated": false,
+        "victory": false
+      },
+      "heuristic": {
+        "act": 1,
+        "floor": 13,
+        "policy_sources": {
+          "heuristic": 183
+        },
+        "steps": 183,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\023.silent.C4Z5CZA97H.heuristic.jsonl",
+        "trajectory_id": "e6bf6bc2883f47d88afda17b6156a767",
+        "truncated": false,
+        "victory": false
+      },
+      "paired_floor_delta": 0,
+      "seed": "C4Z5CZA97H"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 24,
+      "character": "Silent",
+      "combat_bc": {
+        "act": 1,
+        "floor": 11,
+        "policy_sources": {
+          "combat_bc": 87,
+          "heuristic": 36
+        },
+        "steps": 123,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\024.silent.55UBW2DK04.combat-bc.jsonl",
+        "trajectory_id": "66fa7c46cf2f4ca28f3faee249f673c5",
+        "truncated": false,
+        "victory": false
+      },
+      "heuristic": {
+        "act": 1,
+        "floor": 11,
+        "policy_sources": {
+          "heuristic": 118
+        },
+        "steps": 118,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-held-v0.107.1-a10\\024.silent.55UBW2DK04.heuristic.jsonl",
+        "trajectory_id": "7d777743936f4c19bc43d90a4e12a4dc",
+        "truncated": false,
+        "victory": false
+      },
+      "paired_floor_delta": 0,
+      "seed": "55UBW2DK04"
+    }
+  ],
+  "combat_model": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\checkpoints\\combat_policy.heuristic.v0.107.1.npz",
+  "combat_model_sha256": "34e522e653130c6af724f8de1ac72a1559eb13d07ef700d93bbc009d0b46b9d2",
+  "count_per_character": 5,
+  "evaluation": "frozen_paired_headless_heuristic_vs_combat_distillation",
+  "label_source": "deterministic_heuristic_distillation",
+  "limitations": [
+    "This compares imitation against its heuristic teacher; it does not establish expert play.",
+    "Five held seeds per character are a smoke evaluation, not a final statistical claim.",
+    "The descriptive interval is a normal approximation over paired final-floor deltas.",
+    "Native runtime errors are retained as truncations at the last recorded floor and counted in the aggregate."
+  ],
+  "macro_model": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\checkpoints\\decision_policy.a10.npz",
+  "macro_model_sha256": "476701d84a7f6cf85b1aa6a910877334c13f52ea637af967a8f6da400ca878f9",
+  "manifest": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\v0.107.1-a10-combat-held.json",
+  "manifest_name": "stsai-v0.107.1-a10-combat-held",
+  "manifest_sha256": "4e4ed5a52ae34418af155bb9ca3ba9b291a6dea265929f863998935745a477f6",
+  "max_steps": 1000,
+  "resume": {
+    "discarded_matching_incomplete_trajectories": 1,
+    "reused_completed_trajectories": {
+      "combat_bc": 13,
+      "heuristic": 13
+    }
+  },
+  "schema_version": 1,
+  "selection": "all precommitted held cases in manifest order; outcomes not inspected"
+}

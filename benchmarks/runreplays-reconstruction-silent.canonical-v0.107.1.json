@@ -1,0 +1,4082 @@
+{
+  "alignment": {
+    "base_raw_commands": 354,
+    "base_recognized_commands": 352,
+    "canonical_prefix_exact": true,
+    "mode": "canonical_quarantine",
+    "no_unknown_commands": true,
+    "overlap_compatible": true,
+    "prefix_gate": true,
+    "raw_prefix_exact": false,
+    "target_boundary": 352,
+    "target_raw_commands": 578,
+    "target_recognized_commands": 577
+  },
+  "combat_decisions": [
+    {
+      "chosen_action": {
+        "action": "play_card",
+        "args": {
+          "card_index": 0
+        },
+        "option_id": "CARD.SPEEDSTER"
+      },
+      "chosen_legal_index": 0,
+      "legal_action_mask": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "legal_actions": [
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 0
+          },
+          "option_id": "CARD.SPEEDSTER"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 1,
+            "target_index": 0
+          },
+          "option_id": "CARD.STRIKE_SILENT|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 2
+          },
+          "option_id": "CARD.DEFEND_SILENT"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 3
+          },
+          "option_id": "CARD.CORROSIVE_WAVE"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 4
+          },
+          "option_id": "CARD.BULLET_TIME"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 5
+          },
+          "option_id": "CARD.ACROBATICS"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 6,
+            "target_index": 0
+          },
+          "option_id": "CARD.NEUTRALIZE|TARGET.0"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 0
+          },
+          "option_id": "POTION.GAMBLER_S_BREW"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 1
+          },
+          "option_id": "POTION.POWER_POTION"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 2
+          },
+          "option_id": "POTION.STABLE_SERUM"
+        },
+        {
+          "action": "end_turn",
+          "option_id": "END_TURN"
+        }
+      ],
+      "pre_action_observation": {
+        "ascension": 1,
+        "character": "CHARACTER.SILENT",
+        "context": {
+          "act": 2,
+          "act_name": "Hive",
+          "boss": {
+            "id": "THE_INSATIABLE_BOSS",
+            "name": "The Insatiable"
+          },
+          "current_map_coord": {
+            "col": 3,
+            "row": 1
+          },
+          "floor": 2,
+          "room_type": "Monster",
+          "visited_map_coords": 2
+        },
+        "decision_state": {
+          "discard_pile_count": 0,
+          "draw_pile_count": 10,
+          "encounter_id": "ENCOUNTER.TUNNELER_WEAK",
+          "enemies": [
+            {
+              "block": 0,
+              "combat_id": 1,
+              "hp": 87,
+              "id": "MONSTER.TUNNELER",
+              "index": 0,
+              "intends_attack": true,
+              "intents": [
+                {
+                  "damage": 13,
+                  "type": "Attack"
+                }
+              ],
+              "max_hp": 87,
+              "name": "Tunneler",
+              "powers": null
+            }
+          ],
+          "energy": 7,
+          "hand": [
+            {
+              "can_play": true,
+              "combat_card_id": 8,
+              "cost": 2,
+              "id": "CARD.SPEEDSTER",
+              "index": 0,
+              "keywords": [
+                "Innate"
+              ],
+              "name": "Speedster",
+              "rarity": "Uncommon",
+              "stats": {
+                "speedsterpower": 2
+              },
+              "target_type": "Self",
+              "type": "Power"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 0,
+              "cost": 1,
+              "damage_by_target": [
+                {
+                  "damage": 6,
+                  "name": "Tunneler",
+                  "target_index": 0
+                }
+              ],
+              "id": "CARD.STRIKE_SILENT",
+              "index": 1,
+              "name": "Strike",
+              "rarity": "Basic",
+              "stats": {
+                "damage": 6
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 1,
+              "cost": 1,
+              "id": "CARD.DEFEND_SILENT",
+              "index": 2,
+              "name": "Defend",
+              "rarity": "Basic",
+              "stats": {
+                "block": 5
+              },
+              "target_type": "Self",
+              "type": "Skill"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 2,
+              "cost": 1,
+              "id": "CARD.CORROSIVE_WAVE",
+              "index": 3,
+              "name": "Corrosive Wave",
+              "rarity": "Rare",
+              "stats": {
+                "corrosivewave": 2
+              },
+              "target_type": "Self",
+              "type": "Skill"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 3,
+              "cost": 3,
+              "id": "CARD.BULLET_TIME",
+              "index": 4,
+              "name": "Bullet Time",
+              "rarity": "Rare",
+              "stats": null,
+              "target_type": "Self",
+              "type": "Skill"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 4,
+              "cost": 1,
+              "id": "CARD.ACROBATICS",
+              "index": 5,
+              "name": "Acrobatics",
+              "rarity": "Uncommon",
+              "stats": {
+                "cards": 4
+              },
+              "target_type": "Self",
+              "type": "Skill"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 5,
+              "cost": 0,
+              "damage_by_target": [
+                {
+                  "damage": 3,
+                  "name": "Tunneler",
+                  "target_index": 0
+                }
+              ],
+              "id": "CARD.NEUTRALIZE",
+              "index": 6,
+              "name": "Neutralize",
+              "rarity": "Basic",
+              "stats": {
+                "damage": 3,
+                "weakpower": 1
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            }
+          ],
+          "max_energy": 3,
+          "player_powers": null,
+          "round": 1
+        },
+        "decision_type": "combat_play",
+        "player": {
+          "block": 0,
+          "character": "CHARACTER.SILENT",
+          "deck": [
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 9
+                }
+              },
+              "cost": 1,
+              "id": "CARD.STRIKE_SILENT",
+              "keywords": null,
+              "name": "Strike",
+              "stats": {
+                "damage": 6
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 9
+                }
+              },
+              "cost": 1,
+              "id": "CARD.STRIKE_SILENT",
+              "keywords": null,
+              "name": "Strike",
+              "stats": {
+                "damage": 6
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 8
+                }
+              },
+              "cost": 1,
+              "id": "CARD.DEFEND_SILENT",
+              "keywords": null,
+              "name": "Defend",
+              "stats": {
+                "block": 5
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 8
+                }
+              },
+              "cost": 1,
+              "id": "CARD.DEFEND_SILENT",
+              "keywords": null,
+              "name": "Defend",
+              "stats": {
+                "block": 5
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 8
+                }
+              },
+              "cost": 1,
+              "id": "CARD.DEFEND_SILENT",
+              "keywords": null,
+              "name": "Defend",
+              "stats": {
+                "block": 5
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 0,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 4,
+                  "weakpower": 2
+                }
+              },
+              "cost": 0,
+              "id": "CARD.NEUTRALIZE",
+              "keywords": null,
+              "name": "Neutralize",
+              "stats": {
+                "damage": 3,
+                "weakpower": 1
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 11
+                }
+              },
+              "cost": 1,
+              "id": "CARD.SURVIVOR",
+              "keywords": null,
+              "name": "Survivor",
+              "stats": {
+                "block": 8
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 2,
+                "removed_keywords": null,
+                "stats": null
+              },
+              "cost": 3,
+              "id": "CARD.BULLET_TIME",
+              "keywords": null,
+              "name": "Bullet Time",
+              "stats": null,
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 0,
+                "removed_keywords": null,
+                "stats": {
+                  "power": 3
+                }
+              },
+              "cost": 0,
+              "id": "CARD.EXPOSE",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Expose",
+              "stats": {
+                "power": 2
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": null,
+              "cost": 0,
+              "id": "CARD.PREPARED",
+              "keywords": null,
+              "name": "Prepared",
+              "stats": {
+                "cards": 2
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": null,
+              "cost": 0,
+              "id": "CARD.PREPARED",
+              "keywords": null,
+              "name": "Prepared",
+              "stats": {
+                "cards": 2
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": null,
+              "cost": 2,
+              "id": "CARD.SPEEDSTER",
+              "keywords": [
+                "Innate"
+              ],
+              "name": "Speedster",
+              "stats": {
+                "speedsterpower": 2
+              },
+              "type": "Power",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": null,
+              "cost": 1,
+              "id": "CARD.ACROBATICS",
+              "keywords": null,
+              "name": "Acrobatics",
+              "stats": {
+                "cards": 4
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 12
+                }
+              },
+              "cost": 1,
+              "id": "CARD.DAGGER_THROW",
+              "keywords": null,
+              "name": "Dagger Throw",
+              "stats": {
+                "damage": 9
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": null,
+              "cost": 3,
+              "id": "CARD.TACTICIAN",
+              "keywords": [
+                "Sly"
+              ],
+              "name": "Tactician",
+              "stats": {
+                "energy": 2
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 0,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 5
+                }
+              },
+              "cost": 0,
+              "id": "CARD.ESCAPE_PLAN",
+              "keywords": null,
+              "name": "Escape Plan",
+              "stats": {
+                "block": 3
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "corrosivewave": 3
+                }
+              },
+              "cost": 1,
+              "id": "CARD.CORROSIVE_WAVE",
+              "keywords": null,
+              "name": "Corrosive Wave",
+              "stats": {
+                "corrosivewave": 2
+              },
+              "type": "Skill",
+              "upgraded": false
+            }
+          ],
+          "deck_size": 17,
+          "gold": 161,
+          "hp": 58,
+          "max_hp": 58,
+          "name": "The Silent",
+          "potions": [
+            {
+              "id": "POTION.GAMBLER_S_BREW",
+              "index": 0,
+              "name": "Gambler's Brew",
+              "target_type": "Self",
+              "vars": null
+            },
+            {
+              "id": "POTION.POWER_POTION",
+              "index": 1,
+              "name": "Power Potion",
+              "target_type": "Self",
+              "vars": null
+            },
+            {
+              "id": "POTION.STABLE_SERUM",
+              "index": 2,
+              "name": "Stable Serum",
+              "target_type": "AnyPlayer",
+              "vars": {
+                "Repeat": 2
+              }
+            }
+          ],
+          "relics": [
+            {
+              "id": "RELIC.RING_OF_THE_SNAKE",
+              "name": "Ring of the Snake",
+              "vars": {
+                "Cards": 2
+              }
+            },
+            {
+              "id": "RELIC.LEAFY_POULTICE",
+              "name": "Leafy Poultice",
+              "vars": {
+                "MaxHp": 12
+              }
+            },
+            {
+              "id": "RELIC.PANTOGRAPH",
+              "name": "Pantograph",
+              "vars": {
+                "Heal": 25
+              }
+            },
+            {
+              "id": "RELIC.VENERABLE_TEA_SET",
+              "name": "Venerable Tea Set",
+              "vars": {
+                "Energy": 2
+              }
+            },
+            {
+              "id": "RELIC.VERY_HOT_COCOA",
+              "name": "Very Hot Cocoa",
+              "vars": {
+                "Energy": 4
+              }
+            }
+          ]
+        },
+        "schema_version": 1,
+        "seed": null,
+        "source": "sts2-cli"
+      },
+      "replay_command_index": 355,
+      "replay_command_sha256": "b4f9fa5440931c369a6121b55f5c12603f77089ac2ee0e23364e062f6d21d3d3",
+      "replay_command_type": "PlayCard"
+    },
+    {
+      "chosen_action": {
+        "action": "play_card",
+        "args": {
+          "card_index": 2
+        },
+        "option_id": "CARD.CORROSIVE_WAVE"
+      },
+      "chosen_legal_index": 2,
+      "legal_action_mask": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "legal_actions": [
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 0,
+            "target_index": 0
+          },
+          "option_id": "CARD.STRIKE_SILENT|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 1
+          },
+          "option_id": "CARD.DEFEND_SILENT"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 2
+          },
+          "option_id": "CARD.CORROSIVE_WAVE"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 3
+          },
+          "option_id": "CARD.BULLET_TIME"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 4
+          },
+          "option_id": "CARD.ACROBATICS"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 5,
+            "target_index": 0
+          },
+          "option_id": "CARD.NEUTRALIZE|TARGET.0"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 0
+          },
+          "option_id": "POTION.GAMBLER_S_BREW"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 1
+          },
+          "option_id": "POTION.POWER_POTION"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 2
+          },
+          "option_id": "POTION.STABLE_SERUM"
+        },
+        {
+          "action": "end_turn",
+          "option_id": "END_TURN"
+        }
+      ],
+      "pre_action_observation": {
+        "ascension": 1,
+        "character": "CHARACTER.SILENT",
+        "context": {
+          "act": 2,
+          "act_name": "Hive",
+          "boss": {
+            "id": "THE_INSATIABLE_BOSS",
+            "name": "The Insatiable"
+          },
+          "current_map_coord": {
+            "col": 3,
+            "row": 1
+          },
+          "floor": 2,
+          "room_type": "Monster",
+          "visited_map_coords": 2
+        },
+        "decision_state": {
+          "discard_pile_count": 0,
+          "draw_pile_count": 10,
+          "encounter_id": "ENCOUNTER.TUNNELER_WEAK",
+          "enemies": [
+            {
+              "block": 0,
+              "combat_id": 1,
+              "hp": 87,
+              "id": "MONSTER.TUNNELER",
+              "index": 0,
+              "intends_attack": true,
+              "intents": [
+                {
+                  "damage": 13,
+                  "type": "Attack"
+                }
+              ],
+              "max_hp": 87,
+              "name": "Tunneler",
+              "powers": null
+            }
+          ],
+          "energy": 5,
+          "hand": [
+            {
+              "can_play": true,
+              "combat_card_id": 0,
+              "cost": 1,
+              "damage_by_target": [
+                {
+                  "damage": 6,
+                  "name": "Tunneler",
+                  "target_index": 0
+                }
+              ],
+              "id": "CARD.STRIKE_SILENT",
+              "index": 0,
+              "name": "Strike",
+              "rarity": "Basic",
+              "stats": {
+                "damage": 6
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 1,
+              "cost": 1,
+              "id": "CARD.DEFEND_SILENT",
+              "index": 1,
+              "name": "Defend",
+              "rarity": "Basic",
+              "stats": {
+                "block": 5
+              },
+              "target_type": "Self",
+              "type": "Skill"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 2,
+              "cost": 1,
+              "id": "CARD.CORROSIVE_WAVE",
+              "index": 2,
+              "name": "Corrosive Wave",
+              "rarity": "Rare",
+              "stats": {
+                "corrosivewave": 2
+              },
+              "target_type": "Self",
+              "type": "Skill"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 3,
+              "cost": 3,
+              "id": "CARD.BULLET_TIME",
+              "index": 3,
+              "name": "Bullet Time",
+              "rarity": "Rare",
+              "stats": null,
+              "target_type": "Self",
+              "type": "Skill"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 4,
+              "cost": 1,
+              "id": "CARD.ACROBATICS",
+              "index": 4,
+              "name": "Acrobatics",
+              "rarity": "Uncommon",
+              "stats": {
+                "cards": 4
+              },
+              "target_type": "Self",
+              "type": "Skill"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 5,
+              "cost": 0,
+              "damage_by_target": [
+                {
+                  "damage": 3,
+                  "name": "Tunneler",
+                  "target_index": 0
+                }
+              ],
+              "id": "CARD.NEUTRALIZE",
+              "index": 5,
+              "name": "Neutralize",
+              "rarity": "Basic",
+              "stats": {
+                "damage": 3,
+                "weakpower": 1
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            }
+          ],
+          "max_energy": 3,
+          "player_powers": [
+            {
+              "amount": 2,
+              "name": "Speedster"
+            }
+          ],
+          "round": 1
+        },
+        "decision_type": "combat_play",
+        "player": {
+          "block": 0,
+          "character": "CHARACTER.SILENT",
+          "deck": [
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 9
+                }
+              },
+              "cost": 1,
+              "id": "CARD.STRIKE_SILENT",
+              "keywords": null,
+              "name": "Strike",
+              "stats": {
+                "damage": 6
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 9
+                }
+              },
+              "cost": 1,
+              "id": "CARD.STRIKE_SILENT",
+              "keywords": null,
+              "name": "Strike",
+              "stats": {
+                "damage": 6
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 8
+                }
+              },
+              "cost": 1,
+              "id": "CARD.DEFEND_SILENT",
+              "keywords": null,
+              "name": "Defend",
+              "stats": {
+                "block": 5
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 8
+                }
+              },
+              "cost": 1,
+              "id": "CARD.DEFEND_SILENT",
+              "keywords": null,
+              "name": "Defend",
+              "stats": {
+                "block": 5
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 8
+                }
+              },
+              "cost": 1,
+              "id": "CARD.DEFEND_SILENT",
+              "keywords": null,
+              "name": "Defend",
+              "stats": {
+                "block": 5
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 0,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 4,
+                  "weakpower": 2
+                }
+              },
+              "cost": 0,
+              "id": "CARD.NEUTRALIZE",
+              "keywords": null,
+              "name": "Neutralize",
+              "stats": {
+                "damage": 3,
+                "weakpower": 1
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 11
+                }
+              },
+              "cost": 1,
+              "id": "CARD.SURVIVOR",
+              "keywords": null,
+              "name": "Survivor",
+              "stats": {
+                "block": 8
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 2,
+                "removed_keywords": null,
+                "stats": null
+              },
+              "cost": 3,
+              "id": "CARD.BULLET_TIME",
+              "keywords": null,
+              "name": "Bullet Time",
+              "stats": null,
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 0,
+                "removed_keywords": null,
+                "stats": {
+                  "power": 3
+                }
+              },
+              "cost": 0,
+              "id": "CARD.EXPOSE",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Expose",
+              "stats": {
+                "power": 2
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": null,
+              "cost": 0,
+              "id": "CARD.PREPARED",
+              "keywords": null,
+              "name": "Prepared",
+              "stats": {
+                "cards": 2
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": null,
+              "cost": 0,
+              "id": "CARD.PREPARED",
+              "keywords": null,
+              "name": "Prepared",
+              "stats": {
+                "cards": 2
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": null,
+              "cost": 2,
+              "id": "CARD.SPEEDSTER",
+              "keywords": [
+                "Innate"
+              ],
+              "name": "Speedster",
+              "stats": {
+                "speedsterpower": 2
+              },
+              "type": "Power",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": null,
+              "cost": 1,
+              "id": "CARD.ACROBATICS",
+              "keywords": null,
+              "name": "Acrobatics",
+              "stats": {
+                "cards": 4
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 12
+                }
+              },
+              "cost": 1,
+              "id": "CARD.DAGGER_THROW",
+              "keywords": null,
+              "name": "Dagger Throw",
+              "stats": {
+                "damage": 9
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": null,
+              "cost": 3,
+              "id": "CARD.TACTICIAN",
+              "keywords": [
+                "Sly"
+              ],
+              "name": "Tactician",
+              "stats": {
+                "energy": 2
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 0,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 5
+                }
+              },
+              "cost": 0,
+              "id": "CARD.ESCAPE_PLAN",
+              "keywords": null,
+              "name": "Escape Plan",
+              "stats": {
+                "block": 3
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "corrosivewave": 3
+                }
+              },
+              "cost": 1,
+              "id": "CARD.CORROSIVE_WAVE",
+              "keywords": null,
+              "name": "Corrosive Wave",
+              "stats": {
+                "corrosivewave": 2
+              },
+              "type": "Skill",
+              "upgraded": false
+            }
+          ],
+          "deck_size": 17,
+          "gold": 161,
+          "hp": 58,
+          "max_hp": 58,
+          "name": "The Silent",
+          "potions": [
+            {
+              "id": "POTION.GAMBLER_S_BREW",
+              "index": 0,
+              "name": "Gambler's Brew",
+              "target_type": "Self",
+              "vars": null
+            },
+            {
+              "id": "POTION.POWER_POTION",
+              "index": 1,
+              "name": "Power Potion",
+              "target_type": "Self",
+              "vars": null
+            },
+            {
+              "id": "POTION.STABLE_SERUM",
+              "index": 2,
+              "name": "Stable Serum",
+              "target_type": "AnyPlayer",
+              "vars": {
+                "Repeat": 2
+              }
+            }
+          ],
+          "relics": [
+            {
+              "id": "RELIC.RING_OF_THE_SNAKE",
+              "name": "Ring of the Snake",
+              "vars": {
+                "Cards": 2
+              }
+            },
+            {
+              "id": "RELIC.LEAFY_POULTICE",
+              "name": "Leafy Poultice",
+              "vars": {
+                "MaxHp": 12
+              }
+            },
+            {
+              "id": "RELIC.PANTOGRAPH",
+              "name": "Pantograph",
+              "vars": {
+                "Heal": 25
+              }
+            },
+            {
+              "id": "RELIC.VENERABLE_TEA_SET",
+              "name": "Venerable Tea Set",
+              "vars": {
+                "Energy": 2
+              }
+            },
+            {
+              "id": "RELIC.VERY_HOT_COCOA",
+              "name": "Very Hot Cocoa",
+              "vars": {
+                "Energy": 4
+              }
+            }
+          ]
+        },
+        "schema_version": 1,
+        "seed": null,
+        "source": "sts2-cli"
+      },
+      "replay_command_index": 356,
+      "replay_command_sha256": "30b9f4f07a78984aa2ae99135f196712ecfdaaf3522eeb0c06bdd35ba78fcaff",
+      "replay_command_type": "PlayCard"
+    },
+    {
+      "chosen_action": {
+        "action": "play_card",
+        "args": {
+          "card_index": 3
+        },
+        "option_id": "CARD.ACROBATICS"
+      },
+      "chosen_legal_index": 3,
+      "legal_action_mask": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "legal_actions": [
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 0,
+            "target_index": 0
+          },
+          "option_id": "CARD.STRIKE_SILENT|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 1
+          },
+          "option_id": "CARD.DEFEND_SILENT"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 2
+          },
+          "option_id": "CARD.BULLET_TIME"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 3
+          },
+          "option_id": "CARD.ACROBATICS"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 4,
+            "target_index": 0
+          },
+          "option_id": "CARD.NEUTRALIZE|TARGET.0"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 0
+          },
+          "option_id": "POTION.GAMBLER_S_BREW"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 1
+          },
+          "option_id": "POTION.POWER_POTION"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 2
+          },
+          "option_id": "POTION.STABLE_SERUM"
+        },
+        {
+          "action": "end_turn",
+          "option_id": "END_TURN"
+        }
+      ],
+      "pre_action_observation": {
+        "ascension": 1,
+        "character": "CHARACTER.SILENT",
+        "context": {
+          "act": 2,
+          "act_name": "Hive",
+          "boss": {
+            "id": "THE_INSATIABLE_BOSS",
+            "name": "The Insatiable"
+          },
+          "current_map_coord": {
+            "col": 3,
+            "row": 1
+          },
+          "floor": 2,
+          "room_type": "Monster",
+          "visited_map_coords": 2
+        },
+        "decision_state": {
+          "discard_pile_count": 1,
+          "draw_pile_count": 10,
+          "encounter_id": "ENCOUNTER.TUNNELER_WEAK",
+          "enemies": [
+            {
+              "block": 0,
+              "combat_id": 1,
+              "hp": 87,
+              "id": "MONSTER.TUNNELER",
+              "index": 0,
+              "intends_attack": true,
+              "intents": [
+                {
+                  "damage": 13,
+                  "type": "Attack"
+                }
+              ],
+              "max_hp": 87,
+              "name": "Tunneler",
+              "powers": null
+            }
+          ],
+          "energy": 4,
+          "hand": [
+            {
+              "can_play": true,
+              "combat_card_id": 0,
+              "cost": 1,
+              "damage_by_target": [
+                {
+                  "damage": 6,
+                  "name": "Tunneler",
+                  "target_index": 0
+                }
+              ],
+              "id": "CARD.STRIKE_SILENT",
+              "index": 0,
+              "name": "Strike",
+              "rarity": "Basic",
+              "stats": {
+                "damage": 6
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 1,
+              "cost": 1,
+              "id": "CARD.DEFEND_SILENT",
+              "index": 1,
+              "name": "Defend",
+              "rarity": "Basic",
+              "stats": {
+                "block": 5
+              },
+              "target_type": "Self",
+              "type": "Skill"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 3,
+              "cost": 3,
+              "id": "CARD.BULLET_TIME",
+              "index": 2,
+              "name": "Bullet Time",
+              "rarity": "Rare",
+              "stats": null,
+              "target_type": "Self",
+              "type": "Skill"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 4,
+              "cost": 1,
+              "id": "CARD.ACROBATICS",
+              "index": 3,
+              "name": "Acrobatics",
+              "rarity": "Uncommon",
+              "stats": {
+                "cards": 4
+              },
+              "target_type": "Self",
+              "type": "Skill"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 5,
+              "cost": 0,
+              "damage_by_target": [
+                {
+                  "damage": 3,
+                  "name": "Tunneler",
+                  "target_index": 0
+                }
+              ],
+              "id": "CARD.NEUTRALIZE",
+              "index": 4,
+              "name": "Neutralize",
+              "rarity": "Basic",
+              "stats": {
+                "damage": 3,
+                "weakpower": 1
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            }
+          ],
+          "max_energy": 3,
+          "player_powers": [
+            {
+              "amount": 2,
+              "name": "Speedster"
+            },
+            {
+              "amount": 2,
+              "name": "Corrosive Wave"
+            }
+          ],
+          "round": 1
+        },
+        "decision_type": "combat_play",
+        "player": {
+          "block": 0,
+          "character": "CHARACTER.SILENT",
+          "deck": [
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 9
+                }
+              },
+              "cost": 1,
+              "id": "CARD.STRIKE_SILENT",
+              "keywords": null,
+              "name": "Strike",
+              "stats": {
+                "damage": 6
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 9
+                }
+              },
+              "cost": 1,
+              "id": "CARD.STRIKE_SILENT",
+              "keywords": null,
+              "name": "Strike",
+              "stats": {
+                "damage": 6
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 8
+                }
+              },
+              "cost": 1,
+              "id": "CARD.DEFEND_SILENT",
+              "keywords": null,
+              "name": "Defend",
+              "stats": {
+                "block": 5
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 8
+                }
+              },
+              "cost": 1,
+              "id": "CARD.DEFEND_SILENT",
+              "keywords": null,
+              "name": "Defend",
+              "stats": {
+                "block": 5
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 8
+                }
+              },
+              "cost": 1,
+              "id": "CARD.DEFEND_SILENT",
+              "keywords": null,
+              "name": "Defend",
+              "stats": {
+                "block": 5
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 0,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 4,
+                  "weakpower": 2
+                }
+              },
+              "cost": 0,
+              "id": "CARD.NEUTRALIZE",
+              "keywords": null,
+              "name": "Neutralize",
+              "stats": {
+                "damage": 3,
+                "weakpower": 1
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 11
+                }
+              },
+              "cost": 1,
+              "id": "CARD.SURVIVOR",
+              "keywords": null,
+              "name": "Survivor",
+              "stats": {
+                "block": 8
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 2,
+                "removed_keywords": null,
+                "stats": null
+              },
+              "cost": 3,
+              "id": "CARD.BULLET_TIME",
+              "keywords": null,
+              "name": "Bullet Time",
+              "stats": null,
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 0,
+                "removed_keywords": null,
+                "stats": {
+                  "power": 3
+                }
+              },
+              "cost": 0,
+              "id": "CARD.EXPOSE",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Expose",
+              "stats": {
+                "power": 2
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": null,
+              "cost": 0,
+              "id": "CARD.PREPARED",
+              "keywords": null,
+              "name": "Prepared",
+              "stats": {
+                "cards": 2
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": null,
+              "cost": 0,
+              "id": "CARD.PREPARED",
+              "keywords": null,
+              "name": "Prepared",
+              "stats": {
+                "cards": 2
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": null,
+              "cost": 2,
+              "id": "CARD.SPEEDSTER",
+              "keywords": [
+                "Innate"
+              ],
+              "name": "Speedster",
+              "stats": {
+                "speedsterpower": 2
+              },
+              "type": "Power",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": null,
+              "cost": 1,
+              "id": "CARD.ACROBATICS",
+              "keywords": null,
+              "name": "Acrobatics",
+              "stats": {
+                "cards": 4
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 12
+                }
+              },
+              "cost": 1,
+              "id": "CARD.DAGGER_THROW",
+              "keywords": null,
+              "name": "Dagger Throw",
+              "stats": {
+                "damage": 9
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": null,
+              "cost": 3,
+              "id": "CARD.TACTICIAN",
+              "keywords": [
+                "Sly"
+              ],
+              "name": "Tactician",
+              "stats": {
+                "energy": 2
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 0,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 5
+                }
+              },
+              "cost": 0,
+              "id": "CARD.ESCAPE_PLAN",
+              "keywords": null,
+              "name": "Escape Plan",
+              "stats": {
+                "block": 3
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "corrosivewave": 3
+                }
+              },
+              "cost": 1,
+              "id": "CARD.CORROSIVE_WAVE",
+              "keywords": null,
+              "name": "Corrosive Wave",
+              "stats": {
+                "corrosivewave": 2
+              },
+              "type": "Skill",
+              "upgraded": false
+            }
+          ],
+          "deck_size": 17,
+          "gold": 161,
+          "hp": 58,
+          "max_hp": 58,
+          "name": "The Silent",
+          "potions": [
+            {
+              "id": "POTION.GAMBLER_S_BREW",
+              "index": 0,
+              "name": "Gambler's Brew",
+              "target_type": "Self",
+              "vars": null
+            },
+            {
+              "id": "POTION.POWER_POTION",
+              "index": 1,
+              "name": "Power Potion",
+              "target_type": "Self",
+              "vars": null
+            },
+            {
+              "id": "POTION.STABLE_SERUM",
+              "index": 2,
+              "name": "Stable Serum",
+              "target_type": "AnyPlayer",
+              "vars": {
+                "Repeat": 2
+              }
+            }
+          ],
+          "relics": [
+            {
+              "id": "RELIC.RING_OF_THE_SNAKE",
+              "name": "Ring of the Snake",
+              "vars": {
+                "Cards": 2
+              }
+            },
+            {
+              "id": "RELIC.LEAFY_POULTICE",
+              "name": "Leafy Poultice",
+              "vars": {
+                "MaxHp": 12
+              }
+            },
+            {
+              "id": "RELIC.PANTOGRAPH",
+              "name": "Pantograph",
+              "vars": {
+                "Heal": 25
+              }
+            },
+            {
+              "id": "RELIC.VENERABLE_TEA_SET",
+              "name": "Venerable Tea Set",
+              "vars": {
+                "Energy": 2
+              }
+            },
+            {
+              "id": "RELIC.VERY_HOT_COCOA",
+              "name": "Very Hot Cocoa",
+              "vars": {
+                "Energy": 4
+              }
+            }
+          ]
+        },
+        "schema_version": 1,
+        "seed": null,
+        "source": "sts2-cli"
+      },
+      "replay_command_index": 357,
+      "replay_command_sha256": "b8b079692b412646a50ca5f6079390adc50a0ff883b01240489643fff0b32b3e",
+      "replay_command_type": "PlayCard"
+    },
+    {
+      "chosen_action": {
+        "action": "play_card",
+        "args": {
+          "card_index": 6
+        },
+        "option_id": "CARD.ESCAPE_PLAN"
+      },
+      "chosen_legal_index": 6,
+      "legal_action_mask": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "legal_actions": [
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 0,
+            "target_index": 0
+          },
+          "option_id": "CARD.STRIKE_SILENT|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 1
+          },
+          "option_id": "CARD.DEFEND_SILENT"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 2
+          },
+          "option_id": "CARD.BULLET_TIME"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 3,
+            "target_index": 0
+          },
+          "option_id": "CARD.NEUTRALIZE|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 4,
+            "target_index": 0
+          },
+          "option_id": "CARD.EXPOSE|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 5
+          },
+          "option_id": "CARD.PREPARED"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 6
+          },
+          "option_id": "CARD.ESCAPE_PLAN"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 0
+          },
+          "option_id": "POTION.GAMBLER_S_BREW"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 1
+          },
+          "option_id": "POTION.POWER_POTION"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 2
+          },
+          "option_id": "POTION.STABLE_SERUM"
+        },
+        {
+          "action": "end_turn",
+          "option_id": "END_TURN"
+        }
+      ],
+      "pre_action_observation": {
+        "ascension": 1,
+        "character": "CHARACTER.SILENT",
+        "context": {
+          "act": 2,
+          "act_name": "Hive",
+          "boss": {
+            "id": "THE_INSATIABLE_BOSS",
+            "name": "The Insatiable"
+          },
+          "current_map_coord": {
+            "col": 3,
+            "row": 1
+          },
+          "floor": 2,
+          "room_type": "Monster",
+          "visited_map_coords": 2
+        },
+        "decision_state": {
+          "discard_pile_count": 3,
+          "draw_pile_count": 6,
+          "encounter_id": "ENCOUNTER.TUNNELER_WEAK",
+          "enemies": [
+            {
+              "block": 0,
+              "combat_id": 1,
+              "hp": 79,
+              "id": "MONSTER.TUNNELER",
+              "index": 0,
+              "intends_attack": true,
+              "intents": [
+                {
+                  "damage": 13,
+                  "type": "Attack"
+                }
+              ],
+              "max_hp": 87,
+              "name": "Tunneler",
+              "powers": [
+                {
+                  "amount": 8,
+                  "name": "Poison"
+                }
+              ]
+            }
+          ],
+          "energy": 5,
+          "hand": [
+            {
+              "can_play": true,
+              "combat_card_id": 0,
+              "cost": 1,
+              "damage_by_target": [
+                {
+                  "damage": 6,
+                  "name": "Tunneler",
+                  "target_index": 0
+                }
+              ],
+              "id": "CARD.STRIKE_SILENT",
+              "index": 0,
+              "name": "Strike",
+              "rarity": "Basic",
+              "stats": {
+                "damage": 6
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 1,
+              "cost": 1,
+              "id": "CARD.DEFEND_SILENT",
+              "index": 1,
+              "name": "Defend",
+              "rarity": "Basic",
+              "stats": {
+                "block": 5
+              },
+              "target_type": "Self",
+              "type": "Skill"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 3,
+              "cost": 3,
+              "id": "CARD.BULLET_TIME",
+              "index": 2,
+              "name": "Bullet Time",
+              "rarity": "Rare",
+              "stats": null,
+              "target_type": "Self",
+              "type": "Skill"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 5,
+              "cost": 0,
+              "damage_by_target": [
+                {
+                  "damage": 3,
+                  "name": "Tunneler",
+                  "target_index": 0
+                }
+              ],
+              "id": "CARD.NEUTRALIZE",
+              "index": 3,
+              "name": "Neutralize",
+              "rarity": "Basic",
+              "stats": {
+                "damage": 3,
+                "weakpower": 1
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 6,
+              "cost": 0,
+              "id": "CARD.EXPOSE",
+              "index": 4,
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Expose",
+              "rarity": "Uncommon",
+              "stats": {
+                "power": 2
+              },
+              "target_type": "AnyEnemy",
+              "type": "Skill"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 7,
+              "cost": 0,
+              "id": "CARD.PREPARED",
+              "index": 5,
+              "name": "Prepared",
+              "rarity": "Common",
+              "stats": {
+                "cards": 2
+              },
+              "target_type": "Self",
+              "type": "Skill"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 9,
+              "cost": 0,
+              "id": "CARD.ESCAPE_PLAN",
+              "index": 6,
+              "name": "Escape Plan",
+              "rarity": "Uncommon",
+              "stats": {
+                "block": 3
+              },
+              "target_type": "Self",
+              "type": "Skill"
+            }
+          ],
+          "max_energy": 3,
+          "player_powers": [
+            {
+              "amount": 2,
+              "name": "Speedster"
+            },
+            {
+              "amount": 2,
+              "name": "Corrosive Wave"
+            }
+          ],
+          "round": 1
+        },
+        "decision_type": "combat_play",
+        "player": {
+          "block": 0,
+          "character": "CHARACTER.SILENT",
+          "deck": [
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 9
+                }
+              },
+              "cost": 1,
+              "id": "CARD.STRIKE_SILENT",
+              "keywords": null,
+              "name": "Strike",
+              "stats": {
+                "damage": 6
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 9
+                }
+              },
+              "cost": 1,
+              "id": "CARD.STRIKE_SILENT",
+              "keywords": null,
+              "name": "Strike",
+              "stats": {
+                "damage": 6
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 8
+                }
+              },
+              "cost": 1,
+              "id": "CARD.DEFEND_SILENT",
+              "keywords": null,
+              "name": "Defend",
+              "stats": {
+                "block": 5
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 8
+                }
+              },
+              "cost": 1,
+              "id": "CARD.DEFEND_SILENT",
+              "keywords": null,
+              "name": "Defend",
+              "stats": {
+                "block": 5
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 8
+                }
+              },
+              "cost": 1,
+              "id": "CARD.DEFEND_SILENT",
+              "keywords": null,
+              "name": "Defend",
+              "stats": {
+                "block": 5
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 0,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 4,
+                  "weakpower": 2
+                }
+              },
+              "cost": 0,
+              "id": "CARD.NEUTRALIZE",
+              "keywords": null,
+              "name": "Neutralize",
+              "stats": {
+                "damage": 3,
+                "weakpower": 1
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 11
+                }
+              },
+              "cost": 1,
+              "id": "CARD.SURVIVOR",
+              "keywords": null,
+              "name": "Survivor",
+              "stats": {
+                "block": 8
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 2,
+                "removed_keywords": null,
+                "stats": null
+              },
+              "cost": 3,
+              "id": "CARD.BULLET_TIME",
+              "keywords": null,
+              "name": "Bullet Time",
+              "stats": null,
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 0,
+                "removed_keywords": null,
+                "stats": {
+                  "power": 3
+                }
+              },
+              "cost": 0,
+              "id": "CARD.EXPOSE",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Expose",
+              "stats": {
+                "power": 2
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": null,
+              "cost": 0,
+              "id": "CARD.PREPARED",
+              "keywords": null,
+              "name": "Prepared",
+              "stats": {
+                "cards": 2
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": null,
+              "cost": 0,
+              "id": "CARD.PREPARED",
+              "keywords": null,
+              "name": "Prepared",
+              "stats": {
+                "cards": 2
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": null,
+              "cost": 2,
+              "id": "CARD.SPEEDSTER",
+              "keywords": [
+                "Innate"
+              ],
+              "name": "Speedster",
+              "stats": {
+                "speedsterpower": 2
+              },
+              "type": "Power",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": null,
+              "cost": 1,
+              "id": "CARD.ACROBATICS",
+              "keywords": null,
+              "name": "Acrobatics",
+              "stats": {
+                "cards": 4
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 12
+                }
+              },
+              "cost": 1,
+              "id": "CARD.DAGGER_THROW",
+              "keywords": null,
+              "name": "Dagger Throw",
+              "stats": {
+                "damage": 9
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": null,
+              "cost": 3,
+              "id": "CARD.TACTICIAN",
+              "keywords": [
+                "Sly"
+              ],
+              "name": "Tactician",
+              "stats": {
+                "energy": 2
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 0,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 5
+                }
+              },
+              "cost": 0,
+              "id": "CARD.ESCAPE_PLAN",
+              "keywords": null,
+              "name": "Escape Plan",
+              "stats": {
+                "block": 3
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "corrosivewave": 3
+                }
+              },
+              "cost": 1,
+              "id": "CARD.CORROSIVE_WAVE",
+              "keywords": null,
+              "name": "Corrosive Wave",
+              "stats": {
+                "corrosivewave": 2
+              },
+              "type": "Skill",
+              "upgraded": false
+            }
+          ],
+          "deck_size": 17,
+          "gold": 161,
+          "hp": 58,
+          "max_hp": 58,
+          "name": "The Silent",
+          "potions": [
+            {
+              "id": "POTION.GAMBLER_S_BREW",
+              "index": 0,
+              "name": "Gambler's Brew",
+              "target_type": "Self",
+              "vars": null
+            },
+            {
+              "id": "POTION.POWER_POTION",
+              "index": 1,
+              "name": "Power Potion",
+              "target_type": "Self",
+              "vars": null
+            },
+            {
+              "id": "POTION.STABLE_SERUM",
+              "index": 2,
+              "name": "Stable Serum",
+              "target_type": "AnyPlayer",
+              "vars": {
+                "Repeat": 2
+              }
+            }
+          ],
+          "relics": [
+            {
+              "id": "RELIC.RING_OF_THE_SNAKE",
+              "name": "Ring of the Snake",
+              "vars": {
+                "Cards": 2
+              }
+            },
+            {
+              "id": "RELIC.LEAFY_POULTICE",
+              "name": "Leafy Poultice",
+              "vars": {
+                "MaxHp": 12
+              }
+            },
+            {
+              "id": "RELIC.PANTOGRAPH",
+              "name": "Pantograph",
+              "vars": {
+                "Heal": 25
+              }
+            },
+            {
+              "id": "RELIC.VENERABLE_TEA_SET",
+              "name": "Venerable Tea Set",
+              "vars": {
+                "Energy": 2
+              }
+            },
+            {
+              "id": "RELIC.VERY_HOT_COCOA",
+              "name": "Very Hot Cocoa",
+              "vars": {
+                "Energy": 4
+              }
+            }
+          ]
+        },
+        "schema_version": 1,
+        "seed": null,
+        "source": "sts2-cli"
+      },
+      "replay_command_index": 359,
+      "replay_command_sha256": "8607d729bdccf2ad0a32b8ae0b546c479f9d800d158b0a40ed9fcc1ac126569a",
+      "replay_command_type": "PlayCard"
+    },
+    {
+      "chosen_action": {
+        "action": "play_card",
+        "args": {
+          "card_index": 4,
+          "target_index": 0
+        },
+        "option_id": "CARD.EXPOSE|TARGET.0"
+      },
+      "chosen_legal_index": 4,
+      "legal_action_mask": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "legal_actions": [
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 0,
+            "target_index": 0
+          },
+          "option_id": "CARD.STRIKE_SILENT|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 1
+          },
+          "option_id": "CARD.DEFEND_SILENT"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 2
+          },
+          "option_id": "CARD.BULLET_TIME"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 3,
+            "target_index": 0
+          },
+          "option_id": "CARD.NEUTRALIZE|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 4,
+            "target_index": 0
+          },
+          "option_id": "CARD.EXPOSE|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 5
+          },
+          "option_id": "CARD.PREPARED"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 6
+          },
+          "option_id": "CARD.DEFEND_SILENT"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 0
+          },
+          "option_id": "POTION.GAMBLER_S_BREW"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 1
+          },
+          "option_id": "POTION.POWER_POTION"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 2
+          },
+          "option_id": "POTION.STABLE_SERUM"
+        },
+        {
+          "action": "end_turn",
+          "option_id": "END_TURN"
+        }
+      ],
+      "pre_action_observation": {
+        "ascension": 1,
+        "character": "CHARACTER.SILENT",
+        "context": {
+          "act": 2,
+          "act_name": "Hive",
+          "boss": {
+            "id": "THE_INSATIABLE_BOSS",
+            "name": "The Insatiable"
+          },
+          "current_map_coord": {
+            "col": 3,
+            "row": 1
+          },
+          "floor": 2,
+          "room_type": "Monster",
+          "visited_map_coords": 2
+        },
+        "decision_state": {
+          "discard_pile_count": 4,
+          "draw_pile_count": 5,
+          "encounter_id": "ENCOUNTER.TUNNELER_WEAK",
+          "enemies": [
+            {
+              "block": 0,
+              "combat_id": 1,
+              "hp": 77,
+              "id": "MONSTER.TUNNELER",
+              "index": 0,
+              "intends_attack": true,
+              "intents": [
+                {
+                  "damage": 13,
+                  "type": "Attack"
+                }
+              ],
+              "max_hp": 87,
+              "name": "Tunneler",
+              "powers": [
+                {
+                  "amount": 10,
+                  "name": "Poison"
+                }
+              ]
+            }
+          ],
+          "energy": 5,
+          "hand": [
+            {
+              "can_play": true,
+              "combat_card_id": 0,
+              "cost": 1,
+              "damage_by_target": [
+                {
+                  "damage": 6,
+                  "name": "Tunneler",
+                  "target_index": 0
+                }
+              ],
+              "id": "CARD.STRIKE_SILENT",
+              "index": 0,
+              "name": "Strike",
+              "rarity": "Basic",
+              "stats": {
+                "damage": 6
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 1,
+              "cost": 1,
+              "id": "CARD.DEFEND_SILENT",
+              "index": 1,
+              "name": "Defend",
+              "rarity": "Basic",
+              "stats": {
+                "block": 5
+              },
+              "target_type": "Self",
+              "type": "Skill"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 3,
+              "cost": 3,
+              "id": "CARD.BULLET_TIME",
+              "index": 2,
+              "name": "Bullet Time",
+              "rarity": "Rare",
+              "stats": null,
+              "target_type": "Self",
+              "type": "Skill"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 5,
+              "cost": 0,
+              "damage_by_target": [
+                {
+                  "damage": 3,
+                  "name": "Tunneler",
+                  "target_index": 0
+                }
+              ],
+              "id": "CARD.NEUTRALIZE",
+              "index": 3,
+              "name": "Neutralize",
+              "rarity": "Basic",
+              "stats": {
+                "damage": 3,
+                "weakpower": 1
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 6,
+              "cost": 0,
+              "id": "CARD.EXPOSE",
+              "index": 4,
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Expose",
+              "rarity": "Uncommon",
+              "stats": {
+                "power": 2
+              },
+              "target_type": "AnyEnemy",
+              "type": "Skill"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 7,
+              "cost": 0,
+              "id": "CARD.PREPARED",
+              "index": 5,
+              "name": "Prepared",
+              "rarity": "Common",
+              "stats": {
+                "cards": 2
+              },
+              "target_type": "Self",
+              "type": "Skill"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 11,
+              "cost": 1,
+              "id": "CARD.DEFEND_SILENT",
+              "index": 6,
+              "name": "Defend",
+              "rarity": "Basic",
+              "stats": {
+                "block": 5
+              },
+              "target_type": "Self",
+              "type": "Skill"
+            }
+          ],
+          "max_energy": 3,
+          "player_powers": [
+            {
+              "amount": 2,
+              "name": "Speedster"
+            },
+            {
+              "amount": 2,
+              "name": "Corrosive Wave"
+            }
+          ],
+          "round": 1
+        },
+        "decision_type": "combat_play",
+        "player": {
+          "block": 3,
+          "character": "CHARACTER.SILENT",
+          "deck": [
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 9
+                }
+              },
+              "cost": 1,
+              "id": "CARD.STRIKE_SILENT",
+              "keywords": null,
+              "name": "Strike",
+              "stats": {
+                "damage": 6
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 9
+                }
+              },
+              "cost": 1,
+              "id": "CARD.STRIKE_SILENT",
+              "keywords": null,
+              "name": "Strike",
+              "stats": {
+                "damage": 6
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 8
+                }
+              },
+              "cost": 1,
+              "id": "CARD.DEFEND_SILENT",
+              "keywords": null,
+              "name": "Defend",
+              "stats": {
+                "block": 5
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 8
+                }
+              },
+              "cost": 1,
+              "id": "CARD.DEFEND_SILENT",
+              "keywords": null,
+              "name": "Defend",
+              "stats": {
+                "block": 5
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 8
+                }
+              },
+              "cost": 1,
+              "id": "CARD.DEFEND_SILENT",
+              "keywords": null,
+              "name": "Defend",
+              "stats": {
+                "block": 5
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 0,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 4,
+                  "weakpower": 2
+                }
+              },
+              "cost": 0,
+              "id": "CARD.NEUTRALIZE",
+              "keywords": null,
+              "name": "Neutralize",
+              "stats": {
+                "damage": 3,
+                "weakpower": 1
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 11
+                }
+              },
+              "cost": 1,
+              "id": "CARD.SURVIVOR",
+              "keywords": null,
+              "name": "Survivor",
+              "stats": {
+                "block": 8
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 2,
+                "removed_keywords": null,
+                "stats": null
+              },
+              "cost": 3,
+              "id": "CARD.BULLET_TIME",
+              "keywords": null,
+              "name": "Bullet Time",
+              "stats": null,
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 0,
+                "removed_keywords": null,
+                "stats": {
+                  "power": 3
+                }
+              },
+              "cost": 0,
+              "id": "CARD.EXPOSE",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Expose",
+              "stats": {
+                "power": 2
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": null,
+              "cost": 0,
+              "id": "CARD.PREPARED",
+              "keywords": null,
+              "name": "Prepared",
+              "stats": {
+                "cards": 2
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": null,
+              "cost": 0,
+              "id": "CARD.PREPARED",
+              "keywords": null,
+              "name": "Prepared",
+              "stats": {
+                "cards": 2
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": null,
+              "cost": 2,
+              "id": "CARD.SPEEDSTER",
+              "keywords": [
+                "Innate"
+              ],
+              "name": "Speedster",
+              "stats": {
+                "speedsterpower": 2
+              },
+              "type": "Power",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": null,
+              "cost": 1,
+              "id": "CARD.ACROBATICS",
+              "keywords": null,
+              "name": "Acrobatics",
+              "stats": {
+                "cards": 4
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 12
+                }
+              },
+              "cost": 1,
+              "id": "CARD.DAGGER_THROW",
+              "keywords": null,
+              "name": "Dagger Throw",
+              "stats": {
+                "damage": 9
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": null,
+              "cost": 3,
+              "id": "CARD.TACTICIAN",
+              "keywords": [
+                "Sly"
+              ],
+              "name": "Tactician",
+              "stats": {
+                "energy": 2
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 0,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 5
+                }
+              },
+              "cost": 0,
+              "id": "CARD.ESCAPE_PLAN",
+              "keywords": null,
+              "name": "Escape Plan",
+              "stats": {
+                "block": 3
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "corrosivewave": 3
+                }
+              },
+              "cost": 1,
+              "id": "CARD.CORROSIVE_WAVE",
+              "keywords": null,
+              "name": "Corrosive Wave",
+              "stats": {
+                "corrosivewave": 2
+              },
+              "type": "Skill",
+              "upgraded": false
+            }
+          ],
+          "deck_size": 17,
+          "gold": 161,
+          "hp": 58,
+          "max_hp": 58,
+          "name": "The Silent",
+          "potions": [
+            {
+              "id": "POTION.GAMBLER_S_BREW",
+              "index": 0,
+              "name": "Gambler's Brew",
+              "target_type": "Self",
+              "vars": null
+            },
+            {
+              "id": "POTION.POWER_POTION",
+              "index": 1,
+              "name": "Power Potion",
+              "target_type": "Self",
+              "vars": null
+            },
+            {
+              "id": "POTION.STABLE_SERUM",
+              "index": 2,
+              "name": "Stable Serum",
+              "target_type": "AnyPlayer",
+              "vars": {
+                "Repeat": 2
+              }
+            }
+          ],
+          "relics": [
+            {
+              "id": "RELIC.RING_OF_THE_SNAKE",
+              "name": "Ring of the Snake",
+              "vars": {
+                "Cards": 2
+              }
+            },
+            {
+              "id": "RELIC.LEAFY_POULTICE",
+              "name": "Leafy Poultice",
+              "vars": {
+                "MaxHp": 12
+              }
+            },
+            {
+              "id": "RELIC.PANTOGRAPH",
+              "name": "Pantograph",
+              "vars": {
+                "Heal": 25
+              }
+            },
+            {
+              "id": "RELIC.VENERABLE_TEA_SET",
+              "name": "Venerable Tea Set",
+              "vars": {
+                "Energy": 2
+              }
+            },
+            {
+              "id": "RELIC.VERY_HOT_COCOA",
+              "name": "Very Hot Cocoa",
+              "vars": {
+                "Energy": 4
+              }
+            }
+          ]
+        },
+        "schema_version": 1,
+        "seed": null,
+        "source": "sts2-cli"
+      },
+      "replay_command_index": 360,
+      "replay_command_sha256": "02caafb1ecc03f46577954979ca9c27e68b7986c49ce84f71d702a0cafc72fce",
+      "replay_command_type": "PlayCard"
+    },
+    {
+      "chosen_action": {
+        "action": "play_card",
+        "args": {
+          "card_index": 4
+        },
+        "option_id": "CARD.PREPARED"
+      },
+      "chosen_legal_index": 4,
+      "legal_action_mask": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "legal_actions": [
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 0,
+            "target_index": 0
+          },
+          "option_id": "CARD.STRIKE_SILENT|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 1
+          },
+          "option_id": "CARD.DEFEND_SILENT"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 2
+          },
+          "option_id": "CARD.BULLET_TIME"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 3,
+            "target_index": 0
+          },
+          "option_id": "CARD.NEUTRALIZE|TARGET.0"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 4
+          },
+          "option_id": "CARD.PREPARED"
+        },
+        {
+          "action": "play_card",
+          "args": {
+            "card_index": 5
+          },
+          "option_id": "CARD.DEFEND_SILENT"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 0
+          },
+          "option_id": "POTION.GAMBLER_S_BREW"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 1
+          },
+          "option_id": "POTION.POWER_POTION"
+        },
+        {
+          "action": "use_potion",
+          "args": {
+            "potion_index": 2
+          },
+          "option_id": "POTION.STABLE_SERUM"
+        },
+        {
+          "action": "end_turn",
+          "option_id": "END_TURN"
+        }
+      ],
+      "pre_action_observation": {
+        "ascension": 1,
+        "character": "CHARACTER.SILENT",
+        "context": {
+          "act": 2,
+          "act_name": "Hive",
+          "boss": {
+            "id": "THE_INSATIABLE_BOSS",
+            "name": "The Insatiable"
+          },
+          "current_map_coord": {
+            "col": 3,
+            "row": 1
+          },
+          "floor": 2,
+          "room_type": "Monster",
+          "visited_map_coords": 2
+        },
+        "decision_state": {
+          "discard_pile_count": 4,
+          "draw_pile_count": 5,
+          "encounter_id": "ENCOUNTER.TUNNELER_WEAK",
+          "enemies": [
+            {
+              "block": 0,
+              "combat_id": 1,
+              "hp": 77,
+              "id": "MONSTER.TUNNELER",
+              "index": 0,
+              "intends_attack": true,
+              "intents": [
+                {
+                  "damage": 13,
+                  "type": "Attack"
+                }
+              ],
+              "max_hp": 87,
+              "name": "Tunneler",
+              "powers": [
+                {
+                  "amount": 10,
+                  "name": "Poison"
+                },
+                {
+                  "amount": 2,
+                  "name": "Vulnerable"
+                }
+              ]
+            }
+          ],
+          "energy": 5,
+          "hand": [
+            {
+              "can_play": true,
+              "combat_card_id": 0,
+              "cost": 1,
+              "damage_by_target": [
+                {
+                  "damage": 9,
+                  "name": "Tunneler",
+                  "target_index": 0
+                }
+              ],
+              "id": "CARD.STRIKE_SILENT",
+              "index": 0,
+              "name": "Strike",
+              "rarity": "Basic",
+              "stats": {
+                "damage": 6
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 1,
+              "cost": 1,
+              "id": "CARD.DEFEND_SILENT",
+              "index": 1,
+              "name": "Defend",
+              "rarity": "Basic",
+              "stats": {
+                "block": 5
+              },
+              "target_type": "Self",
+              "type": "Skill"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 3,
+              "cost": 3,
+              "id": "CARD.BULLET_TIME",
+              "index": 2,
+              "name": "Bullet Time",
+              "rarity": "Rare",
+              "stats": null,
+              "target_type": "Self",
+              "type": "Skill"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 5,
+              "cost": 0,
+              "damage_by_target": [
+                {
+                  "damage": 4,
+                  "name": "Tunneler",
+                  "target_index": 0
+                }
+              ],
+              "id": "CARD.NEUTRALIZE",
+              "index": 3,
+              "name": "Neutralize",
+              "rarity": "Basic",
+              "stats": {
+                "damage": 3,
+                "weakpower": 1
+              },
+              "target_type": "AnyEnemy",
+              "type": "Attack"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 7,
+              "cost": 0,
+              "id": "CARD.PREPARED",
+              "index": 4,
+              "name": "Prepared",
+              "rarity": "Common",
+              "stats": {
+                "cards": 2
+              },
+              "target_type": "Self",
+              "type": "Skill"
+            },
+            {
+              "can_play": true,
+              "combat_card_id": 11,
+              "cost": 1,
+              "id": "CARD.DEFEND_SILENT",
+              "index": 5,
+              "name": "Defend",
+              "rarity": "Basic",
+              "stats": {
+                "block": 5
+              },
+              "target_type": "Self",
+              "type": "Skill"
+            }
+          ],
+          "max_energy": 3,
+          "player_powers": [
+            {
+              "amount": 2,
+              "name": "Speedster"
+            },
+            {
+              "amount": 2,
+              "name": "Corrosive Wave"
+            }
+          ],
+          "round": 1
+        },
+        "decision_type": "combat_play",
+        "player": {
+          "block": 3,
+          "character": "CHARACTER.SILENT",
+          "deck": [
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 9
+                }
+              },
+              "cost": 1,
+              "id": "CARD.STRIKE_SILENT",
+              "keywords": null,
+              "name": "Strike",
+              "stats": {
+                "damage": 6
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 9
+                }
+              },
+              "cost": 1,
+              "id": "CARD.STRIKE_SILENT",
+              "keywords": null,
+              "name": "Strike",
+              "stats": {
+                "damage": 6
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 8
+                }
+              },
+              "cost": 1,
+              "id": "CARD.DEFEND_SILENT",
+              "keywords": null,
+              "name": "Defend",
+              "stats": {
+                "block": 5
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 8
+                }
+              },
+              "cost": 1,
+              "id": "CARD.DEFEND_SILENT",
+              "keywords": null,
+              "name": "Defend",
+              "stats": {
+                "block": 5
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 8
+                }
+              },
+              "cost": 1,
+              "id": "CARD.DEFEND_SILENT",
+              "keywords": null,
+              "name": "Defend",
+              "stats": {
+                "block": 5
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 0,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 4,
+                  "weakpower": 2
+                }
+              },
+              "cost": 0,
+              "id": "CARD.NEUTRALIZE",
+              "keywords": null,
+              "name": "Neutralize",
+              "stats": {
+                "damage": 3,
+                "weakpower": 1
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 11
+                }
+              },
+              "cost": 1,
+              "id": "CARD.SURVIVOR",
+              "keywords": null,
+              "name": "Survivor",
+              "stats": {
+                "block": 8
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 2,
+                "removed_keywords": null,
+                "stats": null
+              },
+              "cost": 3,
+              "id": "CARD.BULLET_TIME",
+              "keywords": null,
+              "name": "Bullet Time",
+              "stats": null,
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 0,
+                "removed_keywords": null,
+                "stats": {
+                  "power": 3
+                }
+              },
+              "cost": 0,
+              "id": "CARD.EXPOSE",
+              "keywords": [
+                "Exhaust"
+              ],
+              "name": "Expose",
+              "stats": {
+                "power": 2
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": null,
+              "cost": 0,
+              "id": "CARD.PREPARED",
+              "keywords": null,
+              "name": "Prepared",
+              "stats": {
+                "cards": 2
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": null,
+              "cost": 0,
+              "id": "CARD.PREPARED",
+              "keywords": null,
+              "name": "Prepared",
+              "stats": {
+                "cards": 2
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": null,
+              "cost": 2,
+              "id": "CARD.SPEEDSTER",
+              "keywords": [
+                "Innate"
+              ],
+              "name": "Speedster",
+              "stats": {
+                "speedsterpower": 2
+              },
+              "type": "Power",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": null,
+              "cost": 1,
+              "id": "CARD.ACROBATICS",
+              "keywords": null,
+              "name": "Acrobatics",
+              "stats": {
+                "cards": 4
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "damage": 12
+                }
+              },
+              "cost": 1,
+              "id": "CARD.DAGGER_THROW",
+              "keywords": null,
+              "name": "Dagger Throw",
+              "stats": {
+                "damage": 9
+              },
+              "type": "Attack",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": null,
+              "cost": 3,
+              "id": "CARD.TACTICIAN",
+              "keywords": [
+                "Sly"
+              ],
+              "name": "Tactician",
+              "stats": {
+                "energy": 2
+              },
+              "type": "Skill",
+              "upgraded": true
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 0,
+                "removed_keywords": null,
+                "stats": {
+                  "block": 5
+                }
+              },
+              "cost": 0,
+              "id": "CARD.ESCAPE_PLAN",
+              "keywords": null,
+              "name": "Escape Plan",
+              "stats": {
+                "block": 3
+              },
+              "type": "Skill",
+              "upgraded": false
+            },
+            {
+              "after_upgrade": {
+                "added_keywords": null,
+                "cost": 1,
+                "removed_keywords": null,
+                "stats": {
+                  "corrosivewave": 3
+                }
+              },
+              "cost": 1,
+              "id": "CARD.CORROSIVE_WAVE",
+              "keywords": null,
+              "name": "Corrosive Wave",
+              "stats": {
+                "corrosivewave": 2
+              },
+              "type": "Skill",
+              "upgraded": false
+            }
+          ],
+          "deck_size": 17,
+          "gold": 161,
+          "hp": 58,
+          "max_hp": 58,
+          "name": "The Silent",
+          "potions": [
+            {
+              "id": "POTION.GAMBLER_S_BREW",
+              "index": 0,
+              "name": "Gambler's Brew",
+              "target_type": "Self",
+              "vars": null
+            },
+            {
+              "id": "POTION.POWER_POTION",
+              "index": 1,
+              "name": "Power Potion",
+              "target_type": "Self",
+              "vars": null
+            },
+            {
+              "id": "POTION.STABLE_SERUM",
+              "index": 2,
+              "name": "Stable Serum",
+              "target_type": "AnyPlayer",
+              "vars": {
+                "Repeat": 2
+              }
+            }
+          ],
+          "relics": [
+            {
+              "id": "RELIC.RING_OF_THE_SNAKE",
+              "name": "Ring of the Snake",
+              "vars": {
+                "Cards": 2
+              }
+            },
+            {
+              "id": "RELIC.LEAFY_POULTICE",
+              "name": "Leafy Poultice",
+              "vars": {
+                "MaxHp": 12
+              }
+            },
+            {
+              "id": "RELIC.PANTOGRAPH",
+              "name": "Pantograph",
+              "vars": {
+                "Heal": 25
+              }
+            },
+            {
+              "id": "RELIC.VENERABLE_TEA_SET",
+              "name": "Venerable Tea Set",
+              "vars": {
+                "Energy": 2
+              }
+            },
+            {
+              "id": "RELIC.VERY_HOT_COCOA",
+              "name": "Very Hot Cocoa",
+              "vars": {
+                "Energy": 4
+              }
+            }
+          ]
+        },
+        "schema_version": 1,
+        "seed": null,
+        "source": "sts2-cli"
+      },
+      "replay_command_index": 361,
+      "replay_command_sha256": "6d010bcc7d874cd2ef3f0abfd634b54d5a8ca1d4c42a33dda5abaf3988e249bf",
+      "replay_command_type": "PlayCard"
+    }
+  ],
+  "coverage": {
+    "attempted_by_type": {
+      "ChooseEventOption": 2,
+      "MoveToMapCoord": 1,
+      "PlayCard": 6,
+      "SelectHandCards": 2
+    },
+    "combat_decisions_reconstructed": 6,
+    "combat_decisions_with_complete_legal_mask": 6,
+    "commands_attempted": 11,
+    "commands_reconstructed": 10,
+    "commands_scheduled_with_overlap": 226,
+    "reconstructed_by_type": {
+      "ChooseEventOption": 2,
+      "MoveToMapCoord": 1,
+      "PlayCard": 6,
+      "SelectHandCards": 1
+    },
+    "reconstructed_noops": 1,
+    "reconstruction_rate_of_attempted": 0.909091,
+    "suffix_commands": 226
+  },
+  "created_at": "2026-07-14T03:35:17.967017+00:00",
+  "dry_run_only": true,
+  "expected_build": "v0.107.1",
+  "initial_alignment": {
+    "loaded_state": {
+      "context": {
+        "act": 2,
+        "act_name": "Hive",
+        "boss": {
+          "id": "THE_INSATIABLE_BOSS",
+          "name": "The Insatiable"
+        },
+        "current_map_coord": {
+          "col": 3,
+          "row": 0
+        },
+        "floor": 1,
+        "room_type": "Event",
+        "visited_map_coords": 1
+      },
+      "decision": "event_choice",
+      "legal_actions": [
+        {
+          "action": "choose_option",
+          "args": {
+            "option_index": 0
+          },
+          "option_id": "OPTION.TEZCATARA.pages.INITIAL.options.VERY_HOT_COCOA"
+        },
+        {
+          "action": "choose_option",
+          "args": {
+            "option_index": 1
+          },
+          "option_id": "OPTION.TEZCATARA.pages.INITIAL.options.BIIIG_HUG"
+        },
+        {
+          "action": "choose_option",
+          "args": {
+            "option_index": 2
+          },
+          "option_id": "OPTION.TEZCATARA.pages.INITIAL.options.PUMPKIN_CANDLE"
+        }
+      ]
+    },
+    "matched_command_index": null,
+    "max_overlap": 0,
+    "overlap_commands": 0,
+    "tail_candidates": []
+  },
+  "privacy": {
+    "inline_comments_persisted": false,
+    "raw_replay_commands_persisted": false,
+    "raw_seed_persisted": false
+  },
+  "probe": "runreplays_headless_reconstruction",
+  "provenance": {
+    "ascension": 1,
+    "base_run_save_sha256": "1c7b1346ef3c39a27c9fc125250165dfd4cc875877c47c36319490526616d2b6",
+    "base_snapshot_floor": 18,
+    "base_snapshot_sha256": "1804de5528a96fe0cc401792d84baf4aee20452c518066c78c6ee9866454303c",
+    "character": "CHARACTER.SILENT",
+    "source_name": "RunReplays",
+    "target_snapshot_floor": 34,
+    "target_snapshot_sha256": "d3f635a580afa249c60d74eaae21af60cbf2210a4b709ced796538439371f69a",
+    "trajectory_key": "cb64072966a0b1f9ceefb45a3441b701e62ddf5c7bdba8f3a54ee0cb92cb54ff"
+  },
+  "runtime": {
+    "game_assembly_sha256": "7eced881ca7b7a4d4282fa40ff7cf27cc9a4466c4b759c2a2356a4743928fcbe",
+    "headless_runtime_sha256": "806bb9737e930de14fccf80fd512e6b8be4ebe0ae179a53601f65b2d17f1a158",
+    "protocol_version": "0.2.0"
+  },
+  "schema_version": 1,
+  "stop": {
+    "code": "illegal_action",
+    "command_index": 362,
+    "command_sha256": "8cd58ea32dbc2a9df037e7b0ad5b7d425b46ba0b208297dbd54f1ef2c69ab48c",
+    "command_type": "SelectHandCards",
+    "message": "SelectHandCards did not match any advertised legal action",
+    "state": {
+      "context": {
+        "act": 2,
+        "act_name": "Hive",
+        "boss": {
+          "id": "THE_INSATIABLE_BOSS",
+          "name": "The Insatiable"
+        },
+        "current_map_coord": {
+          "col": 3,
+          "row": 1
+        },
+        "floor": 2,
+        "room_type": "Monster",
+        "visited_map_coords": 2
+      },
+      "decision": "card_select",
+      "legal_actions": [
+        {
+          "action": "select_cards",
+          "args": {
+            "indices": "0,1"
+          },
+          "option_id": "CARDS.0,1"
+        },
+        {
+          "action": "select_cards",
+          "args": {
+            "indices": "0,2"
+          },
+          "option_id": "CARDS.0,2"
+        },
+        {
+          "action": "select_cards",
+          "args": {
+            "indices": "0,3"
+          },
+          "option_id": "CARDS.0,3"
+        },
+        {
+          "action": "select_cards",
+          "args": {
+            "indices": "0,4"
+          },
+          "option_id": "CARDS.0,4"
+        },
+        {
+          "action": "select_cards",
+          "args": {
+            "indices": "0,5"
+          },
+          "option_id": "CARDS.0,5"
+        },
+        {
+          "action": "select_cards",
+          "args": {
+            "indices": "0,6"
+          },
+          "option_id": "CARDS.0,6"
+        },
+        {
+          "action": "select_cards",
+          "args": {
+            "indices": "1,2"
+          },
+          "option_id": "CARDS.1,2"
+        },
+        {
+          "action": "select_cards",
+          "args": {
+            "indices": "1,3"
+          },
+          "option_id": "CARDS.1,3"
+        },
+        {
+          "action": "select_cards",
+          "args": {
+            "indices": "1,4"
+          },
+          "option_id": "CARDS.1,4"
+        },
+        {
+          "action": "select_cards",
+          "args": {
+            "indices": "1,5"
+          },
+          "option_id": "CARDS.1,5"
+        },
+        {
+          "action": "select_cards",
+          "args": {
+            "indices": "1,6"
+          },
+          "option_id": "CARDS.1,6"
+        },
+        {
+          "action": "select_cards",
+          "args": {
+            "indices": "2,3"
+          },
+          "option_id": "CARDS.2,3"
+        },
+        {
+          "action": "select_cards",
+          "args": {
+            "indices": "2,4"
+          },
+          "option_id": "CARDS.2,4"
+        },
+        {
+          "action": "select_cards",
+          "args": {
+            "indices": "2,5"
+          },
+          "option_id": "CARDS.2,5"
+        },
+        {
+          "action": "select_cards",
+          "args": {
+            "indices": "2,6"
+          },
+          "option_id": "CARDS.2,6"
+        },
+        {
+          "action": "select_cards",
+          "args": {
+            "indices": "3,4"
+          },
+          "option_id": "CARDS.3,4"
+        },
+        {
+          "action": "select_cards",
+          "args": {
+            "indices": "3,5"
+          },
+          "option_id": "CARDS.3,5"
+        },
+        {
+          "action": "select_cards",
+          "args": {
+            "indices": "3,6"
+          },
+          "option_id": "CARDS.3,6"
+        },
+        {
+          "action": "select_cards",
+          "args": {
+            "indices": "4,5"
+          },
+          "option_id": "CARDS.4,5"
+        },
+        {
+          "action": "select_cards",
+          "args": {
+            "indices": "4,6"
+          },
+          "option_id": "CARDS.4,6"
+        },
+        {
+          "action": "select_cards",
+          "args": {
+            "indices": "5,6"
+          },
+          "option_id": "CARDS.5,6"
+        }
+      ]
+    },
+    "status": "mapping_failure"
+  },
+  "training_authorized": false,
+  "validation": {
+    "base_save_crosschecks": true,
+    "complete_headers": true,
+    "exact_build": true,
+    "overlap_compatible": true,
+    "prefix_gate": true,
+    "same_ascension": true,
+    "same_character": true,
+    "same_trajectory": true,
+    "target_extends_base": true,
+    "target_save_crosschecks": true
+  }
+}

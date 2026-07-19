@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "evaluation": "frozen_offline_test_once",
+  "label_source": "deterministic_heuristic_distillation",
+  "dataset": {
+    "path": "data/processed/combat-headless-heuristic.v0.107.1.jsonl",
+    "sha256": "746feac9529f20e33de18eec183709ffe93358c6531f4e20201aa112a2f88b3b"
+  },
+  "model": {
+    "path": "checkpoints/combat_policy.heuristic.v0.107.1.npz",
+    "sha256": "34e522e653130c6af724f8de1ac72a1559eb13d07ef700d93bbc009d0b46b9d2",
+    "configuration": {
+      "batch_size": 64,
+      "dimension": 1024,
+      "epochs": 20,
+      "hidden": 128,
+      "learning_rate": 0.001,
+      "seed": 7
+    }
+  },
+  "result": {
+    "split": "test",
+    "overall": {
+      "decisions": 1740,
+      "loss": 0.805478,
+      "mean_reciprocal_rank": 0.903077,
+      "random_top1_accuracy": 0.341391,
+      "top1_accuracy": 0.829885
+    },
+    "by_character": {
+      "CHARACTER.DEFECT": {"decisions": 379, "loss": 0.546322, "mean_reciprocal_rank": 0.911723, "random_top1_accuracy": 0.365766, "top1_accuracy": 0.846966},
+      "CHARACTER.IRONCLAD": {"decisions": 339, "loss": 0.714221, "mean_reciprocal_rank": 0.901573, "random_top1_accuracy": 0.304298, "top1_accuracy": 0.825959},
+      "CHARACTER.NECROBINDER": {"decisions": 446, "loss": 1.133691, "mean_reciprocal_rank": 0.893386, "random_top1_accuracy": 0.355005, "top1_accuracy": 0.816143},
+      "CHARACTER.REGENT": {"decisions": 274, "loss": 0.69347, "mean_reciprocal_rank": 0.913727, "random_top1_accuracy": 0.358533, "top1_accuracy": 0.846715},
+      "CHARACTER.SILENT": {"decisions": 302, "loss": 0.850056, "mean_reciprocal_rank": 0.898565, "random_top1_accuracy": 0.316779, "top1_accuracy": 0.817881}
+    },
+    "by_action": {
+      "end_turn": {"decisions": 384, "loss": 0.083873, "mean_reciprocal_rank": 0.988498, "random_top1_accuracy": 0.813976, "top1_accuracy": 0.979167},
+      "play_card": {"decisions": 1313, "loss": 0.9478, "mean_reciprocal_rank": 0.887682, "random_top1_accuracy": 0.209885, "top1_accuracy": 0.799695},
+      "use_potion": {"decisions": 43, "loss": 2.903799, "mean_reciprocal_rank": 0.610336, "random_top1_accuracy": 0.136611, "top1_accuracy": 0.418605}
+    }
+  },
+  "limitations": [
+    "This measures imitation of the deterministic heuristic teacher, not expert or high-level play.",
+    "The offline test split was evaluated once after the configuration was fixed.",
+    "Potion decisions have only 43 test examples and materially lower accuracy."
+  ]
+}

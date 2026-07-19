@@ -1,0 +1,202 @@
+diff --git a/McpMod.cs b/McpMod.cs
+--- a/McpMod.cs
++++ b/McpMod.cs
+@@ -276,6 +276,13 @@ public static partial class McpMod
+                 else
+                     SendError(response, 405, "Method not allowed");
+             }
++            else if (path == "/api/v1/replay/latest/run")
++            {
++                if (request.HttpMethod == "POST")
++                    HandleRunLoadedReplay(response);
++                else
++                    SendError(response, 405, "Method not allowed");
++            }
+             else
+             {
+                 SendError(response, 404, "Not found");
+diff --git a/McpMod.Replay.cs b/McpMod.Replay.cs
+--- a/McpMod.Replay.cs
++++ b/McpMod.Replay.cs
+@@ -1,5 +1,6 @@
+ using System;
+ using System.Collections.Generic;
++using System.ComponentModel;
+ using System.IO;
+ using System.Linq;
+ using System.Net;
+@@ -24,6 +25,26 @@ namespace STS2_MCP;
+ 
+ public static partial class McpMod
+ {
++    private static CombatReplay? _loadedReplay;
++
++    private static void HandleRunLoadedReplay(HttpListenerResponse response)
++    {
++        try
++        {
++            var task = RunOnMainThreadAsync(RunLoadedReplay);
++            SendJson(response, task.GetAwaiter().GetResult());
++        }
++        catch (InvalidOperationException ex)
++        {
++            SendError(response, 409, ex.Message);
++        }
++        catch (Exception ex)
++        {
++            GD.PrintErr($"[STS2 MCP] HandleRunLoadedReplay: {ex}");
++            SendError(response, 500, $"Failed to run loaded combat replay: {ex.Message}");
++        }
++    }
++
+     private static void HandleLoadLatestReplay(HttpListenerResponse response)
+     {
+         try
+@@ -132,6 +153,8 @@ public static partial class McpMod
+         if (!CombatManager.Instance.IsInProgress)
+             throw new InvalidOperationException("Replay loaded, but no combat became active.");
+ 
++        _loadedReplay = replay;
++
+         return new Dictionary<string, object?>
+         {
+             ["schema_version"] = 1,
+@@ -144,6 +167,138 @@ public static partial class McpMod
+         };
+     }
+ 
++    private static async Task<Dictionary<string, object?>> RunLoadedReplay()
++    {
++        CombatReplay replay = _loadedReplay
++            ?? throw new InvalidOperationException(
++                "No replay is loaded. POST /api/v1/replay/latest/load first.");
++        RunManager manager = RunManager.Instance;
++        RunState runState = manager.DebugOnlyGetState()
++            ?? throw new InvalidOperationException("The replay run state is unavailable.");
++        if (!CombatManager.Instance.IsInProgress)
++            throw new InvalidOperationException("The loaded replay combat is no longer active.");
++
++        var sceneTree = (SceneTree)Engine.GetMainLoop();
++        var snapshots = new List<Dictionary<string, object?>>
++        {
++            BuildReplaySnapshot(-1, "initial")
++        };
++
++        for (int eventIndex = 0; eventIndex < replay.events.Count; eventIndex++)
++        {
++            CombatReplayEvent replayEvent = replay.events[eventIndex];
++            switch (replayEvent.eventType)
++            {
++                case CombatReplayEventType.GameAction:
++                {
++                    while (CombatManager.Instance.EndingPlayerTurnPhaseOne
++                        || CombatManager.Instance.EndingPlayerTurnPhaseTwo)
++                    {
++                        await sceneTree.ToSignal(sceneTree, SceneTree.SignalName.ProcessFrame);
++                    }
++
++                    Player player = runState.GetPlayer(replayEvent.playerId!.Value)
++                        ?? throw new InvalidOperationException(
++                            "Replay action references an unknown player.");
++                    int turnBefore = player.PlayerCombatState?.TurnNumber ?? 0;
++                    GameAction action = replayEvent.action!.ToGameAction(player);
++                    if (action.ActionType == GameActionType.CombatPlayPhaseOnly)
++                    {
++                        while ((CombatManager.Instance.DebugOnlyGetState()
++                            ?? throw new InvalidOperationException(
++                                "Combat state disappeared during replay.")).CurrentSide == CombatSide.Enemy)
++                        {
++                            await sceneTree.ToSignal(
++                                sceneTree, SceneTree.SignalName.ProcessFrame);
++                        }
++                    }
++
++                    manager.ActionQueueSet.EnqueueWithoutSynchronizing(action);
++                    if (action is EndPlayerTurnAction or ReadyToBeginEnemyTurnAction)
++                    {
++                        await manager.ActionExecutor.FinishedExecutingActions();
++                        if (action is ReadyToBeginEnemyTurnAction)
++                        {
++                            await WaitForNextPlayerPlayPhase(
++                                sceneTree, player, turnBefore);
++                            snapshots.Add(BuildReplaySnapshot(
++                                eventIndex, "after_enemy_turn"));
++                        }
++                    }
++                    break;
++                }
++                case CombatReplayEventType.HookAction:
++                    manager.ActionQueueSet.EnqueueWithoutSynchronizing(
++                        manager.ActionQueueSynchronizer.GetHookActionForId(
++                            replayEvent.hookId!.Value,
++                            replayEvent.playerId!.Value,
++                            replayEvent.gameActionType!.Value));
++                    break;
++                case CombatReplayEventType.ResumeAction:
++                    manager.ActionQueueSet.ResumeActionWithoutSynchronizing(
++                        replayEvent.actionId!.Value);
++                    break;
++                case CombatReplayEventType.PlayerChoice:
++                {
++                    Player player = runState.GetPlayer(replayEvent.playerId!.Value)
++                        ?? throw new InvalidOperationException(
++                            "Replay choice references an unknown player.");
++                    manager.PlayerChoiceSynchronizer.ReceiveReplayChoice(
++                        player,
++                        replayEvent.choiceId!.Value,
++                        replayEvent.playerChoiceResult!.Value);
++                    break;
++                }
++                default:
++                    throw new InvalidEnumArgumentException();
++            }
++        }
++
++        await manager.ActionExecutor.FinishedExecutingActions();
++        snapshots.Add(BuildReplaySnapshot(replay.events.Count - 1, "final"));
++        _loadedReplay = null;
++        return new Dictionary<string, object?>
++        {
++            ["schema_version"] = 1,
++            ["format"] = "sts2_native_replay_trace",
++            ["source"] = "game_native_latest_replay",
++            ["events_executed"] = replay.events.Count,
++            ["saving_enabled"] = manager.ShouldSave,
++            ["replay_writer_enabled"] = manager.CombatReplayWriter.IsEnabled,
++            ["snapshots"] = snapshots
++        };
++    }
++
++    private static async Task WaitForNextPlayerPlayPhase(
++        SceneTree sceneTree, Player player, int previousTurn)
++    {
++        int remainingFrames = 1800;
++        while (remainingFrames-- > 0)
++        {
++            PlayerCombatState? combatState = player.PlayerCombatState;
++            if (combatState != null
++                && combatState.TurnNumber > previousTurn
++                && combatState.Phase == PlayerTurnPhase.Play)
++            {
++                return;
++            }
++            await sceneTree.ToSignal(sceneTree, SceneTree.SignalName.ProcessFrame);
++        }
++        throw new TimeoutException(
++            "Replay enemy turn did not return to player play phase within 1,800 frames.");
++    }
++
++    private static Dictionary<string, object?> BuildReplaySnapshot(
++        int replayEventIndex, string checkpoint)
++    {
++        return new Dictionary<string, object?>
++        {
++            ["replay_event_index"] = replayEventIndex,
++            ["checkpoint"] = checkpoint,
++            ["state"] = BuildGameState()
++        };
++    }
++
+     private static void HandleGetLatestReplay(HttpListenerResponse response)
+     {
+         try

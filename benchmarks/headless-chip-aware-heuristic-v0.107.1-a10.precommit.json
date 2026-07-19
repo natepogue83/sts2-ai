@@ -1,0 +1,279 @@
+{
+  "arms": {
+    "baseline": "greedy_rules_v1",
+    "candidate": "greedy_rules_v2_chip_aware"
+  },
+  "cases": [
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "TACTV1I000000"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "TACTV1I000001"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "TACTV1I000002"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "TACTV1I000003"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "TACTV1I000004"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "TACTV1I000005"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "TACTV1I000006"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "TACTV1I000007"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "TACTV1I000008"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "TACTV1I000009"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "TACTV1S000000"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "TACTV1S000001"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "TACTV1S000002"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "TACTV1S000003"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "TACTV1S000004"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "TACTV1S000005"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "TACTV1S000006"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "TACTV1S000007"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "TACTV1S000008"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "TACTV1S000009"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "TACTV1D000000"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "TACTV1D000001"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "TACTV1D000002"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "TACTV1D000003"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "TACTV1D000004"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "TACTV1D000005"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "TACTV1D000006"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "TACTV1D000007"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "TACTV1D000008"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "TACTV1D000009"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "TACTV1N000000"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "TACTV1N000001"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "TACTV1N000002"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "TACTV1N000003"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "TACTV1N000004"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "TACTV1N000005"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "TACTV1N000006"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "TACTV1N000007"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "TACTV1N000008"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "TACTV1N000009"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "TACTV1R000000"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "TACTV1R000001"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "TACTV1R000002"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "TACTV1R000003"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "TACTV1R000004"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "TACTV1R000005"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "TACTV1R000006"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "TACTV1R000007"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "TACTV1R000008"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "TACTV1R000009"
+    }
+  ],
+  "created_at": "2026-07-14T20:07:34.458390+00:00",
+  "model": {
+    "filename": "decision_policy.a10.npz",
+    "sha256": "476701d84a7f6cf85b1aa6a910877334c13f52ea637af967a8f6da400ca878f9",
+    "usage": "interface-only; learned macro scoring disabled"
+  },
+  "name": "stsai-frozen-chip-aware-heuristic-pair",
+  "policy_constraints": {
+    "all_noncombat_rules_unchanged": true,
+    "candidate_change": "raise block-card priority by preventable incoming damage and give a lethal-damage prevention bonus",
+    "safe_potion_ids": [
+      "POTION.ATTACK_POTION"
+    ]
+  },
+  "promotion_gate": {
+    "candidate_truncations_at_most_baseline": true,
+    "candidate_victories_at_least_baseline": true,
+    "every_character_mean_paired_floor_delta_at_least": -0.5,
+    "if_failed": "stop this tactical rule candidate; do not tune on these cases",
+    "overall_mean_paired_floor_delta_at_least": 0.75
+  },
+  "schema_version": 1,
+  "selection": {
+    "count_per_character": 10,
+    "excluded_manifests": [
+      {
+        "path": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\v0.107.1-a10-search-paired-precommit.json",
+        "seed_count": 10,
+        "sha256": "6bc9573386e450b37f2fb34e456c554f077edcfb1a8de99c186b1721b28f9fae"
+      },
+      {
+        "path": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\value-calibration-v3-precommit.v0.107.1-a10.json",
+        "seed_count": 150,
+        "sha256": "2794d9e4d3359f4caa968c484f38e5c7848a2fa4626c8af10e89774498a28af7"
+      },
+      {
+        "path": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\value-calibration-v4-precommit.v0.107.1-a10.json",
+        "seed_count": 75,
+        "sha256": "b61ffe6ff43135e8fb3819b1a39990f7dea2ad3bcb1d1a448041548a6ac3c657"
+      },
+      {
+        "path": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\headless-combat-deepsets-online-baseline-v0.107.1-a10.precommit.json",
+        "seed_count": 50,
+        "sha256": "ca7dc8312dc1685dff371a87cd3d241d0c9ebc509d869c22feb7a8a86a6affe7"
+      },
+      {
+        "path": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\headless-combat-dagger-r1-v0.107.1-a10.json",
+        "seed_count": 125,
+        "sha256": "34ecd2d7f82e1db1649f73ef2ec7424f4fcbfd0541c775660c7d047ae4dcfc30"
+      },
+      {
+        "path": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\headless-combat-dagger-r2-v0.107.1-a10.json",
+        "seed_count": 125,
+        "sha256": "6c791e248108806126280df0197bc122c790e8bf02ee2c3de60d991bd4bb7b73"
+      },
+      {
+        "path": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\headless-combat-deepsets-vs-dagger-r1-v0.107.1-a10.json",
+        "seed_count": 25,
+        "sha256": "4d07f5538ea9dbdd815b53a667cf2428ec99f8b11350580287795eec7d65ac31"
+      }
+    ],
+    "excluded_seed_count": 560,
+    "method": "fresh-prefix-seeds-selected-before-outcomes",
+    "outcomes_inspected": false,
+    "overlap_count": 0,
+    "seed_prefix": "TACTV1"
+  },
+  "target": {
+    "ascension": 10,
+    "build_id": "v0.107.1"
+  }
+}

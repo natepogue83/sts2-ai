@@ -1,0 +1,1541 @@
+{
+  "aggregate": {
+    "by_character": {
+      "Defect": {
+        "cases": 5,
+        "heuristic": {
+          "mean_floor": 9.0,
+          "mean_steps": 97.0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "heuristic_vs_random": {
+          "improved": 3,
+          "paired_floor_delta": 3.8,
+          "tied": 1,
+          "worse": 1
+        },
+        "hybrid": {
+          "mean_floor": 10.2,
+          "mean_steps": 131.2,
+          "truncations": 0,
+          "victories": 0
+        },
+        "hybrid_vs_heuristic": {
+          "improved": 2,
+          "paired_floor_delta": 1.2,
+          "tied": 3,
+          "worse": 0
+        },
+        "improved": 3,
+        "paired_floor_delta": 5.0,
+        "random": {
+          "mean_floor": 5.2,
+          "mean_steps": 46.0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "tied": 1,
+        "worse": 1
+      },
+      "Ironclad": {
+        "cases": 5,
+        "heuristic": {
+          "mean_floor": 12.2,
+          "mean_steps": 103.4,
+          "truncations": 0,
+          "victories": 0
+        },
+        "heuristic_vs_random": {
+          "improved": 4,
+          "paired_floor_delta": 7.6,
+          "tied": 0,
+          "worse": 1
+        },
+        "hybrid": {
+          "mean_floor": 12.8,
+          "mean_steps": 110.6,
+          "truncations": 0,
+          "victories": 0
+        },
+        "hybrid_vs_heuristic": {
+          "improved": 2,
+          "paired_floor_delta": 0.6,
+          "tied": 1,
+          "worse": 2
+        },
+        "improved": 5,
+        "paired_floor_delta": 8.2,
+        "random": {
+          "mean_floor": 4.6,
+          "mean_steps": 47.4,
+          "truncations": 0,
+          "victories": 0
+        },
+        "tied": 0,
+        "worse": 0
+      },
+      "Necrobinder": {
+        "cases": 5,
+        "heuristic": {
+          "mean_floor": 7.8,
+          "mean_steps": 91.6,
+          "truncations": 0,
+          "victories": 0
+        },
+        "heuristic_vs_random": {
+          "improved": 5,
+          "paired_floor_delta": 4.6,
+          "tied": 0,
+          "worse": 0
+        },
+        "hybrid": {
+          "mean_floor": 6.4,
+          "mean_steps": 80.2,
+          "truncations": 0,
+          "victories": 0
+        },
+        "hybrid_vs_heuristic": {
+          "improved": 0,
+          "paired_floor_delta": -1.4,
+          "tied": 4,
+          "worse": 1
+        },
+        "improved": 5,
+        "paired_floor_delta": 3.2,
+        "random": {
+          "mean_floor": 3.2,
+          "mean_steps": 42.4,
+          "truncations": 0,
+          "victories": 0
+        },
+        "tied": 0,
+        "worse": 0
+      },
+      "Regent": {
+        "cases": 5,
+        "heuristic": {
+          "mean_floor": 9.4,
+          "mean_steps": 125.6,
+          "truncations": 0,
+          "victories": 0
+        },
+        "heuristic_vs_random": {
+          "improved": 5,
+          "paired_floor_delta": 6.2,
+          "tied": 0,
+          "worse": 0
+        },
+        "hybrid": {
+          "mean_floor": 9.6,
+          "mean_steps": 125.2,
+          "truncations": 0,
+          "victories": 0
+        },
+        "hybrid_vs_heuristic": {
+          "improved": 3,
+          "paired_floor_delta": 0.2,
+          "tied": 1,
+          "worse": 1
+        },
+        "improved": 5,
+        "paired_floor_delta": 6.4,
+        "random": {
+          "mean_floor": 3.2,
+          "mean_steps": 45.0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "tied": 0,
+        "worse": 0
+      },
+      "Silent": {
+        "cases": 5,
+        "heuristic": {
+          "mean_floor": 9.2,
+          "mean_steps": 119.8,
+          "truncations": 0,
+          "victories": 0
+        },
+        "heuristic_vs_random": {
+          "improved": 5,
+          "paired_floor_delta": 4.8,
+          "tied": 0,
+          "worse": 0
+        },
+        "hybrid": {
+          "mean_floor": 9.0,
+          "mean_steps": 121.2,
+          "truncations": 0,
+          "victories": 0
+        },
+        "hybrid_vs_heuristic": {
+          "improved": 2,
+          "paired_floor_delta": -0.2,
+          "tied": 2,
+          "worse": 1
+        },
+        "improved": 5,
+        "paired_floor_delta": 4.6,
+        "random": {
+          "mean_floor": 4.4,
+          "mean_steps": 53.0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "tied": 0,
+        "worse": 0
+      }
+    },
+    "overall": {
+      "cases": 25,
+      "heuristic": {
+        "mean_floor": 9.52,
+        "mean_steps": 107.48,
+        "truncations": 0,
+        "victories": 0
+      },
+      "heuristic_vs_random": {
+        "improved": 22,
+        "paired_floor_delta": 5.4,
+        "tied": 1,
+        "worse": 2
+      },
+      "hybrid": {
+        "mean_floor": 9.6,
+        "mean_steps": 113.68,
+        "truncations": 0,
+        "victories": 0
+      },
+      "hybrid_vs_heuristic": {
+        "improved": 9,
+        "paired_floor_delta": 0.08,
+        "tied": 11,
+        "worse": 5
+      },
+      "improved": 23,
+      "paired_floor_delta": 5.48,
+      "random": {
+        "mean_floor": 4.12,
+        "mean_steps": 46.76,
+        "truncations": 0,
+        "victories": 0
+      },
+      "tied": 1,
+      "worse": 1
+    }
+  },
+  "ascension": 10,
+  "build_id": "v0.107.1",
+  "cases": [
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 0,
+      "character": "Defect",
+      "floor_delta": 0,
+      "heuristic": {
+        "act": 1,
+        "floor": 6,
+        "policy_sources": {
+          "heuristic": 65
+        },
+        "steps": 65,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\000.defect.V19KSU3386.heuristic.jsonl",
+        "trajectory_id": "e7544e86d382488dac1f0743754889b5",
+        "truncated": false,
+        "victory": false
+      },
+      "hybrid": {
+        "act": 1,
+        "floor": 6,
+        "policy_sources": {
+          "heuristic": 77,
+          "macro_bc": 4
+        },
+        "steps": 81,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\000.defect.V19KSU3386.hybrid.jsonl",
+        "trajectory_id": "7a5fdbc29f0e4d96903907ec5139df2e",
+        "truncated": false,
+        "victory": false
+      },
+      "random": {
+        "act": 1,
+        "floor": 6,
+        "policy_sources": {
+          "legal_random": 47
+        },
+        "steps": 47,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\000.defect.V19KSU3386.random.jsonl",
+        "trajectory_id": "993cf3ee84384a7a91446c3b56030ed7",
+        "truncated": false,
+        "victory": false
+      },
+      "random_policy_seed": 14279906711403200861,
+      "seed": "V19KSU3386"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 1,
+      "character": "Defect",
+      "floor_delta": 11,
+      "heuristic": {
+        "act": 1,
+        "floor": 12,
+        "policy_sources": {
+          "heuristic": 106
+        },
+        "steps": 106,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\001.defect.Q1GFGM1ABA.heuristic.jsonl",
+        "trajectory_id": "ff3624a914c14d3396f0bb4b63f6d823",
+        "truncated": false,
+        "victory": false
+      },
+      "hybrid": {
+        "act": 1,
+        "floor": 14,
+        "policy_sources": {
+          "heuristic": 199,
+          "macro_bc": 8
+        },
+        "steps": 207,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\001.defect.Q1GFGM1ABA.hybrid.jsonl",
+        "trajectory_id": "a1534872e4294f549b6b136022d4d26d",
+        "truncated": false,
+        "victory": false
+      },
+      "random": {
+        "act": 1,
+        "floor": 3,
+        "policy_sources": {
+          "legal_random": 39
+        },
+        "steps": 39,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\001.defect.Q1GFGM1ABA.random.jsonl",
+        "trajectory_id": "2afedc8ff8a2494ba5772c19c022a55c",
+        "truncated": false,
+        "victory": false
+      },
+      "random_policy_seed": 10689114807938949980,
+      "seed": "Q1GFGM1ABA"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 2,
+      "character": "Defect",
+      "floor_delta": 13,
+      "heuristic": {
+        "act": 1,
+        "floor": 13,
+        "policy_sources": {
+          "heuristic": 150
+        },
+        "steps": 150,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\002.defect.7DJLY5SHNE.heuristic.jsonl",
+        "trajectory_id": "8dfd870d82aa4ae0955a0a4c0ee130df",
+        "truncated": false,
+        "victory": false
+      },
+      "hybrid": {
+        "act": 1,
+        "floor": 17,
+        "policy_sources": {
+          "heuristic": 168,
+          "macro_bc": 8
+        },
+        "steps": 176,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\002.defect.7DJLY5SHNE.hybrid.jsonl",
+        "trajectory_id": "61d25d763c8b425aacf29f291f6bd5da",
+        "truncated": false,
+        "victory": false
+      },
+      "random": {
+        "act": 1,
+        "floor": 4,
+        "policy_sources": {
+          "legal_random": 36
+        },
+        "steps": 36,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\002.defect.7DJLY5SHNE.random.jsonl",
+        "trajectory_id": "7adb4d7896dc41eea019436f2c59dc91",
+        "truncated": false,
+        "victory": false
+      },
+      "random_policy_seed": 18104496362237414375,
+      "seed": "7DJLY5SHNE"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 3,
+      "character": "Defect",
+      "floor_delta": 2,
+      "heuristic": {
+        "act": 1,
+        "floor": 7,
+        "policy_sources": {
+          "heuristic": 78
+        },
+        "steps": 78,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\003.defect.U3W1R3P0UF.heuristic.jsonl",
+        "trajectory_id": "155797b51d9c483dac71487c218a8f95",
+        "truncated": false,
+        "victory": false
+      },
+      "hybrid": {
+        "act": 1,
+        "floor": 7,
+        "policy_sources": {
+          "heuristic": 90,
+          "macro_bc": 4
+        },
+        "steps": 94,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\003.defect.U3W1R3P0UF.hybrid.jsonl",
+        "trajectory_id": "baabee8f7c094d1383af0772fe5f169c",
+        "truncated": false,
+        "victory": false
+      },
+      "random": {
+        "act": 1,
+        "floor": 5,
+        "policy_sources": {
+          "legal_random": 42
+        },
+        "steps": 42,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\003.defect.U3W1R3P0UF.random.jsonl",
+        "trajectory_id": "0d69696a835040cf8bbbbf0339fd9537",
+        "truncated": false,
+        "victory": false
+      },
+      "random_policy_seed": 8184574892730176368,
+      "seed": "U3W1R3P0UF"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 4,
+      "character": "Defect",
+      "floor_delta": -1,
+      "heuristic": {
+        "act": 1,
+        "floor": 7,
+        "policy_sources": {
+          "heuristic": 86
+        },
+        "steps": 86,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\004.defect.5X2X4E9WPY.heuristic.jsonl",
+        "trajectory_id": "919ee311e0d546cc85c1638dd6e83bcd",
+        "truncated": false,
+        "victory": false
+      },
+      "hybrid": {
+        "act": 1,
+        "floor": 7,
+        "policy_sources": {
+          "heuristic": 93,
+          "macro_bc": 5
+        },
+        "steps": 98,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\004.defect.5X2X4E9WPY.hybrid.jsonl",
+        "trajectory_id": "163e7d28aa264e778f0909e0e7b12a75",
+        "truncated": false,
+        "victory": false
+      },
+      "random": {
+        "act": 1,
+        "floor": 8,
+        "policy_sources": {
+          "legal_random": 66
+        },
+        "steps": 66,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\004.defect.5X2X4E9WPY.random.jsonl",
+        "trajectory_id": "f6ec5aa8bd274df9b84007d2ac5a07d8",
+        "truncated": false,
+        "victory": false
+      },
+      "random_policy_seed": 15388567956487489114,
+      "seed": "5X2X4E9WPY"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 5,
+      "character": "Ironclad",
+      "floor_delta": 5,
+      "heuristic": {
+        "act": 1,
+        "floor": 12,
+        "policy_sources": {
+          "heuristic": 102
+        },
+        "steps": 102,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\005.ironclad.RNE9NT10SM.heuristic.jsonl",
+        "trajectory_id": "34a703ee433d4449b5f469846c282b6b",
+        "truncated": false,
+        "victory": false
+      },
+      "hybrid": {
+        "act": 1,
+        "floor": 8,
+        "policy_sources": {
+          "heuristic": 74,
+          "macro_bc": 4
+        },
+        "steps": 78,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\005.ironclad.RNE9NT10SM.hybrid.jsonl",
+        "trajectory_id": "cef12fbfe2e640fd847b2c1adc3c5847",
+        "truncated": false,
+        "victory": false
+      },
+      "random": {
+        "act": 1,
+        "floor": 3,
+        "policy_sources": {
+          "legal_random": 35
+        },
+        "steps": 35,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\005.ironclad.RNE9NT10SM.random.jsonl",
+        "trajectory_id": "204e37754e4b460cb76d5cec9d924ec7",
+        "truncated": false,
+        "victory": false
+      },
+      "random_policy_seed": 17917289799953309095,
+      "seed": "RNE9NT10SM"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 6,
+      "character": "Ironclad",
+      "floor_delta": 7,
+      "heuristic": {
+        "act": 1,
+        "floor": 15,
+        "policy_sources": {
+          "heuristic": 130
+        },
+        "steps": 130,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\006.ironclad.CHJPTFA12G.heuristic.jsonl",
+        "trajectory_id": "ebd308bc972442cf8ffcfd337bedeab8",
+        "truncated": false,
+        "victory": false
+      },
+      "hybrid": {
+        "act": 1,
+        "floor": 11,
+        "policy_sources": {
+          "heuristic": 92,
+          "macro_bc": 5
+        },
+        "steps": 97,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\006.ironclad.CHJPTFA12G.hybrid.jsonl",
+        "trajectory_id": "52580ddf90c34df18d6649852aafd272",
+        "truncated": false,
+        "victory": false
+      },
+      "random": {
+        "act": 1,
+        "floor": 4,
+        "policy_sources": {
+          "legal_random": 41
+        },
+        "steps": 41,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\006.ironclad.CHJPTFA12G.random.jsonl",
+        "trajectory_id": "47b3b41faa074c9f803cfa0f1091a2b3",
+        "truncated": false,
+        "victory": false
+      },
+      "random_policy_seed": 1149637385671534368,
+      "seed": "CHJPTFA12G"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 7,
+      "character": "Ironclad",
+      "floor_delta": 9,
+      "heuristic": {
+        "act": 1,
+        "floor": 9,
+        "policy_sources": {
+          "heuristic": 66
+        },
+        "steps": 66,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\007.ironclad.RN49CUGG2P.heuristic.jsonl",
+        "trajectory_id": "dd7951a20cb34e618d1f23a680915b97",
+        "truncated": false,
+        "victory": false
+      },
+      "hybrid": {
+        "act": 1,
+        "floor": 11,
+        "policy_sources": {
+          "heuristic": 88,
+          "macro_bc": 5
+        },
+        "steps": 93,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\007.ironclad.RN49CUGG2P.hybrid.jsonl",
+        "trajectory_id": "ccea384546f146e5b3f78f6fc023b59f",
+        "truncated": false,
+        "victory": false
+      },
+      "random": {
+        "act": 1,
+        "floor": 2,
+        "policy_sources": {
+          "legal_random": 30
+        },
+        "steps": 30,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\007.ironclad.RN49CUGG2P.random.jsonl",
+        "trajectory_id": "2fa69663fbc84c42a4f7687e49e7f138",
+        "truncated": false,
+        "victory": false
+      },
+      "random_policy_seed": 10997037827186712152,
+      "seed": "RN49CUGG2P"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 8,
+      "character": "Ironclad",
+      "floor_delta": 8,
+      "heuristic": {
+        "act": 1,
+        "floor": 8,
+        "policy_sources": {
+          "heuristic": 89
+        },
+        "steps": 89,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\008.ironclad.YNJJL481MW.heuristic.jsonl",
+        "trajectory_id": "2f0020965b934595a508e528bdd398c9",
+        "truncated": false,
+        "victory": false
+      },
+      "hybrid": {
+        "act": 1,
+        "floor": 17,
+        "policy_sources": {
+          "heuristic": 152,
+          "macro_bc": 9
+        },
+        "steps": 161,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\008.ironclad.YNJJL481MW.hybrid.jsonl",
+        "trajectory_id": "64a84f56b67b4ee2b2ef12905c7f2d4a",
+        "truncated": false,
+        "victory": false
+      },
+      "random": {
+        "act": 1,
+        "floor": 9,
+        "policy_sources": {
+          "legal_random": 67
+        },
+        "steps": 67,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\008.ironclad.YNJJL481MW.random.jsonl",
+        "trajectory_id": "8bac97c7ff1a4bd5b9ba7a066e2fb5b4",
+        "truncated": false,
+        "victory": false
+      },
+      "random_policy_seed": 3086463263025687977,
+      "seed": "YNJJL481MW"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 9,
+      "character": "Ironclad",
+      "floor_delta": 12,
+      "heuristic": {
+        "act": 1,
+        "floor": 17,
+        "policy_sources": {
+          "heuristic": 130
+        },
+        "steps": 130,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\009.ironclad.NYJMWA5BXR.heuristic.jsonl",
+        "trajectory_id": "d25a53d046a8471b9b89a056b94310d7",
+        "truncated": false,
+        "victory": false
+      },
+      "hybrid": {
+        "act": 1,
+        "floor": 17,
+        "policy_sources": {
+          "heuristic": 117,
+          "macro_bc": 7
+        },
+        "steps": 124,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\009.ironclad.NYJMWA5BXR.hybrid.jsonl",
+        "trajectory_id": "9120946704b0423993396646deef5f6d",
+        "truncated": false,
+        "victory": false
+      },
+      "random": {
+        "act": 1,
+        "floor": 5,
+        "policy_sources": {
+          "legal_random": 64
+        },
+        "steps": 64,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\009.ironclad.NYJMWA5BXR.random.jsonl",
+        "trajectory_id": "b6e46384bb2b4b128d9aea0c9ba44126",
+        "truncated": false,
+        "victory": false
+      },
+      "random_policy_seed": 17050476304103052948,
+      "seed": "NYJMWA5BXR"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 10,
+      "character": "Necrobinder",
+      "floor_delta": 2,
+      "heuristic": {
+        "act": 1,
+        "floor": 7,
+        "policy_sources": {
+          "heuristic": 98
+        },
+        "steps": 98,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\010.necrobinder.F38ZW32F7L.heuristic.jsonl",
+        "trajectory_id": "035d618a6f3f4c40b26f0b0e8b4997fa",
+        "truncated": false,
+        "victory": false
+      },
+      "hybrid": {
+        "act": 1,
+        "floor": 7,
+        "policy_sources": {
+          "heuristic": 100,
+          "macro_bc": 4
+        },
+        "steps": 104,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\010.necrobinder.F38ZW32F7L.hybrid.jsonl",
+        "trajectory_id": "272b4749e01e48a7966996cd46e417b0",
+        "truncated": false,
+        "victory": false
+      },
+      "random": {
+        "act": 1,
+        "floor": 5,
+        "policy_sources": {
+          "legal_random": 43
+        },
+        "steps": 43,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\010.necrobinder.F38ZW32F7L.random.jsonl",
+        "trajectory_id": "f919ab4f1c6d46959334d844e86beed0",
+        "truncated": false,
+        "victory": false
+      },
+      "random_policy_seed": 6633868695842253417,
+      "seed": "F38ZW32F7L"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 11,
+      "character": "Necrobinder",
+      "floor_delta": 1,
+      "heuristic": {
+        "act": 1,
+        "floor": 5,
+        "policy_sources": {
+          "heuristic": 63
+        },
+        "steps": 63,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\011.necrobinder.QRNX5DXVUW.heuristic.jsonl",
+        "trajectory_id": "b01f939612d248e49e22060721454276",
+        "truncated": false,
+        "victory": false
+      },
+      "hybrid": {
+        "act": 1,
+        "floor": 5,
+        "policy_sources": {
+          "heuristic": 60,
+          "macro_bc": 4
+        },
+        "steps": 64,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\011.necrobinder.QRNX5DXVUW.hybrid.jsonl",
+        "trajectory_id": "33c0928d0c154b36b67741efb7f5b3dc",
+        "truncated": false,
+        "victory": false
+      },
+      "random": {
+        "act": 1,
+        "floor": 4,
+        "policy_sources": {
+          "legal_random": 65
+        },
+        "steps": 65,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\011.necrobinder.QRNX5DXVUW.random.jsonl",
+        "trajectory_id": "3a863b323cfd4412a04acf71718dffc4",
+        "truncated": false,
+        "victory": false
+      },
+      "random_policy_seed": 4043698279266570266,
+      "seed": "QRNX5DXVUW"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 12,
+      "character": "Necrobinder",
+      "floor_delta": 5,
+      "heuristic": {
+        "act": 1,
+        "floor": 7,
+        "policy_sources": {
+          "heuristic": 70
+        },
+        "steps": 70,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\012.necrobinder.YL7WB91W9K.heuristic.jsonl",
+        "trajectory_id": "d9cc999803fe49dea2154ef9636cb261",
+        "truncated": false,
+        "victory": false
+      },
+      "hybrid": {
+        "act": 1,
+        "floor": 7,
+        "policy_sources": {
+          "heuristic": 64,
+          "macro_bc": 4
+        },
+        "steps": 68,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\012.necrobinder.YL7WB91W9K.hybrid.jsonl",
+        "trajectory_id": "50091dbd6f2a431aae24bff615d70b5e",
+        "truncated": false,
+        "victory": false
+      },
+      "random": {
+        "act": 1,
+        "floor": 2,
+        "policy_sources": {
+          "legal_random": 23
+        },
+        "steps": 23,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\012.necrobinder.YL7WB91W9K.random.jsonl",
+        "trajectory_id": "7f0df3c8a6644a5a8472db3e3270513f",
+        "truncated": false,
+        "victory": false
+      },
+      "random_policy_seed": 13141230006700980071,
+      "seed": "YL7WB91W9K"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 13,
+      "character": "Necrobinder",
+      "floor_delta": 6,
+      "heuristic": {
+        "act": 1,
+        "floor": 8,
+        "policy_sources": {
+          "heuristic": 103
+        },
+        "steps": 103,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\013.necrobinder.S508PPQUX4.heuristic.jsonl",
+        "trajectory_id": "5ac283d7617f4a3baf5cb1aace254c21",
+        "truncated": false,
+        "victory": false
+      },
+      "hybrid": {
+        "act": 1,
+        "floor": 8,
+        "policy_sources": {
+          "heuristic": 100,
+          "macro_bc": 4
+        },
+        "steps": 104,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\013.necrobinder.S508PPQUX4.hybrid.jsonl",
+        "trajectory_id": "6ece819cfe264a789de09ab43ea75dc2",
+        "truncated": false,
+        "victory": false
+      },
+      "random": {
+        "act": 1,
+        "floor": 2,
+        "policy_sources": {
+          "legal_random": 32
+        },
+        "steps": 32,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\013.necrobinder.S508PPQUX4.random.jsonl",
+        "trajectory_id": "ef3b63720fd746268b5c7bb27fec2343",
+        "truncated": false,
+        "victory": false
+      },
+      "random_policy_seed": 154704769475553663,
+      "seed": "S508PPQUX4"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 14,
+      "character": "Necrobinder",
+      "floor_delta": 2,
+      "heuristic": {
+        "act": 1,
+        "floor": 12,
+        "policy_sources": {
+          "heuristic": 124
+        },
+        "steps": 124,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\014.necrobinder.N6WHKCZ54L.heuristic.jsonl",
+        "trajectory_id": "4400405c88464a2dbf182c05bd975f1b",
+        "truncated": false,
+        "victory": false
+      },
+      "hybrid": {
+        "act": 1,
+        "floor": 5,
+        "policy_sources": {
+          "heuristic": 57,
+          "macro_bc": 4
+        },
+        "steps": 61,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\014.necrobinder.N6WHKCZ54L.hybrid.jsonl",
+        "trajectory_id": "8c09586b70c04e4c9cc668adde89c693",
+        "truncated": false,
+        "victory": false
+      },
+      "random": {
+        "act": 1,
+        "floor": 3,
+        "policy_sources": {
+          "legal_random": 49
+        },
+        "steps": 49,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\014.necrobinder.N6WHKCZ54L.random.jsonl",
+        "trajectory_id": "6eecd7c15daa423a8b4bf8200d183e1f",
+        "truncated": false,
+        "victory": false
+      },
+      "random_policy_seed": 13385567098648058565,
+      "seed": "N6WHKCZ54L"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 15,
+      "character": "Regent",
+      "floor_delta": 9,
+      "heuristic": {
+        "act": 1,
+        "floor": 6,
+        "policy_sources": {
+          "heuristic": 97
+        },
+        "steps": 97,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\015.regent.HLMVH109EZ.heuristic.jsonl",
+        "trajectory_id": "7375eafe4bbc4f7cbbd8ab3ad0183e69",
+        "truncated": false,
+        "victory": false
+      },
+      "hybrid": {
+        "act": 1,
+        "floor": 13,
+        "policy_sources": {
+          "heuristic": 145,
+          "macro_bc": 5
+        },
+        "steps": 150,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\015.regent.HLMVH109EZ.hybrid.jsonl",
+        "trajectory_id": "41cba5277cfe42eea18a2107d1bcee94",
+        "truncated": false,
+        "victory": false
+      },
+      "random": {
+        "act": 1,
+        "floor": 4,
+        "policy_sources": {
+          "legal_random": 61
+        },
+        "steps": 61,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\015.regent.HLMVH109EZ.random.jsonl",
+        "trajectory_id": "afb6cade593b4d1590918a90e6366dbe",
+        "truncated": false,
+        "victory": false
+      },
+      "random_policy_seed": 8879017790792318477,
+      "seed": "HLMVH109EZ"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 16,
+      "character": "Regent",
+      "floor_delta": 3,
+      "heuristic": {
+        "act": 1,
+        "floor": 6,
+        "policy_sources": {
+          "heuristic": 117
+        },
+        "steps": 117,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\016.regent.GA7GJ7FU2N.heuristic.jsonl",
+        "trajectory_id": "997275b6251e4eb48131a711d320b5e7",
+        "truncated": false,
+        "victory": false
+      },
+      "hybrid": {
+        "act": 1,
+        "floor": 6,
+        "policy_sources": {
+          "heuristic": 81,
+          "macro_bc": 5
+        },
+        "steps": 86,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\016.regent.GA7GJ7FU2N.hybrid.jsonl",
+        "trajectory_id": "3516dc6ebcf44da78d21f591ee8d1e87",
+        "truncated": false,
+        "victory": false
+      },
+      "random": {
+        "act": 1,
+        "floor": 3,
+        "policy_sources": {
+          "legal_random": 35
+        },
+        "steps": 35,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\016.regent.GA7GJ7FU2N.random.jsonl",
+        "trajectory_id": "cae6e1aea306480383726fada457246e",
+        "truncated": false,
+        "victory": false
+      },
+      "random_policy_seed": 6747272860451528444,
+      "seed": "GA7GJ7FU2N"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 17,
+      "character": "Regent",
+      "floor_delta": 2,
+      "heuristic": {
+        "act": 1,
+        "floor": 17,
+        "policy_sources": {
+          "heuristic": 206
+        },
+        "steps": 206,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\017.regent.VNM11K2ZYG.heuristic.jsonl",
+        "trajectory_id": "65e38985c50945dea9fb8a1a62c33448",
+        "truncated": false,
+        "victory": false
+      },
+      "hybrid": {
+        "act": 1,
+        "floor": 5,
+        "policy_sources": {
+          "heuristic": 76,
+          "macro_bc": 4
+        },
+        "steps": 80,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\017.regent.VNM11K2ZYG.hybrid.jsonl",
+        "trajectory_id": "d198d352a9ab4b7d9bf217039a329b31",
+        "truncated": false,
+        "victory": false
+      },
+      "random": {
+        "act": 1,
+        "floor": 3,
+        "policy_sources": {
+          "legal_random": 43
+        },
+        "steps": 43,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\017.regent.VNM11K2ZYG.random.jsonl",
+        "trajectory_id": "a47d830bd2c341139a26a576d333da8a",
+        "truncated": false,
+        "victory": false
+      },
+      "random_policy_seed": 17383147435042646043,
+      "seed": "VNM11K2ZYG"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 18,
+      "character": "Regent",
+      "floor_delta": 5,
+      "heuristic": {
+        "act": 1,
+        "floor": 6,
+        "policy_sources": {
+          "heuristic": 72
+        },
+        "steps": 72,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\018.regent.FG5W9XZL9X.heuristic.jsonl",
+        "trajectory_id": "1bf195c70ebf41f69a7a53dfeda80c71",
+        "truncated": false,
+        "victory": false
+      },
+      "hybrid": {
+        "act": 1,
+        "floor": 7,
+        "policy_sources": {
+          "heuristic": 88,
+          "macro_bc": 5
+        },
+        "steps": 93,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\018.regent.FG5W9XZL9X.hybrid.jsonl",
+        "trajectory_id": "041cc28345b449528c45b2af2f3989f1",
+        "truncated": false,
+        "victory": false
+      },
+      "random": {
+        "act": 1,
+        "floor": 2,
+        "policy_sources": {
+          "legal_random": 36
+        },
+        "steps": 36,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\018.regent.FG5W9XZL9X.random.jsonl",
+        "trajectory_id": "8adbc00c279a42d8b0238f92bfdc5b63",
+        "truncated": false,
+        "victory": false
+      },
+      "random_policy_seed": 16491846134745020661,
+      "seed": "FG5W9XZL9X"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 19,
+      "character": "Regent",
+      "floor_delta": 13,
+      "heuristic": {
+        "act": 1,
+        "floor": 12,
+        "policy_sources": {
+          "heuristic": 136
+        },
+        "steps": 136,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\019.regent.J36UPW5Y8G.heuristic.jsonl",
+        "trajectory_id": "c227e43157bf467ab8cffb83ee2dca82",
+        "truncated": false,
+        "victory": false
+      },
+      "hybrid": {
+        "act": 1,
+        "floor": 17,
+        "policy_sources": {
+          "heuristic": 208,
+          "macro_bc": 9
+        },
+        "steps": 217,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\019.regent.J36UPW5Y8G.hybrid.jsonl",
+        "trajectory_id": "41bbf9ef9ad24e0f927a3c5eb34959bc",
+        "truncated": false,
+        "victory": false
+      },
+      "random": {
+        "act": 1,
+        "floor": 4,
+        "policy_sources": {
+          "legal_random": 50
+        },
+        "steps": 50,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\019.regent.J36UPW5Y8G.random.jsonl",
+        "trajectory_id": "4db2d007a6ec4dbb8d266df162072618",
+        "truncated": false,
+        "victory": false
+      },
+      "random_policy_seed": 2650616272748647901,
+      "seed": "J36UPW5Y8G"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 20,
+      "character": "Silent",
+      "floor_delta": 6,
+      "heuristic": {
+        "act": 1,
+        "floor": 6,
+        "policy_sources": {
+          "heuristic": 88
+        },
+        "steps": 88,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\020.silent.R54QW50LET.heuristic.jsonl",
+        "trajectory_id": "c98493d580094ba1a2579f41f21352e5",
+        "truncated": false,
+        "victory": false
+      },
+      "hybrid": {
+        "act": 1,
+        "floor": 9,
+        "policy_sources": {
+          "heuristic": 162,
+          "macro_bc": 7
+        },
+        "steps": 169,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\020.silent.R54QW50LET.hybrid.jsonl",
+        "trajectory_id": "b3f20256983b4fa1944b190ed8289ac4",
+        "truncated": false,
+        "victory": false
+      },
+      "random": {
+        "act": 1,
+        "floor": 3,
+        "policy_sources": {
+          "legal_random": 44
+        },
+        "steps": 44,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\020.silent.R54QW50LET.random.jsonl",
+        "trajectory_id": "6840547ef299491ab20adc8a35e30751",
+        "truncated": false,
+        "victory": false
+      },
+      "random_policy_seed": 2016442455892468047,
+      "seed": "R54QW50LET"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 21,
+      "character": "Silent",
+      "floor_delta": 6,
+      "heuristic": {
+        "act": 1,
+        "floor": 11,
+        "policy_sources": {
+          "heuristic": 113
+        },
+        "steps": 113,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\021.silent.GARLRTYW5U.heuristic.jsonl",
+        "trajectory_id": "02ebb0e770834d39a5abc446d26594a9",
+        "truncated": false,
+        "victory": false
+      },
+      "hybrid": {
+        "act": 1,
+        "floor": 11,
+        "policy_sources": {
+          "heuristic": 124,
+          "macro_bc": 4
+        },
+        "steps": 128,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\021.silent.GARLRTYW5U.hybrid.jsonl",
+        "trajectory_id": "ade07313ea2c420abeec5541e12965ec",
+        "truncated": false,
+        "victory": false
+      },
+      "random": {
+        "act": 1,
+        "floor": 5,
+        "policy_sources": {
+          "legal_random": 48
+        },
+        "steps": 48,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\021.silent.GARLRTYW5U.random.jsonl",
+        "trajectory_id": "835ffe3544fc4bf7975f14171f818196",
+        "truncated": false,
+        "victory": false
+      },
+      "random_policy_seed": 9315554751028416562,
+      "seed": "GARLRTYW5U"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 22,
+      "character": "Silent",
+      "floor_delta": 3,
+      "heuristic": {
+        "act": 1,
+        "floor": 13,
+        "policy_sources": {
+          "heuristic": 216
+        },
+        "steps": 216,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\022.silent.A8EKZS7G6W.heuristic.jsonl",
+        "trajectory_id": "f748a5cfc8e8499caefed544f7d2fc0c",
+        "truncated": false,
+        "victory": false
+      },
+      "hybrid": {
+        "act": 1,
+        "floor": 7,
+        "policy_sources": {
+          "heuristic": 56,
+          "macro_bc": 4
+        },
+        "steps": 60,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\022.silent.A8EKZS7G6W.hybrid.jsonl",
+        "trajectory_id": "630770c8195248ef951dc452ee3c5ac2",
+        "truncated": false,
+        "victory": false
+      },
+      "random": {
+        "act": 1,
+        "floor": 4,
+        "policy_sources": {
+          "legal_random": 62
+        },
+        "steps": 62,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\022.silent.A8EKZS7G6W.random.jsonl",
+        "trajectory_id": "c537b956028b4e2caa04b7bf1b229bca",
+        "truncated": false,
+        "victory": false
+      },
+      "random_policy_seed": 1425048517385121884,
+      "seed": "A8EKZS7G6W"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 23,
+      "character": "Silent",
+      "floor_delta": 3,
+      "heuristic": {
+        "act": 1,
+        "floor": 7,
+        "policy_sources": {
+          "heuristic": 77
+        },
+        "steps": 77,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\023.silent.S4P1450F78.heuristic.jsonl",
+        "trajectory_id": "e7b21f27afa34d19a5cd87f209920a74",
+        "truncated": false,
+        "victory": false
+      },
+      "hybrid": {
+        "act": 1,
+        "floor": 9,
+        "policy_sources": {
+          "heuristic": 117,
+          "macro_bc": 5
+        },
+        "steps": 122,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\023.silent.S4P1450F78.hybrid.jsonl",
+        "trajectory_id": "870793197db94fe39d79c567323455fb",
+        "truncated": false,
+        "victory": false
+      },
+      "random": {
+        "act": 1,
+        "floor": 6,
+        "policy_sources": {
+          "legal_random": 61
+        },
+        "steps": 61,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\023.silent.S4P1450F78.random.jsonl",
+        "trajectory_id": "cc10cf8a9fbb4941a2be9ae25b3fb380",
+        "truncated": false,
+        "victory": false
+      },
+      "random_policy_seed": 13735470881682394797,
+      "seed": "S4P1450F78"
+    },
+    {
+      "ascension": 10,
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 24,
+      "character": "Silent",
+      "floor_delta": 5,
+      "heuristic": {
+        "act": 1,
+        "floor": 9,
+        "policy_sources": {
+          "heuristic": 105
+        },
+        "steps": 105,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\024.silent.DQAZW11C0H.heuristic.jsonl",
+        "trajectory_id": "1e98fac3c18e4984bfb08c4089920ac6",
+        "truncated": false,
+        "victory": false
+      },
+      "hybrid": {
+        "act": 1,
+        "floor": 9,
+        "policy_sources": {
+          "heuristic": 123,
+          "macro_bc": 4
+        },
+        "steps": 127,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\024.silent.DQAZW11C0H.hybrid.jsonl",
+        "trajectory_id": "4fe961c65d39468ba45a52e4232cc73d",
+        "truncated": false,
+        "victory": false
+      },
+      "random": {
+        "act": 1,
+        "floor": 4,
+        "policy_sources": {
+          "legal_random": 50
+        },
+        "steps": 50,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\benchmark5f\\024.silent.DQAZW11C0H.random.jsonl",
+        "trajectory_id": "8b610fe513fe4bb6a98f7d1b8aa1592f",
+        "truncated": false,
+        "victory": false
+      },
+      "random_policy_seed": 15120076348553625152,
+      "seed": "DQAZW11C0H"
+    }
+  ],
+  "count_per_character": 5,
+  "evaluation": "paired_headless_random_heuristic_hybrid",
+  "manifest": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\v0.107.1-a10.json",
+  "manifest_name": "stsai-v0.107.1-a10",
+  "max_steps": 1000,
+  "model": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\checkpoints\\decision_policy.a10.npz",
+  "random_policy_seed": 7,
+  "schema_version": 1,
+  "selection": "first precommitted manifest cases per character"
+}

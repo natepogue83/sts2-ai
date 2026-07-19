@@ -1,0 +1,366 @@
+diff --git a/McpMod.cs b/McpMod.cs
+index 3b5ed64..2415a28 100644
+--- a/McpMod.cs
++++ b/McpMod.cs
+@@ -82,6 +82,8 @@ public static partial class McpMod
+     {
+         try
+         {
++            InitializeTelemetry();
++
+             // Optional settings UI patches should not block the HTTP bridge itself.
+             TryApplyHarmonyPatches();
+ 
+@@ -372,7 +374,8 @@ public static partial class McpMod
+ 
+         try
+         {
+-            var resultTask = RunOnMainThread(() => ExecuteMultiplayerAction(action, parsed));
++            var resultTask = RunOnMainThread(
++                () => ExecuteAsBridgeAction(() => ExecuteMultiplayerAction(action, parsed)));
+             var result = resultTask.GetAwaiter().GetResult();
+             SendJson(response, result);
+         }
+@@ -470,7 +473,8 @@ public static partial class McpMod
+ 
+         try
+         {
+-            var resultTask = RunOnMainThread(() => ExecuteAction(action, parsed));
++            var resultTask = RunOnMainThread(
++                () => ExecuteAsBridgeAction(() => ExecuteAction(action, parsed)));
+             var result = resultTask.GetAwaiter().GetResult();
+             SendJson(response, result);
+         }
+diff --git a/McpMod.Telemetry.cs b/McpMod.Telemetry.cs
+new file mode 100644
+index 0000000..7600437
+--- /dev/null
++++ b/McpMod.Telemetry.cs
+@@ -0,0 +1,250 @@
++using System;
++using System.Collections.Generic;
++using System.IO;
++using System.Linq;
++using System.Reflection;
++using System.Security.Cryptography;
++using System.Text;
++using System.Text.Json;
++using Godot;
++using HarmonyLib;
++using MegaCrit.Sts2.Core.Context;
++using MegaCrit.Sts2.Core.GameActions;
++using MegaCrit.Sts2.Core.GameActions.Multiplayer;
++using MegaCrit.Sts2.Core.Runs;
++
++namespace STS2_MCP;
++
++public static partial class McpMod
++{
++    private const string TelemetryConfigFileName = "STS2_MCP.telemetry.conf";
++    private static bool _telemetryEnabled;
++    private static string? _telemetryOutputPath;
++    private static string _telemetryId = Guid.NewGuid().ToString("N");
++    private static RunState? _telemetryRunState;
++    private static int _telemetryStep;
++    private static string? _telemetryRunSeedSha256;
++    private static string? _telemetryBuildId;
++    private static string? _telemetryGameAssemblySha256;
++
++    [ThreadStatic]
++    private static bool _executingBridgeAction;
++
++    private static T ExecuteAsBridgeAction<T>(Func<T> action)
++    {
++        _executingBridgeAction = true;
++        try
++        {
++            return action();
++        }
++        finally
++        {
++            _executingBridgeAction = false;
++        }
++    }
++
++    private static void InitializeTelemetry()
++    {
++        try
++        {
++            string? modDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
++            if (modDirectory == null)
++                return;
++
++            string configPath = Path.Combine(modDirectory, TelemetryConfigFileName);
++            if (!File.Exists(configPath))
++            {
++                var defaults = new Dictionary<string, object?>
++                {
++                    ["enabled"] = false,
++                    ["output"] = "combat_telemetry.jsonl"
++                };
++                File.WriteAllText(configPath, JsonSerializer.Serialize(defaults, _jsonOptions));
++                GD.Print($"[STS2 MCP] Created opt-in telemetry config at {configPath}");
++                return;
++            }
++
++            using JsonDocument document = JsonDocument.Parse(File.ReadAllText(configPath));
++            JsonElement root = document.RootElement;
++            _telemetryEnabled = root.TryGetProperty("enabled", out JsonElement enabled)
++                && enabled.ValueKind == JsonValueKind.True;
++            if (!_telemetryEnabled)
++                return;
++
++            string output = root.TryGetProperty("output", out JsonElement outputElement)
++                ? outputElement.GetString() ?? "combat_telemetry.jsonl"
++                : "combat_telemetry.jsonl";
++            if (Path.IsPathRooted(output))
++                throw new InvalidOperationException("Telemetry output must be relative to the mod directory.");
++
++            string fullModDirectory = Path.GetFullPath(modDirectory)
++                .TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
++            string fullOutputPath = Path.GetFullPath(Path.Combine(fullModDirectory, output));
++            string allowedPrefix = fullModDirectory + Path.DirectorySeparatorChar;
++            if (!fullOutputPath.StartsWith(allowedPrefix, StringComparison.OrdinalIgnoreCase))
++                throw new InvalidOperationException("Telemetry output must stay inside the mod directory.");
++
++            string gameDirectory = Directory.GetParent(fullModDirectory)?.FullName
++                ?? throw new InvalidOperationException("Could not locate the game directory.");
++            string releaseInfoPath = Path.Combine(gameDirectory, "release_info.json");
++            if (!File.Exists(releaseInfoPath))
++                throw new InvalidOperationException("Could not locate release_info.json.");
++            using (JsonDocument release = JsonDocument.Parse(File.ReadAllText(releaseInfoPath)))
++            {
++                if (!release.RootElement.TryGetProperty("version", out JsonElement version)
++                    || string.IsNullOrWhiteSpace(version.GetString()))
++                    throw new InvalidOperationException("release_info.json has no version.");
++                _telemetryBuildId = version.GetString();
++            }
++
++            string gameAssemblyPath = typeof(RunManager).Assembly.Location;
++            using (FileStream stream = File.OpenRead(gameAssemblyPath))
++            using (SHA256 sha256 = SHA256.Create())
++                _telemetryGameAssemblySha256 = Convert.ToHexString(sha256.ComputeHash(stream))
++                    .ToLowerInvariant();
++
++            Directory.CreateDirectory(Path.GetDirectoryName(fullOutputPath)!);
++            _telemetryOutputPath = fullOutputPath;
++            GD.Print($"[STS2 MCP] Human combat telemetry enabled: {fullOutputPath}");
++        }
++        catch (Exception exception)
++        {
++            _telemetryEnabled = false;
++            _telemetryOutputPath = null;
++            GD.PrintErr($"[STS2 MCP] Telemetry disabled: {exception.Message}");
++        }
++    }
++
++    private static Dictionary<string, object?>? BuildHumanCombatAction(
++        GameAction gameAction,
++        Dictionary<string, object?> observation)
++    {
++        switch (gameAction)
++        {
++            case PlayCardAction playCard:
++            {
++                var card = playCard.NetCombatCard.ToCardModelOrNull();
++                var cards = playCard.Player.PlayerCombatState?.Hand.Cards;
++                int cardIndex = card == null || cards == null ? -1 : cards.ToList().IndexOf(card);
++                if (cardIndex < 0)
++                    return null;
++                var action = new Dictionary<string, object?>
++                {
++                    ["action"] = "play_card",
++                    ["card_index"] = cardIndex
++                };
++                string? target = TargetEntityId(observation, playCard.TargetId);
++                if (target != null)
++                    action["target"] = target;
++                return action;
++            }
++            case UsePotionAction usePotion when usePotion.WasEnqueuedInCombat:
++            {
++                var action = new Dictionary<string, object?>
++                {
++                    ["action"] = "use_potion",
++                    ["slot"] = (int)usePotion.PotionIndex
++                };
++                string? target = TargetEntityId(observation, usePotion.TargetId);
++                if (target != null)
++                    action["target"] = target;
++                return action;
++            }
++            case EndPlayerTurnAction:
++                return new Dictionary<string, object?> { ["action"] = "end_turn" };
++            default:
++                return null;
++        }
++    }
++
++    private static string? TargetEntityId(
++        Dictionary<string, object?> observation,
++        uint? combatId)
++    {
++        if (!combatId.HasValue
++            || !observation.TryGetValue("battle", out object? battleObject)
++            || battleObject is not Dictionary<string, object?> battle
++            || !battle.TryGetValue("enemies", out object? enemiesObject)
++            || enemiesObject is not List<Dictionary<string, object?>> enemies)
++            return null;
++
++        foreach (Dictionary<string, object?> enemy in enemies)
++        {
++            if (enemy.TryGetValue("combat_id", out object? id)
++                && Convert.ToUInt32(id) == combatId.Value
++                && enemy.TryGetValue("entity_id", out object? entityId))
++                return entityId?.ToString();
++        }
++        return null;
++    }
++
++    private static void RecordHumanCombatAction(GameAction gameAction)
++    {
++        if (!_telemetryEnabled || _telemetryOutputPath == null || _executingBridgeAction)
++            return;
++        try
++        {
++            if (!RunManager.Instance.IsInProgress)
++                return;
++            var runState = RunManager.Instance.DebugOnlyGetState();
++            if (runState == null)
++                return;
++            if (runState.Players.Count != 1)
++                return;
++            if (!ReferenceEquals(_telemetryRunState, runState))
++            {
++                _telemetryRunState = runState;
++                _telemetryId = Guid.NewGuid().ToString("N");
++                _telemetryStep = 0;
++                _telemetryRunSeedSha256 = Convert.ToHexString(SHA256.HashData(
++                    Encoding.UTF8.GetBytes($"{_telemetryBuildId}\u001f{runState.Rng.Seed}")))
++                    .ToLowerInvariant();
++            }
++            var localPlayer = LocalContext.GetMe(runState);
++            if (localPlayer == null || gameAction.OwnerId != localPlayer.NetId)
++                return;
++
++            Dictionary<string, object?> observation = BuildGameState();
++            string stateType = observation.TryGetValue("state_type", out object? state)
++                ? state?.ToString() ?? ""
++                : "";
++            if (stateType is not ("monster" or "elite" or "boss"))
++                return;
++            Dictionary<string, object?>? action = BuildHumanCombatAction(gameAction, observation);
++            if (action == null)
++                return;
++
++            var telemetryEvent = new Dictionary<string, object?>
++            {
++                ["schema_version"] = 2,
++                ["event_type"] = "human_combat_action",
++                ["trajectory_id"] = _telemetryId,
++                ["step"] = _telemetryStep++,
++                ["recorded_at"] = DateTimeOffset.UtcNow.ToString("O"),
++                ["source"] = "game_ui",
++                ["collector"] = "STS2MCP",
++                ["mode"] = "singleplayer",
++                ["build_id"] = _telemetryBuildId,
++                ["game_assembly_sha256"] = _telemetryGameAssemblySha256,
++                ["run_seed_sha256"] = _telemetryRunSeedSha256,
++                ["observation"] = observation,
++                ["action"] = action
++            };
++            string encoded = JsonSerializer.Serialize(telemetryEvent, _jsonOptions) + "\n";
++            File.AppendAllText(_telemetryOutputPath, encoded, new UTF8Encoding(false));
++        }
++        catch (Exception exception)
++        {
++            GD.PrintErr($"[STS2 MCP] Could not record human combat action: {exception.Message}");
++        }
++    }
++
++    [HarmonyPatch(typeof(ActionQueueSynchronizer), nameof(ActionQueueSynchronizer.RequestEnqueue))]
++    private static class HumanCombatTelemetryPatch
++    {
++        private static void Prefix(GameAction action)
++        {
++            RecordHumanCombatAction(action);
++        }
++    }
++}
+diff --git a/McpMod.StateBuilder.cs b/McpMod.StateBuilder.cs
+--- a/McpMod.StateBuilder.cs
++++ b/McpMod.StateBuilder.cs
+@@ -1074,6 +1074,11 @@ public static partial class McpMod
+         battle["round"] = combatState.RoundNumber;
+         battle["turn"] = combatState.CurrentSide.ToString().ToLower();
+         battle["is_play_phase"] = IsPlayerInPlayPhase(LocalContext.GetMe(runState));
++        battle["player_actions_disabled"] = CombatManager.Instance.PlayerActionsDisabled;
++        battle["encounter_id"] = combatRoom.Encounter?.Id.ToString();
++        var hand = NCombatRoom.Instance?.Ui?.Hand;
++        battle["can_end_turn"] = !CombatManager.Instance.PlayerActionsDisabled
++            && (hand == null || (!hand.InCardPlay && hand.CurrentMode == NPlayerHand.Mode.Play));
+ 
+         // Enemies
+         var enemies = new List<Dictionary<string, object?>>();
+@@ -1098,6 +1103,7 @@ public static partial class McpMod
+         var combatState = player.PlayerCombatState;
+ 
+         state["character"] = SafeGetText(() => player.Character.Title);
++        state["character_id"] = player.Character.Id.Entry;
+         state["hp"] = creature.CurrentHp;
+         state["max_hp"] = creature.MaxHp;
+         state["block"] = creature.Block;
+@@ -1213,7 +1219,12 @@ public static partial class McpMod
+                     ["name"] = SafeGetText(() => potion.Title),
+                     ["description"] = SafeGetText(() => potion.DynamicDescription),
+                     ["slot"] = slotIndex,
+-                    ["can_use_in_combat"] = potion.Usage == PotionUsage.CombatOnly || potion.Usage == PotionUsage.AnyTime,
++                    ["can_use_in_combat"] =
++                        (potion.Usage == PotionUsage.CombatOnly || potion.Usage == PotionUsage.AnyTime)
++                        && !potion.IsQueued
++                        && !player.Creature.IsDead
++                        && potion.PassesCustomUsabilityCheck
++                        && !CombatManager.Instance.PlayerActionsDisabled,
+                     ["target_type"] = potion.TargetType.ToString(),
+                     ["keywords"] = BuildHoverTips(potion.ExtraHoverTips)
+                 });
+@@ -1310,10 +1321,13 @@ public static partial class McpMod
+             // Pile cards only need a subset - keep it lightweight
+             list.Add(new Dictionary<string, object?>
+             {
++                ["id"] = card.Id.Entry,
+                 ["name"] = SafeGetText(() => card.Title),
++                ["type"] = card.Type.ToString(),
+                 ["cost"] = GetCostDisplay(card),
+                 ["star_cost"] = GetStarCostDisplay(card),
+-                ["description"] = SafeGetCardDescription(card, pile)
++                ["description"] = SafeGetCardDescription(card, pile),
++                ["is_upgraded"] = card.IsUpgraded
+             });
+         }
+         return list;
+@@ -1351,6 +1365,24 @@ public static partial class McpMod
+                 {
+                     ["type"] = intent.IntentType.ToString()
+                 };
++                if (intent is MegaCrit.Sts2.Core.MonsterMoves.Intents.AttackIntent attack
++                    && creature.CombatState?.PlayerCreatures is { } playerCreatures)
++                {
++                    try
++                    {
++                        int hits = attack.Repeats;
++                        intentData["damage"] = hits > 1
++                            ? attack.GetSingleDamage(playerCreatures, creature)
++                            : attack.GetTotalDamage(playerCreatures, creature);
++                        if (hits > 1)
++                        {
++                            intentData["hits"] = hits;
++                            intentData["total_damage"] =
++                                attack.GetTotalDamage(playerCreatures, creature);
++                        }
++                    }
++                    catch { }
++                }
+                 try
+                 {
+                     var targets = creature.CombatState?.PlayerCreatures;

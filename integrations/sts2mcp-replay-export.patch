@@ -1,0 +1,316 @@
+diff --git a/McpMod.cs b/McpMod.cs
+--- a/McpMod.cs
++++ b/McpMod.cs
+@@ -262,6 +262,13 @@ public static partial class McpMod
+                 else
+                     SendError(response, 405, "Method not allowed");
+             }
++            else if (path == "/api/v1/replay/latest")
++            {
++                if (request.HttpMethod == "GET")
++                    HandleGetLatestReplay(response);
++                else
++                    SendError(response, 405, "Method not allowed");
++            }
+             else
+             {
+                 SendError(response, 404, "Not found");
+diff --git a/McpMod.Replay.cs b/McpMod.Replay.cs
+new file mode 100644
+--- /dev/null
++++ b/McpMod.Replay.cs
+@@ -0,0 +1,294 @@
++using System;
++using System.Collections.Generic;
++using System.IO;
++using System.Linq;
++using System.Net;
++using Godot;
++using MegaCrit.Sts2.Core.Entities.Multiplayer;
++using MegaCrit.Sts2.Core.GameActions;
++using MegaCrit.Sts2.Core.Multiplayer.Replay;
++using MegaCrit.Sts2.Core.Multiplayer.Serialization;
++using MegaCrit.Sts2.Core.Saves;
++
++namespace STS2_MCP;
++
++public static partial class McpMod
++{
++    private static void HandleGetLatestReplay(HttpListenerResponse response)
++    {
++        try
++        {
++            // Replay deserialization uses the model table initialized by the running
++            // game, including every active Workshop mod. Keep all Godot file access
++            // and model work on the main thread.
++            var task = RunOnMainThread(BuildLatestReplaySummary);
++            SendJson(response, task.GetAwaiter().GetResult());
++        }
++        catch (FileNotFoundException ex)
++        {
++            SendError(response, 404, ex.Message);
++        }
++        catch (InvalidDataException ex)
++        {
++            SendError(response, 409, ex.Message);
++        }
++        catch (Exception ex)
++        {
++            GD.PrintErr($"[STS2 MCP] HandleGetLatestReplay: {ex}");
++            SendError(response, 500, $"Failed to read latest combat replay: {ex.Message}");
++        }
++    }
++
++    private static Dictionary<string, object?> BuildLatestReplaySummary()
++    {
++        string replayPath = SaveManager.Instance.GetProfileScopedPath("replays/latest.mcr");
++        if (!Godot.FileAccess.FileExists(replayPath))
++            throw new FileNotFoundException("No completed combat replay is available for this profile.");
++
++        byte[] bytes;
++        using (var stream = new FileAccessStream(replayPath, Godot.FileAccess.ModeFlags.Read))
++        {
++            if (stream.Length > 64 * 1024 * 1024)
++                throw new InvalidDataException("Replay exceeds the 64 MiB safety limit.");
++            bytes = new byte[stream.Length];
++            stream.ReadExactly(bytes);
++        }
++
++        var headerReader = new PacketReader();
++        headerReader.Reset(bytes);
++        string version = headerReader.ReadString();
++        string commit = headerReader.ReadString();
++        uint modelIdHash = headerReader.ReadUInt();
++        if (modelIdHash != ModelIdSerializationCache.Hash)
++        {
++            throw new InvalidDataException(
++                $"Replay model table hash is {modelIdHash}, but the active table is "
++                + $"{ModelIdSerializationCache.Hash}. Restore the replay's exact mod set.");
++        }
++
++        var reader = new PacketReader();
++        reader.Reset(bytes);
++        CombatReplay replay = reader.Read<CombatReplay>();
++        var playerIndexes = replay.serializableRun.Players
++            .Select((player, index) => (player.NetId, index))
++            .ToDictionary(item => item.NetId, item => item.index);
++
++        var eventCounts = new Dictionary<string, int>(StringComparer.Ordinal);
++        var actionCounts = new Dictionary<string, int>(StringComparer.Ordinal);
++        var actions = new List<Dictionary<string, object?>>();
++        var choices = new List<Dictionary<string, object?>>();
++        for (int replayEventIndex = 0; replayEventIndex < replay.events.Count; replayEventIndex++)
++        {
++            CombatReplayEvent replayEvent = replay.events[replayEventIndex];
++            string eventType = replayEvent.eventType.ToString();
++            eventCounts[eventType] = eventCounts.GetValueOrDefault(eventType) + 1;
++            if (replayEvent.playerChoiceResult.HasValue)
++            {
++                NetPlayerChoiceResult result = replayEvent.playerChoiceResult.Value;
++                var choice = new Dictionary<string, object?>
++                {
++                    ["replay_event_index"] = replayEventIndex,
++                    ["choice_id"] = replayEvent.choiceId,
++                    ["player_index"] = PlayerIndex(replayEvent.playerId, playerIndexes),
++                    ["choice_type"] = result.type.ToString()
++                };
++                if (result.combatCards != null)
++                {
++                    choice["combat_card_indices"] = result.combatCards
++                        .Select(card => card.CombatCardIndex).ToList();
++                }
++                if (result.deckCards != null)
++                {
++                    choice["deck_card_indices"] = result.deckCards
++                        .Select(card => card.DeckIndex).ToList();
++                }
++                if (result.canonicalCards != null)
++                {
++                    choice["canonical_card_ids"] = result.canonicalCards
++                        .Select(card => card.Id.Entry).ToList();
++                }
++                if (result.mutableCards != null)
++                {
++                    choice["mutable_card_ids"] = result.mutableCards
++                        .Select(card => card.Id?.Entry).ToList();
++                }
++                if (result.indexes != null)
++                    choice["indexes"] = result.indexes;
++                choice["target_player_index"] = PlayerIndex(result.playerId, playerIndexes);
++                choices.Add(choice);
++            }
++            if (replayEvent.action == null)
++                continue;
++
++            string actionType = replayEvent.action.GetType().Name;
++            actionCounts[actionType] = actionCounts.GetValueOrDefault(actionType) + 1;
++            var action = new Dictionary<string, object?>
++            {
++                ["replay_event_index"] = replayEventIndex,
++                ["action_type"] = actionType,
++                ["player_index"] = PlayerIndex(replayEvent.playerId, playerIndexes)
++            };
++            switch (replayEvent.action)
++            {
++                case NetPlayCardAction play:
++                    action["card_id"] = play.modelId.Entry;
++                    action["combat_card_index"] = play.card.CombatCardIndex;
++                    action["target_combat_id"] = play.targetId;
++                    break;
++                case NetUsePotionAction potion:
++                    action["potion_slot"] = potion.potionIndex;
++                    action["target_combat_id"] = potion.targetId;
++                    action["target_player_index"] = PlayerIndex(
++                        potion.targetPlayerId, playerIndexes);
++                    action["in_combat"] = potion.enqueuedInCombat;
++                    break;
++                case NetEndPlayerTurnAction endTurn:
++                    action["turn_number"] = endTurn.turnNumber;
++                    break;
++            }
++            actions.Add(action);
++        }
++
++        return new Dictionary<string, object?>
++        {
++            ["schema_version"] = 1,
++            ["format"] = "sts2_combat_replay_summary",
++            ["source"] = "game_native_latest_replay",
++            ["replay"] = new Dictionary<string, object?>
++            {
++                ["version"] = version,
++                ["commit"] = commit,
++                ["model_id_hash"] = modelIdHash,
++                ["bytes"] = bytes.Length,
++                ["ascension"] = replay.serializableRun.Ascension,
++                ["act"] = replay.serializableRun.CurrentActIndex + 1,
++                ["floor"] = replay.serializableRun.FloorReached,
++                ["room_type"] = replay.serializableRun.PreFinishedRoom?.RoomType.ToString(),
++                ["encounter_id"] = replay.serializableRun.PreFinishedRoom?.EncounterId?.Entry,
++                ["players"] = replay.serializableRun.Players.Select(player =>
++                    new Dictionary<string, object?>
++                    {
++                        ["character"] = player.CharacterId?.Entry,
++                        ["current_hp"] = player.CurrentHp,
++                        ["max_hp"] = player.MaxHp,
++                        ["max_energy"] = player.MaxEnergy,
++                        ["deck_size"] = player.Deck.Count,
++                        ["deck"] = player.Deck.Select(card =>
++                            new Dictionary<string, object?>
++                            {
++                                ["card_id"] = card.Id?.Entry,
++                                ["upgrade_level"] = card.CurrentUpgradeLevel
++                            }).ToList(),
++                        ["relic_count"] = player.Relics.Count,
++                        ["relics"] = player.Relics.Select(relic => relic.Id?.Entry).ToList(),
++                        ["potion_count"] = player.Potions.Count,
++                        ["potions"] = player.Potions.Select(potion => potion.Id?.Entry).ToList(),
++                        ["rng"] = new Dictionary<string, object?>
++                        {
++                            ["seed"] = player.Rng.Seed,
++                            ["counters"] = player.Rng.Counters.ToDictionary(
++                                pair => pair.Key.ToString(), pair => pair.Value)
++                        }
++                    }).ToList(),
++                ["run_rng"] = new Dictionary<string, object?>
++                {
++                    ["seed"] = replay.serializableRun.SerializableRng.Seed,
++                    ["counters"] = replay.serializableRun.SerializableRng.Counters.ToDictionary(
++                        pair => pair.Key.ToString(), pair => pair.Value)
++                },
++                ["events"] = replay.events.Count,
++                ["event_counts"] = eventCounts,
++                ["action_counts"] = actionCounts,
++                ["checksums"] = replay.checksumData.Count
++            },
++            ["actions"] = actions,
++            ["choices"] = choices,
++            ["checkpoints"] = replay.checksumData.Select((checksum, index) =>
++                BuildCheckpoint(index, checksum, playerIndexes)).ToList()
++        };
++    }
++
++    private static Dictionary<string, object?> BuildCheckpoint(
++        int index,
++        ReplayChecksumData checksum,
++        Dictionary<ulong, int> playerIndexes)
++    {
++        NetFullCombatState state = checksum.fullState;
++        return new Dictionary<string, object?>
++        {
++            ["index"] = index,
++            ["context"] = checksum.context,
++            ["last_action_id"] = state.lastExecutedActionId,
++            ["last_hook_id"] = state.lastExecutedHookId,
++            ["players"] = state.Players.Select(player =>
++                new Dictionary<string, object?>
++                {
++                    ["player_index"] = PlayerIndex(player.playerId, playerIndexes),
++                    ["character"] = player.characterId.Entry,
++                    ["turn"] = player.turnNumber,
++                    ["phase"] = player.phase.ToString(),
++                    ["energy"] = player.energy,
++                    ["stars"] = player.stars,
++                    ["gold"] = player.gold,
++                    ["piles"] = player.piles.ToDictionary(
++                        pile => pile.pileType.ToString(),
++                        pile => pile.cards.Select(card => new Dictionary<string, object?>
++                        {
++                            ["card_id"] = card.card.Id?.Entry,
++                            ["upgrade_level"] = card.card.CurrentUpgradeLevel,
++                            ["energy_cost"] = card.energyCost,
++                            ["affliction"] = card.affliction?.Entry,
++                            ["affliction_count"] = card.afflictionCount,
++                            ["keywords"] = card.keywords?.Select(value => value.ToString()).ToList()
++                        }).ToList()),
++                    ["potions"] = player.potions.Select(potion => potion.id.Entry).ToList(),
++                    ["relics"] = player.relics.Select(relic => relic.relic.Id?.Entry).ToList(),
++                    ["orbs"] = player.orbs.Select(orb => new Dictionary<string, object?>
++                    {
++                        ["id"] = orb.id.Entry,
++                        ["passive"] = orb.passive,
++                        ["evoke"] = orb.evoke
++                    }).ToList(),
++                    ["rng"] = new Dictionary<string, object?>
++                    {
++                        ["seed"] = player.rngSet.Seed,
++                        ["counters"] = player.rngSet.Counters.ToDictionary(
++                            pair => pair.Key.ToString(), pair => pair.Value)
++                    },
++                    ["relic_grab_bag"] = player.relicGrabBag.RelicIdLists.ToDictionary(
++                        pair => pair.Key.ToString(),
++                        pair => pair.Value.Select(id => id.Entry).ToList())
++                }).ToList(),
++            ["creatures"] = state.Creatures.Select(creature =>
++                new Dictionary<string, object?>
++                {
++                    ["monster_id"] = creature.monsterId?.Entry,
++                    ["player_index"] = PlayerIndex(creature.playerId, playerIndexes),
++                    ["current_hp"] = creature.currentHp,
++                    ["max_hp"] = creature.maxHp,
++                    ["block"] = creature.block,
++                    ["powers"] = creature.powers.Select(power =>
++                        new Dictionary<string, object?>
++                        {
++                            ["id"] = power.id.Entry,
++                            ["amount"] = power.amount
++                        }).ToList()
++                }).ToList(),
++            ["run_rng"] = new Dictionary<string, object?>
++            {
++                ["seed"] = state.Rng.Seed,
++                ["counters"] = state.Rng.Counters.ToDictionary(
++                    pair => pair.Key.ToString(), pair => pair.Value)
++            }
++        };
++    }
++
++    private static int? PlayerIndex(
++        ulong? playerId, Dictionary<ulong, int> playerIndexes)
++    {
++        return playerId.HasValue
++            && playerIndexes.TryGetValue(playerId.Value, out int playerIndex)
++                ? playerIndex
++                : null;
++    }
++}

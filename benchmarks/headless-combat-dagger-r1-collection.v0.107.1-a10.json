@@ -1,0 +1,80 @@
+{
+  "beta": 0.5,
+  "by_character": {
+    "CHARACTER.DEFECT": {
+      "agreements": 1593,
+      "combat_decisions": 1878,
+      "executed_learner": 912,
+      "executed_teacher": 966,
+      "floor": 245,
+      "mean_floor": 12.25,
+      "runs": 20,
+      "runtime_failure": 1,
+      "steps": 2374,
+      "teacher_execution_rate": 0.5143769968051118,
+      "teacher_learner_agreement_rate": 0.8482428115015974
+    },
+    "CHARACTER.IRONCLAD": {
+      "agreements": 1135,
+      "combat_decisions": 1356,
+      "executed_learner": 641,
+      "executed_teacher": 715,
+      "floor": 197,
+      "mean_floor": 9.85,
+      "runs": 20,
+      "runtime_failure": 1,
+      "steps": 1756,
+      "teacher_execution_rate": 0.5272861356932154,
+      "teacher_learner_agreement_rate": 0.8370206489675516
+    },
+    "CHARACTER.NECROBINDER": {
+      "agreements": 1256,
+      "combat_decisions": 1496,
+      "executed_learner": 743,
+      "executed_teacher": 753,
+      "floor": 166,
+      "mean_floor": 8.3,
+      "runs": 20,
+      "runtime_failure": 0,
+      "steps": 1831,
+      "teacher_execution_rate": 0.5033422459893048,
+      "teacher_learner_agreement_rate": 0.839572192513369
+    },
+    "CHARACTER.REGENT": {
+      "agreements": 1357,
+      "combat_decisions": 1531,
+      "executed_learner": 755,
+      "executed_teacher": 776,
+      "floor": 172,
+      "mean_floor": 8.6,
+      "runs": 20,
+      "runtime_failure": 1,
+      "steps": 1942,
+      "teacher_execution_rate": 0.5068582625734814,
+      "teacher_learner_agreement_rate": 0.8863487916394513
+    },
+    "CHARACTER.SILENT": {
+      "agreements": 1543,
+      "combat_decisions": 1890,
+      "executed_learner": 927,
+      "executed_teacher": 963,
+      "floor": 170,
+      "mean_floor": 8.5,
+      "runs": 20,
+      "runtime_failure": 0,
+      "steps": 2427,
+      "teacher_execution_rate": 0.5095238095238095,
+      "teacher_learner_agreement_rate": 0.8164021164021164
+    }
+  },
+  "discarded_matching_incomplete_runs": 0,
+  "manifest": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\headless-combat-dagger-r1-v0.107.1-a10.json",
+  "manifest_sha256": "34ecd2d7f82e1db1649f73ef2ec7424f4fcbfd0541c775660c7d047ae4dcfc30",
+  "reused_completed_runs": 100,
+  "round": 1,
+  "runs": 100,
+  "runtime_failures": 3,
+  "trajectory_dir": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-dagger-r1-v0.107.1-a10",
+  "truncations": 3,
+  "validation_cases_reserved_not_collected": 25
+}

@@ -1,0 +1,2473 @@
+{
+  "aggregate": {
+    "by_character": {
+      "Defect": {
+        "baseline": {
+          "mean_floor": 11.0,
+          "mean_steps": 117.0,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "candidate": {
+          "mean_floor": 11.8,
+          "mean_steps": 144.6,
+          "runtime_failures": 1,
+          "truncations": 1,
+          "victories": 0
+        },
+        "cases": 10,
+        "descriptive_paired_95_interval": [
+          -0.3976,
+          1.9976
+        ],
+        "improved": 4,
+        "paired_floor_delta": 0.8,
+        "tied": 5,
+        "worse": 1
+      },
+      "Ironclad": {
+        "baseline": {
+          "mean_floor": 7.8,
+          "mean_steps": 82.2,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "candidate": {
+          "mean_floor": 8.1,
+          "mean_steps": 112.7,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "cases": 10,
+        "descriptive_paired_95_interval": [
+          -0.529,
+          1.129
+        ],
+        "improved": 1,
+        "paired_floor_delta": 0.3,
+        "tied": 8,
+        "worse": 1
+      },
+      "Necrobinder": {
+        "baseline": {
+          "mean_floor": 8.9,
+          "mean_steps": 85.8,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "candidate": {
+          "mean_floor": 10.4,
+          "mean_steps": 125.7,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "cases": 10,
+        "descriptive_paired_95_interval": [
+          0.1218,
+          2.8782
+        ],
+        "improved": 5,
+        "paired_floor_delta": 1.5,
+        "tied": 5,
+        "worse": 0
+      },
+      "Regent": {
+        "baseline": {
+          "mean_floor": 9.6,
+          "mean_steps": 115.2,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "candidate": {
+          "mean_floor": 9.1,
+          "mean_steps": 126.6,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "cases": 10,
+        "descriptive_paired_95_interval": [
+          -1.603,
+          0.603
+        ],
+        "improved": 2,
+        "paired_floor_delta": -0.5,
+        "tied": 6,
+        "worse": 2
+      },
+      "Silent": {
+        "baseline": {
+          "mean_floor": 8.7,
+          "mean_steps": 109.9,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "candidate": {
+          "mean_floor": 8.2,
+          "mean_steps": 137.2,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "cases": 10,
+        "descriptive_paired_95_interval": [
+          -2.2099,
+          1.2099
+        ],
+        "improved": 2,
+        "paired_floor_delta": -0.5,
+        "tied": 6,
+        "worse": 2
+      }
+    },
+    "overall": {
+      "baseline": {
+        "mean_floor": 9.2,
+        "mean_steps": 102.02,
+        "runtime_failures": 0,
+        "truncations": 0,
+        "victories": 0
+      },
+      "candidate": {
+        "mean_floor": 9.52,
+        "mean_steps": 129.36,
+        "runtime_failures": 1,
+        "truncations": 1,
+        "victories": 0
+      },
+      "cases": 50,
+      "descriptive_paired_95_interval": [
+        -0.2685,
+        0.9085
+      ],
+      "improved": 14,
+      "paired_floor_delta": 0.32,
+      "tied": 30,
+      "worse": 6
+    }
+  },
+  "ascension": 10,
+  "build_id": "v0.107.1",
+  "cases": [
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 17,
+          "play_card": 55
+        },
+        "floor": 9,
+        "policy_sources": {
+          "heuristic": 96
+        },
+        "steps": 96,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\000.ironclad.TACTV1I000000.baseline.jsonl",
+        "trajectory_id": "1c76c30d69ea47b5b2d1497ee6e0e4d1",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 25,
+          "play_card": 73
+        },
+        "floor": 8,
+        "policy_sources": {
+          "heuristic": 119
+        },
+        "steps": 119,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\000.ironclad.TACTV1I000000.candidate.jsonl",
+        "trajectory_id": "4b9876e47cdd4b5b8655aa6f6d1bce43",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 0,
+      "character": "Ironclad",
+      "paired_floor_delta": -1,
+      "seed": "TACTV1I000000"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 13,
+          "play_card": 43
+        },
+        "floor": 6,
+        "policy_sources": {
+          "heuristic": 67
+        },
+        "steps": 67,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\001.ironclad.TACTV1I000001.baseline.jsonl",
+        "trajectory_id": "026dab556e8a450ca047cd509f6fb6fc",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 21,
+          "play_card": 67
+        },
+        "floor": 6,
+        "policy_sources": {
+          "heuristic": 99
+        },
+        "steps": 99,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\001.ironclad.TACTV1I000001.candidate.jsonl",
+        "trajectory_id": "b307766b7b2f453b91d5f66278be9ee5",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 1,
+      "character": "Ironclad",
+      "paired_floor_delta": 0,
+      "seed": "TACTV1I000001"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 18,
+          "play_card": 68
+        },
+        "floor": 14,
+        "policy_sources": {
+          "heuristic": 130
+        },
+        "steps": 130,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\002.ironclad.TACTV1I000002.baseline.jsonl",
+        "trajectory_id": "fe85e8a540cb40bd8703bf38dd30b74f",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 27,
+          "play_card": 93
+        },
+        "floor": 14,
+        "policy_sources": {
+          "heuristic": 166
+        },
+        "steps": 166,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\002.ironclad.TACTV1I000002.candidate.jsonl",
+        "trajectory_id": "0b35b9680a4b4f3d87351c660a915cd7",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 2,
+      "character": "Ironclad",
+      "paired_floor_delta": 0,
+      "seed": "TACTV1I000002"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 13,
+          "play_card": 46
+        },
+        "floor": 7,
+        "policy_sources": {
+          "heuristic": 72
+        },
+        "steps": 72,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\003.ironclad.TACTV1I000003.baseline.jsonl",
+        "trajectory_id": "e9656ab11d8f4cc183e55b1573ee34fa",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 19,
+          "play_card": 66
+        },
+        "floor": 7,
+        "policy_sources": {
+          "heuristic": 98
+        },
+        "steps": 98,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\003.ironclad.TACTV1I000003.candidate.jsonl",
+        "trajectory_id": "e6fc5fb631574825af31071cd3621e01",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 3,
+      "character": "Ironclad",
+      "paired_floor_delta": 0,
+      "seed": "TACTV1I000003"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 17,
+          "play_card": 45
+        },
+        "floor": 7,
+        "policy_sources": {
+          "heuristic": 79
+        },
+        "steps": 79,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\004.ironclad.TACTV1I000004.baseline.jsonl",
+        "trajectory_id": "43788f8693ab43c6a15bd832c077d05c",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 28,
+          "play_card": 77
+        },
+        "floor": 11,
+        "policy_sources": {
+          "heuristic": 135
+        },
+        "steps": 135,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\004.ironclad.TACTV1I000004.candidate.jsonl",
+        "trajectory_id": "046d59b6119942258475822f5e8e46a9",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 4,
+      "character": "Ironclad",
+      "paired_floor_delta": 4,
+      "seed": "TACTV1I000004"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 11,
+          "play_card": 30
+        },
+        "floor": 6,
+        "policy_sources": {
+          "heuristic": 54
+        },
+        "steps": 54,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\005.ironclad.TACTV1I000005.baseline.jsonl",
+        "trajectory_id": "78bb02bbe80148158972f9649f48c81a",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 18,
+          "play_card": 50
+        },
+        "floor": 6,
+        "policy_sources": {
+          "heuristic": 81
+        },
+        "steps": 81,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\005.ironclad.TACTV1I000005.candidate.jsonl",
+        "trajectory_id": "b689a3d585ff40e29b7b5e9978c7c447",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 5,
+      "character": "Ironclad",
+      "paired_floor_delta": 0,
+      "seed": "TACTV1I000005"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 19,
+          "play_card": 63
+        },
+        "floor": 8,
+        "policy_sources": {
+          "heuristic": 107
+        },
+        "steps": 107,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\006.ironclad.TACTV1I000006.baseline.jsonl",
+        "trajectory_id": "7f74e0c9806a498390788f9c04f914b9",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 24,
+          "play_card": 89
+        },
+        "floor": 8,
+        "policy_sources": {
+          "heuristic": 137
+        },
+        "steps": 137,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\006.ironclad.TACTV1I000006.candidate.jsonl",
+        "trajectory_id": "f3de09b5560d49aab445a00d0965d86a",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 6,
+      "character": "Ironclad",
+      "paired_floor_delta": 0,
+      "seed": "TACTV1I000006"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 16,
+          "play_card": 41
+        },
+        "floor": 6,
+        "policy_sources": {
+          "heuristic": 70
+        },
+        "steps": 70,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\007.ironclad.TACTV1I000007.baseline.jsonl",
+        "trajectory_id": "d4554f93cf1d4bdaa8257085c0782523",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 21,
+          "play_card": 58
+        },
+        "floor": 6,
+        "policy_sources": {
+          "heuristic": 92
+        },
+        "steps": 92,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\007.ironclad.TACTV1I000007.candidate.jsonl",
+        "trajectory_id": "b80b077c2188478ab205a5aed282b86b",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 7,
+      "character": "Ironclad",
+      "paired_floor_delta": 0,
+      "seed": "TACTV1I000007"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 15,
+          "play_card": 42
+        },
+        "floor": 6,
+        "policy_sources": {
+          "heuristic": 71
+        },
+        "steps": 71,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\008.ironclad.TACTV1I000008.baseline.jsonl",
+        "trajectory_id": "ecffc8c33ebb41c0a8ef1e049bd67ab2",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 22,
+          "play_card": 65
+        },
+        "floor": 6,
+        "policy_sources": {
+          "heuristic": 101
+        },
+        "steps": 101,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\008.ironclad.TACTV1I000008.candidate.jsonl",
+        "trajectory_id": "21f61c8f6cb940c3a339ef9440090e76",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 8,
+      "character": "Ironclad",
+      "paired_floor_delta": 0,
+      "seed": "TACTV1I000008"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 13,
+          "play_card": 43
+        },
+        "floor": 9,
+        "policy_sources": {
+          "heuristic": 76
+        },
+        "steps": 76,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\009.ironclad.TACTV1I000009.baseline.jsonl",
+        "trajectory_id": "ffb0408ad58e4f508b35af471bfc0431",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 19,
+          "play_card": 60
+        },
+        "floor": 9,
+        "policy_sources": {
+          "heuristic": 99
+        },
+        "steps": 99,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\009.ironclad.TACTV1I000009.candidate.jsonl",
+        "trajectory_id": "694bf69fc09e4f39b6ce55fc31dfa55a",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 9,
+      "character": "Ironclad",
+      "paired_floor_delta": 0,
+      "seed": "TACTV1I000009"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 26,
+          "play_card": 102
+        },
+        "floor": 14,
+        "policy_sources": {
+          "heuristic": 180
+        },
+        "steps": 180,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\010.silent.TACTV1S000000.baseline.jsonl",
+        "trajectory_id": "402a14bd58de490a8f0e4e860cdd2d9c",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 30,
+          "play_card": 116
+        },
+        "floor": 14,
+        "policy_sources": {
+          "heuristic": 200
+        },
+        "steps": 200,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\010.silent.TACTV1S000000.candidate.jsonl",
+        "trajectory_id": "03d1c50e04c7468abb5879db8dbb45ce",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 10,
+      "character": "Silent",
+      "paired_floor_delta": 0,
+      "seed": "TACTV1S000000"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 17,
+          "play_card": 68
+        },
+        "floor": 14,
+        "policy_sources": {
+          "heuristic": 123
+        },
+        "steps": 123,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\011.silent.TACTV1S000001.baseline.jsonl",
+        "trajectory_id": "3b0f3c0c7f414acdbc707044ce8e7a44",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 24,
+          "play_card": 88
+        },
+        "floor": 7,
+        "policy_sources": {
+          "heuristic": 137
+        },
+        "steps": 137,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\011.silent.TACTV1S000001.candidate.jsonl",
+        "trajectory_id": "adbc6da15b7043b4af35495ad42c78a1",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 11,
+      "character": "Silent",
+      "paired_floor_delta": -7,
+      "seed": "TACTV1S000001"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 21,
+          "play_card": 74,
+          "use_potion": 1
+        },
+        "floor": 8,
+        "policy_sources": {
+          "heuristic": 122
+        },
+        "steps": 122,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\012.silent.TACTV1S000002.baseline.jsonl",
+        "trajectory_id": "8f8bb05d3e364ae5965c7838cad51ea7",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 27,
+          "play_card": 96,
+          "use_potion": 1
+        },
+        "floor": 8,
+        "policy_sources": {
+          "heuristic": 152
+        },
+        "steps": 152,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\012.silent.TACTV1S000002.candidate.jsonl",
+        "trajectory_id": "86e7efd0484c4520b6ed9da70ecde4a7",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 12,
+      "character": "Silent",
+      "paired_floor_delta": 0,
+      "seed": "TACTV1S000002"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 30,
+          "play_card": 104
+        },
+        "floor": 11,
+        "policy_sources": {
+          "heuristic": 172
+        },
+        "steps": 172,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\013.silent.TACTV1S000003.baseline.jsonl",
+        "trajectory_id": "9e756dffafc6462ea95064c9b2886443",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 31,
+          "play_card": 109
+        },
+        "floor": 8,
+        "policy_sources": {
+          "heuristic": 172
+        },
+        "steps": 172,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\013.silent.TACTV1S000003.candidate.jsonl",
+        "trajectory_id": "53a7b58c960f47c9a9cb180bea7bc034",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 13,
+      "character": "Silent",
+      "paired_floor_delta": -3,
+      "seed": "TACTV1S000003"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 17,
+          "play_card": 57
+        },
+        "floor": 7,
+        "policy_sources": {
+          "heuristic": 96
+        },
+        "steps": 96,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\014.silent.TACTV1S000004.baseline.jsonl",
+        "trajectory_id": "3eb4f8f2375b45459a1be531a9f1db14",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 23,
+          "play_card": 74
+        },
+        "floor": 7,
+        "policy_sources": {
+          "heuristic": 121
+        },
+        "steps": 121,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\014.silent.TACTV1S000004.candidate.jsonl",
+        "trajectory_id": "d472dec673ba45aaa2056d791885c505",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 14,
+      "character": "Silent",
+      "paired_floor_delta": 0,
+      "seed": "TACTV1S000004"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 13,
+          "play_card": 44
+        },
+        "floor": 6,
+        "policy_sources": {
+          "heuristic": 73
+        },
+        "steps": 73,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\015.silent.TACTV1S000005.baseline.jsonl",
+        "trajectory_id": "bc11efe511724d8a846abb77414df126",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 20,
+          "play_card": 68
+        },
+        "floor": 6,
+        "policy_sources": {
+          "heuristic": 108
+        },
+        "steps": 108,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\015.silent.TACTV1S000005.candidate.jsonl",
+        "trajectory_id": "1ed2e736619b41e7a982461d6e4d2e98",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 15,
+      "character": "Silent",
+      "paired_floor_delta": 0,
+      "seed": "TACTV1S000005"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 2,
+          "play_card": 7
+        },
+        "floor": 2,
+        "policy_sources": {
+          "heuristic": 14
+        },
+        "steps": 14,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\016.silent.TACTV1S000006.baseline.jsonl",
+        "trajectory_id": "203ae7f88543404796757c79a1799922",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 2,
+          "play_card": 7
+        },
+        "floor": 2,
+        "policy_sources": {
+          "heuristic": 14
+        },
+        "steps": 14,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\016.silent.TACTV1S000006.candidate.jsonl",
+        "trajectory_id": "200861f49a25406cb7097f59d566cf91",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 16,
+      "character": "Silent",
+      "paired_floor_delta": 0,
+      "seed": "TACTV1S000006"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 21,
+          "play_card": 78
+        },
+        "floor": 13,
+        "policy_sources": {
+          "heuristic": 141
+        },
+        "steps": 141,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\017.silent.TACTV1S000007.baseline.jsonl",
+        "trajectory_id": "9a59f68fccd941eaad777d95dbfa5436",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 31,
+          "play_card": 117
+        },
+        "floor": 15,
+        "policy_sources": {
+          "heuristic": 198
+        },
+        "steps": 198,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\017.silent.TACTV1S000007.candidate.jsonl",
+        "trajectory_id": "c177daaab91447a0afaf497508943f06",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 17,
+      "character": "Silent",
+      "paired_floor_delta": 2,
+      "seed": "TACTV1S000007"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 13,
+          "play_card": 47
+        },
+        "floor": 5,
+        "policy_sources": {
+          "heuristic": 73
+        },
+        "steps": 73,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\018.silent.TACTV1S000008.baseline.jsonl",
+        "trajectory_id": "772bb0847d2846beb01986df10372bd7",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 25,
+          "play_card": 96
+        },
+        "floor": 8,
+        "policy_sources": {
+          "heuristic": 148
+        },
+        "steps": 148,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\018.silent.TACTV1S000008.candidate.jsonl",
+        "trajectory_id": "eea8259f5e5c42c2a9bb091baed43416",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 18,
+      "character": "Silent",
+      "paired_floor_delta": 3,
+      "seed": "TACTV1S000008"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 16,
+          "play_card": 63
+        },
+        "floor": 7,
+        "policy_sources": {
+          "heuristic": 105
+        },
+        "steps": 105,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\019.silent.TACTV1S000009.baseline.jsonl",
+        "trajectory_id": "4be6dd21419d4f7a8cc1525c4f479aa9",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 19,
+          "play_card": 75
+        },
+        "floor": 7,
+        "policy_sources": {
+          "heuristic": 122
+        },
+        "steps": 122,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\019.silent.TACTV1S000009.candidate.jsonl",
+        "trajectory_id": "075470624eec4244879cac828095a997",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 19,
+      "character": "Silent",
+      "paired_floor_delta": 0,
+      "seed": "TACTV1S000009"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 20,
+          "play_card": 82
+        },
+        "floor": 13,
+        "policy_sources": {
+          "heuristic": 137
+        },
+        "steps": 137,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\020.defect.TACTV1D000000.baseline.jsonl",
+        "trajectory_id": "123ba8613b034567a5692fe471b8625f",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 28,
+          "play_card": 106
+        },
+        "floor": 14,
+        "policy_sources": {
+          "heuristic": 171
+        },
+        "steps": 171,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\020.defect.TACTV1D000000.candidate.jsonl",
+        "trajectory_id": "edf2be7917da4c3cbd9963a11ff5db6f",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 20,
+      "character": "Defect",
+      "paired_floor_delta": 1,
+      "seed": "TACTV1D000000"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 20,
+          "play_card": 66
+        },
+        "floor": 11,
+        "policy_sources": {
+          "heuristic": 121
+        },
+        "steps": 121,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\021.defect.TACTV1D000001.baseline.jsonl",
+        "trajectory_id": "560b0286d42642e3b44a9b0970a618cf",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 40,
+          "play_card": 130
+        },
+        "floor": 17,
+        "policy_sources": {
+          "heuristic": 218
+        },
+        "steps": 218,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\021.defect.TACTV1D000001.candidate.jsonl",
+        "trajectory_id": "defc664815954944b8d023480dc717de",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 21,
+      "character": "Defect",
+      "paired_floor_delta": 6,
+      "seed": "TACTV1D000001"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 14,
+          "play_card": 51
+        },
+        "floor": 11,
+        "policy_sources": {
+          "heuristic": 96
+        },
+        "steps": 96,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\022.defect.TACTV1D000002.baseline.jsonl",
+        "trajectory_id": "f0d24d5ae40f43cf8097a314c8096f3b",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 17,
+          "play_card": 61
+        },
+        "floor": 11,
+        "policy_sources": {
+          "heuristic": 109
+        },
+        "steps": 109,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\022.defect.TACTV1D000002.candidate.jsonl",
+        "trajectory_id": "265354be3637431f8731a63e092cbf1a",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 22,
+      "character": "Defect",
+      "paired_floor_delta": 0,
+      "seed": "TACTV1D000002"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 20,
+          "play_card": 68
+        },
+        "floor": 11,
+        "policy_sources": {
+          "heuristic": 117
+        },
+        "steps": 117,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\023.defect.TACTV1D000003.baseline.jsonl",
+        "trajectory_id": "d2775d6ff53246cea935a8f70a82bb2c",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 24,
+          "play_card": 81
+        },
+        "floor": 11,
+        "policy_sources": {
+          "heuristic": 136
+        },
+        "steps": 136,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\023.defect.TACTV1D000003.candidate.jsonl",
+        "trajectory_id": "99c718727f424abfa6d560b71b05deab",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 23,
+      "character": "Defect",
+      "paired_floor_delta": 0,
+      "seed": "TACTV1D000003"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 20,
+          "play_card": 73
+        },
+        "floor": 15,
+        "policy_sources": {
+          "heuristic": 142
+        },
+        "steps": 142,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\024.defect.TACTV1D000004.baseline.jsonl",
+        "trajectory_id": "dd80588c9095401a8914364b73ad146f",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 33,
+          "play_card": 118
+        },
+        "floor": 15,
+        "policy_sources": {
+          "heuristic": 202
+        },
+        "steps": 202,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\024.defect.TACTV1D000004.candidate.jsonl",
+        "trajectory_id": "e1f3835fee954014a9d927e56bec5067",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 24,
+      "character": "Defect",
+      "paired_floor_delta": 0,
+      "seed": "TACTV1D000004"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 31,
+          "play_card": 126
+        },
+        "floor": 14,
+        "policy_sources": {
+          "heuristic": 192
+        },
+        "steps": 192,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\025.defect.TACTV1D000005.baseline.jsonl",
+        "trajectory_id": "cbf1f5583b3c4cf49a0e8b8e7847d58f",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 25,
+          "play_card": 107
+        },
+        "floor": 13,
+        "policy_sources": {
+          "heuristic": 165
+        },
+        "runtime_error": {
+          "message": "Card could not be played (still in hand after action): BeamCell [CARD.BEAM_CELL]",
+          "type": "HeadlessRuntimeError"
+        },
+        "steps": 165,
+        "terminated": false,
+        "total_reward": 0.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\025.defect.TACTV1D000005.candidate.jsonl",
+        "trajectory_id": "91c79dbcf1a44cdca9e55eb4ea403d48",
+        "truncated": true,
+        "victory": null
+      },
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 25,
+      "character": "Defect",
+      "paired_floor_delta": -1,
+      "seed": "TACTV1D000005"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 11,
+          "play_card": 44
+        },
+        "floor": 7,
+        "policy_sources": {
+          "heuristic": 74
+        },
+        "steps": 74,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\026.defect.TACTV1D000006.baseline.jsonl",
+        "trajectory_id": "d788e13b7c504df084eac75fdecdaacd",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 16,
+          "play_card": 61
+        },
+        "floor": 8,
+        "policy_sources": {
+          "heuristic": 98
+        },
+        "steps": 98,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\026.defect.TACTV1D000006.candidate.jsonl",
+        "trajectory_id": "70856030887041fdaf0a411392c06e27",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 26,
+      "character": "Defect",
+      "paired_floor_delta": 1,
+      "seed": "TACTV1D000006"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 15,
+          "play_card": 47
+        },
+        "floor": 7,
+        "policy_sources": {
+          "heuristic": 77
+        },
+        "steps": 77,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\027.defect.TACTV1D000007.baseline.jsonl",
+        "trajectory_id": "ca261c7c967a4596a1f731e1094ffa03",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 18,
+          "play_card": 54
+        },
+        "floor": 7,
+        "policy_sources": {
+          "heuristic": 87
+        },
+        "steps": 87,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\027.defect.TACTV1D000007.candidate.jsonl",
+        "trajectory_id": "c432e5bdd8614bff8bb5dea35e3122f5",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 27,
+      "character": "Defect",
+      "paired_floor_delta": 0,
+      "seed": "TACTV1D000007"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 14,
+          "play_card": 42
+        },
+        "floor": 7,
+        "policy_sources": {
+          "heuristic": 73
+        },
+        "steps": 73,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\028.defect.TACTV1D000008.baseline.jsonl",
+        "trajectory_id": "7726a926b36846c0abb7561e51c3c9fe",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 16,
+          "play_card": 51
+        },
+        "floor": 7,
+        "policy_sources": {
+          "heuristic": 84
+        },
+        "steps": 84,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\028.defect.TACTV1D000008.candidate.jsonl",
+        "trajectory_id": "88691b7a36a74751ab8446523883ff95",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 28,
+      "character": "Defect",
+      "paired_floor_delta": 0,
+      "seed": "TACTV1D000008"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 24,
+          "play_card": 85
+        },
+        "floor": 14,
+        "policy_sources": {
+          "heuristic": 141
+        },
+        "steps": 141,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\029.defect.TACTV1D000009.baseline.jsonl",
+        "trajectory_id": "720ea5c654bf4331b1b740e779fd95c1",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 31,
+          "play_card": 111
+        },
+        "floor": 15,
+        "policy_sources": {
+          "heuristic": 176
+        },
+        "steps": 176,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\029.defect.TACTV1D000009.candidate.jsonl",
+        "trajectory_id": "d0af3b9c49e94f72a8040322f1ce4cce",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 29,
+      "character": "Defect",
+      "paired_floor_delta": 1,
+      "seed": "TACTV1D000009"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 15,
+          "play_card": 49
+        },
+        "floor": 9,
+        "policy_sources": {
+          "heuristic": 91
+        },
+        "steps": 91,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\030.necrobinder.TACTV1N000000.baseline.jsonl",
+        "trajectory_id": "3d01a3ed13f24f999100cbe42fdd6745",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 33,
+          "play_card": 99
+        },
+        "floor": 12,
+        "policy_sources": {
+          "heuristic": 167
+        },
+        "steps": 167,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\030.necrobinder.TACTV1N000000.candidate.jsonl",
+        "trajectory_id": "2a3fbb4605b84986a616cfe38c45cc95",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 30,
+      "character": "Necrobinder",
+      "paired_floor_delta": 3,
+      "seed": "TACTV1N000000"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 17,
+          "play_card": 61
+        },
+        "floor": 12,
+        "policy_sources": {
+          "heuristic": 107
+        },
+        "steps": 107,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\031.necrobinder.TACTV1N000001.baseline.jsonl",
+        "trajectory_id": "9f452301d8c44d68a05f721d35ef3f55",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 21,
+          "play_card": 75
+        },
+        "floor": 12,
+        "policy_sources": {
+          "heuristic": 125
+        },
+        "steps": 125,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\031.necrobinder.TACTV1N000001.candidate.jsonl",
+        "trajectory_id": "12c76dacaef54f5686113ef865016db9",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 31,
+      "character": "Necrobinder",
+      "paired_floor_delta": 0,
+      "seed": "TACTV1N000001"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 15,
+          "play_card": 47
+        },
+        "floor": 7,
+        "policy_sources": {
+          "heuristic": 79
+        },
+        "steps": 79,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\032.necrobinder.TACTV1N000002.baseline.jsonl",
+        "trajectory_id": "4966ebde7c604f888aa0f9601b99844c",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 19,
+          "play_card": 59
+        },
+        "floor": 7,
+        "policy_sources": {
+          "heuristic": 95
+        },
+        "steps": 95,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\032.necrobinder.TACTV1N000002.candidate.jsonl",
+        "trajectory_id": "7f831f2c22ff401987f43afef52b92a5",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 32,
+      "character": "Necrobinder",
+      "paired_floor_delta": 0,
+      "seed": "TACTV1N000002"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 15,
+          "play_card": 46
+        },
+        "floor": 9,
+        "policy_sources": {
+          "heuristic": 84
+        },
+        "steps": 84,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\033.necrobinder.TACTV1N000003.baseline.jsonl",
+        "trajectory_id": "4c750ebd2a3343aca96b9f10c7274cbd",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 29,
+          "play_card": 87
+        },
+        "floor": 11,
+        "policy_sources": {
+          "heuristic": 145
+        },
+        "steps": 145,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\033.necrobinder.TACTV1N000003.candidate.jsonl",
+        "trajectory_id": "4667375f3d674b658ced8d47238edcd8",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 33,
+      "character": "Necrobinder",
+      "paired_floor_delta": 2,
+      "seed": "TACTV1N000003"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 14,
+          "play_card": 53
+        },
+        "floor": 6,
+        "policy_sources": {
+          "heuristic": 81
+        },
+        "steps": 81,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\034.necrobinder.TACTV1N000004.baseline.jsonl",
+        "trajectory_id": "9a381cc92c794557b53c7c549b97a61c",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 21,
+          "play_card": 81
+        },
+        "floor": 6,
+        "policy_sources": {
+          "heuristic": 116
+        },
+        "steps": 116,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\034.necrobinder.TACTV1N000004.candidate.jsonl",
+        "trajectory_id": "997cd38a90b5438abe5944a4a918d004",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 34,
+      "character": "Necrobinder",
+      "paired_floor_delta": 0,
+      "seed": "TACTV1N000004"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 11,
+          "play_card": 43
+        },
+        "floor": 9,
+        "policy_sources": {
+          "heuristic": 80
+        },
+        "steps": 80,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\035.necrobinder.TACTV1N000005.baseline.jsonl",
+        "trajectory_id": "303da3a54afe47868b17828e8cc78770",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 16,
+          "play_card": 56
+        },
+        "floor": 9,
+        "policy_sources": {
+          "heuristic": 98
+        },
+        "steps": 98,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\035.necrobinder.TACTV1N000005.candidate.jsonl",
+        "trajectory_id": "28237218cad84b3cb45417a342b8b685",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 35,
+      "character": "Necrobinder",
+      "paired_floor_delta": 0,
+      "seed": "TACTV1N000005"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 12,
+          "play_card": 41
+        },
+        "floor": 7,
+        "policy_sources": {
+          "heuristic": 67
+        },
+        "steps": 67,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\036.necrobinder.TACTV1N000006.baseline.jsonl",
+        "trajectory_id": "af51cde0ead24d76a0ad38256b7ff4ff",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 36,
+          "play_card": 97
+        },
+        "floor": 14,
+        "policy_sources": {
+          "heuristic": 170
+        },
+        "steps": 170,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\036.necrobinder.TACTV1N000006.candidate.jsonl",
+        "trajectory_id": "a6f9c35a48444fc3b6b77945eda5e749",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 36,
+      "character": "Necrobinder",
+      "paired_floor_delta": 7,
+      "seed": "TACTV1N000006"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 8,
+          "play_card": 20
+        },
+        "floor": 6,
+        "policy_sources": {
+          "heuristic": 42
+        },
+        "steps": 42,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\037.necrobinder.TACTV1N000007.baseline.jsonl",
+        "trajectory_id": "330b1f2b64644e6f83b0965760693fd8",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 16,
+          "play_card": 42
+        },
+        "floor": 7,
+        "policy_sources": {
+          "heuristic": 74
+        },
+        "steps": 74,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\037.necrobinder.TACTV1N000007.candidate.jsonl",
+        "trajectory_id": "97d16ceca49b4a5b85ca3ccacdff0dbf",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 37,
+      "character": "Necrobinder",
+      "paired_floor_delta": 1,
+      "seed": "TACTV1N000007"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 17,
+          "play_card": 59
+        },
+        "floor": 9,
+        "policy_sources": {
+          "heuristic": 100
+        },
+        "steps": 100,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\038.necrobinder.TACTV1N000008.baseline.jsonl",
+        "trajectory_id": "e48dd4ff50f7452f94d0baf0ef997e6a",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 22,
+          "play_card": 80
+        },
+        "floor": 11,
+        "policy_sources": {
+          "heuristic": 132
+        },
+        "steps": 132,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\038.necrobinder.TACTV1N000008.candidate.jsonl",
+        "trajectory_id": "3486815899584c599653d2ea279460b1",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 38,
+      "character": "Necrobinder",
+      "paired_floor_delta": 2,
+      "seed": "TACTV1N000008"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 20,
+          "play_card": 69,
+          "use_potion": 1
+        },
+        "floor": 15,
+        "policy_sources": {
+          "heuristic": 127
+        },
+        "steps": 127,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\039.necrobinder.TACTV1N000009.baseline.jsonl",
+        "trajectory_id": "ffca5cbd44654d2cb3e1b7fe3bd0ec97",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 22,
+          "play_card": 76
+        },
+        "floor": 15,
+        "policy_sources": {
+          "heuristic": 135
+        },
+        "steps": 135,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\039.necrobinder.TACTV1N000009.candidate.jsonl",
+        "trajectory_id": "77ea63a8f4ee417e8a375d8baeb832f3",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 39,
+      "character": "Necrobinder",
+      "paired_floor_delta": 0,
+      "seed": "TACTV1N000009"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 19,
+          "play_card": 66
+        },
+        "floor": 6,
+        "policy_sources": {
+          "heuristic": 96
+        },
+        "steps": 96,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\040.regent.TACTV1R000000.baseline.jsonl",
+        "trajectory_id": "89c9a62a21cf4efb83a768454b7066fd",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 26,
+          "play_card": 91
+        },
+        "floor": 7,
+        "policy_sources": {
+          "heuristic": 130
+        },
+        "steps": 130,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\040.regent.TACTV1R000000.candidate.jsonl",
+        "trajectory_id": "7eeb9210cec74bc797bacd69881bfb12",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 40,
+      "character": "Regent",
+      "paired_floor_delta": 1,
+      "seed": "TACTV1R000000"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 22,
+          "play_card": 70
+        },
+        "floor": 13,
+        "policy_sources": {
+          "heuristic": 124
+        },
+        "steps": 124,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\041.regent.TACTV1R000001.baseline.jsonl",
+        "trajectory_id": "162fd5c573b14010a849b59507e72692",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 27,
+          "play_card": 88
+        },
+        "floor": 13,
+        "policy_sources": {
+          "heuristic": 147
+        },
+        "steps": 147,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\041.regent.TACTV1R000001.candidate.jsonl",
+        "trajectory_id": "ddbeede23faf49488d4039d5d1387f27",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 41,
+      "character": "Regent",
+      "paired_floor_delta": 0,
+      "seed": "TACTV1R000001"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 12,
+          "play_card": 43
+        },
+        "floor": 9,
+        "policy_sources": {
+          "heuristic": 79
+        },
+        "steps": 79,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\042.regent.TACTV1R000002.baseline.jsonl",
+        "trajectory_id": "54952354a94048a9be738a779e1552a1",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 16,
+          "play_card": 62
+        },
+        "floor": 9,
+        "policy_sources": {
+          "heuristic": 102
+        },
+        "steps": 102,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\042.regent.TACTV1R000002.candidate.jsonl",
+        "trajectory_id": "49ef76678fd940109ae86eb3ea13c0b0",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 42,
+      "character": "Regent",
+      "paired_floor_delta": 0,
+      "seed": "TACTV1R000002"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 21,
+          "play_card": 74
+        },
+        "floor": 9,
+        "policy_sources": {
+          "heuristic": 115
+        },
+        "steps": 115,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\043.regent.TACTV1R000003.baseline.jsonl",
+        "trajectory_id": "e0a21c4cedf9403dbc09100186acc26d",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 25,
+          "play_card": 90
+        },
+        "floor": 9,
+        "policy_sources": {
+          "heuristic": 135
+        },
+        "steps": 135,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\043.regent.TACTV1R000003.candidate.jsonl",
+        "trajectory_id": "fdaf60ef8115421ca74292dc4de06f3c",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 43,
+      "character": "Regent",
+      "paired_floor_delta": 0,
+      "seed": "TACTV1R000003"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 11,
+          "play_card": 41
+        },
+        "floor": 6,
+        "policy_sources": {
+          "heuristic": 67
+        },
+        "steps": 67,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\044.regent.TACTV1R000004.baseline.jsonl",
+        "trajectory_id": "013c078e8aaf4bfcb596b7fe772ae142",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 17,
+          "play_card": 60
+        },
+        "floor": 7,
+        "policy_sources": {
+          "heuristic": 94
+        },
+        "steps": 94,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\044.regent.TACTV1R000004.candidate.jsonl",
+        "trajectory_id": "53f52015b45a40418932c392967e0f4e",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 44,
+      "character": "Regent",
+      "paired_floor_delta": 1,
+      "seed": "TACTV1R000004"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 28,
+          "play_card": 108
+        },
+        "floor": 13,
+        "policy_sources": {
+          "heuristic": 173
+        },
+        "steps": 173,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\045.regent.TACTV1R000005.baseline.jsonl",
+        "trajectory_id": "252413a18bd24c5fad7ac1c510069e34",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 26,
+          "play_card": 98
+        },
+        "floor": 11,
+        "policy_sources": {
+          "heuristic": 157
+        },
+        "steps": 157,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\045.regent.TACTV1R000005.candidate.jsonl",
+        "trajectory_id": "3479ee13105141a88ca4f99415f7ff55",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 45,
+      "character": "Regent",
+      "paired_floor_delta": -2,
+      "seed": "TACTV1R000005"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 32,
+          "play_card": 126
+        },
+        "floor": 15,
+        "policy_sources": {
+          "heuristic": 198
+        },
+        "steps": 198,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\046.regent.TACTV1R000006.baseline.jsonl",
+        "trajectory_id": "87fb901e6e7d4a6eadbfad55a53e7530",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 37,
+          "play_card": 144
+        },
+        "floor": 15,
+        "policy_sources": {
+          "heuristic": 221
+        },
+        "steps": 221,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\046.regent.TACTV1R000006.candidate.jsonl",
+        "trajectory_id": "b73b030b1497401184d82d2dc8e3a6fb",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 46,
+      "character": "Regent",
+      "paired_floor_delta": 0,
+      "seed": "TACTV1R000006"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 17,
+          "play_card": 65
+        },
+        "floor": 6,
+        "policy_sources": {
+          "heuristic": 98
+        },
+        "steps": 98,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\047.regent.TACTV1R000007.baseline.jsonl",
+        "trajectory_id": "6aafa9f718f844c0bfc9fcca324dd1fe",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 19,
+          "play_card": 66
+        },
+        "floor": 6,
+        "policy_sources": {
+          "heuristic": 101
+        },
+        "steps": 101,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\047.regent.TACTV1R000007.candidate.jsonl",
+        "trajectory_id": "379aefb68c994f45ab6448d7310e37b5",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 47,
+      "character": "Regent",
+      "paired_floor_delta": 0,
+      "seed": "TACTV1R000007"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 16,
+          "play_card": 58
+        },
+        "floor": 6,
+        "policy_sources": {
+          "heuristic": 89
+        },
+        "steps": 89,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\048.regent.TACTV1R000008.baseline.jsonl",
+        "trajectory_id": "c23791d8388a44d8a49e874975cb1903",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 17,
+          "play_card": 60
+        },
+        "floor": 6,
+        "policy_sources": {
+          "heuristic": 92
+        },
+        "steps": 92,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\048.regent.TACTV1R000008.candidate.jsonl",
+        "trajectory_id": "cf4a0614ae2f4a888549be6a8a067d7c",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 48,
+      "character": "Regent",
+      "paired_floor_delta": 0,
+      "seed": "TACTV1R000008"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 18,
+          "play_card": 64
+        },
+        "floor": 13,
+        "policy_sources": {
+          "heuristic": 113
+        },
+        "steps": 113,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\049.regent.TACTV1R000009.baseline.jsonl",
+        "trajectory_id": "955fac736ff947dd9571937e77f06efd",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 16,
+          "play_card": 53
+        },
+        "floor": 8,
+        "policy_sources": {
+          "heuristic": 87
+        },
+        "steps": 87,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless-chip-aware-v1-v2-v0.107.1-a10\\049.regent.TACTV1R000009.candidate.jsonl",
+        "trajectory_id": "51101853a0c94f8290cd2ef9a917d9bc",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 49,
+      "character": "Regent",
+      "paired_floor_delta": -5,
+      "seed": "TACTV1R000009"
+    }
+  ],
+  "combat_action_counts": {
+    "by_character": {
+      "Defect": {
+        "baseline": {
+          "end_turn": 189,
+          "play_card": 684
+        },
+        "candidate": {
+          "end_turn": 248,
+          "play_card": 880
+        }
+      },
+      "Ironclad": {
+        "baseline": {
+          "end_turn": 152,
+          "play_card": 476
+        },
+        "candidate": {
+          "end_turn": 224,
+          "play_card": 698
+        }
+      },
+      "Necrobinder": {
+        "baseline": {
+          "end_turn": 144,
+          "play_card": 488,
+          "use_potion": 1
+        },
+        "candidate": {
+          "end_turn": 235,
+          "play_card": 752
+        }
+      },
+      "Regent": {
+        "baseline": {
+          "end_turn": 196,
+          "play_card": 715
+        },
+        "candidate": {
+          "end_turn": 226,
+          "play_card": 812
+        }
+      },
+      "Silent": {
+        "baseline": {
+          "end_turn": 176,
+          "play_card": 644,
+          "use_potion": 1
+        },
+        "candidate": {
+          "end_turn": 232,
+          "play_card": 846,
+          "use_potion": 1
+        }
+      }
+    },
+    "overall": {
+      "baseline": {
+        "end_turn": 857,
+        "play_card": 3007,
+        "use_potion": 2
+      },
+      "candidate": {
+        "end_turn": 1165,
+        "play_card": 3988,
+        "use_potion": 1
+      }
+    }
+  },
+  "count_per_character": 10,
+  "evaluation": "frozen_paired_chip_aware_heuristic_comparison",
+  "limitations": [
+    "This tests a tactical rules teacher, not the learned Deep Sets policy.",
+    "Ten fresh seeds per character are a bounded promotion screen.",
+    "Failed cases cannot be reused to tune another tactical rule candidate."
+  ],
+  "macro_model": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\checkpoints\\decision_policy.a10.npz",
+  "macro_model_sha256": "476701d84a7f6cf85b1aa6a910877334c13f52ea637af967a8f6da400ca878f9",
+  "manifest": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\headless-chip-aware-heuristic-v0.107.1-a10.precommit.json",
+  "manifest_sha256": "a6fdfefb17bf2ba25279558ef60d3ba0bb4669652ac4dd19684bfcaa38676a7b",
+  "max_steps": 1000,
+  "policy_constraints": {
+    "all_noncombat_rules_unchanged": true,
+    "candidate_change": "raise block-card priority by preventable incoming damage and give a lethal-damage prevention bonus",
+    "safe_potion_ids": [
+      "POTION.ATTACK_POTION"
+    ]
+  },
+  "promotion_gate": {
+    "criteria": {
+      "candidate_truncations_at_most_baseline": false,
+      "candidate_victories_at_least_baseline": true,
+      "every_character_mean_paired_floor_delta_at_least_minus_0_5": true,
+      "overall_mean_paired_floor_delta_at_least_0_75": false
+    },
+    "decision": "reject_without_tuning_on_these_cases",
+    "passed": false
+  },
+  "resume": {
+    "discarded_matching_incomplete_trajectories": 0,
+    "reused_completed_trajectories": {
+      "baseline": 0,
+      "candidate": 0
+    }
+  },
+  "schema_version": 1
+}

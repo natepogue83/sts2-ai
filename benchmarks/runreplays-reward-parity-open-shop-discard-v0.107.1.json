@@ -1,0 +1,98 @@
+{
+  "aggregate": {
+    "all_masks_complete_and_chosen_legal": true,
+    "all_validation_gates": true,
+    "characters": 4,
+    "claim_rewards_reconstructed": 13,
+    "combat_decisions_reconstructed": 70,
+    "commands_attempted": 115,
+    "commands_reconstructed": 111,
+    "discard_potions_reconstructed": 1,
+    "open_shops_reconstructed": 2,
+    "reconstruction_rate_of_attempted": 0.965217,
+    "stop_types": {
+      "BuyCardRemoval": 1,
+      "BuyRelic": 1,
+      "ClaimReward": 2
+    },
+    "take_cards_reconstructed": 4
+  },
+  "benchmark": "runreplays_reward_parity_open_shop_discard_4char",
+  "cases": [
+    {
+      "all_masks_complete_and_chosen_legal": true,
+      "all_validation_gates": true,
+      "artifact_file": "runreplays-reward-parity-open-shop-discard-v0.107.1/defect.json",
+      "artifact_sha256": "a15a59454ce573128dc52352daf126f2abedd6c1ebeeb57d1901564bb7af8f05",
+      "character": "CHARACTER.DEFECT",
+      "claim_rewards_reconstructed": 3,
+      "combat_decisions": 27,
+      "commands_attempted": 42,
+      "commands_reconstructed": 41,
+      "discard_potions_reconstructed": 1,
+      "status": "mapping_failure",
+      "stop_code": "wrong_decision",
+      "stop_command_type": "ClaimReward",
+      "take_cards_reconstructed": 1
+    },
+    {
+      "all_masks_complete_and_chosen_legal": true,
+      "all_validation_gates": true,
+      "artifact_file": "runreplays-reward-parity-open-shop-discard-v0.107.1/ironclad.json",
+      "artifact_sha256": "1a4e94f504a7c351eb17e462c8081c525dbce3bce739c190178db569973c5a96",
+      "character": "CHARACTER.IRONCLAD",
+      "claim_rewards_reconstructed": 2,
+      "combat_decisions": 8,
+      "commands_attempted": 17,
+      "commands_reconstructed": 16,
+      "open_shops_reconstructed": 1,
+      "status": "mapping_failure",
+      "stop_code": "unsupported_command",
+      "stop_command_type": "BuyCardRemoval",
+      "take_cards_reconstructed": 1
+    },
+    {
+      "all_masks_complete_and_chosen_legal": true,
+      "all_validation_gates": true,
+      "artifact_file": "runreplays-reward-parity-v0.107.1/necrobinder.json",
+      "artifact_sha256": "73cdd4ecf9aa046b0659f6040a4a22bc8206672af13b06ecf6bee8b62910e5cb",
+      "character": "CHARACTER.NECROBINDER",
+      "claim_rewards_reconstructed": 1,
+      "combat_decisions": 20,
+      "commands_attempted": 25,
+      "commands_reconstructed": 24,
+      "status": "mapping_failure",
+      "stop_code": "unhandled_reward",
+      "stop_command_type": "ClaimReward",
+      "take_cards_reconstructed": 0
+    },
+    {
+      "all_masks_complete_and_chosen_legal": true,
+      "all_validation_gates": true,
+      "artifact_file": "runreplays-reward-parity-open-shop-discard-v0.107.1/regent.json",
+      "artifact_sha256": "0c4088d33931bfb7d5a78e264475b2be1f199196611bd7a4740d2db48a8b31d1",
+      "character": "CHARACTER.REGENT",
+      "claim_rewards_reconstructed": 7,
+      "combat_decisions": 15,
+      "commands_attempted": 31,
+      "commands_reconstructed": 30,
+      "open_shops_reconstructed": 1,
+      "status": "mapping_failure",
+      "stop_code": "unsupported_command",
+      "stop_command_type": "BuyRelic",
+      "take_cards_reconstructed": 2
+    }
+  ],
+  "created_at": "2026-07-14T03:47:00.4460806Z",
+  "dry_run_only": true,
+  "expected_build": "v0.107.1",
+  "predecessor_artifact": "runreplays-reward-parity-v0.107.1.json",
+  "predecessor_sha256": "a1475cdb22cc426d83528ceb3b08db50099d338adae14592b6a8e8cf9c8c6037",
+  "privacy": {
+    "raw_paths_persisted": false,
+    "raw_seed_persisted": false
+  },
+  "schema_version": 1,
+  "source_revision": "b0d2302ee69bf2ad735e0b6b51aea02408e9ef62",
+  "training_authorized": false
+}

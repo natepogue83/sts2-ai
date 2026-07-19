@@ -1,0 +1,134 @@
+diff --git a/McpMod.Actions.cs b/McpMod.Actions.cs
+--- a/McpMod.Actions.cs
++++ b/McpMod.Actions.cs
+@@ -125,7 +125,7 @@ public static partial class McpMod
+ 
+         // Resolve target
+         Creature? target = null;
+-        if (card.TargetType == TargetType.AnyEnemy)
++        if (card.TargetType is TargetType.AnyEnemy or TargetType.AnyAlly)
+         {
+             if (!data.TryGetValue("target", out var targetElem))
+                 return Error("Card requires a target. Provide 'target' with an entity_id.");
+@@ -133,7 +133,7 @@ public static partial class McpMod
+             string targetId = targetElem.GetString() ?? "";
+             target = ResolveTarget(combatState, targetId);
+             if (target == null)
+-                return Error($"Target '{targetId}' not found among alive enemies");
++                return Error($"Target '{targetId}' not found among living combat creatures");
+         }
+ 
+         // Play the card via the action queue (same path as the game UI)
+@@ -209,18 +209,18 @@ public static partial class McpMod
+         switch (potion.TargetType)
+         {
+             case TargetType.AnyEnemy:
++            case TargetType.AnyAlly:
++            case TargetType.AnyPlayer:
+                 if (!data.TryGetValue("target", out var targetElem))
+-                    return Error("Potion requires a target enemy. Provide 'target' with an entity_id.");
++                    return Error("Potion requires a target. Provide 'target' with an entity_id.");
+                 string targetId = targetElem.GetString() ?? "";
+                 if (combatState == null)
+                     return Error("No combat state for target resolution");
+                 target = ResolveTarget(combatState, targetId);
+                 if (target == null)
+-                    return Error($"Target '{targetId}' not found among alive enemies");
++                    return Error($"Target '{targetId}' not found among living combat creatures");
+                 break;
+             case TargetType.Self:
+-            case TargetType.AnyAlly:
+-            case TargetType.AnyPlayer:
+                 target = player.Creature;
+                 break;
+             default:
+@@ -1073,6 +1073,29 @@ public static partial class McpMod
+                 return creature;
+         }
+ 
++        // Allies include player creatures and targetable pets such as Osty.
++        var allyCounts = new Dictionary<string, int>();
++        foreach (var creature in combatState.Allies)
++        {
++            if (!creature.IsAlive) continue;
++            if (creature.Player is { } allyPlayer)
++            {
++                if (LocalContext.IsMe(allyPlayer) && entityId == "PLAYER_SELF")
++                    return creature;
++                int playerIndex = combatState.Players.ToList().IndexOf(allyPlayer);
++                if (entityId == $"PLAYER_{playerIndex}")
++                    return creature;
++                continue;
++            }
++
++            string baseId = creature.Monster?.Id.Entry ?? "ally";
++            if (!allyCounts.TryGetValue(baseId, out int count))
++                count = 0;
++            allyCounts[baseId] = count + 1;
++            if ($"{baseId}_{count}" == entityId)
++                return creature;
++        }
++
+         return null;
+     }
+ 
+diff --git a/McpMod.MultiplayerState.cs b/McpMod.MultiplayerState.cs
+--- a/McpMod.MultiplayerState.cs
++++ b/McpMod.MultiplayerState.cs
+@@ -414,12 +414,15 @@ public static partial class McpMod
+     {
+         bool inCombat = CombatManager.Instance.IsInProgress;
+         var players = new List<Dictionary<string, object?>>();
++        int playerIndex = 0;
+         foreach (var player in runState.Players)
+         {
+             var entry = new Dictionary<string, object?>
+             {
+                 ["character"] = SafeGetText(() => player.Character.Title),
+                 ["is_local"] = LocalContext.IsMe(player),
++                ["entity_id"] = LocalContext.IsMe(player) ? "PLAYER_SELF" : $"PLAYER_{playerIndex}",
++                ["combat_id"] = inCombat ? player.Creature.CombatId : null,
+                 ["hp"] = player.Creature.CurrentHp,
+                 ["max_hp"] = player.Creature.MaxHp,
+                 ["gold"] = player.Gold,
+@@ -441,6 +444,7 @@ public static partial class McpMod
+                 }
+             }
+             players.Add(entry);
++            playerIndex++;
+         }
+         return players;
+     }
+diff --git a/McpMod.StateBuilder.cs b/McpMod.StateBuilder.cs
+--- a/McpMod.StateBuilder.cs
++++ b/McpMod.StateBuilder.cs
+@@ -1105,6 +1105,8 @@ public static partial class McpMod
+         // combat fields when a fight is actually in progress.
+         if (combatState != null && CombatManager.Instance.IsInProgress)
+         {
++            state["entity_id"] = "PLAYER_SELF";
++            state["combat_id"] = creature.CombatId;
+             state["energy"] = combatState.Energy;
+             state["max_energy"] = combatState.MaxEnergy;
+ 
+@@ -2410,6 +2412,8 @@ public static partial class McpMod
+             pets.Add(new Dictionary<string, object?>
+             {
+                 ["id"] = osty.Monster?.Id.Entry ?? "OSTY",
++                ["entity_id"] = "OSTY_0",
++                ["combat_id"] = osty.CombatId,
+                 ["name"] = SafeGetText(() => osty.Monster?.Title) ?? "Otsy",
+                 ["alive"] = osty.IsAlive,
+                 ["hp"] = osty.CurrentHp,
+diff --git a/McpMod.Telemetry.cs b/McpMod.Telemetry.cs
+--- a/McpMod.Telemetry.cs
++++ b/McpMod.Telemetry.cs
+@@ -150,7 +150,7 @@ public static partial class McpMod
+                 && enemy.TryGetValue("entity_id", out object? entityId))
+                 return entityId?.ToString();
+         }
+-        return null;
++        return combatId.Value.ToString();
+     }
+ 
+     private static void RecordHumanCombatAction(GameAction gameAction)

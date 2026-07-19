@@ -1,0 +1,1461 @@
+{
+  "aggregate": {
+    "by_character": {
+      "Defect": {
+        "baseline": {
+          "mean_floor": 11.4,
+          "mean_steps": 120.4,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "candidate": {
+          "mean_floor": 10.0,
+          "mean_steps": 105.2,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "cases": 5,
+        "descriptive_paired_95_interval": [
+          -3.6857,
+          0.8857
+        ],
+        "improved": 0,
+        "paired_floor_delta": -1.4,
+        "tied": 3,
+        "worse": 2
+      },
+      "Ironclad": {
+        "baseline": {
+          "mean_floor": 12.0,
+          "mean_steps": 111.4,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "candidate": {
+          "mean_floor": 14.0,
+          "mean_steps": 132.4,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "cases": 5,
+        "descriptive_paired_95_interval": [
+          -1.2797,
+          5.2797
+        ],
+        "improved": 3,
+        "paired_floor_delta": 2.0,
+        "tied": 1,
+        "worse": 1
+      },
+      "Necrobinder": {
+        "baseline": {
+          "mean_floor": 10.2,
+          "mean_steps": 97.6,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "candidate": {
+          "mean_floor": 9.0,
+          "mean_steps": 83.4,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "cases": 5,
+        "descriptive_paired_95_interval": [
+          -2.768,
+          0.368
+        ],
+        "improved": 0,
+        "paired_floor_delta": -1.2,
+        "tied": 3,
+        "worse": 2
+      },
+      "Regent": {
+        "baseline": {
+          "mean_floor": 10.0,
+          "mean_steps": 124.4,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "candidate": {
+          "mean_floor": 9.8,
+          "mean_steps": 120.2,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "cases": 5,
+        "descriptive_paired_95_interval": [
+          -6.0931,
+          5.6931
+        ],
+        "improved": 1,
+        "paired_floor_delta": -0.2,
+        "tied": 3,
+        "worse": 1
+      },
+      "Silent": {
+        "baseline": {
+          "mean_floor": 7.6,
+          "mean_steps": 101.6,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "candidate": {
+          "mean_floor": 9.6,
+          "mean_steps": 119.8,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "cases": 5,
+        "descriptive_paired_95_interval": [
+          0.1406,
+          3.8594
+        ],
+        "improved": 3,
+        "paired_floor_delta": 2.0,
+        "tied": 2,
+        "worse": 0
+      }
+    },
+    "overall": {
+      "baseline": {
+        "mean_floor": 10.24,
+        "mean_steps": 111.08,
+        "runtime_failures": 0,
+        "truncations": 0,
+        "victories": 0
+      },
+      "candidate": {
+        "mean_floor": 10.48,
+        "mean_steps": 112.2,
+        "runtime_failures": 0,
+        "truncations": 0,
+        "victories": 0
+      },
+      "cases": 25,
+      "descriptive_paired_95_interval": [
+        -1.2582,
+        1.7382
+      ],
+      "improved": 7,
+      "paired_floor_delta": 0.24,
+      "tied": 12,
+      "worse": 6
+    }
+  },
+  "ascension": 10,
+  "baseline_kind": "mlp",
+  "baseline_model": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\checkpoints\\combat_policy.dagger-r1.v0.107.1.npz",
+  "baseline_model_sha256": "2b13007cd1b372bfc7c873b20f01907674c5c6b31783ada56a34d0f04685b065",
+  "build_id": "v0.107.1",
+  "candidate_kind": "set",
+  "candidate_model": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\checkpoints\\combat_policy.deepsets-r2.v0.107.1.pt",
+  "candidate_model_sha256": "5bbb35de90351827374c9188351cc11c5ce867053c057e1a45978a60bb7633e1",
+  "cases": [
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 14,
+          "play_card": 38,
+          "use_potion": 3
+        },
+        "floor": 11,
+        "policy_sources": {
+          "combat_bc": 55,
+          "heuristic": 21
+        },
+        "steps": 76,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\000.ironclad.SETV1I000000.baseline.jsonl",
+        "trajectory_id": "0ec3edae71494dfd88356b8685c6bc23",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 22,
+          "play_card": 63,
+          "use_potion": 4
+        },
+        "floor": 13,
+        "policy_sources": {
+          "combat_deepsets": 89,
+          "heuristic": 26
+        },
+        "steps": 115,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\000.ironclad.SETV1I000000.candidate.jsonl",
+        "trajectory_id": "2a39ea3d6e7e4a699bddfe4f1f55e3c0",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 0,
+      "character": "Ironclad",
+      "paired_floor_delta": 2,
+      "seed": "SETV1I000000"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 22,
+          "play_card": 73
+        },
+        "floor": 12,
+        "policy_sources": {
+          "combat_bc": 95,
+          "heuristic": 22
+        },
+        "steps": 117,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\001.ironclad.SETV1I000001.baseline.jsonl",
+        "trajectory_id": "378ed1c48dfc4518afa93db5acc48b3f",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 23,
+          "play_card": 76,
+          "use_potion": 3
+        },
+        "floor": 14,
+        "policy_sources": {
+          "combat_deepsets": 102,
+          "heuristic": 26
+        },
+        "steps": 128,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\001.ironclad.SETV1I000001.candidate.jsonl",
+        "trajectory_id": "6c1778a17ca54e48bfae635207b4aca6",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 1,
+      "character": "Ironclad",
+      "paired_floor_delta": 2,
+      "seed": "SETV1I000001"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 17,
+          "play_card": 53,
+          "use_potion": 4
+        },
+        "floor": 9,
+        "policy_sources": {
+          "combat_bc": 74,
+          "heuristic": 21
+        },
+        "steps": 95,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\002.ironclad.SETV1I000002.baseline.jsonl",
+        "trajectory_id": "c53c68ce86bf4beb9fc486ad68670bd9",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 28,
+          "play_card": 88,
+          "use_potion": 5
+        },
+        "floor": 17,
+        "policy_sources": {
+          "combat_deepsets": 121,
+          "heuristic": 36
+        },
+        "steps": 157,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\002.ironclad.SETV1I000002.candidate.jsonl",
+        "trajectory_id": "4fdd879919754e93b518996f5638db69",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 2,
+      "character": "Ironclad",
+      "paired_floor_delta": 8,
+      "seed": "SETV1I000002"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 29,
+          "play_card": 117,
+          "use_potion": 4
+        },
+        "floor": 17,
+        "policy_sources": {
+          "combat_bc": 150,
+          "heuristic": 35
+        },
+        "steps": 185,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\003.ironclad.SETV1I000003.baseline.jsonl",
+        "trajectory_id": "c98b6f494911432dbb7954efca0548db",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 30,
+          "play_card": 123,
+          "use_potion": 4
+        },
+        "floor": 17,
+        "policy_sources": {
+          "combat_deepsets": 157,
+          "heuristic": 35
+        },
+        "steps": 192,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\003.ironclad.SETV1I000003.candidate.jsonl",
+        "trajectory_id": "4e788106d6884a9a994272164a8eeab5",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 3,
+      "character": "Ironclad",
+      "paired_floor_delta": 0,
+      "seed": "SETV1I000003"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 15,
+          "play_card": 47,
+          "use_potion": 1
+        },
+        "floor": 11,
+        "policy_sources": {
+          "combat_bc": 63,
+          "heuristic": 21
+        },
+        "steps": 84,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\004.ironclad.SETV1I000004.baseline.jsonl",
+        "trajectory_id": "7f4203e92e95469abb30f7b1f652c2ef",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 13,
+          "play_card": 39
+        },
+        "floor": 9,
+        "policy_sources": {
+          "combat_deepsets": 52,
+          "heuristic": 18
+        },
+        "steps": 70,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\004.ironclad.SETV1I000004.candidate.jsonl",
+        "trajectory_id": "dfef2aa55d5e4da88d3544fe692959c4",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 4,
+      "character": "Ironclad",
+      "paired_floor_delta": -2,
+      "seed": "SETV1I000004"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 14,
+          "play_card": 48,
+          "use_potion": 2
+        },
+        "floor": 5,
+        "policy_sources": {
+          "combat_bc": 64,
+          "heuristic": 14
+        },
+        "steps": 78,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\005.silent.SETV1S000000.baseline.jsonl",
+        "trajectory_id": "6638c51fda364b8cb55a68e632249cc6",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 14,
+          "play_card": 49,
+          "use_potion": 3
+        },
+        "floor": 5,
+        "policy_sources": {
+          "combat_deepsets": 66,
+          "heuristic": 14
+        },
+        "steps": 80,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\005.silent.SETV1S000000.candidate.jsonl",
+        "trajectory_id": "fd93d14ec33f4ba49bbc5ac61420375b",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 5,
+      "character": "Silent",
+      "paired_floor_delta": 0,
+      "seed": "SETV1S000000"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 10,
+          "play_card": 43,
+          "use_potion": 1
+        },
+        "floor": 5,
+        "policy_sources": {
+          "combat_bc": 54,
+          "heuristic": 13
+        },
+        "steps": 67,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\006.silent.SETV1S000001.baseline.jsonl",
+        "trajectory_id": "3f4eaadf220043f5bf5f73b55d758332",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 10,
+          "play_card": 43,
+          "use_potion": 1
+        },
+        "floor": 5,
+        "policy_sources": {
+          "combat_deepsets": 54,
+          "heuristic": 12
+        },
+        "steps": 66,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\006.silent.SETV1S000001.candidate.jsonl",
+        "trajectory_id": "45efea74b10f432f91f27ae481b7e18c",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 6,
+      "character": "Silent",
+      "paired_floor_delta": 0,
+      "seed": "SETV1S000001"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 23,
+          "play_card": 93,
+          "use_potion": 2
+        },
+        "floor": 14,
+        "policy_sources": {
+          "combat_bc": 118,
+          "heuristic": 41
+        },
+        "steps": 159,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\007.silent.SETV1S000002.baseline.jsonl",
+        "trajectory_id": "f73eecd665ff4d08ba7205d630ec1a82",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 26,
+          "play_card": 107,
+          "use_potion": 3
+        },
+        "floor": 17,
+        "policy_sources": {
+          "combat_deepsets": 136,
+          "heuristic": 45
+        },
+        "steps": 181,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\007.silent.SETV1S000002.candidate.jsonl",
+        "trajectory_id": "9dd674d6b2d84b24a1b2371457f1b3e5",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 7,
+      "character": "Silent",
+      "paired_floor_delta": 3,
+      "seed": "SETV1S000002"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 18,
+          "play_card": 53,
+          "use_potion": 1
+        },
+        "floor": 8,
+        "policy_sources": {
+          "combat_bc": 72,
+          "heuristic": 20
+        },
+        "steps": 92,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\008.silent.SETV1S000003.baseline.jsonl",
+        "trajectory_id": "a263dbc7e8d241279aced98bd1c44b9a",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 25,
+          "play_card": 75,
+          "use_potion": 3
+        },
+        "floor": 13,
+        "policy_sources": {
+          "combat_deepsets": 103,
+          "heuristic": 30
+        },
+        "steps": 133,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\008.silent.SETV1S000003.candidate.jsonl",
+        "trajectory_id": "8f84eecc18cf4930a3d2fd1af81b15e2",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 8,
+      "character": "Silent",
+      "paired_floor_delta": 5,
+      "seed": "SETV1S000003"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 19,
+          "play_card": 73,
+          "use_potion": 1
+        },
+        "floor": 6,
+        "policy_sources": {
+          "combat_bc": 93,
+          "heuristic": 19
+        },
+        "steps": 112,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\009.silent.SETV1S000004.baseline.jsonl",
+        "trajectory_id": "c7a6db2e7ba54be59a26ee1d2796d8eb",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 22,
+          "play_card": 91,
+          "use_potion": 2
+        },
+        "floor": 8,
+        "policy_sources": {
+          "combat_deepsets": 115,
+          "heuristic": 24
+        },
+        "steps": 139,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\009.silent.SETV1S000004.candidate.jsonl",
+        "trajectory_id": "ec0d8185af864681b349b4022ea6566a",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 9,
+      "character": "Silent",
+      "paired_floor_delta": 2,
+      "seed": "SETV1S000004"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 15,
+          "play_card": 52,
+          "use_potion": 1
+        },
+        "floor": 7,
+        "policy_sources": {
+          "combat_bc": 68,
+          "heuristic": 11
+        },
+        "steps": 79,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\010.defect.SETV1D000000.baseline.jsonl",
+        "trajectory_id": "0f9a197335474dc7a634acde26ad1ea1",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 14,
+          "play_card": 51,
+          "use_potion": 1
+        },
+        "floor": 7,
+        "policy_sources": {
+          "combat_deepsets": 66,
+          "heuristic": 11
+        },
+        "steps": 77,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\010.defect.SETV1D000000.candidate.jsonl",
+        "trajectory_id": "35a95cb7349a4227af2276d184af55b2",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 10,
+      "character": "Defect",
+      "paired_floor_delta": 0,
+      "seed": "SETV1D000000"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 19,
+          "play_card": 84,
+          "use_potion": 4
+        },
+        "floor": 17,
+        "policy_sources": {
+          "combat_bc": 107,
+          "heuristic": 36
+        },
+        "steps": 143,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\011.defect.SETV1D000001.baseline.jsonl",
+        "trajectory_id": "3c495ffbc90f4b74855c03a622efc8bc",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 16,
+          "play_card": 77,
+          "use_potion": 4
+        },
+        "floor": 17,
+        "policy_sources": {
+          "combat_deepsets": 97,
+          "heuristic": 36
+        },
+        "steps": 133,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\011.defect.SETV1D000001.candidate.jsonl",
+        "trajectory_id": "7eaee67e6e3f4223a329e1cfa07efadb",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 11,
+      "character": "Defect",
+      "paired_floor_delta": 0,
+      "seed": "SETV1D000001"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 29,
+          "play_card": 110,
+          "use_potion": 2
+        },
+        "floor": 17,
+        "policy_sources": {
+          "combat_bc": 141,
+          "heuristic": 31
+        },
+        "steps": 172,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\012.defect.SETV1D000002.baseline.jsonl",
+        "trajectory_id": "7184aac8af51499293834bcdca739980",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 17,
+          "play_card": 64,
+          "use_potion": 2
+        },
+        "floor": 11,
+        "policy_sources": {
+          "combat_deepsets": 83,
+          "heuristic": 19
+        },
+        "steps": 102,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\012.defect.SETV1D000002.candidate.jsonl",
+        "trajectory_id": "349ecb3c820d4ba0b5c2ccc24b6c1723",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 12,
+      "character": "Defect",
+      "paired_floor_delta": -6,
+      "seed": "SETV1D000002"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 18,
+          "play_card": 79,
+          "use_potion": 2
+        },
+        "floor": 7,
+        "policy_sources": {
+          "combat_bc": 99,
+          "heuristic": 14
+        },
+        "steps": 113,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\013.defect.SETV1D000003.baseline.jsonl",
+        "trajectory_id": "7b28546e235e46a4ba4bb1ab7799eed2",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 16,
+          "play_card": 65,
+          "use_potion": 1
+        },
+        "floor": 6,
+        "policy_sources": {
+          "combat_deepsets": 82,
+          "heuristic": 11
+        },
+        "steps": 93,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\013.defect.SETV1D000003.candidate.jsonl",
+        "trajectory_id": "ac807ddc101b4c1cb92bcc65ff0689a6",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 13,
+      "character": "Defect",
+      "paired_floor_delta": -1,
+      "seed": "SETV1D000003"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 18,
+          "play_card": 51,
+          "use_potion": 3
+        },
+        "floor": 9,
+        "policy_sources": {
+          "combat_bc": 72,
+          "heuristic": 23
+        },
+        "steps": 95,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\014.defect.SETV1D000004.baseline.jsonl",
+        "trajectory_id": "4ee18ca000f94cfa9a294bef1d1e5ba0",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 23,
+          "play_card": 72,
+          "use_potion": 3
+        },
+        "floor": 9,
+        "policy_sources": {
+          "combat_deepsets": 98,
+          "heuristic": 23
+        },
+        "steps": 121,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\014.defect.SETV1D000004.candidate.jsonl",
+        "trajectory_id": "c81e0bf00c7a4b32a9cb66531f7c3f69",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 14,
+      "character": "Defect",
+      "paired_floor_delta": 0,
+      "seed": "SETV1D000004"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 13,
+          "play_card": 43,
+          "use_potion": 1
+        },
+        "floor": 7,
+        "policy_sources": {
+          "combat_bc": 57,
+          "heuristic": 16
+        },
+        "steps": 73,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\015.necrobinder.SETV1N000000.baseline.jsonl",
+        "trajectory_id": "c00c1c05eab545a2b2aa81e403a76d43",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 13,
+          "play_card": 43,
+          "use_potion": 1
+        },
+        "floor": 7,
+        "policy_sources": {
+          "combat_deepsets": 57,
+          "heuristic": 16
+        },
+        "steps": 73,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\015.necrobinder.SETV1N000000.candidate.jsonl",
+        "trajectory_id": "05f3abc31513459ab60f02b53eefc7ee",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 15,
+      "character": "Necrobinder",
+      "paired_floor_delta": 0,
+      "seed": "SETV1N000000"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 31,
+          "play_card": 114,
+          "use_potion": 4
+        },
+        "floor": 13,
+        "policy_sources": {
+          "combat_bc": 149,
+          "heuristic": 29
+        },
+        "steps": 178,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\016.necrobinder.SETV1N000001.baseline.jsonl",
+        "trajectory_id": "3c08eb5ea8924e308ebc0857aec98a04",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 19,
+          "play_card": 70,
+          "use_potion": 2
+        },
+        "floor": 9,
+        "policy_sources": {
+          "combat_deepsets": 91,
+          "heuristic": 21
+        },
+        "steps": 112,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\016.necrobinder.SETV1N000001.candidate.jsonl",
+        "trajectory_id": "01723bccba5045b3b0e9574e73fc9140",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 16,
+      "character": "Necrobinder",
+      "paired_floor_delta": -4,
+      "seed": "SETV1N000001"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 10,
+          "play_card": 39,
+          "use_potion": 2
+        },
+        "floor": 11,
+        "policy_sources": {
+          "combat_bc": 51,
+          "heuristic": 19
+        },
+        "steps": 70,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\017.necrobinder.SETV1N000002.baseline.jsonl",
+        "trajectory_id": "6d7be3465bb94698837029ffee6c2c95",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 13,
+          "play_card": 49,
+          "use_potion": 2
+        },
+        "floor": 11,
+        "policy_sources": {
+          "combat_deepsets": 64,
+          "heuristic": 19
+        },
+        "steps": 83,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\017.necrobinder.SETV1N000002.candidate.jsonl",
+        "trajectory_id": "8f43e8d62a004f8caa5550753a7fa4a9",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 17,
+      "character": "Necrobinder",
+      "paired_floor_delta": 0,
+      "seed": "SETV1N000002"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 12,
+          "play_card": 44,
+          "use_potion": 1
+        },
+        "floor": 11,
+        "policy_sources": {
+          "combat_bc": 57,
+          "heuristic": 22
+        },
+        "steps": 79,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\018.necrobinder.SETV1N000003.baseline.jsonl",
+        "trajectory_id": "a32619f78d9f49ca8411f3c23a3cc68d",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 12,
+          "play_card": 44,
+          "use_potion": 1
+        },
+        "floor": 11,
+        "policy_sources": {
+          "combat_deepsets": 57,
+          "heuristic": 22
+        },
+        "steps": 79,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\018.necrobinder.SETV1N000003.candidate.jsonl",
+        "trajectory_id": "3cf048e479f4481ead23613d0ab08004",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 18,
+      "character": "Necrobinder",
+      "paired_floor_delta": 0,
+      "seed": "SETV1N000003"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 16,
+          "play_card": 50,
+          "use_potion": 2
+        },
+        "floor": 9,
+        "policy_sources": {
+          "combat_bc": 68,
+          "heuristic": 20
+        },
+        "steps": 88,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\019.necrobinder.SETV1N000004.baseline.jsonl",
+        "trajectory_id": "5389e0bb23d048969f6fd8bf7743ec5f",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 13,
+          "play_card": 39,
+          "use_potion": 2
+        },
+        "floor": 7,
+        "policy_sources": {
+          "combat_deepsets": 54,
+          "heuristic": 16
+        },
+        "steps": 70,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\019.necrobinder.SETV1N000004.candidate.jsonl",
+        "trajectory_id": "95d3838166064c349dbb41b7cc657a29",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 19,
+      "character": "Necrobinder",
+      "paired_floor_delta": -2,
+      "seed": "SETV1N000004"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 19,
+          "play_card": 57
+        },
+        "floor": 9,
+        "policy_sources": {
+          "combat_bc": 76,
+          "heuristic": 18
+        },
+        "steps": 94,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\020.regent.SETV1R000000.baseline.jsonl",
+        "trajectory_id": "b8544ac32d7b4ae9be67a52a91745ad4",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 16,
+          "play_card": 51
+        },
+        "floor": 9,
+        "policy_sources": {
+          "combat_deepsets": 67,
+          "heuristic": 18
+        },
+        "steps": 85,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\020.regent.SETV1R000000.candidate.jsonl",
+        "trajectory_id": "d900742445e64fbf90a6606faefa96c9",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 20,
+      "character": "Regent",
+      "paired_floor_delta": 0,
+      "seed": "SETV1R000000"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 17,
+          "play_card": 71,
+          "use_potion": 1
+        },
+        "floor": 9,
+        "policy_sources": {
+          "combat_bc": 89,
+          "heuristic": 21
+        },
+        "steps": 110,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\021.regent.SETV1R000001.baseline.jsonl",
+        "trajectory_id": "18655dbdd90e48dc93dd6dc58ebeec4d",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 17,
+          "play_card": 72,
+          "use_potion": 1
+        },
+        "floor": 9,
+        "policy_sources": {
+          "combat_deepsets": 90,
+          "heuristic": 21
+        },
+        "steps": 111,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\021.regent.SETV1R000001.candidate.jsonl",
+        "trajectory_id": "fbc108fed79643bc84426ff32ab03061",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 21,
+      "character": "Regent",
+      "paired_floor_delta": 0,
+      "seed": "SETV1R000001"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 14,
+          "play_card": 53,
+          "use_potion": 4
+        },
+        "floor": 8,
+        "policy_sources": {
+          "combat_bc": 71,
+          "heuristic": 15
+        },
+        "steps": 86,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\022.regent.SETV1R000002.baseline.jsonl",
+        "trajectory_id": "c08089c59a704f7dbdaf170235e57f55",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 28,
+          "play_card": 99,
+          "use_potion": 5
+        },
+        "floor": 17,
+        "policy_sources": {
+          "combat_deepsets": 132,
+          "heuristic": 34
+        },
+        "steps": 166,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\022.regent.SETV1R000002.candidate.jsonl",
+        "trajectory_id": "6d59522c7ca443d7b0f6967b0d9963f5",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 22,
+      "character": "Regent",
+      "paired_floor_delta": 9,
+      "seed": "SETV1R000002"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 35,
+          "play_card": 141,
+          "use_potion": 3
+        },
+        "floor": 17,
+        "policy_sources": {
+          "combat_bc": 179,
+          "heuristic": 33
+        },
+        "steps": 212,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\023.regent.SETV1R000003.baseline.jsonl",
+        "trajectory_id": "bf9f9d27e50845488986abfd53b42f54",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 20,
+          "play_card": 75,
+          "use_potion": 1
+        },
+        "floor": 7,
+        "policy_sources": {
+          "combat_deepsets": 96,
+          "heuristic": 13
+        },
+        "steps": 109,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\023.regent.SETV1R000003.candidate.jsonl",
+        "trajectory_id": "a08e26cb85d64e47b6602c8281a04c0a",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 23,
+      "character": "Regent",
+      "paired_floor_delta": -10,
+      "seed": "SETV1R000003"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 23,
+          "play_card": 79,
+          "use_potion": 2
+        },
+        "floor": 7,
+        "policy_sources": {
+          "combat_bc": 104,
+          "heuristic": 16
+        },
+        "steps": 120,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\024.regent.SETV1R000004.baseline.jsonl",
+        "trajectory_id": "7da70a3f1ed84a2ca82491045a127d4f",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 26,
+          "play_card": 87,
+          "use_potion": 2
+        },
+        "floor": 7,
+        "policy_sources": {
+          "combat_deepsets": 115,
+          "heuristic": 15
+        },
+        "steps": 130,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\combat-deepsets-vs-dagger-r1-v0.107.1-a10\\024.regent.SETV1R000004.candidate.jsonl",
+        "trajectory_id": "2ca9c1002fb34ef09605a9927ed8abe9",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 24,
+      "character": "Regent",
+      "paired_floor_delta": 0,
+      "seed": "SETV1R000004"
+    }
+  ],
+  "combat_action_counts": {
+    "by_character": {
+      "Defect": {
+        "baseline": {
+          "end_turn": 99,
+          "play_card": 376,
+          "use_potion": 12
+        },
+        "candidate": {
+          "end_turn": 86,
+          "play_card": 329,
+          "use_potion": 11
+        }
+      },
+      "Ironclad": {
+        "baseline": {
+          "end_turn": 97,
+          "play_card": 328,
+          "use_potion": 12
+        },
+        "candidate": {
+          "end_turn": 116,
+          "play_card": 389,
+          "use_potion": 16
+        }
+      },
+      "Necrobinder": {
+        "baseline": {
+          "end_turn": 82,
+          "play_card": 290,
+          "use_potion": 10
+        },
+        "candidate": {
+          "end_turn": 70,
+          "play_card": 245,
+          "use_potion": 8
+        }
+      },
+      "Regent": {
+        "baseline": {
+          "end_turn": 108,
+          "play_card": 401,
+          "use_potion": 10
+        },
+        "candidate": {
+          "end_turn": 107,
+          "play_card": 384,
+          "use_potion": 9
+        }
+      },
+      "Silent": {
+        "baseline": {
+          "end_turn": 84,
+          "play_card": 310,
+          "use_potion": 7
+        },
+        "candidate": {
+          "end_turn": 97,
+          "play_card": 365,
+          "use_potion": 12
+        }
+      }
+    },
+    "overall": {
+      "baseline": {
+        "end_turn": 470,
+        "play_card": 1705,
+        "use_potion": 51
+      },
+      "candidate": {
+        "end_turn": 476,
+        "play_card": 1712,
+        "use_potion": 56
+      }
+    }
+  },
+  "count_per_character": 5,
+  "evaluation": "frozen_paired_headless_combat_checkpoint_comparison",
+  "limitations": [
+    "Five validation seeds per character are directional, not a final claim.",
+    "Runtime errors are retained as truncations and counted against their arm.",
+    "No policy is promoted by this validation comparison alone."
+  ],
+  "macro_model": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\checkpoints\\decision_policy.a10.npz",
+  "macro_model_sha256": "476701d84a7f6cf85b1aa6a910877334c13f52ea637af967a8f6da400ca878f9",
+  "manifest": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\headless-combat-deepsets-vs-dagger-r1-v0.107.1-a10.json",
+  "manifest_name": "stsai-frozen-combat-checkpoint-pair",
+  "manifest_pool": "validation",
+  "manifest_sha256": "4d07f5538ea9dbdd815b53a667cf2428ec99f8b11350580287795eec7d65ac31",
+  "max_steps": 1000,
+  "resume": {
+    "discarded_matching_incomplete_trajectories": 0,
+    "reused_completed_trajectories": {
+      "baseline": 0,
+      "candidate": 0
+    }
+  },
+  "schema_version": 1,
+  "selection": "all precommitted manifest cases in original order"
+}

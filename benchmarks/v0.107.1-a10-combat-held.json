@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "name": "stsai-v0.107.1-a10-combat-held",
+  "target": {
+    "build_id": "v0.107.1",
+    "ascension": 10
+  },
+  "selection": {
+    "method": "precommitted-source-manifest-slice-without-outcomes",
+    "source_manifest": "benchmarks/v0.107.1-a10.json",
+    "source_manifest_sha256": "61d13948a3609bc8bf8bdd06ccbef2e79aea98fca7017d10e334b8c9308fedd6",
+    "offset_per_character": 5,
+    "count_per_character": 5,
+    "prior_slice_overlap": 0,
+    "policy_status": "combat model untrained at selection time"
+  },
+  "cases": [
+    {"character": "CHARACTER.DEFECT", "seed": "MXC71BYMES"},
+    {"character": "CHARACTER.DEFECT", "seed": "08JKQKYUZ5"},
+    {"character": "CHARACTER.DEFECT", "seed": "LP53PD0AF3"},
+    {"character": "CHARACTER.DEFECT", "seed": "D7WPRHAWPJ"},
+    {"character": "CHARACTER.DEFECT", "seed": "BMURP3BJYB"},
+    {"character": "CHARACTER.IRONCLAD", "seed": "GY146KV3S1"},
+    {"character": "CHARACTER.IRONCLAD", "seed": "RUB79J9PW8"},
+    {"character": "CHARACTER.IRONCLAD", "seed": "6RU3YLQCW5"},
+    {"character": "CHARACTER.IRONCLAD", "seed": "EGPDKBQ8V1"},
+    {"character": "CHARACTER.IRONCLAD", "seed": "K523WDXHFC"},
+    {"character": "CHARACTER.NECROBINDER", "seed": "7S7VFATXHH"},
+    {"character": "CHARACTER.NECROBINDER", "seed": "ND4VF9TK19"},
+    {"character": "CHARACTER.NECROBINDER", "seed": "QRQA6FVE9T"},
+    {"character": "CHARACTER.NECROBINDER", "seed": "B8N1D24D1T"},
+    {"character": "CHARACTER.NECROBINDER", "seed": "FVKE9M1254"},
+    {"character": "CHARACTER.REGENT", "seed": "5MRCWG1TMN"},
+    {"character": "CHARACTER.REGENT", "seed": "DRYA7YLJCC"},
+    {"character": "CHARACTER.REGENT", "seed": "8H8V5G9EC0"},
+    {"character": "CHARACTER.REGENT", "seed": "EZTZVEDNG3"},
+    {"character": "CHARACTER.REGENT", "seed": "LMGR9KWZUG"},
+    {"character": "CHARACTER.SILENT", "seed": "LS0MKGU87K"},
+    {"character": "CHARACTER.SILENT", "seed": "5ZT4UMM7SX"},
+    {"character": "CHARACTER.SILENT", "seed": "0ZXSNYAWY3"},
+    {"character": "CHARACTER.SILENT", "seed": "C4Z5CZA97H"},
+    {"character": "CHARACTER.SILENT", "seed": "55UBW2DK04"}
+  ]
+}

@@ -1,0 +1,3082 @@
+diff --git a/src/Sts2Headless/Program.cs b/src/Sts2Headless/Program.cs
+index 800f139..4001c4f 100644
+--- a/src/Sts2Headless/Program.cs
++++ b/src/Sts2Headless/Program.cs
+@@ -73,7 +73,7 @@ class Program
+         };
+ 
+         var sim = new RunSimulator();
+-        WriteLine(new Dictionary<string, object?> { ["type"] = "ready", ["version"] = "0.2.0" });
++        WriteLine(new Dictionary<string, object?> { ["type"] = "ready", ["version"] = "0.3.0" });
+ 
+         string? line;
+         while ((line = Console.ReadLine()) != null)
+@@ -161,6 +161,9 @@ class Program
+             case "get_map":
+                 return sim.GetFullMap();
+ 
++            case "snapshot_checkpoint":
++                return sim.SnapshotCheckpoint();
++
+             case "set_player":
+             {
+                 var args = new Dictionary<string, JsonElement>();
+diff --git a/src/Sts2Headless/RunSimulator.cs b/src/Sts2Headless/RunSimulator.cs
+index 6b9de4a..1ff04b9 100644
+--- a/src/Sts2Headless/RunSimulator.cs
++++ b/src/Sts2Headless/RunSimulator.cs
+@@ -1,4 +1,6 @@
+ using System.Reflection;
++using System.Security.Cryptography;
++using System.Text;
+ using MegaCrit.Sts2.Core.Combat;
+ using MegaCrit.Sts2.Core.Commands;
+ using MegaCrit.Sts2.Core.Context;
+@@ -6,17 +8,22 @@ using MegaCrit.Sts2.Core.Events;
+ using MegaCrit.Sts2.Core.Entities.Ascension;
+ using MegaCrit.Sts2.Core.Entities.Cards;
+ using MegaCrit.Sts2.Core.Entities.Creatures;
++using MegaCrit.Sts2.Core.Entities.Multiplayer;
+ using MegaCrit.Sts2.Core.Entities.Players;
++using MegaCrit.Sts2.Core.Entities.Potions;
+ using MegaCrit.Sts2.Core.GameActions;
+ using MegaCrit.Sts2.Core.Helpers;
+ using MegaCrit.Sts2.Core.Map;
++using MegaCrit.Sts2.Core.Modding;
+ using MegaCrit.Sts2.Core.Models;
+ using MegaCrit.Sts2.Core.Models.Characters;
++using MegaCrit.Sts2.Core.Models.Events;
+ using MegaCrit.Sts2.Core.Multiplayer;
+ using MegaCrit.Sts2.Core.CardSelection;
+ using MegaCrit.Sts2.Core.Entities.CardRewardAlternatives;
+ using MegaCrit.Sts2.Core.Entities.Merchant;
+ using MegaCrit.Sts2.Core.Entities.RestSite;
++using MegaCrit.Sts2.Core.Entities.Rngs;
+ using MegaCrit.Sts2.Core.Rewards;
+ using MegaCrit.Sts2.Core.Rooms;
+ using MegaCrit.Sts2.Core.Models.Powers;
+@@ -85,6 +92,9 @@ internal class InlineSynchronizationContext : SynchronizationContext
+             finally { _executing = false; }
+         }
+     }
++
++    public bool IsIdle => !_executing && _queue.Count == 0;
++    public int PendingCount => _queue.Count;
+ }
+ 
+ /// <summary>
+@@ -217,14 +227,43 @@ public class RunSimulator
+     private static readonly LocLookup _loc = new();
+     private bool _eventOptionChosen;
+     private int _lastEventOptionCount;
++    private object? _trackedAmalgamatorEvent;
++    private readonly HashSet<int> _exhaustedAmalgamatorOptions = new();
++    private Task? _pendingEventOptionTask;
++    private RewardsSet? _pendingEventRewardsSet;
++    private TaskCompletionSource<bool>? _pendingEventRewardsCompletion;
++    private Task<bool>? _pendingEventRewardSelectionTask;
++    private Reward? _pendingEventRewardSelection;
++    private Dictionary<string, object?>? _lastEventRewardClaimProof;
++    private bool _fakeShopOpen;
++    private bool _normalShopOpen;
++    private Dictionary<string, object?>? _lastShopOpenProof;
++    private Dictionary<string, object?>? _lastPotionUseProof;
++    private int _potionSelectionGeneration;
++    private int _pendingPotionSelectionGeneration;
++    private PotionModel? _pendingPotionSelectionPotion;
++    private Player? _pendingPotionSelectionPlayer;
++    private int _pendingPotionSelectionSlot = -1;
++    private List<CardModel>? _pendingPotionSelectionOptions;
++    private List<CardModel>? _pendingPotionSelectionPreHand;
++    private bool _treasureChestOpened;
++    private bool _treasureRelicTaken;
++    private bool _openingTreasureChest;
++    private string? _treasureBlockedReason;
++    private Dictionary<string, object?>? _lastTreasureProof;
+ 
+     // Pending rewards for card selection (populated after combat, before proceeding)
+     private List<Reward>? _pendingRewards;
+     private CardReward? _pendingCardReward;
++    private readonly List<Dictionary<string, object?>> _replayRewardQueue = new();
+     private bool _rewardsProcessed;
+     private int _goldBeforeCombat;
+     private int _lastKnownHp;
+     private readonly HeadlessCardSelector _cardSelector = new();
++    private Task<bool>? _pendingRestSiteChoiceTask;
++    private static readonly FieldInfo? SpecialCardRewardCardField =
++        typeof(SpecialCardReward).GetField(
++            "_card", BindingFlags.Instance | BindingFlags.NonPublic);
+     // Pending bundle selection (Scroll Boxes: pick 1 of N packs)
+     private IReadOnlyList<IReadOnlyList<CardModel>>? _pendingBundles;
+     private TaskCompletionSource<IEnumerable<CardModel>>? _pendingBundleTcs;
+@@ -235,6 +274,9 @@ public class RunSimulator
+         {
+             _loc.Lang = lang;
+             EnsureModelDbInitialized();
++            ResetTreasureTracking();
++            ResetShopTracking();
++            ResetPotionTracking();
+ 
+             var player = CreatePlayer(character);
+             if (player == null)
+@@ -280,10 +322,12 @@ public class RunSimulator
+ 
+             // Register card selector for cards that need player choice
+             CardSelectCmd.UseSelector(_cardSelector);
++            RewardsSet.testSelector = CaptureHeadlessRewardsSet;
+             LocPatches._bundleSimRef = this;
+ 
+-            // Now we should be at the map — detect decision point
+-            return DetectDecisionPoint();
++            // Now we should be at the first decision point.
++            var initialDecision = DetectDecisionPoint();
++            return initialDecision;
+         }
+         catch (Exception ex)
+         {
+@@ -334,7 +378,12 @@ public class RunSimulator
+                         var id = rEl.GetString();
+                         if (id == null) continue;
+                         var model = ModelDb.GetById<RelicModel>(new ModelId("RELIC", id));
+-                        if (model != null) list.Add(model.ToMutable());
++                        if (model != null)
++                        {
++                            var mutable = model.ToMutable();
++                            mutable.Owner = player;
++                            list.Add(mutable);
++                        }
+                     }
+                 }
+             }
+@@ -404,6 +453,9 @@ public class RunSimulator
+             if (_runState == null) return Error("No run in progress");
+             var runState = _runState;
+             Log($"EnterRoom: type={roomType} encounter={encounter} event={eventId}");
++            ResetTreasureTracking();
++            ResetShopTracking();
++            ResetPotionTracking();
+ 
+             AbstractRoom room;
+             switch (roomType.ToLowerInvariant())
+@@ -497,6 +549,9 @@ public class RunSimulator
+         {
+             _loc.Lang = lang;
+             EnsureModelDbInitialized();
++            ResetTreasureTracking();
++            ResetShopTracking();
++            ResetPotionTracking();
+ 
+             Log("Loading save file...");
+ 
+@@ -517,61 +572,59 @@ public class RunSimulator
+             Log($"RunState created, players={_runState.Players?.Count}");
+ 
+             var netService = new NetSingleplayerGameService();
+-            RunManager.Instance.SetUpSavedSinglePlayer(_runState, save);
++            RunManager.Instance.SetUpSavedSingleplayer(_runState, save)
++                .GetAwaiter().GetResult();
+             LocalContext.NetId = netService.NetId;
+ 
+             CombatManager.Instance.TurnStarted += _ => _turnStarted.Set();
+             CombatManager.Instance.CombatEnded += _ => _combatEnded.Set();
+             CardSelectCmd.UseSelector(_cardSelector);
++            RewardsSet.testSelector = CaptureHeadlessRewardsSet;
+             LocPatches._bundleSimRef = this;
+ 
+-            var savedRoom = _runState.CurrentRoom;
+-
+-            // Save visited coords before Launch (EnterAct will clear them)
+-            var savedVisitedCoords = _runState.VisitedMapCoords?.ToList() ?? new List<MapCoord>();
+             var shouldResumeInitialNeow = IsInitialNeowSave(saveJson);
+-            Log($"Save has {savedVisitedCoords.Count} visited coords");
++
++            var savedVisitedCount = _runState.VisitedMapCoords?.Count ?? 0;
++            Log($"Save has {savedVisitedCount} visited coords");
+ 
+             RunManager.Instance.Launch();
+             Log("Run launched");
+ 
+-            if (savedRoom is MapRoom || savedRoom == null)
++            // Mirror NGame.LoadRun: reconstruct the saved act map, then re-enter
++            // the latest already-visited coordinate without adding a second visit.
++            RunManager.Instance.GenerateMap().GetAwaiter().GetResult();
++            _syncCtx.Pump();
++            AbstractRoom? preFinishedRoom = null;
++            if (save.PreFinishedRoom?.RoomType is RoomType.Monster
++                or RoomType.Elite or RoomType.Boss or RoomType.Event)
+             {
+-                // Preserve Neow for saves created before the first blessing choice.
+-                // Once the run has visited at least one map node, re-entering Act 1
+-                // should not send the player back through the Ancient start node.
+-                if (_runState.CurrentActIndex == 0 && savedVisitedCoords.Count > 0)
+-                    _runState.ExtraFields.StartedWithNeow = false;
+-                RunManager.Instance.EnterAct(_runState.CurrentActIndex, doTransition: false).GetAwaiter().GetResult();
+-                _syncCtx.Pump();
+-                Log($"Entered Act {_runState.CurrentActIndex}");
+-
+-                if (shouldResumeInitialNeow && _runState.Map?.StartingMapPoint != null)
+-                {
+-                    Log("Restoring initial Neow event");
+-                    RunManager.Instance.EnterMapCoord(_runState.Map.StartingMapPoint.coord).GetAwaiter().GetResult();
+-                    _syncCtx.Pump();
+-                }
+-
+-                // EnterAct clears visited coords and ActFloor — restore them from save
+-                if (savedVisitedCoords.Count > 0)
+-                {
+-                    if (_runState.VisitedMapCoords == null || _runState.VisitedMapCoords.Count == 0)
+-                    {
+-                        foreach (var coord in savedVisitedCoords)
+-                            _runState.AddVisitedMapCoord(coord);
+-                    }
+-                    _runState.ActFloor = savedVisitedCoords.Count;
+-                    var last = savedVisitedCoords[^1];
+-                    Log($"Restored map position: floor={_runState.ActFloor}, coord=({last.col},{last.row})");
+-                }
++                preFinishedRoom = AbstractRoom.FromSerializable(save.PreFinishedRoom, _runState);
++            }
++            if (save.PreFinishedRoom?.RoomType == RoomType.Map)
++            {
++                // write_continue_save uses a serialized MapRoom for an explicit
++                // map-screen checkpoint; it is not accepted by FromSerializable.
++                _runState.ActFloor = savedVisitedCount;
++                RunManager.Instance.EnterRoom(new MapRoom()).GetAwaiter().GetResult();
+             }
+             else
+             {
+-                Log($"Preserving saved room: {savedRoom.GetType().Name}");
++                RunManager.Instance.LoadIntoLatestMapCoord(preFinishedRoom).GetAwaiter().GetResult();
+             }
++            _syncCtx.Pump();
++            WaitForActionExecutor();
++            Log($"Restored saved map coordinate; visits={_runState.VisitedMapCoords?.Count ?? 0}, floor={_runState.ActFloor}");
+ 
+-            return DetectDecisionPoint();
++            if (shouldResumeInitialNeow
++                && (_runState.VisitedMapCoords?.Count ?? 0) == 0
++                && _runState.Map?.StartingMapPoint != null)
++            {
++                Log("Restoring initial Neow event");
++                RunManager.Instance.EnterMapCoord(_runState.Map.StartingMapPoint.coord).GetAwaiter().GetResult();
++                _syncCtx.Pump();
++            }
++            var loadedDecision = DetectDecisionPoint();
++            return loadedDecision;
+         }
+         catch (Exception ex)
+         {
+@@ -809,6 +862,249 @@ public class RunSimulator
+         return true;
+     }
+ 
++    private static Dictionary<string, int> SnapshotCounters<T>(
++        IEnumerable<KeyValuePair<T, int>> counters) where T : notnull
++    {
++        return counters
++            .OrderBy(pair => pair.Key.ToString(), StringComparer.Ordinal)
++            .ToDictionary(
++                pair => pair.Key.ToString() ?? "UNKNOWN",
++                pair => pair.Value,
++                StringComparer.Ordinal);
++    }
++
++    private static string SnapshotSeedHash(string seed)
++    {
++        return Convert.ToHexString(
++            SHA256.HashData(Encoding.UTF8.GetBytes(seed))).ToLowerInvariant();
++    }
++
++    private static Dictionary<string, object?> SnapshotCard(CardModel card)
++    {
++        return new Dictionary<string, object?>
++        {
++            ["id"] = card.Id.ToString(),
++            ["upgrade_level"] = card.CurrentUpgradeLevel,
++            ["energy_cost"] = card.EnergyCost?.GetResolved(),
++            ["base_replay_count"] = card.BaseReplayCount,
++            ["current_star_cost"] = card.CurrentStarCost,
++            ["last_stars_spent"] = card.LastStarsSpent,
++            ["exhaust_on_next_play"] = card.ExhaustOnNextPlay,
++            ["retain_this_turn"] = card.ShouldRetainThisTurn,
++            ["sly_this_turn"] = card.IsSlyThisTurn,
++            ["enchantment_id"] = card.Enchantment?.Id.ToString(),
++            ["enchantment_amount"] = card.Enchantment?.Amount,
++            ["affliction_id"] = card.Affliction?.Id.ToString(),
++            ["affliction_amount"] = card.Affliction?.Amount,
++            ["dynamic_vars"] = card.DynamicVars.Values
++                .OrderBy(value => value.Name, StringComparer.Ordinal)
++                .Select(value => new Dictionary<string, object?>
++                {
++                    ["name"] = value.Name,
++                    ["base_value"] = value.BaseValue,
++                }).ToList(),
++            ["keywords"] = card.Keywords?
++                .Where(keyword => keyword != CardKeyword.None)
++                .Select(keyword => keyword.ToString())
++                .OrderBy(value => value, StringComparer.Ordinal)
++                .ToList(),
++        };
++    }
++
++    /// <summary>
++    /// Return a non-mutating semantic checkpoint for reconstructive process forks.
++    /// The first milestone accepts only stable map and combat-play decisions; pending
++    /// selections and room-specific continuations fail closed until their task graphs
++    /// have dedicated proof-grade signatures.
++    /// </summary>
++    public Dictionary<string, object?> SnapshotCheckpoint()
++    {
++        try
++        {
++            if (_runState == null)
++                return Error("No active run to checkpoint");
++
++            var reasons = new List<string>();
++            var executor = RunManager.Instance.ActionExecutor;
++            var actionQueues = RunManager.Instance.ActionQueueSet;
++            var room = _runState.CurrentRoom;
++            var player = _runState.Players[0];
++            var stage = room is MapRoom || room == null
++                ? "map_select"
++                : room is CombatRoom && CombatManager.Instance.IsInProgress && IsPlayPhase()
++                    ? "combat_play"
++                    : "unsupported";
++
++            if (stage == "unsupported") reasons.Add("decision_stage_not_allowlisted");
++            if (!_syncCtx.IsIdle) reasons.Add("synchronization_context_not_idle");
++            if (executor.IsRunning) reasons.Add("action_executor_running");
++            if (executor.CurrentlyRunningAction != null) reasons.Add("action_currently_running");
++            if (!actionQueues.IsEmpty) reasons.Add("action_queue_not_empty");
++            if (_cardSelector.HasPending) reasons.Add("card_selector_pending");
++            if (_cardSelector.HasPendingReward) reasons.Add("card_reward_selector_pending");
++            if (_pendingBundles != null || _pendingBundleTcs != null) reasons.Add("bundle_selector_pending");
++            if (_pendingEventOptionTask != null) reasons.Add("event_option_task_pending");
++            if (_pendingEventRewardsSet != null || _pendingEventRewardsCompletion != null)
++                reasons.Add("event_reward_set_pending");
++            if (_pendingEventRewardSelectionTask != null || _pendingEventRewardSelection != null)
++                reasons.Add("event_reward_selection_pending");
++            if (_pendingRestSiteChoiceTask != null) reasons.Add("rest_site_task_pending");
++            if (_pendingPotionSelectionGeneration > 0) reasons.Add("potion_selection_pending");
++
++            var runRng = _runState.Rng.ToSerializable();
++            var playerRngs = _runState.Players.Select((currentPlayer, index) =>
++            {
++                var rng = currentPlayer.PlayerRng.ToSerializable();
++                return new Dictionary<string, object?>
++                {
++                    ["player_index"] = index,
++                    ["seed"] = rng.Seed,
++                    ["counters"] = SnapshotCounters(rng.Counters),
++                };
++            }).ToList();
++
++            Dictionary<string, object?>? combat = null;
++            if (CombatManager.Instance.IsInProgress)
++            {
++                var combatState = CombatManager.Instance.DebugOnlyGetState();
++                var netState = NetFullCombatState.FromRun(_runState, null);
++                var piles = new List<Dictionary<string, object?>>();
++                var pcs = player.PlayerCombatState;
++                if (pcs != null)
++                {
++                    foreach (var pile in new[]
++                    {
++                        pcs.Hand, pcs.DrawPile, pcs.DiscardPile, pcs.ExhaustPile, pcs.PlayPile,
++                    })
++                    {
++                        piles.Add(new Dictionary<string, object?>
++                        {
++                            ["type"] = pile.Type.ToString(),
++                            ["cards"] = pile.Cards.Select(SnapshotCard).ToList(),
++                        });
++                    }
++                }
++                combat = new Dictionary<string, object?>
++                {
++                    ["round"] = combatState?.RoundNumber,
++                    ["current_side"] = combatState?.CurrentSide.ToString(),
++                    ["encounter_id"] = combatState?.Encounter?.Id.ToString(),
++                    ["phase"] = pcs?.Phase.ToString(),
++                    ["turn_number"] = pcs?.TurnNumber,
++                    ["energy"] = pcs?.Energy,
++                    ["stars"] = pcs?.Stars,
++                    ["orbs"] = pcs?.OrbQueue?.Orbs.Select(orb =>
++                        new Dictionary<string, object?>
++                        {
++                            ["id"] = orb.Id.ToString(),
++                            ["passive"] = orb.PassiveVal,
++                            ["evoke"] = orb.EvokeVal,
++                        }).ToList(),
++                    ["orb_capacity"] = pcs?.OrbQueue?.Capacity,
++                    ["piles"] = piles,
++                    ["creatures"] = combatState?.Creatures.Select(creature =>
++                        new Dictionary<string, object?>
++                        {
++                            ["combat_id"] = creature.CombatId,
++                            ["monster_id"] = creature.Monster?.Id.ToString(),
++                            ["is_player"] = creature.IsPlayer,
++                            ["side"] = creature.Side.ToString(),
++                            ["current_hp"] = creature.CurrentHp,
++                            ["max_hp"] = creature.MaxHp,
++                            ["block"] = creature.Block,
++                            ["monster_rng_seed"] = creature.Monster?.Rng.Seed,
++                            ["monster_rng_counter"] = creature.Monster?.Rng.Counter,
++                            ["monster_next_move"] = creature.Monster?.NextMove.Id,
++                            ["monster_state_log"] = creature.Monster?.MoveStateMachine?
++                                .StateLog.Select(state => state.Id).ToList(),
++                            ["monster_spawned_this_turn"] = creature.Monster?.SpawnedThisTurn,
++                            ["monster_performing_move"] = creature.Monster?.IsPerformingMove,
++                            ["powers"] = creature.Powers.Select(power =>
++                                new Dictionary<string, object?>
++                                {
++                                    ["id"] = power.Id.ToString(),
++                                    ["amount"] = power.Amount,
++                                    ["amount_on_turn_start"] = power.AmountOnTurnStart,
++                                    ["skip_next_duration_tick"] = power.SkipNextDurationTick,
++                                    ["display_amount"] = power.DisplayAmount,
++                                }).ToList(),
++                        }).ToList(),
++                    ["next_choice_ids"] = netState.nextChoiceIds,
++                    ["next_reward_ids"] = netState.nextRewardIds,
++                };
++            }
++
++            var semantic = new Dictionary<string, object?>
++            {
++                ["stage"] = stage,
++                ["act"] = _runState.CurrentActIndex,
++                ["act_floor"] = _runState.ActFloor,
++                ["current_room_count"] = _runState.CurrentRoomCount,
++                ["current_room_type"] = room?.GetType().Name,
++                ["current_map_coord"] = _runState.CurrentMapCoord is MapCoord coord
++                    ? new Dictionary<string, object?>
++                    {
++                        ["col"] = (int)coord.col,
++                        ["row"] = (int)coord.row,
++                    }
++                    : null,
++                ["run_seed_sha256"] = SnapshotSeedHash(runRng.Seed ?? string.Empty),
++                ["run_rng_counters"] = SnapshotCounters(runRng.Counters),
++                ["player_rngs"] = playerRngs,
++                // Rng.Chaotic is intentionally wall-clock seeded and is used by localization,
++                // audio, animation, and other presentation paths. It is excluded from the
++                // gameplay-semantic digest; all run/player RNG streams remain included above.
++                ["excluded_nondeterministic_rng"] = "Rng.Chaotic (presentation only)",
++                ["next_action_id"] = actionQueues.NextActionId,
++                ["player"] = new Dictionary<string, object?>
++                {
++                    ["character_id"] = player.Character?.Id.ToString(),
++                    ["hp"] = player.Creature?.CurrentHp,
++                    ["max_hp"] = player.Creature?.MaxHp,
++                    ["gold"] = player.Gold,
++                    ["deck"] = player.Deck.Cards.Select(SnapshotCard).ToList(),
++                    ["relics"] = player.Relics.Select(relic =>
++                        new Dictionary<string, object?>
++                        {
++                            ["id"] = relic.Id.ToString(),
++                            ["status"] = relic.Status.ToString(),
++                            ["display_amount"] = relic.DisplayAmount,
++                            ["stack_count"] = relic.StackCount,
++                            ["is_used_up"] = relic.IsUsedUp,
++                            ["is_wax"] = relic.IsWax,
++                            ["is_melted"] = relic.IsMelted,
++                            ["floor_added_to_deck"] = relic.FloorAddedToDeck,
++                        }).ToList(),
++                    ["potion_slots"] = player.PotionSlots.Select(
++                        potion => potion?.Id.ToString()).ToList(),
++                },
++                ["combat"] = combat,
++            };
++
++            return new Dictionary<string, object?>
++            {
++                ["type"] = "snapshot_checkpoint",
++                ["schema_version"] = 1,
++                ["snapshot_safe"] = reasons.Count == 0,
++                ["stage"] = stage,
++                ["reasons"] = reasons,
++                ["quiescence"] = new Dictionary<string, object?>
++                {
++                    ["sync_context_idle"] = _syncCtx.IsIdle,
++                    ["sync_context_pending"] = _syncCtx.PendingCount,
++                    ["action_executor_running"] = executor.IsRunning,
++                    ["current_action"] = executor.CurrentlyRunningAction?.GetType().Name,
++                    ["action_queue_empty"] = actionQueues.IsEmpty,
++                },
++                ["semantic"] = semantic,
++            };
++        }
++        catch (Exception ex)
++        {
++            return ErrorWithTrace("SnapshotCheckpoint failed", ex);
++        }
++    }
++
+     public Dictionary<string, object?> SaveCheckpoint(string? outputPath)
+     {
+         try
+@@ -899,6 +1195,18 @@ public class RunSimulator
+                     return DoUsePotion(player, args);
+                 case "discard_potion":
+                     return DoDiscardPotion(player, args);
++                case "claim_reward":
++                    return DoClaimEventReward(player, args);
++                case "skip_rewards":
++                    return DoSkipEventRewards(player);
++                case "open_fake_shop":
++                    return DoOpenFakeShop(player);
++                case "open_shop":
++                    return DoOpenShop(player);
++                case "open_chest":
++                    return DoOpenChest(player);
++                case "take_chest_relic":
++                    return DoTakeChestRelic(player, args);
+                 case "leave_room":
+                     return DoLeaveRoom(player);
+                 case "proceed":
+@@ -925,7 +1233,21 @@ public class RunSimulator
+         _pendingCardReward = null;
+         _eventOptionChosen = false;
+         _lastEventOptionCount = 0;
++        _trackedAmalgamatorEvent = null;
++        _exhaustedAmalgamatorOptions.Clear();
+         _pendingRewards = null;
++        _replayRewardQueue.Clear();
++        _pendingRestSiteChoiceTask = null;
++        _pendingEventOptionTask = null;
++        _pendingEventRewardsSet = null;
++        _pendingEventRewardsCompletion = null;
++        _pendingEventRewardSelectionTask = null;
++        _pendingEventRewardSelection = null;
++        _lastEventRewardClaimProof = null;
++        _fakeShopOpen = false;
++        ResetTreasureTracking();
++        ResetShopTracking();
++        ResetPotionTracking();
+         _lastKnownHp = player.Creature?.CurrentHp ?? 0;
+ 
+         var col = Convert.ToInt32(args["col"]);
+@@ -1007,15 +1329,72 @@ public class RunSimulator
+         Log($"Playing card {card.GetType().Name} (index {cardIndex}) targeting {(target != null ? target.Monster?.GetType().Name ?? "creature" : "none")}");
+ 
+         var handCountBefore = hand.Count;
++        var targetHpBefore = target?.CurrentHp;
++        var targetBlockBefore = target?.Block;
++        var energyBefore = pcs.Energy;
+ 
+         var playAction = new PlayCardAction(card, target);
+         RunManager.Instance.ActionQueueSet.EnqueueWithoutSynchronizing(playAction);
+-        WaitForActionExecutor();
++        // Some cards enqueue child work after the main queue first reports idle.
++        // Pump briefly until the card leaves the hand (or a selection appears)
++        // before declaring a legal advertised action to have failed.
++        for (int i = 0; i < 200; i++)
++        {
++            WaitForActionExecutor();
++            _syncCtx.Pump();
++            var currentHand = pcs.Hand.Cards;
++            if (currentHand.Count != handCountBefore ||
++                cardIndex >= currentHand.Count ||
++                currentHand[cardIndex] != card ||
++                _cardSelector.HasPending ||
++                _cardSelector.HasPendingReward ||
++                _pendingBundles != null)
++            {
++                break;
++            }
++            Thread.Sleep(10);
++        }
+ 
+         // Check if card play had no effect (hand unchanged, same card still at same index)
+         var handAfter = pcs.Hand.Cards;
+         if (handAfter.Count == handCountBefore && cardIndex < handAfter.Count && handAfter[cardIndex] == card)
+         {
++            // v0.107.1 Claw and Tesla Coil can apply their attack effects but miss
++            // the normal play-to-discard cleanup under the patched headless queue.
++            // Keep this exact and effect-gated: unknown cards still fail closed.
++            var requiresVerifiedCleanup = card.Id.Entry == "CLAW"
++                || card.Id.Entry == "TESLA_COIL";
++            var targetChanged = targetHpBefore != target?.CurrentHp
++                || targetBlockBefore != target?.Block;
++            if (requiresVerifiedCleanup && targetChanged)
++            {
++                try
++                {
++                    MegaCrit.Sts2.Core.Commands.CardPileCmd
++                        .Add(card, MegaCrit.Sts2.Core.Entities.Cards.PileType.Discard)
++                        .GetAwaiter().GetResult();
++                    _syncCtx.Pump();
++                    handAfter = pcs.Hand.Cards;
++                    if (cardIndex >= handAfter.Count || handAfter[cardIndex] != card)
++                    {
++                        Log($"Completed v0.107.1 {card.Id.Entry} play-to-discard cleanup " +
++                            $"after target hp {targetHpBefore}->{target?.CurrentHp}, " +
++                            $"block {targetBlockBefore}->{target?.Block}");
++                        return DetectDecisionPoint();
++                    }
++                }
++                catch (Exception ex) { Log($"Claw cleanup failed: {ex.Message}"); }
++            }
++            card.CanPlay(out var reasonAfter, out var _);
++            if (card.Id.Entry == "PARTICLE_WALL" && reasonAfter.ToString() == "StarCostTooHigh")
++            {
++                Log("Accepted Particle Wall's intentional return-to-hand behavior");
++                return DetectDecisionPoint();
++            }
++            Log($"Card remained after action: targetHp={targetHpBefore}->{target?.CurrentHp}, " +
++                $"energy={energyBefore}->{pcs.Energy}, hand={handCountBefore}->{handAfter.Count}, " +
++                $"canPlayAfter={reasonAfter}, pendingCard={_cardSelector.HasPending}, " +
++                $"pendingReward={_cardSelector.HasPendingReward}, pendingBundles={_pendingBundles != null}");
+             return Error($"Card could not be played (still in hand after action): {card.GetType().Name} [{card.Id}]");
+         }
+ 
+@@ -1216,6 +1595,8 @@ public class RunSimulator
+             Thread.Sleep(50);
+             _syncCtx.Pump();
+             WaitForActionExecutor();
++            if (!TryFinishPendingEventRewardSelection(out var eventRewardError))
++                return Error(eventRewardError);
+             return DetectDecisionPoint();
+         }
+ 
+@@ -1257,6 +1638,8 @@ public class RunSimulator
+             Thread.Sleep(50);
+             _syncCtx.Pump();
+             WaitForActionExecutor();
++            if (!TryFinishPendingEventRewardSelection(out var eventRewardError))
++                return Error(eventRewardError);
+             return DetectDecisionPoint();
+         }
+         if (_pendingCardReward != null)
+@@ -1268,16 +1651,67 @@ public class RunSimulator
+         return DetectDecisionPoint();
+     }
+ 
+-    private Dictionary<string, object?> DoBuyCard(Player player, Dictionary<string, object?>? args)
++    private MerchantInventory? GetActiveShopInventory()
++    {
++        if (_runState?.CurrentRoom is MerchantRoom merchantRoom && _normalShopOpen)
++            return merchantRoom.GetLocalInventory();
++        if (_runState?.CurrentRoom is EventRoom && _fakeShopOpen
++            && RunManager.Instance.EventSynchronizer?.GetLocalEvent() is FakeMerchant fakeMerchant
++            && !fakeMerchant.StartedFight)
++            return fakeMerchant.Inventory;
++        return null;
++    }
++
++    private Dictionary<string, object?> DoOpenShop(Player player)
+     {
+         if (_runState?.CurrentRoom is not MerchantRoom merchantRoom)
++            return Error("open_shop requires a normal merchant room");
++        if (_normalShopOpen)
++            return Error("Normal merchant inventory is already open");
++
++        var inventory = merchantRoom.GetLocalInventory();
++        if (inventory == null)
++            return Error("MerchantRoom native inventory is missing");
++        var cardCount = inventory.CharacterCardEntries.Count
++            + inventory.ColorlessCardEntries.Count;
++        var relicCount = inventory.RelicEntries.Count;
++        var potionCount = inventory.PotionEntries.Count;
++
++        // The graphical OpenInventory call only exposes the already-created authoritative
++        // MerchantInventory. Headless mode records that real ready->open transition explicitly.
++        _normalShopOpen = true;
++        var sameInventory = ReferenceEquals(inventory, merchantRoom.GetLocalInventory());
++        var stockUnchanged = cardCount == inventory.CharacterCardEntries.Count
++                + inventory.ColorlessCardEntries.Count
++            && relicCount == inventory.RelicEntries.Count
++            && potionCount == inventory.PotionEntries.Count;
++        if (!sameInventory || !stockUnchanged)
++        {
++            _normalShopOpen = false;
++            return Error("Merchant inventory changed while opening the shop");
++        }
++
++        _lastShopOpenProof = new Dictionary<string, object?>
++        {
++            ["stage"] = "inventory_opened",
++            ["same_inventory"] = true,
++            ["stock_counts_unchanged"] = true,
++            ["postcondition_verified"] = true,
++        };
++        return ShopState(merchantRoom, player);
++    }
++
++    private Dictionary<string, object?> DoBuyCard(Player player, Dictionary<string, object?>? args)
++    {
++        var inventory = GetActiveShopInventory();
++        if (inventory == null)
+             return Error("Not in a shop");
+         if (args == null || !args.ContainsKey("card_index"))
+             return Error("buy_card requires 'card_index'");
+ 
+         var idx = Convert.ToInt32(args["card_index"]);
+-        var allEntries = merchantRoom.GetLocalInventory().CharacterCardEntries
+-            .Concat(merchantRoom.GetLocalInventory().ColorlessCardEntries).ToList();
++        var allEntries = inventory.CharacterCardEntries
++            .Concat(inventory.ColorlessCardEntries).ToList();
+         if (idx < 0 || idx >= allEntries.Count)
+             return Error($"Invalid card index {idx}");
+ 
+@@ -1287,7 +1721,7 @@ public class RunSimulator
+ 
+         try
+         {
+-            entry.OnTryPurchaseWrapper(merchantRoom.GetLocalInventory()).GetAwaiter().GetResult();
++            entry.OnTryPurchaseWrapper(inventory).GetAwaiter().GetResult();
+             _syncCtx.Pump();
+             Log($"Bought card: {entry.CreationResult?.Card?.GetType().Name ?? "?"} for {entry.Cost}g");
+         }
+@@ -1298,13 +1732,14 @@ public class RunSimulator
+ 
+     private Dictionary<string, object?> DoBuyRelic(Player player, Dictionary<string, object?>? args)
+     {
+-        if (_runState?.CurrentRoom is not MerchantRoom merchantRoom)
++        var inventory = GetActiveShopInventory();
++        if (inventory == null)
+             return Error("Not in a shop");
+         if (args == null || !args.ContainsKey("relic_index"))
+             return Error("buy_relic requires 'relic_index'");
+ 
+         var idx = Convert.ToInt32(args["relic_index"]);
+-        var entries = merchantRoom.GetLocalInventory().RelicEntries;
++        var entries = inventory.RelicEntries;
+         if (idx < 0 || idx >= entries.Count) return Error($"Invalid relic index {idx}");
+ 
+         var entry = entries[idx];
+@@ -1317,8 +1752,9 @@ public class RunSimulator
+             // Adroit, #80). Run the purchase on a background task and yield as soon as a
+             // pending selection appears so the caller can resolve it; the background task
+             // continues once the selector's TCS is fed by select_cards.
+-            var inv = merchantRoom.GetLocalInventory();
+-            var task = Task.Run(() => entry.OnTryPurchaseWrapper(inv));
++            var purchasedName = entry.Model?.GetType().Name ?? "?";
++            var purchasedCost = entry.Cost;
++            var task = Task.Run(() => entry.OnTryPurchaseWrapper(inventory));
+             for (int i = 0; i < 100; i++)
+             {
+                 _syncCtx.Pump();
+@@ -1329,12 +1765,12 @@ public class RunSimulator
+             }
+             if (_cardSelector.HasPending || _cardSelector.HasPendingReward || _pendingBundles != null)
+             {
+-                Log($"Buy relic {entry.Model.GetType().Name}: yielded for pending selection");
++                Log($"Buy relic {purchasedName}: yielded for pending selection");
+                 return DetectDecisionPoint();
+             }
+             if (!task.IsCompleted) task.Wait(2000);
+             _syncCtx.Pump();
+-            Log($"Bought relic: {entry.Model.GetType().Name} for {entry.Cost}g");
++            Log($"Bought relic: {purchasedName} for {purchasedCost}g");
+         }
+         catch (Exception ex) { return Error($"Buy relic failed: {ex.Message}"); }
+ 
+@@ -1343,13 +1779,14 @@ public class RunSimulator
+ 
+     private Dictionary<string, object?> DoBuyPotion(Player player, Dictionary<string, object?>? args)
+     {
+-        if (_runState?.CurrentRoom is not MerchantRoom merchantRoom)
++        var inventory = GetActiveShopInventory();
++        if (inventory == null)
+             return Error("Not in a shop");
+         if (args == null || !args.ContainsKey("potion_index"))
+             return Error("buy_potion requires 'potion_index'");
+ 
+         var idx = Convert.ToInt32(args["potion_index"]);
+-        var entries = merchantRoom.GetLocalInventory().PotionEntries;
++        var entries = inventory.PotionEntries;
+         if (idx < 0 || idx >= entries.Count) return Error($"Invalid potion index {idx}");
+ 
+         var entry = entries[idx];
+@@ -1358,9 +1795,9 @@ public class RunSimulator
+ 
+         try
+         {
+-            entry.OnTryPurchaseWrapper(merchantRoom.GetLocalInventory()).GetAwaiter().GetResult();
++            entry.OnTryPurchaseWrapper(inventory).GetAwaiter().GetResult();
+             _syncCtx.Pump();
+-            Log($"Bought potion: {entry.Model.GetType().Name} for {entry.Cost}g");
++            Log($"Bought potion: {entry.Model?.GetType().Name ?? "?"} for {entry.Cost}g");
+         }
+         catch (Exception ex)
+         {
+@@ -1373,17 +1810,18 @@ public class RunSimulator
+ 
+     private Dictionary<string, object?> DoRemoveCard(Player player)
+     {
+-        if (_runState?.CurrentRoom is not MerchantRoom merchantRoom)
++        var inventory = GetActiveShopInventory();
++        if (inventory == null)
+             return Error("Not in a shop");
+ 
+-        var removal = merchantRoom.GetLocalInventory().CardRemovalEntry;
++        var removal = inventory.CardRemovalEntry;
+         if (removal == null) return Error("No card removal available");
+         if (player.Gold < removal.Cost) return Error("Not enough gold");
+ 
+         try
+         {
+             // Run on background thread so card selection can pause (same pattern as event options)
+-            var task = Task.Run(() => removal.OnTryPurchaseWrapper(merchantRoom.GetLocalInventory()));
++            var task = Task.Run(() => removal.OnTryPurchaseWrapper(inventory));
+             for (int i = 0; i < 100; i++)
+             {
+                 _syncCtx.Pump();
+@@ -1436,27 +1874,97 @@ public class RunSimulator
+             return Error("select_cards requires 'indices' (comma-separated card indices)");
+ 
+         var indicesStr = args["indices"]?.ToString() ?? "";
+-        var indices = indicesStr.Split(',')
+-            .Select(s => int.TryParse(s.Trim(), out var v) ? v : -1)
+-            .Where(i => i >= 0)
+-            .ToArray();
++        var parts = indicesStr.Split(',', StringSplitOptions.RemoveEmptyEntries);
++        if (parts.Length == 0 || parts.Any(part => !int.TryParse(part.Trim(), out _)))
++            return Error("select_cards requires valid comma-separated integer indices");
++        var indices = parts.Select(part => int.Parse(part.Trim())).ToArray();
++        if (indices.Any(index => index < 0
++                || _cardSelector.PendingOptions == null
++                || index >= _cardSelector.PendingOptions.Count)
++            || indices.Distinct().Count() != indices.Length)
++            return Error("select_cards contains an invalid or duplicate index");
++        if (indices.Length < _cardSelector.PendingMinSelect
++            || indices.Length > _cardSelector.PendingMaxSelect)
++            return Error("select_cards violates the authoritative selection cardinality");
++
++        var resolvesPotionSelection = _pendingPotionSelectionGeneration > 0;
++        var potionGeneration = _pendingPotionSelectionGeneration;
++        var potion = _pendingPotionSelectionPotion;
++        var potionPlayer = _pendingPotionSelectionPlayer;
++        var potionSlot = _pendingPotionSelectionSlot;
++        var potionOptions = _pendingPotionSelectionOptions;
++        var preHand = _pendingPotionSelectionPreHand;
++        if (resolvesPotionSelection)
++        {
++            var tokenMatches = potion != null
++                && ReferenceEquals(potionPlayer, player)
++                && potionOptions != null
++                && preHand != null
++                && indices.Length == 1
++                && _cardSelector.PendingOptions != null
++                && _cardSelector.PendingOptions.Count == potionOptions.Count
++                && _cardSelector.PendingOptions.Zip(potionOptions)
++                    .All(pair => ReferenceEquals(pair.First, pair.Second));
++            if (!tokenMatches)
++                return Error("Potion selection token does not match the live card prompt");
++        }
+ 
+         Log($"Card selection: indices [{string.Join(",", indices)}]");
+         _cardSelector.ResolvePendingByIndices(indices);
+         _syncCtx.Pump();
+         WaitForActionExecutor();
+ 
+-        // Extra wait for rest-site SMITH: the background ChooseLocalOption task
+-        // needs time to complete the upgrade after card selection resolves.
+-        if (_runState?.CurrentRoom is RestSiteRoom)
++        if (resolvesPotionSelection)
++        {
++            var selected = potionOptions![indices[0]];
++            var hand = player.PlayerCombatState?.Hand?.Cards?.ToList() ?? new();
++            var selectedWasAbsent = !preHand!.Any(card => ReferenceEquals(card, selected));
++            var selectedIsPresent = hand.Any(card => ReferenceEquals(card, selected));
++            var handDelta = hand.Count - preHand!.Count;
++            var potionRemoved = potion != null
++                && player.PotionSlots.All(slot => !ReferenceEquals(slot, potion))
++                && potion.HasBeenRemovedFromState;
++            var settled = !_cardSelector.HasPending
++                && !_cardSelector.HasPendingReward
++                && !RunManager.Instance.ActionExecutor.IsRunning;
++            var verified = potionGeneration == _pendingPotionSelectionGeneration
++                && potion?.Id.Entry == "ATTACK_POTION"
++                && selectedWasAbsent
++                && selectedIsPresent
++                && handDelta == 1
++                && potionRemoved
++                && settled;
++            _lastPotionUseProof = new Dictionary<string, object?>
++            {
++                ["stage"] = "selection_completed",
++                ["selection_source"] = "potion",
++                ["source_model_id"] = potion?.Id.ToString(),
++                ["potion_index"] = potionSlot,
++                ["selection_generation"] = potionGeneration,
++                ["selected_index"] = indices[0],
++                ["selected_card_id"] = selected.Id.ToString(),
++                ["selected_reference_in_hand"] = selectedIsPresent,
++                ["hand_delta"] = handDelta,
++                ["potion_removed"] = potionRemoved,
++                ["executor_settled"] = settled,
++                ["postcondition_verified"] = verified,
++            };
++            ClearPendingPotionSelection();
++            if (!verified)
++                return Error("Attack Potion card-selection postcondition failed closed");
++        }
++
++        // Rest-site SMITH completes only after the card selection resolves. Trust
++        // the synchronizer result and authoritative remaining options: effects
++        // such as Miniature Tent legitimately keep the rest site open.
++        if (_runState?.CurrentRoom is RestSiteRoom restSiteRoom)
+         {
+-            Thread.Sleep(200);
++            if (!TryCompletePendingRestSiteChoice(out var restError))
++                return Error(restError);
+             _syncCtx.Pump();
+             WaitForActionExecutor();
+-            // Force to map after SMITH completes (same pattern as HEAL)
+-            Log("Card selection in rest site (SMITH), forcing to map");
+-            ForceToMap();
+-            return MapSelectState();
++            Log("Card selection in rest site (SMITH) resolved, refreshing authoritative options");
++            return RestSiteState(restSiteRoom);
+         }
+ 
+         // Extra wait for shop card removal: the purchase task needs to finish
+@@ -1468,6 +1976,22 @@ public class RunSimulator
+             Log("Card selection in shop (card removal), refreshing shop state");
+         }
+ 
++        // Event options can pause on a card prompt. Give the background Chosen()
++        // task time to finish after the selection resolves, otherwise the stale
++        // event options are exported again and an agent can repeat the reward.
++        if (_runState?.CurrentRoom is EventRoom)
++        {
++            for (int i = 0; i < 200; i++)
++            {
++                Thread.Sleep(10);
++                _syncCtx.Pump();
++                WaitForActionExecutor();
++                var localEvent = RunManager.Instance.EventSynchronizer?.GetLocalEvent();
++                if (localEvent == null || localEvent.IsFinished) break;
++            }
++            Log("Card selection in event resolved, refreshing event state");
++        }
++
+         return DetectDecisionPoint();
+     }
+ 
+@@ -1484,6 +2008,146 @@ public class RunSimulator
+     }
+ 
+     private Dictionary<string, object?> DoUsePotion(Player player, Dictionary<string, object?>? args)
++    {
++        if (args == null || !args.ContainsKey("potion_index"))
++            return Error("use_potion requires 'potion_index'");
++        if (_cardSelector.HasPending || _cardSelector.HasPendingReward)
++            return Error("Cannot start a potion use while another card selection is pending");
++
++        var idx = Convert.ToInt32(args["potion_index"]);
++        if (idx < 0 || idx >= player.PotionSlots.Count)
++            return Error($"Invalid potion slot {idx}, player has {player.PotionSlots.Count} slots");
++        var potion = player.GetPotionAtSlotIndex(idx);
++        if (potion == null)
++            return Error($"No potion at slot {idx}");
++        if (!CanUsePotionHeadlessly(potion))
++            return Error($"Potion {potion.Id.Entry} is not usable in the current native stage");
++
++        Creature? target = null;
++        if (potion.TargetType == TargetType.Self)
++        {
++            target = player.Creature;
++        }
++        else if (potion.TargetType == TargetType.AnyEnemy)
++        {
++            if (args.TryGetValue("target_index", out var targetValue)
++                && targetValue != null)
++            {
++                var targetIndex = Convert.ToInt32(targetValue);
++                var enemies = CombatManager.Instance.DebugOnlyGetState()?.Enemies?
++                    .Where(enemy => enemy != null && enemy.IsAlive).ToList() ?? new();
++                if (targetIndex < 0 || targetIndex >= enemies.Count)
++                    return Error($"Invalid potion target index {targetIndex}");
++                target = enemies[targetIndex];
++            }
++            else
++            {
++                var enemies = CombatManager.Instance.DebugOnlyGetState()?.Enemies?
++                    .Where(enemy => enemy != null && enemy.IsAlive).ToList() ?? new();
++                if (enemies.Count != 1)
++                    return Error($"Potion {potion.Id.Entry} requires one exact enemy target");
++                target = enemies[0];
++            }
++        }
++        // TargetedNoCreature intentionally remains null. Passing the player cancels Foul Potion.
++
++        var goldBefore = player.Gold;
++        var preHand = player.PlayerCombatState?.Hand?.Cards?.ToList() ?? new();
++        var history = _runState?.CurrentMapPointHistoryEntry?.GetEntry(player.NetId)?.PotionUsed;
++        var historyCountBefore = history?.Count;
++        _lastPotionUseProof = null;
++        ClearPendingPotionSelection();
++
++        try
++        {
++            Log($"Using potion through native queue: {potion.Id.Entry} slot={idx}");
++            potion.EnqueueManualUse(target);
++            WaitForActionExecutor();
++            _syncCtx.Pump();
++        }
++        catch (Exception ex)
++        {
++            return Error($"Use potion failed without fallback discard: {ex.Message}");
++        }
++
++        var removed = player.PotionSlots.All(slot => !ReferenceEquals(slot, potion))
++            && potion.HasBeenRemovedFromState;
++        if (_cardSelector.HasPending && _cardSelector.PendingOptions != null)
++        {
++            var options = _cardSelector.PendingOptions.ToList();
++            var distinctIds = options.Select(card => card.Id.ToString()).Distinct().Count();
++            var exactAttackPotionPrompt = potion.Id.Entry == "ATTACK_POTION"
++                && _cardSelector.PendingMinSelect == 0
++                && _cardSelector.PendingMaxSelect == 1
++                && options.Count == 3
++                && options.All(card => card.Type == CardType.Attack)
++                && distinctIds == options.Count
++                && removed;
++            if (!exactAttackPotionPrompt)
++                return Error("Potion card selection is outside the proven Attack Potion adapter");
++
++            _pendingPotionSelectionGeneration = ++_potionSelectionGeneration;
++            _pendingPotionSelectionPotion = potion;
++            _pendingPotionSelectionPlayer = player;
++            _pendingPotionSelectionSlot = idx;
++            _pendingPotionSelectionOptions = options;
++            _pendingPotionSelectionPreHand = preHand;
++            _lastPotionUseProof = new Dictionary<string, object?>
++            {
++                ["stage"] = "selection_pending",
++                ["selection_source"] = "potion",
++                ["source_model_id"] = potion.Id.ToString(),
++                ["potion_index"] = idx,
++                ["selection_generation"] = _pendingPotionSelectionGeneration,
++                ["option_count"] = options.Count,
++                ["can_skip"] = true,
++                ["potion_removed"] = true,
++                ["postcondition_verified"] = true,
++            };
++            return DetectDecisionPoint();
++        }
++
++        var historyAfter = _runState?.CurrentMapPointHistoryEntry?
++            .GetEntry(player.NetId)?.PotionUsed;
++        var historyVerified = historyCountBefore.HasValue
++            && historyAfter != null
++            && historyAfter.Count == historyCountBefore.Value + 1
++            && historyAfter.Last() == potion.Id;
++        var goldDelta = player.Gold - goldBefore;
++        var effectVerified = true;
++        int? expectedGoldDelta = null;
++        if (potion.Id.Entry == "FOUL_POTION"
++            && _runState?.CurrentRoom is MerchantRoom)
++        {
++            var goldVar = potion.DynamicVars.Values.FirstOrDefault(
++                value => value.Name.Equals("Gold", StringComparison.OrdinalIgnoreCase));
++            expectedGoldDelta = goldVar == null ? null : (int)goldVar.BaseValue;
++            effectVerified = expectedGoldDelta.HasValue
++                && goldDelta == expectedGoldDelta.Value;
++        }
++
++        if (!removed || !historyVerified || !effectVerified
++            || RunManager.Instance.ActionExecutor.IsRunning)
++        {
++            return Error(
++                "Potion use postcondition failed; the potion was not silently discarded");
++        }
++
++        _lastPotionUseProof = new Dictionary<string, object?>
++        {
++            ["stage"] = "completed",
++            ["source_model_id"] = potion.Id.ToString(),
++            ["potion_index"] = idx,
++            ["potion_removed"] = true,
++            ["history_appended"] = true,
++            ["gold_delta"] = goldDelta,
++            ["expected_gold_delta"] = expectedGoldDelta,
++            ["postcondition_verified"] = true,
++        };
++        return DetectDecisionPoint();
++    }
++
++    private Dictionary<string, object?> LegacyDoUsePotion(Player player, Dictionary<string, object?>? args)
+     {
+         if (args == null || !args.ContainsKey("potion_index"))
+             return Error("use_potion requires 'potion_index'");
+@@ -1570,9 +2234,9 @@ public class RunSimulator
+             return Error("discard_potion requires 'potion_index'");
+ 
+         var idx = Convert.ToInt32(args["potion_index"]);
+-        var potionsList = player.Potions?.ToList() ?? new();
+-        if (idx < 0 || idx >= potionsList.Count) return Error($"Invalid potion index {idx}");
+-        var potion = potionsList[idx];
++        if (idx < 0 || idx >= player.PotionSlots.Count)
++            return Error($"Invalid potion index {idx}");
++        var potion = player.GetPotionAtSlotIndex(idx);
+         if (potion == null) return Error($"No potion at index {idx}");
+ 
+         MegaCrit.Sts2.Core.Commands.PotionCmd.Discard(potion).GetAwaiter().GetResult();
+@@ -1580,64 +2244,352 @@ public class RunSimulator
+         return DetectDecisionPoint();
+     }
+ 
+-    private Dictionary<string, object?> DoChooseOption(Player player, Dictionary<string, object?>? args)
++    private async Task CaptureHeadlessRewardsSet(RewardsSet rewardsSet)
+     {
+-        if (args == null || !args.ContainsKey("option_index"))
+-            return Error("choose_option requires 'option_index'");
++        if (_runState?.CurrentRoom is TreasureRoom && _openingTreasureChest)
++        {
++            if (rewardsSet.Rewards.Count > 0)
++                throw new InvalidOperationException(
++                    "Nonempty treasure extra reward sets require an explicit headless adapter");
++            return;
++        }
+ 
+-        var optionIndex = Convert.ToInt32(args["option_index"]);
+-        Log($"Choosing option {optionIndex}");
++        // Preserve TestMode's normal auto-selection outside events. Event rewards are the
++        // only sets whose visible button order is replay-significant in this adapter.
++        if (_runState?.CurrentRoom is not EventRoom)
++        {
++            foreach (var reward in rewardsSet.Rewards)
++                await RunManager.Instance.RewardsSetSynchronizer.SelectLocalReward(reward);
++            return;
++        }
+ 
+-        // Dispatch based on ROOM TYPE (not event state) to avoid cross-contamination
+-        if (_runState?.CurrentRoom is RestSiteRoom restSiteRoom)
++        if (_pendingEventRewardsSet != null)
++            throw new InvalidOperationException("Nested event reward sets are not supported headlessly");
++
++        var completion = new TaskCompletionSource<bool>(
++            TaskCreationOptions.RunContinuationsAsynchronously);
++        _pendingEventRewardsSet = rewardsSet;
++        _pendingEventRewardsCompletion = completion;
++        _lastEventRewardClaimProof = null;
++        Log($"Captured event reward set {rewardsSet.Id} with {rewardsSet.Rewards.Count} rewards");
++        try
+         {
+-            Log($"Rest site: choosing option {optionIndex}");
+-            try
++            await completion.Task;
++        }
++        finally
++        {
++            if (ReferenceEquals(_pendingEventRewardsSet, rewardsSet))
+             {
+-                // Run on background thread so Smith card selection can pause
+-                var task = Task.Run(() => RunManager.Instance.RestSiteSynchronizer.ChooseLocalOption(optionIndex));
+-                for (int i = 0; i < 100; i++)
+-                {
+-                    _syncCtx.Pump();
+-                    if (_cardSelector.HasPending) break;
+-                    if (task.IsCompleted) break;
+-                    Thread.Sleep(10);
+-                }
+-                if (_cardSelector.HasPending)
+-                {
+-                    WaitForActionExecutor();
+-                    return DetectDecisionPoint();
+-                }
+-                if (!task.IsCompleted) task.Wait(2000);
+-                _syncCtx.Pump();
++                _pendingEventRewardsSet = null;
++                _pendingEventRewardsCompletion = null;
+             }
+-            catch (Exception ex)
++        }
++    }
++
++    private Dictionary<string, object?> DoClaimEventReward(
++        Player player, Dictionary<string, object?>? args)
++    {
++        if (_runState?.CurrentRoom is not EventRoom)
++            return Error("Event rewards can only be claimed in an event room");
++        if (_pendingEventRewardsSet == null)
++            return Error("No captured native event reward set");
++        if (_pendingEventRewardSelectionTask != null)
++            return Error("An event reward selection is already in progress");
++        if (args == null || !args.ContainsKey("reward_index"))
++            return Error("claim_reward requires 'reward_index'");
++
++        var visible = _pendingEventRewardsSet.Rewards
++            .Where(reward => !reward.SuccessfullySelected).ToList();
++        var index = Convert.ToInt32(args["reward_index"]);
++        if (index < 0 || index >= visible.Count)
++            return Error($"Invalid visible reward index {index}");
++
++        var reward = visible[index];
++        var goldBefore = player.Gold;
++        var relicsBefore = player.Relics.Count;
++        var potionsBefore = player.Potions?.Count(potion => potion != null) ?? 0;
++        var deckBefore = player.Deck.Cards.Count;
++        var specialCard = reward is SpecialCardReward
++            ? SpecialCardRewardCardField?.GetValue(reward) as CardModel
++            : null;
++        var specialWasInDeck = specialCard != null
++            && player.Deck.Cards.Any(card => ReferenceEquals(card, specialCard));
++
++        try
++        {
++            var task = Task.Run(
++                () => RunManager.Instance.RewardsSetSynchronizer.SelectLocalReward(reward));
++            _pendingEventRewardSelectionTask = task;
++            _pendingEventRewardSelection = reward;
++            for (int i = 0; i < 200; i++)
+             {
+-                Log($"Rest site ChooseLocalOption failed: {ex.Message}");
++                _syncCtx.Pump();
++                if (_cardSelector.HasPending || _cardSelector.HasPendingReward
++                    || _pendingBundles != null || task.IsCompleted)
++                    break;
++                Thread.Sleep(5);
+             }
+ 
+-            // After non-Smith rest site options (HEAL, etc.), the options may not clear.
+-            // Wait for the action to complete (heal/dig), then force transition to map.
+-            if (!_cardSelector.HasPending)
++            if (!task.IsCompleted
++                && (_cardSelector.HasPending || _cardSelector.HasPendingReward
++                    || _pendingBundles != null))
+             {
+-                Log("Rest site: option chosen (non-Smith), waiting for action then forcing to map");
+-                // Give the action time to complete (heal HP, dig for relic, etc.)
+-                WaitForActionExecutor();
+-                _syncCtx.Pump();
+-                Thread.Sleep(200);
+-                _syncCtx.Pump();
+-                WaitForActionExecutor();
+-                ForceToMap();
+-                return MapSelectState();
++                _lastEventRewardClaimProof = new Dictionary<string, object?>
++                {
++                    ["reward_index"] = index,
++                    ["reward_type"] = reward.GetType().Name,
++                    ["disposition"] = "card_reward_open",
++                    ["selection_result"] = null,
++                    ["successfully_selected"] = reward.SuccessfullySelected,
++                    ["postcondition_verified"] = reward is CardReward
++                        && _cardSelector.HasPendingReward,
++                };
++                if (_lastEventRewardClaimProof["postcondition_verified"] is not true)
++                    return Error("Event reward opened an unsupported subordinate selection");
++                return DetectDecisionPoint();
+             }
++
++            if (!task.IsCompleted)
++                task.Wait(2000);
++            if (!task.IsCompleted)
++                return Error("Event reward selection did not complete within 2 seconds");
++
++            var selected = task.GetAwaiter().GetResult();
++            _pendingEventRewardSelectionTask = null;
++            _pendingEventRewardSelection = null;
++            _syncCtx.Pump();
++
++            var potionsAfter = player.Potions?.Count(potion => potion != null) ?? 0;
++            var unchanged = player.Gold == goldBefore
++                && player.Relics.Count == relicsBefore
++                && potionsAfter == potionsBefore
++                && player.Deck.Cards.Count == deckBefore;
++            var applied = reward switch
++            {
++                GoldReward => player.Gold > goldBefore,
++                RelicReward => player.Relics.Count > relicsBefore,
++                PotionReward => potionsAfter > potionsBefore,
++                SpecialCardReward => specialCard != null
++                    && !specialWasInDeck
++                    && player.Deck.Cards.Count == deckBefore + 1
++                    && player.Deck.Cards.Any(card => ReferenceEquals(card, specialCard)),
++                CardReward => player.Deck.Cards.Count > deckBefore,
++                _ => false,
++            };
++            var disposition = selected && reward.SuccessfullySelected && applied
++                ? "native_collected"
++                : !selected && !reward.SuccessfullySelected && unchanged
++                    ? "retained_unselected"
++                    : "unhandled";
++            var proven = selected ? applied : unchanged;
++            _lastEventRewardClaimProof = new Dictionary<string, object?>
++            {
++                ["reward_index"] = index,
++                ["reward_type"] = reward.GetType().Name,
++                ["disposition"] = disposition,
++                ["selection_result"] = selected,
++                ["successfully_selected"] = reward.SuccessfullySelected,
++                ["postcondition_verified"] = proven,
++            };
++            if (disposition == "unhandled" || !proven)
++                return Error($"Native event reward postcondition was not verified for {reward.GetType().Name}");
++
++            if (_pendingEventRewardsSet.AllRewardsSuccessfullySelected
++                && !TryReleaseEventRewardSelector(out var completionError))
++                return Error(completionError);
++            return DetectDecisionPoint();
+         }
+-        // For events — use EventSynchronizer
+-        // Run Chosen() on a background thread so card selections can pause
+-        else if (_runState?.CurrentRoom is EventRoom)
++        catch (Exception ex)
+         {
+-            var eventSync = RunManager.Instance.EventSynchronizer;
+-            var localEvent = eventSync?.GetLocalEvent();
+-            if (localEvent != null && !localEvent.IsFinished)
++            _pendingEventRewardSelectionTask = null;
++            _pendingEventRewardSelection = null;
++            return Error($"Claim event reward failed: {ex.GetBaseException().Message}");
++        }
++    }
++
++    private bool TryFinishPendingEventRewardSelection(out string error)
++    {
++        var task = _pendingEventRewardSelectionTask;
++        var reward = _pendingEventRewardSelection;
++        if (task == null || reward == null)
++        {
++            error = string.Empty;
++            return true;
++        }
++        for (int i = 0; i < 200 && !task.IsCompleted; i++)
++        {
++            _syncCtx.Pump();
++            Thread.Sleep(5);
++        }
++        if (!task.IsCompleted)
++        {
++            error = "Event reward selection did not finish after subordinate selection";
++            return false;
++        }
++        try
++        {
++            var selected = task.GetAwaiter().GetResult();
++            _pendingEventRewardSelectionTask = null;
++            _pendingEventRewardSelection = null;
++            if (selected != reward.SuccessfullySelected)
++            {
++                error = "Event reward selection result disagrees with native reward state";
++                return false;
++            }
++            if (_pendingEventRewardsSet?.AllRewardsSuccessfullySelected == true)
++                return TryReleaseEventRewardSelector(out error);
++        }
++        catch (Exception ex)
++        {
++            _pendingEventRewardSelectionTask = null;
++            _pendingEventRewardSelection = null;
++            error = $"Event reward selection failed: {ex.GetBaseException().Message}";
++            return false;
++        }
++        error = string.Empty;
++        return true;
++    }
++
++    private bool TryReleaseEventRewardSelector(out string error)
++    {
++        var completion = _pendingEventRewardsCompletion;
++        if (completion == null)
++        {
++            error = "Captured event reward set has no completion source";
++            return false;
++        }
++        var allRewardsSelected = _pendingEventRewardsSet?.AllRewardsSuccessfullySelected == true;
++        completion.TrySetResult(true);
++        var task = _pendingEventOptionTask;
++        for (int i = 0; task != null && !task.IsCompleted && i < 200; i++)
++        {
++            _syncCtx.Pump();
++            Thread.Sleep(5);
++        }
++        if (task != null && !task.IsCompleted)
++        {
++            error = "Event option did not resume after reward completion";
++            return false;
++        }
++        try
++        {
++            task?.GetAwaiter().GetResult();
++            _pendingEventOptionTask = null;
++            _syncCtx.Pump();
++        }
++        catch (Exception ex)
++        {
++            _pendingEventOptionTask = null;
++            var localEvent = RunManager.Instance.EventSynchronizer?.GetLocalEvent();
++            if (allRewardsSelected && localEvent?.IsFinished == true
++                && ex.GetBaseException().Message.Contains(
++                    "Tried to set event options after event was finished",
++                    StringComparison.OrdinalIgnoreCase))
++            {
++                const string guard = "finished_event_reward_option_postlude_v0.107.1";
++                Log($"Runtime guard: {guard}");
++                _lastEventRewardClaimProof ??= new Dictionary<string, object?>();
++                _lastEventRewardClaimProof["runtime_guard"] = guard;
++                error = string.Empty;
++                return true;
++            }
++            error = $"Event option failed after rewards: {ex.GetBaseException().Message}";
++            return false;
++        }
++        error = string.Empty;
++        return true;
++    }
++
++    private Dictionary<string, object?> DoSkipEventRewards(Player player)
++    {
++        if (_runState?.CurrentRoom is not EventRoom)
++            return Error("Event rewards can only be skipped in an event room");
++        if (_pendingEventRewardsSet == null)
++            return Error("No captured native event reward set");
++        if (_pendingEventRewardsSet.DisallowSkipping)
++            return Error("This event reward set disallows skipping");
++        if (_pendingEventRewardSelectionTask != null)
++            return Error("Cannot skip while an event reward selection is in progress");
++        try
++        {
++            RunManager.Instance.RewardsSetSynchronizer.SkipLocalRewardsSet();
++            if (!TryReleaseEventRewardSelector(out var error))
++                return Error(error);
++            return DetectDecisionPoint();
++        }
++        catch (Exception ex)
++        {
++            return Error($"Skip event rewards failed: {ex.GetBaseException().Message}");
++        }
++    }
++
++    private Dictionary<string, object?> DoOpenFakeShop(Player player)
++    {
++        if (_runState?.CurrentRoom is not EventRoom)
++            return Error("Fake shop can only open in an event room");
++        var localEvent = RunManager.Instance.EventSynchronizer?.GetLocalEvent();
++        if (localEvent is not FakeMerchant fakeMerchant)
++            return Error("The current event is not FakeMerchant");
++        if (fakeMerchant.StartedFight)
++            return Error("FakeMerchant inventory cannot open after its fight starts");
++        if (fakeMerchant.Inventory == null)
++            return Error("FakeMerchant has no native inventory");
++        if (_fakeShopOpen)
++            return Error("FakeMerchant inventory is already open");
++        _fakeShopOpen = true;
++        return ShopState(fakeMerchant.Inventory, player, isFakeShop: true);
++    }
++
++    private Dictionary<string, object?> DoChooseOption(Player player, Dictionary<string, object?>? args)
++    {
++        if (args == null || !args.ContainsKey("option_index"))
++            return Error("choose_option requires 'option_index'");
++
++        var optionIndex = Convert.ToInt32(args["option_index"]);
++        Log($"Choosing option {optionIndex}");
++
++        // Dispatch based on ROOM TYPE (not event state) to avoid cross-contamination
++        if (_runState?.CurrentRoom is RestSiteRoom restSiteRoom)
++        {
++            Log($"Rest site: choosing option {optionIndex}");
++            try
++            {
++                // Run on background thread so Smith card selection can pause
++                _pendingRestSiteChoiceTask = Task.Run(
++                    () => RunManager.Instance.RestSiteSynchronizer.ChooseLocalOption(optionIndex));
++                for (int i = 0; i < 100; i++)
++                {
++                    _syncCtx.Pump();
++                    if (_cardSelector.HasPending) break;
++                    if (_pendingRestSiteChoiceTask.IsCompleted) break;
++                    Thread.Sleep(10);
++                }
++                if (_cardSelector.HasPending)
++                {
++                    WaitForActionExecutor();
++                    return DetectDecisionPoint();
++                }
++            }
++            catch (Exception ex)
++            {
++                _pendingRestSiteChoiceTask = null;
++                return Error($"Rest site ChooseLocalOption failed: {ex.Message}");
++            }
++
++            if (!TryCompletePendingRestSiteChoice(out var restError))
++                return Error(restError);
++            _syncCtx.Pump();
++            WaitForActionExecutor();
++            Log("Rest site: option resolved, refreshing authoritative options");
++            return RestSiteState(restSiteRoom);
++        }
++        // For events — use EventSynchronizer
++        // Run Chosen() on a background thread so card selections can pause
++        else if (_runState?.CurrentRoom is EventRoom)
++        {
++            var eventSync = RunManager.Instance.EventSynchronizer;
++            var localEvent = eventSync?.GetLocalEvent();
++            if (localEvent != null && !localEvent.IsFinished)
+             {
+                 var options = localEvent.CurrentOptions;
+                 var optCountBefore = options?.Count ?? 0;
+@@ -1648,22 +2600,58 @@ public class RunSimulator
+                         _eventOptionChosen = true;
+                         _lastEventOptionCount = options.Count;
+                         // Run on thread pool so GetSelectedCards/GetSelectedCardReward can block
+-                        var task = Task.Run(() => options[optionIndex].Chosen());
++                        _pendingEventOptionTask = Task.Run(() => options[optionIndex].Chosen());
+                         for (int i = 0; i < 100; i++)
+                         {
+                             _syncCtx.Pump();
+                             if (_cardSelector.HasPending || _cardSelector.HasPendingReward) break;
+                             if (_pendingBundles != null) break;
+-                            if (task.IsCompleted) break;
++                            if (_pendingEventRewardsSet != null) break;
++                            if (_pendingEventOptionTask.IsCompleted) break;
+                             Thread.Sleep(10);
+                         }
+-                        if (_cardSelector.HasPending || _cardSelector.HasPendingReward || _pendingBundles != null)
++                        if (_cardSelector.HasPending || _cardSelector.HasPendingReward
++                            || _pendingBundles != null || _pendingEventRewardsSet != null)
+                         {
+                             WaitForActionExecutor();
+                             return DetectDecisionPoint();
+                         }
+-                        if (!task.IsCompleted) task.Wait(2000);
++                        if (!_pendingEventOptionTask.IsCompleted)
++                            _pendingEventOptionTask.Wait(2000);
++                        if (!_pendingEventOptionTask.IsCompleted)
++                            return Error("Event option did not complete within 2 seconds");
++                        _pendingEventOptionTask.GetAwaiter().GetResult();
++                        _pendingEventOptionTask = null;
+                         _syncCtx.Pump();
++
++                        // Amalgamator leaves both merge options visible after their eligible
++                        // cards are exhausted. In the normal UI the player can leave, but the
++                        // standalone event state exposes no leave action. A merge that produces
++                        // no selector is an exhausted option; leave only after every currently
++                        // visible Amalgamator option has independently produced that no-op.
++                        var isAmalgamator = localEvent.GetType().Name.Contains(
++                            "Amalgamator", StringComparison.OrdinalIgnoreCase)
++                            || options.Any(option => option.TextKey?.StartsWith(
++                                "AMALGAMATOR.", StringComparison.OrdinalIgnoreCase) == true);
++                        if (isAmalgamator
++                            && !_cardSelector.HasPending
++                            && !_cardSelector.HasPendingReward
++                            && _pendingBundles == null)
++                        {
++                            if (!ReferenceEquals(_trackedAmalgamatorEvent, localEvent))
++                            {
++                                _trackedAmalgamatorEvent = localEvent;
++                                _exhaustedAmalgamatorOptions.Clear();
++                            }
++                            _exhaustedAmalgamatorOptions.Add(optionIndex);
++                            if (Enumerable.Range(0, options.Count)
++                                .All(_exhaustedAmalgamatorOptions.Contains))
++                            {
++                                Log("Amalgamator options exhausted, proceeding to map");
++                                ForceToMap();
++                                return MapSelectState();
++                            }
++                        }
+                     }
+                     catch (Exception ex) { Log($"Event choose: {ex.Message}"); }
+                 }
+@@ -1679,9 +2667,55 @@ public class RunSimulator
+         return DetectDecisionPoint();
+     }
+ 
++    private bool TryCompletePendingRestSiteChoice(out string error)
++    {
++        var task = _pendingRestSiteChoiceTask;
++        if (task == null)
++        {
++            error = "No pending rest-site choice task";
++            return false;
++        }
++
++        for (int i = 0; i < 200 && !task.IsCompleted; i++)
++        {
++            _syncCtx.Pump();
++            Thread.Sleep(10);
++        }
++        if (!task.IsCompleted)
++        {
++            error = "Rest-site choice did not complete within 2 seconds";
++            return false;
++        }
++
++        try
++        {
++            var succeeded = task.GetAwaiter().GetResult();
++            _pendingRestSiteChoiceTask = null;
++            if (!succeeded)
++            {
++                error = "Rest-site synchronizer rejected the selected option";
++                return false;
++            }
++        }
++        catch (Exception ex)
++        {
++            _pendingRestSiteChoiceTask = null;
++            error = $"Rest-site choice failed: {ex.Message}";
++            return false;
++        }
++
++        error = string.Empty;
++        return true;
++    }
++
+     private Dictionary<string, object?> DoLeaveRoom(Player player)
+     {
++        if (_runState?.CurrentRoom is TreasureRoom && !_treasureRelicTaken)
++            return Error("Treasure room cannot be left before its relic session is completed");
++
+         Log("Leaving room");
++        _fakeShopOpen = false;
++        _normalShopOpen = false;
+         try { RunManager.Instance.ProceedFromTerminalRewardsScreen().GetAwaiter().GetResult(); }
+         catch { }
+         _syncCtx.Pump();
+@@ -1697,6 +2731,9 @@ public class RunSimulator
+                 RunManager.Instance.EnterRoom(new MapRoom()).GetAwaiter().GetResult();
+                 _syncCtx.Pump();
+                 WaitForActionExecutor();
++                ResetTreasureTracking();
++                ResetShopTracking();
++                ResetPotionTracking();
+             }
+             catch (Exception ex) { Log($"Force leave: {ex.Message}"); }
+         }
+@@ -1844,6 +2881,10 @@ public class RunSimulator
+                 ["cards"] = cards,
+                 ["can_skip"] = true,
+                 ["from_event"] = true,
++                ["replay_reward_queue"] = _pendingEventRewardsSet != null
++                    ? new List<Dictionary<string, object?>>()
++                    : null,
++                ["reward_claim_proof"] = _lastEventRewardClaimProof,
+                 ["player"] = PlayerSummary(_runState!.Players[0]),
+             };
+         }
+@@ -1881,6 +2922,9 @@ public class RunSimulator
+                 ["cards"] = opts,
+                 ["min_select"] = _cardSelector.PendingMinSelect,
+                 ["max_select"] = _cardSelector.PendingMaxSelect,
++                ["selection_source"] = _pendingPotionSelectionGeneration > 0
++                    ? "potion" : null,
++                ["potion_use_proof"] = _lastPotionUseProof,
+                 ["player"] = PlayerSummary(player),
+             };
+         }
+@@ -2182,6 +3226,12 @@ public class RunSimulator
+                 ["stats"] = stats.Count > 0 ? stats : null,
+                 ["description"] = _loc.Bilingual("cards", c.Id.Entry + ".description"),
+             };
++            try
++            {
++                if (NetCombatCardDb.Instance.TryGetCardId(c, out uint combatCardId))
++                    cardInfo["combat_card_id"] = combatCardId;
++            }
++            catch { }
+             if (starCost > 0)
+             {
+                 cardInfo["star_cost"] = starCost;
+@@ -2265,6 +3315,8 @@ public class RunSimulator
+                 return new Dictionary<string, object?>
+                 {
+                     ["index"] = i,
++                    ["combat_id"] = e.CombatId,
++                    ["id"] = e.Monster?.Id.ToString(),
+                     ["name"] = _loc.Monster(e.Monster?.Id.Entry ?? "UNKNOWN"),
+                     ["hp"] = e.CurrentHp,
+                     ["max_hp"] = e.MaxHp,
+@@ -2288,6 +3340,7 @@ public class RunSimulator
+             ["type"] = "decision",
+             ["decision"] = "combat_play",
+             ["context"] = RunContext(),
++            ["encounter_id"] = (_runState?.CurrentRoom as CombatRoom)?.Encounter?.Id.ToString(),
+             ["round"] = combatState?.RoundNumber ?? 0,
+             ["energy"] = pcs?.Energy ?? 0,
+             ["max_energy"] = pcs?.MaxEnergy ?? 0,
+@@ -2297,6 +3350,7 @@ public class RunSimulator
+             ["player_powers"] = playerPowers?.Count > 0 ? playerPowers : null,
+             ["draw_pile_count"] = pcs?.DrawPile?.Cards?.Count ?? 0,
+             ["discard_pile_count"] = pcs?.DiscardPile?.Cards?.Count ?? 0,
++            ["potion_use_proof"] = _lastPotionUseProof,
+         };
+ 
+         // Character-specific mechanics
+@@ -2358,6 +3412,7 @@ public class RunSimulator
+         if (_pendingRewards == null && !_rewardsProcessed)
+         {
+             _goldBeforeCombat = player.Gold;
++            _replayRewardQueue.Clear();
+             try
+             {
+                 var rewardsSet = new RewardsSet(player).WithRewardsFromRoom(combatRoom);
+@@ -2367,19 +3422,102 @@ public class RunSimulator
+                 var rewards = rewardsSet.Rewards;
+                 _syncCtx.Pump();
+ 
+-                // Auto-collect gold and potions, but present card choices to agent
++                // Apply direct rewards once while preserving the visible reward-button
++                // semantics needed by RunReplays. A false selection result (for example,
++                // a potion with a full belt) remains visible at the same queue index.
+                 var cardRewards = new List<CardReward>();
+-                foreach (var reward in rewards)
++                foreach (var reward in rewards.ToList())
+                 {
+                     if (reward is GoldReward || reward is MegaCrit.Sts2.Core.Rewards.RelicReward
+-                        || reward is MegaCrit.Sts2.Core.Rewards.PotionReward)
++                        || reward is MegaCrit.Sts2.Core.Rewards.PotionReward
++                        || reward is SpecialCardReward)
+                     {
+-                        try { reward.SelectUnsynchronized().GetAwaiter().GetResult(); _syncCtx.Pump(); }
+-                        catch (Exception ex) { Log($"Auto-collect reward: {ex.Message}"); }
++                        var goldBefore = player.Gold;
++                        var relicsBefore = player.Relics.Count;
++                        var potionsBefore = player.Potions?.Count(potion => potion != null) ?? 0;
++                        var deckBefore = player.Deck.Cards.Count;
++                        var specialCard = reward is SpecialCardReward
++                            ? SpecialCardRewardCardField?.GetValue(reward) as CardModel
++                            : null;
++                        var specialWasInDeck = specialCard != null
++                            && player.Deck.Cards.Any(card => ReferenceEquals(card, specialCard));
++                        try
++                        {
++                            var selected = reward.SelectUnsynchronized().GetAwaiter().GetResult();
++                            _syncCtx.Pump();
++                            var potionsAfter = player.Potions?.Count(potion => potion != null) ?? 0;
++                            var unchanged = player.Gold == goldBefore
++                                && player.Relics.Count == relicsBefore
++                                && potionsAfter == potionsBefore
++                                && player.Deck.Cards.Count == deckBefore;
++                            var applied = reward switch
++                            {
++                                GoldReward => player.Gold > goldBefore,
++                                MegaCrit.Sts2.Core.Rewards.RelicReward
++                                    => player.Relics.Count > relicsBefore,
++                                MegaCrit.Sts2.Core.Rewards.PotionReward
++                                    => potionsAfter > potionsBefore,
++                                SpecialCardReward
++                                    => specialCard != null
++                                        && !specialWasInDeck
++                                        && player.Deck.Cards.Count == deckBefore + 1
++                                        && player.Deck.Cards.Any(
++                                            card => ReferenceEquals(card, specialCard)),
++                                _ => false,
++                            };
++                            var disposition = selected
++                                && reward.SuccessfullySelected
++                                && applied
++                                    ? reward is SpecialCardReward
++                                        ? "direct_collected"
++                                        : "auto_collected"
++                                    : !selected
++                                        && !reward.SuccessfullySelected
++                                        && unchanged
++                                            ? "retained_unselected"
++                                            : "unhandled";
++                            _replayRewardQueue.Add(new Dictionary<string, object?>
++                            {
++                                ["reward_type"] = reward.GetType().Name,
++                                ["disposition"] = disposition,
++                                ["selection_result"] = selected,
++                                ["successfully_selected"] = reward.SuccessfullySelected,
++                                ["postcondition_verified"] = selected ? applied : unchanged,
++                            });
++                        }
++                        catch (Exception ex)
++                        {
++                            Log($"Auto-collect reward: {ex.Message}");
++                            _replayRewardQueue.Add(new Dictionary<string, object?>
++                            {
++                                ["reward_type"] = reward.GetType().Name,
++                                ["disposition"] = "unhandled",
++                                ["selection_result"] = null,
++                                ["successfully_selected"] = reward.SuccessfullySelected,
++                                ["postcondition_verified"] = false,
++                            });
++                        }
+                     }
+                     else if (reward is CardReward cr)
+                     {
+                         cardRewards.Add(cr);
++                        _replayRewardQueue.Add(new Dictionary<string, object?>
++                        {
++                            ["reward_type"] = reward.GetType().Name,
++                            ["disposition"] = cardRewards.Count == 1
++                                ? "card_reward_open"
++                                : "unhandled",
++                            ["postcondition_verified"] = cardRewards.Count == 1,
++                        });
++                    }
++                    else
++                    {
++                        _replayRewardQueue.Add(new Dictionary<string, object?>
++                        {
++                            ["reward_type"] = reward.GetType().Name,
++                            ["disposition"] = "unhandled",
++                            ["postcondition_verified"] = false,
++                        });
+                     }
+                 }
+ 
+@@ -2458,15 +3596,22 @@ public class RunSimulator
+             ["type"] = "decision",
+             ["decision"] = "card_reward",
+             ["context"] = RunContext(),
++            ["encounter_id"] = combatRoom?.Encounter?.Id.ToString(),
++            ["turns_taken"] = combatRoom?.CombatState?.RoundNumber,
+             ["cards"] = cards,
+             ["can_skip"] = _pendingCardReward.CanSkip,
+             ["gold_earned"] = _runState!.Players[0].Gold - _goldBeforeCombat,
++            ["replay_reward_queue"] = _replayRewardQueue
++                .Select(entry => new Dictionary<string, object?>(entry))
++                .ToList(),
+             ["player"] = PlayerSummary(_runState!.Players[0]),
+         };
+     }
+ 
+     private void ForceToMap()
+     {
++        _pendingRestSiteChoiceTask = null;
++        _fakeShopOpen = false;
+         try
+         {
+             RunManager.Instance.ProceedFromTerminalRewardsScreen().GetAwaiter().GetResult();
+@@ -2476,15 +3621,117 @@ public class RunSimulator
+ 
+         if (_runState?.CurrentRoom is not MapRoom)
+         {
+-            try { RunManager.Instance.EnterRoom(new MapRoom()).GetAwaiter().GetResult(); _syncCtx.Pump(); }
++            try
++            {
++                RunManager.Instance.EnterRoom(new MapRoom()).GetAwaiter().GetResult();
++                _syncCtx.Pump();
++                ResetTreasureTracking();
++                ResetShopTracking();
++                ResetPotionTracking();
++            }
+             catch (Exception ex) { Log($"ForceToMap: {ex.Message}"); }
+         }
+     }
+ 
++    private Dictionary<string, object?> EventRewardState(RewardsSet rewardsSet)
++    {
++        var rewards = rewardsSet.Rewards
++            .Where(reward => !reward.SuccessfullySelected)
++            .Select((reward, index) =>
++            {
++                string? entityId = reward switch
++                {
++                    PotionReward potion => potion.Potion?.Id.ToString(),
++                    RelicReward relic => relic.Relic?.Id.ToString(),
++                    SpecialCardReward special =>
++                        (SpecialCardRewardCardField?.GetValue(special) as CardModel)?.Id.ToString(),
++                    _ => null,
++                };
++                string? name = reward switch
++                {
++                    PotionReward potion => potion.Potion == null
++                        ? null : _loc.Potion(potion.Potion.Id.Entry),
++                    RelicReward relic => relic.Relic == null
++                        ? null : _loc.Relic(relic.Relic.Id.Entry),
++                    SpecialCardReward special =>
++                        SpecialCardRewardCardField?.GetValue(special) is CardModel card
++                            ? _loc.Card(card.Id.Entry) : null,
++                    _ => null,
++                };
++                return new Dictionary<string, object?>
++                {
++                    ["index"] = index,
++                    ["reward_type"] = reward.GetType().Name,
++                    ["entity_id"] = entityId,
++                    ["name"] = name,
++                    ["amount"] = reward is GoldReward gold ? gold.Amount : null,
++                };
++            }).ToList();
++
++        return new Dictionary<string, object?>
++        {
++            ["type"] = "decision",
++            ["decision"] = "event_reward",
++            ["event_stage"] = "reward_set",
++            ["context"] = RunContext(),
++            ["rewards"] = rewards,
++            ["can_skip"] = !rewardsSet.DisallowSkipping,
++            ["reward_claim_proof"] = _lastEventRewardClaimProof,
++            ["player"] = PlayerSummary(rewardsSet.Player),
++        };
++    }
++
++    private Dictionary<string, object?> FakeShopReadyState(FakeMerchant fakeMerchant)
++    {
++        return new Dictionary<string, object?>
++        {
++            ["type"] = "decision",
++            ["decision"] = "fake_shop",
++            ["event_stage"] = "fake_shop_ready",
++            ["context"] = RunContext(),
++            ["event_id"] = fakeMerchant.Id.ToString(),
++            ["inventory_present"] = fakeMerchant.Inventory != null,
++            ["started_fight"] = fakeMerchant.StartedFight,
++            ["player"] = PlayerSummary(_runState!.Players[0]),
++        };
++    }
++
++    private Dictionary<string, object?> EventProceedState(EventModel localEvent)
++    {
++        return new Dictionary<string, object?>
++        {
++            ["type"] = "decision",
++            ["decision"] = "event_choice",
++            ["event_stage"] = "proceed",
++            ["context"] = RunContext(),
++            ["event_name"] = _loc.Event(localEvent.Id.Entry),
++            ["options"] = new List<Dictionary<string, object?>>(),
++            ["reward_claim_proof"] = _lastEventRewardClaimProof,
++            ["player"] = PlayerSummary(_runState!.Players[0]),
++        };
++    }
++
++    private Dictionary<string, object?> UnknownEventStage(string message)
++    {
++        Log(message);
++        return new Dictionary<string, object?>
++        {
++            ["type"] = "decision",
++            ["decision"] = "event_blocked",
++            ["event_stage"] = "unknown_blocked",
++            ["context"] = RunContext(),
++            ["message"] = message,
++            ["player"] = _runState == null ? null : PlayerSummary(_runState.Players[0]),
++        };
++    }
++
+     private Dictionary<string, object?> EventChoiceState(EventRoom eventRoom)
+     {
+-        var localEvent = RunManager.Instance.EventSynchronizer?.GetLocalEvent();
+         _syncCtx.Pump();
++        if (_pendingEventRewardsSet != null)
++            return EventRewardState(_pendingEventRewardsSet);
++
++        var localEvent = RunManager.Instance.EventSynchronizer?.GetLocalEvent();
+ 
+         // Reset the choice-tracking flag once we re-export the event state. Earlier this
+         // block force-finished events whose option count was unchanged, but that incorrectly
+@@ -2492,32 +3739,48 @@ public class RunSimulator
+         // instead and let DetectDecisionPoint show the current options for the next choice.
+         if (_eventOptionChosen) _eventOptionChosen = false;
+ 
+-        // If event is finished, proceed to map
+-        if (localEvent == null || localEvent.IsFinished)
++        if (localEvent == null)
+         {
+-            Log($"Event {localEvent?.GetType().Name ?? "null"} finished, proceeding");
+-            try
+-            {
+-                RunManager.Instance.ProceedFromTerminalRewardsScreen().GetAwaiter().GetResult();
+-                _syncCtx.Pump();
+-            }
+-            catch { }
+-            // Force to map if still in event room
+-            if (_runState?.CurrentRoom is EventRoom)
+-            {
+-                try { RunManager.Instance.EnterRoom(new MapRoom()).GetAwaiter().GetResult(); _syncCtx.Pump(); }
+-                catch { }
+-            }
+-            return _runState?.CurrentRoom is MapRoom ? MapSelectState() : DetectDecisionPoint();
++            return UnknownEventStage("Event synchronizer has no local event");
++        }
++
++        // The Future of Potions derives one option per potion slot. With only empty slots,
++        // v0.107.1 reports those options as unlocked even though Chosen() is a native no-op.
++        // Treat that exact impossible inventory state as an exhausted event instead of
++        // exporting legal actions that cannot change the run. Keep the guard deliberately
++        // narrower than other potion events and preserve it in the returned state metadata.
++        if (string.Equals(
++                localEvent.Id?.Entry,
++                "THE_FUTURE_OF_POTIONS",
++                StringComparison.OrdinalIgnoreCase)
++            && (_runState!.Players[0].Potions?.Count(potion => potion != null) ?? 0) == 0)
++        {
++            const string guard = "future_potions_empty_inventory_skip_v0.107.1";
++            Log($"Runtime guard: {guard}");
++            ForceToMap();
++            var mapState = MapSelectState();
++            mapState["runtime_guard"] = guard;
++            return mapState;
++        }
++
++        // FakeMerchant has no ordinary options. Its native inventory is the event's primary
++        // interaction and must be recognized before empty-option handling.
++        if (localEvent is FakeMerchant fakeMerchant && !fakeMerchant.StartedFight)
++        {
++            if (fakeMerchant.Inventory == null)
++                return UnknownEventStage("FakeMerchant native inventory is missing");
++            if (_fakeShopOpen)
++                return ShopState(fakeMerchant.Inventory, _runState!.Players[0], isFakeShop: true);
++            return FakeShopReadyState(fakeMerchant);
+         }
+ 
+         var currentOptions = localEvent.CurrentOptions;
+         if (currentOptions == null || currentOptions.Count == 0)
+         {
+-            Log($"Event {localEvent.GetType().Name} has no options, auto-skipping");
+-            try { RunManager.Instance.EnterRoom(new MapRoom()).GetAwaiter().GetResult(); _syncCtx.Pump(); }
+-            catch { }
+-            return MapSelectState();
++            if (localEvent.IsFinished)
++                return EventProceedState(localEvent);
++            return UnknownEventStage(
++                $"Unsupported zero-option event stage: {localEvent.GetType().Name}");
+         }
+ 
+         var options = currentOptions
+@@ -2653,6 +3916,7 @@ public class RunSimulator
+             ["event_name"] = eventName,
+             ["description"] = eventDesc,
+             ["options"] = options,
++            ["reward_claim_proof"] = _lastEventRewardClaimProof,
+             ["player"] = PlayerSummary(_runState!.Players[0]),
+         };
+     }
+@@ -2691,7 +3955,41 @@ public class RunSimulator
+     private Dictionary<string, object?> ShopState(MerchantRoom merchantRoom, Player player)
+     {
+         var inv = merchantRoom.GetLocalInventory();
+-        if (inv == null) { ForceToMap(); return MapSelectState(); }
++        if (inv == null)
++        {
++            return new Dictionary<string, object?>
++            {
++                ["type"] = "decision",
++                ["decision"] = "shop_blocked",
++                ["context"] = RunContext(),
++                ["message"] = "MerchantRoom native inventory is missing",
++                ["player"] = PlayerSummary(player),
++            };
++        }
++        if (!_normalShopOpen)
++        {
++            return new Dictionary<string, object?>
++            {
++                ["type"] = "decision",
++                ["decision"] = "shop",
++                ["shop_kind"] = "merchant_room",
++                ["shop_stage"] = "merchant_ready",
++                ["context"] = RunContext(),
++                ["cards"] = new List<Dictionary<string, object?>>(),
++                ["relics"] = new List<Dictionary<string, object?>>(),
++                ["potions"] = new List<Dictionary<string, object?>>(),
++                ["card_removal_cost"] = null,
++                ["shop_open_proof"] = _lastShopOpenProof,
++                ["potion_use_proof"] = _lastPotionUseProof,
++                ["player"] = PlayerSummary(player),
++            };
++        }
++        return ShopState(inv, player, isFakeShop: false);
++    }
++
++    private Dictionary<string, object?> ShopState(
++        MerchantInventory inv, Player player, bool isFakeShop)
++    {
+ 
+         var cards = inv.CharacterCardEntries.Concat(inv.ColorlessCardEntries)
+             .Select((e, i) =>
+@@ -2755,22 +4053,325 @@ public class RunSimulator
+             ["is_stocked"] = e.IsStocked,
+         }).ToList();
+ 
+-        var removal = merchantRoom.GetLocalInventory().CardRemovalEntry;
++        var removal = inv.CardRemovalEntry;
+ 
+         return new Dictionary<string, object?>
+         {
+             ["type"] = "decision",
+             ["decision"] = "shop",
++            ["shop_kind"] = isFakeShop ? "fake_merchant" : "merchant_room",
++            ["shop_stage"] = "inventory_open",
+             ["context"] = RunContext(),
+             ["cards"] = cards,
+             ["relics"] = relics,
+             ["potions"] = potions,
+             ["card_removal_cost"] = removal?.Cost,
++            ["shop_open_proof"] = isFakeShop ? null : _lastShopOpenProof,
++            ["potion_use_proof"] = _lastPotionUseProof,
+             ["player"] = PlayerSummary(player),
+         };
+     }
+ 
+     private Dictionary<string, object?> TreasureState(TreasureRoom treasureRoom)
++    {
++        WaitForActionExecutor();
++        _syncCtx.Pump();
++
++        if (_treasureBlockedReason != null)
++        {
++            return new Dictionary<string, object?>
++            {
++                ["type"] = "decision",
++                ["decision"] = "treasure_blocked",
++                ["treasure_stage"] = "blocked",
++                ["context"] = RunContext(),
++                ["message"] = _treasureBlockedReason,
++                ["treasure_proof"] = _lastTreasureProof,
++                ["player"] = PlayerSummary(_runState!.Players[0]),
++            };
++        }
++
++        var relicSync = RunManager.Instance.TreasureRoomRelicSynchronizer;
++        if (_treasureRelicTaken)
++        {
++            return new Dictionary<string, object?>
++            {
++                ["type"] = "decision",
++                ["decision"] = "treasure",
++                ["treasure_stage"] = "proceed",
++                ["context"] = RunContext(),
++                ["relics"] = new List<Dictionary<string, object?>>(),
++                ["treasure_proof"] = _lastTreasureProof,
++                ["player"] = PlayerSummary(_runState!.Players[0]),
++            };
++        }
++
++        if (relicSync?.CurrentRelics == null)
++        {
++            _treasureBlockedReason = "Treasure relic session is not active";
++            return TreasureState(treasureRoom);
++        }
++
++        if (!_treasureChestOpened)
++        {
++            return new Dictionary<string, object?>
++            {
++                ["type"] = "decision",
++                ["decision"] = "treasure",
++                ["treasure_stage"] = "unopened",
++                ["context"] = RunContext(),
++                ["relic_offer_count"] = relicSync.CurrentRelics.Count,
++                ["player"] = PlayerSummary(_runState!.Players[0]),
++            };
++        }
++
++        if (relicSync.CurrentRelics.Count != 1)
++        {
++            _treasureBlockedReason =
++                $"Expected exactly one singleplayer chest relic, found {relicSync.CurrentRelics.Count}";
++            return TreasureState(treasureRoom);
++        }
++
++        var relic = relicSync.CurrentRelics[0];
++        return new Dictionary<string, object?>
++        {
++            ["type"] = "decision",
++            ["decision"] = "treasure",
++            ["treasure_stage"] = "relic_ready",
++            ["context"] = RunContext(),
++            ["relic_offer_count"] = 1,
++            ["relics"] = new List<Dictionary<string, object?>>
++            {
++                new()
++                {
++                    ["index"] = 0,
++                    ["id"] = relic.Id.ToString(),
++                    ["name"] = _loc.Relic(relic.Id.Entry),
++                    ["description"] = _loc.Bilingual(
++                        "relics", relic.Id.Entry + ".description"),
++                },
++            },
++            ["treasure_proof"] = _lastTreasureProof,
++            ["player"] = PlayerSummary(_runState!.Players[0]),
++        };
++    }
++
++    private Dictionary<string, object?> DoOpenChest(Player player)
++    {
++        if (_runState?.CurrentRoom is not TreasureRoom treasureRoom)
++            return Error("open_chest requires a treasure room");
++        if (_treasureChestOpened || _treasureRelicTaken)
++            return Error("Treasure chest has already been opened");
++
++        var relicSync = RunManager.Instance.TreasureRoomRelicSynchronizer;
++        if (relicSync?.CurrentRelics == null)
++            return Error("Treasure relic session is not active");
++
++        var offered = relicSync.CurrentRelics.ToList();
++        var offeredIds = offered.Select(relic => relic.Id.ToString()).ToList();
++        var relicCountBefore = player.Relics.Count;
++        var goldBefore = player.Gold;
++
++        // The UI consumes the open click before resolving these rewards. Marking this first
++        // prevents a failed/unsupported extra reward from duplicating the normal reward.
++        _treasureChestOpened = true;
++        _openingTreasureChest = true;
++        try
++        {
++            treasureRoom.DoNormalRewards().GetAwaiter().GetResult();
++            _syncCtx.Pump();
++            treasureRoom.DoExtraRewardsIfNeeded().GetAwaiter().GetResult();
++            _syncCtx.Pump();
++            WaitForActionExecutor();
++        }
++        catch (Exception ex)
++        {
++            _treasureBlockedReason = $"Treasure chest open failed closed: {ex.Message}";
++            _lastTreasureProof = new Dictionary<string, object?>
++            {
++                ["stage"] = "open_failed",
++                ["normal_reward_not_retried"] = true,
++                ["postcondition_verified"] = false,
++            };
++            return TreasureState(treasureRoom);
++        }
++        finally
++        {
++            _openingTreasureChest = false;
++        }
++
++        var current = relicSync.CurrentRelics;
++        var offerUnchanged = current != null
++            && current.Count == offered.Count
++            && current.Select(relic => relic.Id.ToString()).SequenceEqual(offeredIds)
++            && current.Zip(offered).All(pair => ReferenceEquals(pair.First, pair.Second));
++        var inventoryUnchanged = player.Relics.Count == relicCountBefore;
++        if (!offerUnchanged || !inventoryUnchanged)
++        {
++            _treasureBlockedReason =
++                "Chest open changed the authoritative relic offer or granted a relic early";
++            _lastTreasureProof = new Dictionary<string, object?>
++            {
++                ["stage"] = "open_failed",
++                ["offer_unchanged"] = offerUnchanged,
++                ["inventory_unchanged"] = inventoryUnchanged,
++                ["postcondition_verified"] = false,
++            };
++            return TreasureState(treasureRoom);
++        }
++
++        _lastTreasureProof = new Dictionary<string, object?>
++        {
++            ["stage"] = "open_completed",
++            ["offer_unchanged"] = true,
++            ["inventory_unchanged"] = true,
++            ["gold_before"] = goldBefore,
++            ["gold_after"] = player.Gold,
++            ["postcondition_verified"] = true,
++        };
++
++        if (current!.Count == 0)
++        {
++            relicSync.CompleteWithNoRelics();
++            _syncCtx.Pump();
++            WaitForActionExecutor();
++            if (relicSync.CurrentRelics != null)
++            {
++                _treasureBlockedReason = "Empty treasure relic session did not close";
++                return TreasureState(treasureRoom);
++            }
++            _treasureRelicTaken = true;
++            _lastTreasureProof = new Dictionary<string, object?>
++            {
++                ["stage"] = "empty_completed",
++                ["session_closed"] = true,
++                ["inventory_delta"] = 0,
++                ["postcondition_verified"] = true,
++            };
++        }
++
++        return TreasureState(treasureRoom);
++    }
++
++    private Dictionary<string, object?> DoTakeChestRelic(
++        Player player, Dictionary<string, object?>? args)
++    {
++        if (_runState?.CurrentRoom is not TreasureRoom treasureRoom)
++            return Error("take_chest_relic requires a treasure room");
++        if (!_treasureChestOpened)
++            return Error("Treasure chest must be opened before taking its relic");
++        if (_treasureRelicTaken)
++            return Error("Treasure relic has already been taken");
++        if (args == null || !args.TryGetValue("relic_index", out var indexValue)
++            || Convert.ToInt32(indexValue) != 0)
++            return Error("take_chest_relic requires the authoritative relic_index 0");
++
++        var relicSync = RunManager.Instance.TreasureRoomRelicSynchronizer;
++        if (relicSync?.CurrentRelics == null || relicSync.CurrentRelics.Count != 1)
++            return Error("Expected exactly one authoritative singleplayer chest relic");
++
++        var offered = relicSync.CurrentRelics[0];
++        var relicCountBefore = player.Relics.Count;
++        List<MegaCrit.Sts2.Core.Entities.TreasureRelicPicking.RelicPickingResult>? awarded = null;
++        Action<List<MegaCrit.Sts2.Core.Entities.TreasureRelicPicking.RelicPickingResult>> capture =
++            results => awarded = results;
++        relicSync.RelicsAwarded += capture;
++        try
++        {
++            relicSync.PickRelicLocally(0);
++            _syncCtx.Pump();
++            WaitForActionExecutor();
++            _syncCtx.Pump();
++        }
++        finally
++        {
++            relicSync.RelicsAwarded -= capture;
++        }
++
++        if (awarded == null || awarded.Count != 1
++            || !ReferenceEquals(awarded[0].relic, offered)
++            || !ReferenceEquals(awarded[0].player, player)
++            || relicSync.CurrentRelics != null)
++        {
++            _treasureBlockedReason =
++                "Treasure synchronizer did not award the exact offered relic to the local player";
++            _lastTreasureProof = new Dictionary<string, object?>
++            {
++                ["stage"] = "relic_award_failed",
++                ["result_count"] = awarded?.Count ?? 0,
++                ["session_closed"] = relicSync.CurrentRelics == null,
++                ["postcondition_verified"] = false,
++            };
++            return TreasureState(treasureRoom);
++        }
++
++        RelicCmd.Obtain(offered.ToMutable(), player).GetAwaiter().GetResult();
++        _syncCtx.Pump();
++        WaitForActionExecutor();
++        _syncCtx.Pump();
++
++        var inventoryDelta = player.Relics.Count - relicCountBefore;
++        var inventoryContainsOffer = player.Relics.Any(
++            relic => relic.Id.ToString() == offered.Id.ToString());
++        if (inventoryDelta != 1 || !inventoryContainsOffer)
++        {
++            _treasureBlockedReason = "Treasure relic inventory postcondition failed";
++            _lastTreasureProof = new Dictionary<string, object?>
++            {
++                ["stage"] = "relic_award_failed",
++                ["inventory_delta"] = inventoryDelta,
++                ["inventory_contains_offer"] = inventoryContainsOffer,
++                ["session_closed"] = true,
++                ["postcondition_verified"] = false,
++            };
++            return TreasureState(treasureRoom);
++        }
++
++        _treasureRelicTaken = true;
++        _lastTreasureProof = new Dictionary<string, object?>
++        {
++            ["stage"] = "relic_awarded",
++            ["offered_id"] = offered.Id.ToString(),
++            ["result_player_verified"] = true,
++            ["session_closed"] = true,
++            ["inventory_delta"] = 1,
++            ["postcondition_verified"] = true,
++        };
++        return TreasureState(treasureRoom);
++    }
++
++    private void ResetTreasureTracking()
++    {
++        _treasureChestOpened = false;
++        _treasureRelicTaken = false;
++        _openingTreasureChest = false;
++        _treasureBlockedReason = null;
++        _lastTreasureProof = null;
++    }
++
++    private void ResetShopTracking()
++    {
++        _normalShopOpen = false;
++        _lastShopOpenProof = null;
++    }
++
++    private void ClearPendingPotionSelection()
++    {
++        _pendingPotionSelectionGeneration = 0;
++        _pendingPotionSelectionPotion = null;
++        _pendingPotionSelectionPlayer = null;
++        _pendingPotionSelectionSlot = -1;
++        _pendingPotionSelectionOptions = null;
++        _pendingPotionSelectionPreHand = null;
++    }
++
++    private void ResetPotionTracking()
++    {
++        ClearPendingPotionSelection();
++        _lastPotionUseProof = null;
++    }
++
++    private Dictionary<string, object?> LegacyAutoTreasureState(TreasureRoom treasureRoom)
+     {
+         // Treasure rooms give relics via TreasureRoomRelicSynchronizer
+         Log("Treasure room — collecting rewards");
+@@ -2891,7 +4492,8 @@ public class RunSimulator
+ 
+             // Executor may stay "running" while the game awaits headless card selection / reward (e.g. Attack Potion).
+             // Spinning here would time out and downstream code could mis-handle an in-flight potion use (BUG-026).
+-            if (_cardSelector.HasPending || _cardSelector.HasPendingReward)
++            if (_cardSelector.HasPending || _cardSelector.HasPendingReward
++                || _pendingEventRewardsSet != null)
+                 return;
+ 
+             var executor = RunManager.Instance.ActionExecutor;
+@@ -2965,6 +4567,29 @@ public class RunSimulator
+         catch { return null; }
+     }
+ 
++    private bool CanUsePotionHeadlessly(PotionModel potion)
++    {
++        if (potion.IsQueued || potion.HasBeenRemovedFromState)
++            return false;
++        if (CombatManager.Instance.IsInProgress)
++        {
++            if (potion.Usage is not (PotionUsage.CombatOnly or PotionUsage.AnyTime))
++                return false;
++            if (!IsPlayPhase())
++                return false;
++            try { return potion.PassesCustomUsabilityCheck; }
++            catch { return false; }
++        }
++
++        // Foul Potion's native check depends on a graphical merchant node. In headless mode,
++        // reproduce its semantic gate: normal merchant, before inventory open, no target.
++        return _runState?.CurrentRoom is MerchantRoom
++            && !_normalShopOpen
++            && potion.Id.Entry == "FOUL_POTION"
++            && potion.Usage == PotionUsage.AnyTime
++            && potion.TargetType == TargetType.TargetedNoCreature;
++    }
++
+     private Dictionary<string, object?> PlayerSummary(Player player)
+     {
+         return new Dictionary<string, object?>
+@@ -2974,6 +4599,7 @@ public class RunSimulator
+             ["max_hp"] = player.Creature?.MaxHp ?? 0,
+             ["block"] = player.Creature?.Block ?? 0,
+             ["gold"] = player.Gold,
++            ["potion_slot_count"] = player.PotionSlots.Count,
+             ["relics"] = player.Relics?.Select(r =>
+             {
+                 var vars = new Dictionary<string, object?>();
+@@ -2985,7 +4611,7 @@ public class RunSimulator
+                     ["vars"] = vars.Count > 0 ? vars : null,
+                 };
+             }).ToList(),
+-            ["potions"] = player.Potions?.Select((p, i) =>
++            ["potions"] = player.PotionSlots.Select((p, i) =>
+             {
+                 if (p == null) return null;
+                 var pvars = new Dictionary<string, object?>();
+@@ -2993,10 +4619,14 @@ public class RunSimulator
+                 return new Dictionary<string, object?>
+                 {
+                     ["index"] = i,
++                    ["id"] = p.Id.ToString(),
+                     ["name"] = _loc.Potion(p.Id.Entry),
+                     ["description"] = _loc.Bilingual("potions", p.Id.Entry + ".description"),
+                     ["vars"] = pvars.Count > 0 ? pvars : null,
+                     ["target_type"] = p.TargetType.ToString(),
++                    ["usage"] = p.Usage.ToString(),
++                    ["is_queued"] = p.IsQueued,
++                    ["can_use_now"] = CanUsePotionHeadlessly(p),
+                 };
+             }).Where(x => x != null).ToList(),
+             ["deck_size"] = player.Deck?.Cards?.Count(c => c != null) ?? 0,
+@@ -3044,7 +4674,16 @@ public class RunSimulator
+             ["act_name"] = _loc.Act(_runState.Act?.Id.Entry ?? "OVERGROWTH"),
+             ["floor"] = _runState.ActFloor,
+             ["room_type"] = _runState.CurrentRoom?.RoomType.ToString(),
++            ["visited_map_coords"] = _runState.VisitedMapCoords?.Count ?? 0,
+         };
++        if (_runState.CurrentMapCoord is MapCoord currentCoord)
++        {
++            ctx["current_map_coord"] = new Dictionary<string, object?>
++            {
++                ["col"] = currentCoord.col,
++                ["row"] = currentCoord.row,
++            };
++        }
+ 
+         // Boss encounter info — use BossEncounter?.Id?.Entry
+         try
+@@ -3074,6 +4713,17 @@ public class RunSimulator
+ 
+         TestMode.IsOn = true;
+ 
++        // v0.107.1 requires mod initialization to finish before RunState
++        // enumerates mod-provided model types. The standalone simulator does
++        // not load mods, so mark the manager as intentionally skipped.
++        if (ModManager.State == ModManagerState.None)
++        {
++            typeof(ModManager).GetProperty(
++                    nameof(ModManager.State),
++                    BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)!
++                .SetValue(null, ModManagerState.Skipped);
++        }
++
+         // Install inline sync context on main thread
+         SynchronizationContext.SetSynchronizationContext(_syncCtx);
+ 
+diff --git a/src/Sts2Headless/Sts2Headless.csproj b/src/Sts2Headless/Sts2Headless.csproj
+index 8ae438a..cf1d12e 100644
+--- a/src/Sts2Headless/Sts2Headless.csproj
++++ b/src/Sts2Headless/Sts2Headless.csproj
+@@ -4,7 +4,7 @@
+     <TargetFramework>net9.0</TargetFramework>
+     <ImplicitUsings>enable</ImplicitUsings>
+     <Nullable>enable</Nullable>
+-    <RollForward>LatestMajor</RollForward>
++    <RollForward>Minor</RollForward>
+   </PropertyGroup>
+ 
+   <ItemGroup>
+diff --git a/tests/conftest.py b/tests/conftest.py
+index b52ed15..44faa51 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -112,7 +112,18 @@ class Game:
+                 return state
+             if dec == "event_choice":
+                 opts = [o for o in state["options"] if not o.get("is_locked")]
+-                state = self.act("choose_option", option_index=opts[0]["index"])
++                state = (
++                    self.act("choose_option", option_index=opts[0]["index"])
++                    if opts
++                    else self.act("leave_room")
++                )
++            elif dec == "event_reward":
++                rewards = state.get("rewards", [])
++                state = (
++                    self.act("claim_reward", reward_index=0)
++                    if rewards
++                    else self.act("skip_rewards")
++                )
+             elif dec == "card_reward":
+                 state = self.act("skip_card_reward")
+             elif dec == "bundle_select":
+diff --git a/tests/test_characters.py b/tests/test_characters.py
+index 8c7b336..990f9e7 100644
+--- a/tests/test_characters.py
++++ b/tests/test_characters.py
+@@ -48,6 +48,11 @@ class TestFullRun:
+             elif dec == "event_choice":
+                 opts = [o for o in state["options"] if not o.get("is_locked")]
+                 state = game.act("choose_option", option_index=opts[0]["index"]) if opts else game.act("leave_room")
++            elif dec == "event_reward":
++                rewards = state.get("rewards", [])
++                state = game.act("claim_reward", reward_index=0) if rewards else game.act("skip_rewards")
++            elif dec == "fake_shop":
++                state = game.act("open_fake_shop")
+             elif dec == "card_reward":
+                 state = game.act("skip_card_reward")
+             elif dec == "bundle_select":
+diff --git a/tests/test_combat.py b/tests/test_combat.py
+index 7e86970..c7c5ddd 100644
+--- a/tests/test_combat.py
++++ b/tests/test_combat.py
+@@ -18,6 +18,7 @@ class TestCombatStructure:
+         state = game.enter_room("combat", encounter="SHRINKER_BEETLE_WEAK")
+         for card in state["hand"]:
+             assert isinstance(card["name"], str)
++            assert isinstance(card["combat_card_id"], int)
+             assert "cost" in card
+             assert "can_play" in card
+             assert card["type"] in ("Attack", "Skill", "Power", "Status", "Curse")
+@@ -28,6 +29,7 @@ class TestCombatStructure:
+         state = game.enter_room("combat", encounter="SHRINKER_BEETLE_WEAK")
+         for e in state["enemies"]:
+             assert isinstance(e["name"], str)
++            assert isinstance(e["combat_id"], int)
+             assert e["hp"] > 0
+             assert e["max_hp"] > 0
+             assert "block" in e
+@@ -118,6 +120,21 @@ class TestCombatEnd:
+         state = game.enter_room("combat", encounter="SHRINKER_BEETLE_WEAK")
+         state = game.auto_play_combat(state)
+         assert state["decision"] in ("card_reward", "map_select", "card_select", "bundle_select")
++        if state["decision"] == "card_reward":
++            queue = state["replay_reward_queue"]
++            assert isinstance(queue, list)
++            assert any(item["disposition"] == "card_reward_open" for item in queue)
++            assert all(
++                item["disposition"] in (
++                    "auto_collected",
++                    "direct_collected",
++                    "retained_unselected",
++                    "card_reward_open",
++                    "unhandled",
++                )
++                for item in queue
++            )
++            assert all("postcondition_verified" in item for item in queue)
+ 
+     def test_player_powers_after_enemy_debuff(self, game):
+         """Shrinker Beetle applies Shrink debuff to player after its turn."""
+diff --git a/tests/test_event.py b/tests/test_event.py
+index 6d21237..41089f1 100644
+--- a/tests/test_event.py
++++ b/tests/test_event.py
+@@ -35,3 +35,123 @@ class TestEventDescriptions:
+         for opt in state.get("options", []):
+             d = opt.get("description") or ""
+             assert "IsMultiplayer" not in d
++
++
++class TestEventSubstages:
++    def test_finished_neow_reward_postlude_is_a_verified_completion(self, game):
++        state = game.start(
++            character="Regent", seed="VCAL3DR000009", ascension=10
++        )
++        scroll_boxes = next(
++            option
++            for option in state["options"]
++            if "SCROLL_BOXES" in str(option.get("text_key"))
++        )
++        state = game.act("choose_option", option_index=scroll_boxes["index"])
++        assert state["decision"] == "bundle_select"
++        state = game.act("select_bundle", bundle_index=0)
++        scroll_boxes = next(
++            option
++            for option in state["options"]
++            if "SCROLL_BOXES" in str(option.get("text_key"))
++        )
++        state = game.act("choose_option", option_index=scroll_boxes["index"])
++        lost_coffer = next(
++            option
++            for option in state["options"]
++            if "LOST_COFFER" in str(option.get("text_key"))
++        )
++        state = game.act("choose_option", option_index=lost_coffer["index"])
++        assert state["decision"] == "event_reward"
++        state = game.act("claim_reward", reward_index=0)
++        assert state["decision"] == "event_reward"
++        state = game.act("claim_reward", reward_index=0)
++        assert state["decision"] == "card_reward"
++
++        state = game.act("select_card_reward", card_index=0)
++
++        assert state["type"] != "error"
++        assert state["reward_claim_proof"]["runtime_guard"] == (
++            "finished_event_reward_option_postlude_v0.107.1"
++        )
++
++    def test_future_of_potions_skips_only_an_empty_inventory(self, game):
++        state = game.start(character="Necrobinder", seed="future_potions_empty")
++        game.skip_neow(state)
++        game.set_player(potions=[])
++
++        state = game.enter_room("event", event="THE_FUTURE_OF_POTIONS")
++
++        assert state["decision"] == "map_select"
++        assert state["runtime_guard"] == "future_potions_empty_inventory_skip_v0.107.1"
++
++    def test_future_of_potions_keeps_options_when_a_potion_is_owned(self, game):
++        state = game.start(character="Necrobinder", seed="future_potions_owned")
++        game.skip_neow(state)
++        game.set_player(potions=["SWIFT_POTION"])
++
++        state = game.enter_room("event", event="THE_FUTURE_OF_POTIONS")
++
++        assert state["decision"] == "event_choice"
++        assert state["options"]
++
++    def test_potion_courier_preserves_native_reward_set(self, game):
++        state = game.start(character="Defect", seed="event_rewards_1")
++        game.skip_neow(state)
++        game.set_player(potions=[])
++        state = game.enter_room("event", event="POTION_COURIER")
++        grab = next(
++            option
++            for option in state["options"]
++            if "GRAB_POTIONS" in str(option.get("text_key"))
++        )
++
++        state = game.act("choose_option", option_index=grab["index"])
++        assert state["decision"] == "event_reward"
++        assert [reward["reward_type"] for reward in state["rewards"]] == [
++            "PotionReward",
++            "PotionReward",
++            "PotionReward",
++        ]
++
++        for _ in range(3):
++            state = game.act("claim_reward", reward_index=0)
++            proof = state["reward_claim_proof"]
++            assert proof["reward_index"] == 0
++            assert proof["selection_result"] is True
++            assert proof["successfully_selected"] is True
++            assert proof["postcondition_verified"] is True
++
++        assert state["decision"] == "event_choice"
++        assert state["event_stage"] == "proceed"
++        state = game.act("leave_room")
++        assert state["decision"] == "map_select"
++
++    def test_fake_merchant_uses_native_inventory(self, game):
++        state = game.start(character="Necrobinder", seed="fake_shop_1")
++        game.skip_neow(state)
++        game.set_player(gold=999)
++        state = game.enter_room("event", event="FAKE_MERCHANT")
++        assert state["decision"] == "fake_shop"
++        assert state["inventory_present"] is True
++        assert state["started_fight"] is False
++
++        state = game.act("open_fake_shop")
++        assert state["decision"] == "shop"
++        assert state["shop_kind"] == "fake_merchant"
++        assert len(state["relics"]) == 6
++        gold_before = state["player"]["gold"]
++        relic = next(item for item in state["relics"] if item["is_stocked"])
++
++        state = game.act("buy_relic", relic_index=relic["index"])
++        assert state["decision"] == "shop"
++        assert state["player"]["gold"] < gold_before
++        assert state["relics"][relic["index"]]["is_stocked"] is False
++        state = game.act("leave_room")
++        assert state["decision"] == "map_select"
++
++    def test_fake_shop_rejects_non_fake_event(self, game):
++        state = game.start(seed="fake_shop_negative")
++        assert state["decision"] == "event_choice"
++        state = game.act("open_fake_shop")
++        assert state["type"] == "error"
+diff --git a/tests/test_rest_site.py b/tests/test_rest_site.py
+index 2daddc8..54f3979 100644
+--- a/tests/test_rest_site.py
++++ b/tests/test_rest_site.py
+@@ -34,6 +34,7 @@ class TestRestSiteActions:
+         state = game.act("choose_option", option_index=heal["index"])
+         new_hp = state.get("player", {}).get("hp", hp_before)
+         assert new_hp > hp_before
++        assert state["decision"] == "map_select"
+ 
+     def test_heal_caps_at_max(self, game):
+         state = game.start(seed="rsa2")
+@@ -55,3 +56,22 @@ class TestRestSiteActions:
+         state = game.act("choose_option", option_index=smith["index"])
+         assert state["decision"] == "card_select"
+         assert len(state.get("cards", [])) > 0
++
++    def test_miniature_tent_preserves_remaining_options(self, game):
++        state = game.start(seed="rsa4")
++        game.skip_neow(state)
++        game.set_player(hp=30, max_hp=80, relics=["MINIATURE_TENT"])
++        state = game.enter_room("rest_site")
++
++        heal = next(o for o in state["options"] if o["option_id"] == "HEAL")
++        state = game.act("choose_option", option_index=heal["index"])
++        assert state["decision"] == "rest_site"
++        remaining = {o["option_id"] for o in state["options"]}
++        assert "HEAL" not in remaining
++        assert "SMITH" in remaining
++
++        smith = next(o for o in state["options"] if o["option_id"] == "SMITH")
++        state = game.act("choose_option", option_index=smith["index"])
++        assert state["decision"] == "card_select"
++        state = game.act("select_cards", indices="0")
++        assert state["decision"] == "map_select"
+diff --git a/tests/test_save_load.py b/tests/test_save_load.py
+index 3b7900b..c9e9ded 100644
+--- a/tests/test_save_load.py
++++ b/tests/test_save_load.py
+@@ -1,5 +1,10 @@
+ """Regression tests for native save/load behavior."""
+ 
++import os
++from pathlib import Path
++
++import pytest
++
+ from conftest import Game
+ 
+ 
+@@ -11,6 +16,10 @@ def test_load_map_save_does_not_retrigger_neow(tmp_path):
+         state = game.start(seed="sl1")
+         state = game.skip_neow(state)
+         assert state["decision"] == "map_select"
++        expected_context = {
++            key: state["context"].get(key)
++            for key in ("floor", "visited_map_coords", "current_map_coord")
++        }
+ 
+         save_result = game.send({"cmd": "write_continue_save", "path": str(save_path)})
+         assert save_result["type"] == "save_result"
+@@ -22,6 +31,30 @@ def test_load_map_save_does_not_retrigger_neow(tmp_path):
+     try:
+         state = game.send({"cmd": "load_save", "path": str(save_path)})
+         assert state["decision"] == "map_select"
++        assert {
++            key: state["context"].get(key)
++            for key in ("floor", "visited_map_coords", "current_map_coord")
++        } == expected_context
++    finally:
++        game.close()
++
++
++def test_load_runreplays_event_save_reenters_saved_coordinate():
++    """Optional exact-build fixture verifies room resume without a duplicate visit."""
++    fixture = os.environ.get("STS2_RUNREPLAYS_EVENT_SAVE")
++    if not fixture:
++        pytest.skip("Set STS2_RUNREPLAYS_EVENT_SAVE to the official floor-18 fixture")
++    save_path = Path(fixture)
++    if not save_path.is_file():
++        pytest.skip(f"RunReplays fixture is unavailable: {save_path}")
++
++    game = Game()
++    try:
++        state = game.send({"cmd": "load_save", "path": str(save_path)})
++        assert state["decision"] == "event_choice"
++        assert state["context"]["floor"] == 1
++        assert state["context"]["visited_map_coords"] == 1
++        assert state["context"]["current_map_coord"] == {"col": 3, "row": 0}
+     finally:
+         game.close()
+ 
+diff --git a/tests/test_shop.py b/tests/test_shop.py
+index 8261559..683134d 100644
+--- a/tests/test_shop.py
++++ b/tests/test_shop.py
+@@ -7,6 +7,7 @@ class TestShopStructure:
+         state = game.start(seed="ss1")
+         game.skip_neow(state)
+         state = game.enter_room("shop")
++        state = game.act("open_shop")
+         assert state["decision"] == "shop"
+         assert "cards" in state
+         assert "relics" in state
+@@ -17,6 +18,7 @@ class TestShopStructure:
+         state = game.start(seed="ss2")
+         game.skip_neow(state)
+         state = game.enter_room("shop")
++        state = game.act("open_shop")
+         for card in state["cards"]:
+             assert isinstance(card["name"], str)
+             assert "description" in card
+@@ -28,6 +30,7 @@ class TestShopStructure:
+         state = game.start(seed="ss3")
+         game.skip_neow(state)
+         state = game.enter_room("shop")
++        state = game.act("open_shop")
+         has_upgrade = any(c.get("after_upgrade") for c in state["cards"])
+         assert has_upgrade
+ 
+@@ -35,6 +38,7 @@ class TestShopStructure:
+         state = game.start(seed="ss4")
+         game.skip_neow(state)
+         state = game.enter_room("shop")
++        state = game.act("open_shop")
+         for r in state["relics"]:
+             assert isinstance(r["name"], str)
+             assert "description" in r
+@@ -43,6 +47,7 @@ class TestShopStructure:
+         state = game.start(seed="ss5")
+         game.skip_neow(state)
+         state = game.enter_room("shop")
++        state = game.act("open_shop")
+         for p in state["potions"]:
+             assert isinstance(p["name"], str)
+             assert "description" in p
+@@ -54,6 +59,7 @@ class TestShopBuy:
+         game.skip_neow(state)
+         game.set_player(gold=999)
+         state = game.enter_room("shop")
++        state = game.act("open_shop")
+         gold_before = state["player"]["gold"]
+         deck_before = state["player"]["deck_size"]
+         stocked = [c for c in state["cards"] if c.get("is_stocked")]
+@@ -69,6 +75,7 @@ class TestShopBuy:
+         game.skip_neow(state)
+         game.set_player(gold=0)
+         state = game.enter_room("shop")
++        state = game.act("open_shop")
+         stocked = [c for c in state["cards"] if c.get("is_stocked")]
+         if stocked:
+             state = game.act("buy_card", card_index=stocked[0]["index"])
+@@ -81,6 +88,46 @@ class TestShopBuy:
+         state = game.act("leave_room")
+         assert state["decision"] == "map_select"
+ 
++    def test_foul_potions_use_true_slots_before_open(self, game):
++        state = game.start(character="Defect", seed="shop_foul_slots")
++        game.skip_neow(state)
++        game.set_player(gold=0, potions=["FOUL_POTION"] * 3)
++        state = game.enter_room("shop")
++        assert state["shop_stage"] == "merchant_ready"
++        assert [p["index"] for p in state["player"]["potions"]] == [0, 1, 2]
++
++        for slot, expected_gold, remaining in (
++            (0, 100, [1, 2]),
++            (1, 200, [2]),
++            (2, 300, []),
++        ):
++            state = game.act("use_potion", potion_index=slot)
++            assert state["shop_stage"] == "merchant_ready"
++            assert state["player"]["gold"] == expected_gold
++            assert [p["index"] for p in state["player"]["potions"]] == remaining
++            proof = state["potion_use_proof"]
++            assert proof["potion_index"] == slot
++            assert proof["potion_removed"] is True
++            assert proof["history_appended"] is True
++            assert proof["gold_delta"] == 100
++            assert proof["postcondition_verified"] is True
++
++        state = game.act("open_shop")
++        assert state["shop_stage"] == "inventory_open"
++        assert state["shop_open_proof"]["postcondition_verified"] is True
++        assert game.act("open_shop")["type"] == "error"
++
++    def test_shop_rejects_combat_potion_and_preopen_purchase(self, game):
++        state = game.start(seed="shop_stage_negative")
++        game.skip_neow(state)
++        game.set_player(gold=999, potions=["ATTACK_POTION"])
++        state = game.enter_room("shop")
++        assert state["shop_stage"] == "merchant_ready"
++        assert game.act("use_potion", potion_index=0)["type"] == "error"
++        assert game.act("buy_card", card_index=0)["type"] == "error"
++        state = game.act("open_shop")
++        assert state["shop_stage"] == "inventory_open"
++
+ 
+ class TestShopRemove:
+     def test_remove_card_flow(self, game):
+@@ -88,6 +135,7 @@ class TestShopRemove:
+         game.skip_neow(state)
+         game.set_player(gold=999)
+         state = game.enter_room("shop")
++        state = game.act("open_shop")
+         deck_before = state["player"]["deck_size"]
+         state = game.act("remove_card")
+         # Should trigger card_select
+diff --git a/tests/test_snapshot.py b/tests/test_snapshot.py
+new file mode 100644
+index 0000000..37acdb1
+--- /dev/null
++++ b/tests/test_snapshot.py
+@@ -0,0 +1,67 @@
++"""Proof gates for process-isolated reconstructive snapshots."""
++
++
++def checkpoint(game):
++    result = game.send({"cmd": "snapshot_checkpoint"})
++    assert result["type"] == "snapshot_checkpoint"
++    assert result["schema_version"] == 1
++    return result
++
++
++def test_event_decision_fails_closed(game):
++    state = game.start(seed="snapshot_event_reject")
++    assert state["decision"] == "event_choice"
++
++    result = checkpoint(game)
++
++    assert result["snapshot_safe"] is False
++    assert result["stage"] == "unsupported"
++    assert "decision_stage_not_allowlisted" in result["reasons"]
++
++
++def test_stable_combat_checkpoint_covers_hidden_semantics(game):
++    seed = "snapshot_combat_safe"
++    game.start(seed=seed, ascension=10)
++    state = game.enter_room("combat", encounter="SHRINKER_BEETLE_WEAK")
++    assert state["decision"] == "combat_play"
++
++    first = checkpoint(game)
++    second = checkpoint(game)
++
++    assert first == second
++    assert first["snapshot_safe"] is True
++    assert first["stage"] == "combat_play"
++    assert first["reasons"] == []
++    assert first["quiescence"] == {
++        "sync_context_idle": True,
++        "sync_context_pending": 0,
++        "action_executor_running": False,
++        "current_action": None,
++        "action_queue_empty": True,
++    }
++    semantic = first["semantic"]
++    assert semantic["run_seed_sha256"] != seed
++    assert len(semantic["run_seed_sha256"]) == 64
++    assert set(semantic["run_rng_counters"]) >= {"Shuffle", "MonsterAi"}
++    assert semantic["player_rngs"][0]["counters"]
++    assert semantic["combat"]["piles"]
++    assert semantic["combat"]["creatures"]
++    assert semantic["next_action_id"] >= 0
++    assert semantic["excluded_nondeterministic_rng"] == (
++        "Rng.Chaotic (presentation only)"
++    )
++
++
++def test_pending_card_selection_is_rejected(game):
++    game.start(character="Defect", seed="snapshot_selection_reject")
++    game.set_player(potions=["ATTACK_POTION"])
++    state = game.enter_room("combat", encounter="SHRINKER_BEETLE_WEAK")
++    assert state["decision"] == "combat_play"
++
++    state = game.act("use_potion", potion_index=0)
++    assert state["decision"] == "card_select"
++
++    result = checkpoint(game)
++    assert result["snapshot_safe"] is False
++    assert "card_selector_pending" in result["reasons"]
++    assert "potion_selection_pending" in result["reasons"]
+diff --git a/tests/test_treasure.py b/tests/test_treasure.py
+new file mode 100644
+index 0000000..39676db
+--- /dev/null
++++ b/tests/test_treasure.py
+@@ -0,0 +1,56 @@
++"""Tests for staged, native-order treasure-room decisions."""
++
++
++def _enter_treasure(game, seed):
++    state = game.start(seed=seed)
++    state = game.skip_neow(state)
++    assert state["decision"] == "map_select"
++    return game.enter_room("treasure")
++
++
++def test_treasure_open_take_and_proceed(game):
++    state = _enter_treasure(game, "treasure_stages_1")
++    assert state["decision"] == "treasure"
++    assert state["treasure_stage"] == "unopened"
++    relics_before = len(state.get("player", {}).get("relics", []))
++
++    state = game.act("open_chest")
++    assert state["decision"] == "treasure"
++    assert state["treasure_stage"] == "relic_ready"
++    assert len(state["relics"]) == 1
++    assert state["treasure_proof"]["stage"] == "open_completed"
++    assert state["treasure_proof"]["postcondition_verified"] is True
++
++    state = game.act("take_chest_relic", relic_index=0)
++    assert state["decision"] == "treasure"
++    assert state["treasure_stage"] == "proceed"
++    assert state["treasure_proof"]["stage"] == "relic_awarded"
++    assert state["treasure_proof"]["inventory_delta"] == 1
++    assert state["treasure_proof"]["session_closed"] is True
++    assert len(state["player"]["relics"]) == relics_before + 1
++
++    state = game.act("leave_room")
++    assert state["decision"] == "map_select"
++
++
++def test_treasure_rejects_wrong_stage_and_resets_next_room(game):
++    state = _enter_treasure(game, "treasure_stages_2")
++
++    rejected = game.act("take_chest_relic", relic_index=0)
++    assert rejected["type"] == "error"
++    rejected = game.act("leave_room")
++    assert rejected["type"] == "error"
++
++    state = game.act("open_chest")
++    duplicate = game.act("open_chest")
++    assert duplicate["type"] == "error"
++
++    state = game.act("take_chest_relic", relic_index=0)
++    duplicate = game.act("take_chest_relic", relic_index=0)
++    assert duplicate["type"] == "error"
++    state = game.act("leave_room")
++    assert state["decision"] == "map_select"
++
++    state = game.enter_room("treasure")
++    assert state["decision"] == "treasure"
++    assert state["treasure_stage"] == "unopened"

@@ -1,0 +1,94 @@
+﻿{
+    "schema_version":  1,
+    "benchmark":  "runreplays_treasure_echo_2char",
+    "created_at":  "2026-07-14T05:04:09.9116566+00:00",
+    "expected_build":  "v0.107.1",
+    "source_revision":  "b0d2302ee69bf2ad735e0b6b51aea02408e9ef62",
+    "headless_runtime_sha256":  "58c2283239233bdb43248f373b0141d78a1ed72e55e5dbab15c6c1e36b98a1e4",
+    "predecessor_artifact":  "runreplays-event-stages-v0.107.1.json",
+    "predecessor_sha256":  "826baecac4251bdf30d871c6ceca1fb518279461388c58422c45d70f9a66f0fb",
+    "aggregate":  {
+                      "characters":  2,
+                      "commands_attempted":  188,
+                      "commands_reconstructed":  186,
+                      "reconstruction_rate_of_attempted":  0.989362,
+                      "combat_decisions_reconstructed":  104,
+                      "open_chests_reconstructed":  2,
+                      "take_chest_relics_reconstructed":  2,
+                      "verified_net_pick_echoes_reconstructed":  2,
+                      "reconstructed_noops":  22,
+                      "room_map_two_stage_adapters_reconstructed":  4,
+                      "all_masks_complete_and_chosen_legal":  true,
+                      "all_validation_gates":  true,
+                      "stop_statuses":  {
+                                            "mapping_failure":  2
+                                        },
+                      "stop_types":  {
+                                         "UsePotion":  1,
+                                         "SelectCardFromScreen":  1
+                                     }
+                  },
+    "cases":  [
+                  {
+                      "artifact_file":  "runreplays-treasure-echo-v0.107.1/defect.json",
+                      "artifact_sha256":  "4d2c59c0a549a7ba47d76c129a53c4859223db9576174ebba152ccf41412b90d",
+                      "character":  "CHARACTER.DEFECT",
+                      "commands_attempted":  94,
+                      "commands_reconstructed":  93,
+                      "combat_decisions":  51,
+                      "open_chests_reconstructed":  1,
+                      "take_chest_relics_reconstructed":  1,
+                      "verified_net_pick_echoes_reconstructed":  1,
+                      "reconstructed_noops":  9,
+                      "room_map_two_stage_adapters_reconstructed":  1,
+                      "all_masks_complete_and_chosen_legal":  true,
+                      "all_validation_gates":  true,
+                      "status":  "mapping_failure",
+                      "stop_code":  "illegal_action",
+                      "stop_command_type":  "UsePotion"
+                  },
+                  {
+                      "artifact_file":  "runreplays-treasure-echo-v0.107.1/necrobinder.json",
+                      "artifact_sha256":  "865eb2dfc232e00dfb61122e5345999686f0a604eacc5f35baab708a136d73f1",
+                      "character":  "CHARACTER.NECROBINDER",
+                      "commands_attempted":  94,
+                      "commands_reconstructed":  93,
+                      "combat_decisions":  53,
+                      "open_chests_reconstructed":  1,
+                      "take_chest_relics_reconstructed":  1,
+                      "verified_net_pick_echoes_reconstructed":  1,
+                      "reconstructed_noops":  13,
+                      "room_map_two_stage_adapters_reconstructed":  3,
+                      "all_masks_complete_and_chosen_legal":  true,
+                      "all_validation_gates":  true,
+                      "status":  "mapping_failure",
+                      "stop_code":  "unsupported_command",
+                      "stop_command_type":  "SelectCardFromScreen"
+                  }
+              ],
+    "intermediate_artifacts":  [
+                                   {
+                                       "artifact_file":  "runreplays-treasure-stages-v0.107.1/defect.json",
+                                       "artifact_sha256":  "e296bd8cedbde648429fb6010ea172726b49324722ebf3d1a2ae427f193afa2e",
+                                       "character":  "CHARACTER.DEFECT",
+                                       "stop_command_type":  "NetPickRelicAction",
+                                       "stop_code":  "quarantined_command",
+                                       "training_authorized":  false
+                                   },
+                                   {
+                                       "artifact_file":  "runreplays-treasure-stages-v0.107.1/necrobinder.json",
+                                       "artifact_sha256":  "f7b75a5f63f71ab34faf41244a031ba7eb7015abfff37ab7326a0c8dfba8aef3",
+                                       "character":  "CHARACTER.NECROBINDER",
+                                       "stop_command_type":  "NetPickRelicAction",
+                                       "stop_code":  "quarantined_command",
+                                       "training_authorized":  false
+                                   }
+                               ],
+    "privacy":  {
+                    "raw_paths_persisted":  false,
+                    "raw_seed_persisted":  false,
+                    "raw_replay_commands_persisted":  false
+                },
+    "dry_run_only":  true,
+    "training_authorized":  false
+}

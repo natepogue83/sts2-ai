@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "build_id": "v0.107.1",
+  "protocol_version": "0.3.0",
+  "runtime_bundle_sha256": "792748a35e701183369751018ecd546914c1742f8d6131f8d25ede1ef18dc88a",
+  "ascension": 10,
+  "visibility_mode": "public_deterministic_only",
+  "evaluator": "public_combat_heuristic_v1",
+  "macro_model_sha256": "476701d84a7f6cf85b1aa6a910877334c13f52ea637af967a8f6da400ca878f9",
+  "combat_model_sha256": "5bbb35de90351827374c9188351cc11c5ce867053c057e1a45978a60bb7633e1",
+  "training_labels_emitted": false,
+  "five_character_first_decision_smoke": [
+    {
+      "character": "Ironclad",
+      "reached_combat": true,
+      "setup_steps": 3,
+      "search_used": true,
+      "nodes": 11,
+      "changed_action": false,
+      "base_option_id": "CARD.STRIKE_IRONCLAD|TARGET.1",
+      "search_option_id": "CARD.STRIKE_IRONCLAD|TARGET.1",
+      "leaf_value_min": 0.3393750000000001,
+      "leaf_value_max": 0.3757627118644068
+    },
+    {
+      "character": "Silent",
+      "reached_combat": true,
+      "setup_steps": 4,
+      "search_used": true,
+      "nodes": 14,
+      "changed_action": false,
+      "base_option_id": "CARD.STRIKE_SILENT|TARGET.2",
+      "search_option_id": "CARD.STRIKE_SILENT|TARGET.2",
+      "leaf_value_min": 0.34071428571428575,
+      "leaf_value_max": 0.38192307692307703
+    },
+    {
+      "character": "Defect",
+      "reached_combat": true,
+      "setup_steps": 4,
+      "search_used": true,
+      "nodes": 3,
+      "changed_action": false,
+      "base_option_id": "CARD.DEFEND_DEFECT",
+      "search_option_id": "CARD.DEFEND_DEFECT",
+      "leaf_value_min": 0.36000000000000004,
+      "leaf_value_max": 0.36000000000000004
+    },
+    {
+      "character": "Necrobinder",
+      "reached_combat": true,
+      "setup_steps": 3,
+      "search_used": false,
+      "nodes": 0,
+      "changed_action": false,
+      "base_option_id": "CARD.UNLEASH|TARGET.0",
+      "search_option_id": "CARD.UNLEASH|TARGET.0",
+      "fallback_reason": "base_action_crosses_information_boundary"
+    },
+    {
+      "character": "Regent",
+      "reached_combat": true,
+      "setup_steps": 3,
+      "search_used": false,
+      "nodes": 0,
+      "changed_action": false,
+      "base_option_id": "CARD.FALLING_STAR|TARGET.0",
+      "search_option_id": "CARD.FALLING_STAR|TARGET.0",
+      "fallback_reason": "base_action_crosses_information_boundary"
+    }
+  ],
+  "hidden_information_boundary": {
+    "public_states_equal": true,
+    "hidden_semantic_checkpoints_differ": true,
+    "same_selected_action": true,
+    "selected_option_id": "CARD.BASH|TARGET.0",
+    "nodes_per_root": [4, 4],
+    "training_labels_emitted": false
+  },
+  "fork_stress": {
+    "semantic_sha256": "90383ddb3761636515bcfd99174b1c2f930b30193dfbeb01ffb9c1068aa07f2c",
+    "forks": 20,
+    "distinct_child_pids": 20,
+    "successful": 20,
+    "transient_mismatch_forks": 0,
+    "parent_unchanged": true
+  },
+  "interpretation": "Correctness and leakage-boundary smoke only; this is not a strength or win-rate result."
+}

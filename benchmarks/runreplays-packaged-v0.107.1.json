@@ -1,0 +1,128 @@
+﻿{
+    "schema_version":  1,
+    "benchmark":  "runreplays_packaged_4char",
+    "created_at":  "2026-07-14T05:24:54.9203637+00:00",
+    "expected_build":  "v0.107.1",
+    "source_revision":  "b0d2302ee69bf2ad735e0b6b51aea02408e9ef62",
+    "headless_runtime_sha256":  "a618d72cd90361cab4984330c08ce030ef062b18bef25e10216974812a0cec05",
+    "integration_patch_sha256":  "ccf8f1f17e6a4834ecf7b5d66873eff8c995a04109855e8c1f4e59dd0a3928d2",
+    "predecessor_artifact":  "runreplays-potion-screen-v0.107.1.json",
+    "predecessor_sha256":  "ae9a14672f6d53b38129f6416da92d354b3a97e26c71fee923980be166c64f6a",
+    "aggregate":  {
+                      "characters":  4,
+                      "commands_attempted":  400,
+                      "commands_reconstructed":  400,
+                      "reconstruction_rate_of_attempted":  1,
+                      "combat_decisions_reconstructed":  244,
+                      "reconstructed_noops":  50,
+                      "room_map_two_stage_adapters_reconstructed":  6,
+                      "open_chests_reconstructed":  2,
+                      "take_chest_relics_reconstructed":  2,
+                      "verified_net_pick_echoes_reconstructed":  2,
+                      "open_shops_reconstructed":  4,
+                      "use_potions_reconstructed":  7,
+                      "select_card_from_screen_reconstructed":  1,
+                      "all_masks_complete_and_chosen_legal":  true,
+                      "all_validation_gates":  true,
+                      "stop_statuses":  {
+                                            "max_commands_reached":  4
+                                        },
+                      "stop_types":  {
+
+                                     }
+                  },
+    "cases":  [
+                  {
+                      "artifact_file":  "runreplays-packaged-v0.107.1/defect.json",
+                      "artifact_sha256":  "5df6e8138709561963235ebf1d7b1047d9223280c103529cc742f484b611b02b",
+                      "character":  "CHARACTER.DEFECT",
+                      "commands_attempted":  100,
+                      "commands_reconstructed":  100,
+                      "combat_decisions":  54,
+                      "reconstructed_noops":  9,
+                      "room_map_two_stage_adapters_reconstructed":  1,
+                      "open_chests_reconstructed":  1,
+                      "take_chest_relics_reconstructed":  1,
+                      "verified_net_pick_echoes_reconstructed":  1,
+                      "open_shops_reconstructed":  1,
+                      "use_potions_reconstructed":  4,
+                      "select_card_from_screen_reconstructed":  0,
+                      "all_masks_complete_and_chosen_legal":  true,
+                      "all_validation_gates":  true,
+                      "status":  "max_commands_reached"
+                  },
+                  {
+                      "artifact_file":  "runreplays-packaged-v0.107.1/ironclad.json",
+                      "artifact_sha256":  "edc6260ba8da4209c13037f2596533659306931040ce363f39a124f204ca98ec",
+                      "character":  "CHARACTER.IRONCLAD",
+                      "commands_attempted":  100,
+                      "commands_reconstructed":  100,
+                      "combat_decisions":  66,
+                      "reconstructed_noops":  13,
+                      "room_map_two_stage_adapters_reconstructed":  1,
+                      "open_chests_reconstructed":  0,
+                      "take_chest_relics_reconstructed":  0,
+                      "verified_net_pick_echoes_reconstructed":  0,
+                      "open_shops_reconstructed":  1,
+                      "use_potions_reconstructed":  0,
+                      "select_card_from_screen_reconstructed":  0,
+                      "all_masks_complete_and_chosen_legal":  true,
+                      "all_validation_gates":  true,
+                      "status":  "max_commands_reached"
+                  },
+                  {
+                      "artifact_file":  "runreplays-packaged-v0.107.1/necrobinder.json",
+                      "artifact_sha256":  "10460562f2825e34ce70967a35df6fa74a09c9eb2b6f5a45295c32d0071e171e",
+                      "character":  "CHARACTER.NECROBINDER",
+                      "commands_attempted":  100,
+                      "commands_reconstructed":  100,
+                      "combat_decisions":  59,
+                      "reconstructed_noops":  12,
+                      "room_map_two_stage_adapters_reconstructed":  3,
+                      "open_chests_reconstructed":  1,
+                      "take_chest_relics_reconstructed":  1,
+                      "verified_net_pick_echoes_reconstructed":  1,
+                      "open_shops_reconstructed":  1,
+                      "use_potions_reconstructed":  2,
+                      "select_card_from_screen_reconstructed":  1,
+                      "all_masks_complete_and_chosen_legal":  true,
+                      "all_validation_gates":  true,
+                      "status":  "max_commands_reached"
+                  },
+                  {
+                      "artifact_file":  "runreplays-packaged-v0.107.1/regent.json",
+                      "artifact_sha256":  "2a7a7944b431e0caad3f266b8f74c848b8c759cdea55c3925a99121c64e145e5",
+                      "character":  "CHARACTER.REGENT",
+                      "commands_attempted":  100,
+                      "commands_reconstructed":  100,
+                      "combat_decisions":  65,
+                      "reconstructed_noops":  16,
+                      "room_map_two_stage_adapters_reconstructed":  1,
+                      "open_chests_reconstructed":  0,
+                      "take_chest_relics_reconstructed":  0,
+                      "verified_net_pick_echoes_reconstructed":  0,
+                      "open_shops_reconstructed":  1,
+                      "use_potions_reconstructed":  1,
+                      "select_card_from_screen_reconstructed":  0,
+                      "all_masks_complete_and_chosen_legal":  true,
+                      "all_validation_gates":  true,
+                      "status":  "max_commands_reached"
+                  }
+              ],
+    "excluded_artifacts":  [
+                               {
+                                   "artifact_file":  "runreplays-reward-parity-combat-tokens-v0.107.1/necrobinder.json",
+                                   "artifact_sha256":  "a6f4df4cac44383d5fd4479217f4279f1a33956abf27da56480a6ffc8c2ca036",
+                                   "observed_character":  "CHARACTER.SILENT",
+                                   "reason":  "case_selection_mismatch",
+                                   "training_authorized":  false
+                               }
+                           ],
+    "privacy":  {
+                    "raw_paths_persisted":  false,
+                    "raw_seed_persisted":  false,
+                    "raw_replay_commands_persisted":  false
+                },
+    "dry_run_only":  true,
+    "training_authorized":  false
+}
