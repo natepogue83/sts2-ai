@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "experiment": "rank_search_v2_failure_replay_smoke",
+  "status": "precommitted_before_replay",
+  "strength_claim": false,
+  "outcome_aggregate_authorized": false,
+  "source_failure_report": "benchmarks/rank-search-action-state-powered-v0.107.1-a10.failure.json",
+  "policy": {
+    "name": "combat_deepsets_one_ply_rank_v2",
+    "branch_failure_mode": "fallback_to_base_on_any_branch_error",
+    "parallel_branches": 4,
+    "max_nodes": 8,
+    "training_labels_emitted": false
+  },
+  "models": {
+    "macro": "checkpoints/decision_policy.a10.npz",
+    "combat": "checkpoints/combat_policy.deepsets-r2.v0.107.1.pt",
+    "value": "checkpoints/combat_value.rank-action-state-v1.v0.107.1.npz",
+    "value_sha256": "55ef3baac4c0c20c32903bb8748397a497b9d493170b5190f18d37af2b38a748"
+  },
+  "cases": [
+    {"case_index": 0, "character": "Ironclad", "seed": "SEARCHR2I000000"},
+    {"case_index": 4, "character": "Ironclad", "seed": "SEARCHR2I000004"},
+    {"case_index": 15, "character": "Ironclad", "seed": "SEARCHR2I000015"},
+    {"case_index": 17, "character": "Ironclad", "seed": "SEARCHR2I000017"},
+    {"case_index": 20, "character": "Ironclad", "seed": "SEARCHR2I000020"},
+    {"case_index": 34, "character": "Ironclad", "seed": "SEARCHR2I000034"},
+    {"case_index": 57, "character": "Silent", "seed": "SEARCHR2S000017"},
+    {"case_index": 116, "character": "Defect", "seed": "SEARCHR2D000036"},
+    {"case_index": 122, "character": "Necrobinder", "seed": "SEARCHR2N000002"},
+    {"case_index": 128, "character": "Necrobinder", "seed": "SEARCHR2N000008"},
+    {"case_index": 141, "character": "Necrobinder", "seed": "SEARCHR2N000021"},
+    {"case_index": 143, "character": "Necrobinder", "seed": "SEARCHR2N000023"},
+    {"case_index": 159, "character": "Necrobinder", "seed": "SEARCHR2N000039"},
+    {"case_index": 168, "character": "Regent", "seed": "SEARCHR2R000008"},
+    {"case_index": 173, "character": "Regent", "seed": "SEARCHR2R000013"},
+    {"case_index": 174, "character": "Regent", "seed": "SEARCHR2R000014"},
+    {"case_index": 181, "character": "Regent", "seed": "SEARCHR2R000021"}
+  ],
+  "success_criteria": {
+    "completed_search_episodes": 17,
+    "runtime_failures": 0,
+    "fallback_metadata_present": true,
+    "transcript_hash_divergence_fallback_observed": true,
+    "semantic_checkpoint_divergence_fallback_observed": true,
+    "replay_invalid_action_fallback_observed": true,
+    "outcomes_inspected": false,
+    "training_labels_emitted": false
+  }
+}
