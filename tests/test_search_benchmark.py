@@ -7,7 +7,11 @@ import unittest
 
 import numpy as np
 
-from stsai.search_benchmark import _search_coverage, create_rank_search_manifest
+from stsai.search_benchmark import (
+    _approximate_two_sided_power,
+    _search_coverage,
+    create_rank_search_manifest,
+)
 from stsai.value import (
     VALUE_NONLINEAR_FEATURE_NAMES,
     CalibratedLinearValueEvaluator,
@@ -56,6 +60,28 @@ class SearchBenchmarkTests(unittest.TestCase):
             self.assertFalse(manifest["search_policy"]["training_labels_emitted"])
             self.assertFalse(manifest["search_policy"]["absolute_probability_claimed"])
             self.assertEqual(manifest["power"]["paired_cases"], 5)
+            self.assertLess(manifest["power"]["approximate_power_for_practical_effect"], 0.2)
+            self.assertEqual(
+                manifest["power"]["interpretation"],
+                "correctness_smoke_not_strength_evidence",
+            )
+
+    def test_power_approximation_distinguishes_smoke_from_powered_design(self) -> None:
+        smoke = _approximate_two_sided_power(
+            paired_cases=5,
+            effect=0.75,
+            paired_sd=2.6,
+            alpha=0.05,
+        )
+        powered = _approximate_two_sided_power(
+            paired_cases=200,
+            effect=0.75,
+            paired_sd=2.6,
+            alpha=0.05,
+        )
+
+        self.assertLess(smoke, 0.2)
+        self.assertGreater(powered, 0.95)
 
     def test_search_coverage_counts_used_changed_and_fallback_decisions(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

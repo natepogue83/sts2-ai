@@ -9,6 +9,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+from statistics import NormalDist
 from typing import Any, Mapping, Sequence
 
 from stsai.headless import HeadlessConfig
@@ -39,6 +40,25 @@ _CHARACTER_CODES = {
     "Regent": "R",
     "Silent": "S",
 }
+
+
+def _approximate_two_sided_power(
+    *,
+    paired_cases: int,
+    effect: float,
+    paired_sd: float,
+    alpha: float,
+) -> float:
+    """Normal approximation for a paired mean-difference test."""
+
+    if paired_cases <= 0 or effect <= 0.0 or paired_sd <= 0.0 or not 0.0 < alpha < 1.0:
+        raise ValueError("Power inputs must be positive and alpha must be between zero and one")
+    normal = NormalDist()
+    critical = normal.inv_cdf(1.0 - alpha / 2.0)
+    noncentrality = effect * paired_cases**0.5 / paired_sd
+    power = 1.0 - normal.cdf(critical - noncentrality)
+    power += normal.cdf(-critical - noncentrality)
+    return round(power, 3)
 
 
 def _sha256(path: str | os.PathLike[str]) -> str:
@@ -123,6 +143,12 @@ def create_rank_search_manifest(
     selected = {case["seed"] for case in cases}
     if len(selected) != len(cases) or selected & excluded:
         raise AssertionError("Rank-search seeds must be unique and fresh")
+    approximate_power = _approximate_two_sided_power(
+        paired_cases=len(cases),
+        effect=0.75,
+        paired_sd=2.6,
+        alpha=0.05,
+    )
     payload: dict[str, Any] = {
         "schema_version": 1,
         "name": "stsai-frozen-rank-only-one-ply-search-pair",
@@ -161,8 +187,13 @@ def create_rank_search_manifest(
             "conservative_paired_floor_sd": 2.6,
             "two_sided_alpha": 0.05,
             "practical_effect_floor_delta": 0.75,
-            "approximate_power_for_practical_effect": 0.983,
+            "approximate_power_for_practical_effect": approximate_power,
             "small_effects_are_out_of_scope": True,
+            "interpretation": (
+                "powered_strength_evaluation"
+                if approximate_power >= 0.8
+                else "correctness_smoke_not_strength_evidence"
+            ),
         },
         "promotion_gate": {
             "paired_floor_delta_interval_lower_above": 0.0,

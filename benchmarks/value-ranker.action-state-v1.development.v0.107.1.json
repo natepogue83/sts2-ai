@@ -1,0 +1,2030 @@
+{
+  "authorization": {
+    "checkpoint_search_eligible": false,
+    "evaluation_scope": "paired_strength_evaluation_no_labels",
+    "next_gate": "five_character_paired_search_correctness_smoke",
+    "requires_frozen_sha256": true
+  },
+  "configuration": {
+    "architecture": "three-member group-balanced bootstrap nonlinear GAM ensemble",
+    "calibration": "identity_rank_only",
+    "ensemble_seeds": [
+      401,
+      503,
+      607
+    ],
+    "epochs": 150,
+    "feature_count": 259,
+    "feature_schema": "character_nonlinear_v3",
+    "l2": 0.003,
+    "learning_rate": 0.02,
+    "split": "per_character_sha256_ranked_seed_groups_80_10_10"
+  },
+  "corpus": {
+    "allowed_policies": [
+      "combat_deepsets_greedy_noncombat_v1"
+    ],
+    "duplicate_states": 0,
+    "examples": 30125,
+    "excluded_trajectories": 200,
+    "groups": {
+      "test": 40,
+      "train": 320,
+      "validation": 40
+    },
+    "policy_filtered_trajectories": 167,
+    "splits": {
+      "test": 3113,
+      "train": 24096,
+      "validation": 2916
+    },
+    "state_sampling": "all_combat_decisions",
+    "trajectories": 400
+  },
+  "diagnostics_only": {
+    "caveat": "Identity probabilities are uncalibrated diagnostics; this checkpoint is authorized only for within-state branch ordering in a hash-bound paired test.",
+    "test": {
+      "by_character": {
+        "CHARACTER.DEFECT": {
+          "calibrated": {
+            "accuracy_at_0_5": 0.732595,
+            "bins": [
+              {
+                "examples": 14,
+                "lower": 0.0,
+                "mean_probability": 0.065447,
+                "observed_rate": 0.0,
+                "upper": 0.1
+              },
+              {
+                "examples": 53,
+                "lower": 0.1,
+                "mean_probability": 0.161124,
+                "observed_rate": 0.132075,
+                "upper": 0.2
+              },
+              {
+                "examples": 77,
+                "lower": 0.2,
+                "mean_probability": 0.251136,
+                "observed_rate": 0.220779,
+                "upper": 0.3
+              },
+              {
+                "examples": 51,
+                "lower": 0.3,
+                "mean_probability": 0.344005,
+                "observed_rate": 0.176471,
+                "upper": 0.4
+              },
+              {
+                "examples": 54,
+                "lower": 0.4,
+                "mean_probability": 0.459955,
+                "observed_rate": 0.240741,
+                "upper": 0.5
+              },
+              {
+                "examples": 74,
+                "lower": 0.5,
+                "mean_probability": 0.545823,
+                "observed_rate": 0.297297,
+                "upper": 0.6
+              },
+              {
+                "examples": 70,
+                "lower": 0.6,
+                "mean_probability": 0.661777,
+                "observed_rate": 0.614286,
+                "upper": 0.7
+              },
+              {
+                "examples": 83,
+                "lower": 0.7,
+                "mean_probability": 0.743706,
+                "observed_rate": 0.53012,
+                "upper": 0.8
+              },
+              {
+                "examples": 148,
+                "lower": 0.8,
+                "mean_probability": 0.860516,
+                "observed_rate": 0.966216,
+                "upper": 0.9
+              },
+              {
+                "examples": 8,
+                "lower": 0.9,
+                "mean_probability": 0.90679,
+                "observed_rate": 1.0,
+                "upper": 1.0
+              }
+            ],
+            "brier": 0.171095,
+            "ece_10": 0.128176,
+            "examples": 632,
+            "log_loss": 0.51187,
+            "positive_rate": 0.484177
+          },
+          "calibrated_ece_10_group_bootstrap_95_interval": [
+            0.070658,
+            0.3152
+          ],
+          "uncalibrated": {
+            "accuracy_at_0_5": 0.732595,
+            "bins": [
+              {
+                "examples": 14,
+                "lower": 0.0,
+                "mean_probability": 0.065447,
+                "observed_rate": 0.0,
+                "upper": 0.1
+              },
+              {
+                "examples": 53,
+                "lower": 0.1,
+                "mean_probability": 0.161124,
+                "observed_rate": 0.132075,
+                "upper": 0.2
+              },
+              {
+                "examples": 77,
+                "lower": 0.2,
+                "mean_probability": 0.251136,
+                "observed_rate": 0.220779,
+                "upper": 0.3
+              },
+              {
+                "examples": 51,
+                "lower": 0.3,
+                "mean_probability": 0.344005,
+                "observed_rate": 0.176471,
+                "upper": 0.4
+              },
+              {
+                "examples": 54,
+                "lower": 0.4,
+                "mean_probability": 0.459955,
+                "observed_rate": 0.240741,
+                "upper": 0.5
+              },
+              {
+                "examples": 74,
+                "lower": 0.5,
+                "mean_probability": 0.545823,
+                "observed_rate": 0.297297,
+                "upper": 0.6
+              },
+              {
+                "examples": 70,
+                "lower": 0.6,
+                "mean_probability": 0.661777,
+                "observed_rate": 0.614286,
+                "upper": 0.7
+              },
+              {
+                "examples": 83,
+                "lower": 0.7,
+                "mean_probability": 0.743706,
+                "observed_rate": 0.53012,
+                "upper": 0.8
+              },
+              {
+                "examples": 148,
+                "lower": 0.8,
+                "mean_probability": 0.860516,
+                "observed_rate": 0.966216,
+                "upper": 0.9
+              },
+              {
+                "examples": 8,
+                "lower": 0.9,
+                "mean_probability": 0.90679,
+                "observed_rate": 1.0,
+                "upper": 1.0
+              }
+            ],
+            "brier": 0.171095,
+            "ece_10": 0.128176,
+            "examples": 632,
+            "log_loss": 0.51187,
+            "positive_rate": 0.484177
+          }
+        },
+        "CHARACTER.IRONCLAD": {
+          "calibrated": {
+            "accuracy_at_0_5": 0.739872,
+            "bins": [
+              {
+                "examples": 49,
+                "lower": 0.0,
+                "mean_probability": 0.065201,
+                "observed_rate": 0.0,
+                "upper": 0.1
+              },
+              {
+                "examples": 49,
+                "lower": 0.1,
+                "mean_probability": 0.142218,
+                "observed_rate": 0.183673,
+                "upper": 0.2
+              },
+              {
+                "examples": 35,
+                "lower": 0.2,
+                "mean_probability": 0.25391,
+                "observed_rate": 0.571429,
+                "upper": 0.3
+              },
+              {
+                "examples": 41,
+                "lower": 0.3,
+                "mean_probability": 0.354094,
+                "observed_rate": 0.536585,
+                "upper": 0.4
+              },
+              {
+                "examples": 54,
+                "lower": 0.4,
+                "mean_probability": 0.454439,
+                "observed_rate": 0.574074,
+                "upper": 0.5
+              },
+              {
+                "examples": 47,
+                "lower": 0.5,
+                "mean_probability": 0.552155,
+                "observed_rate": 0.744681,
+                "upper": 0.6
+              },
+              {
+                "examples": 26,
+                "lower": 0.6,
+                "mean_probability": 0.648442,
+                "observed_rate": 0.692308,
+                "upper": 0.7
+              },
+              {
+                "examples": 56,
+                "lower": 0.7,
+                "mean_probability": 0.762021,
+                "observed_rate": 0.892857,
+                "upper": 0.8
+              },
+              {
+                "examples": 81,
+                "lower": 0.8,
+                "mean_probability": 0.844736,
+                "observed_rate": 0.950617,
+                "upper": 0.9
+              },
+              {
+                "examples": 31,
+                "lower": 0.9,
+                "mean_probability": 0.924856,
+                "observed_rate": 0.677419,
+                "upper": 1.0
+              }
+            ],
+            "brier": 0.172207,
+            "ece_10": 0.136556,
+            "examples": 469,
+            "log_loss": 0.523286,
+            "positive_rate": 0.603412
+          },
+          "calibrated_ece_10_group_bootstrap_95_interval": [
+            0.084935,
+            0.264483
+          ],
+          "uncalibrated": {
+            "accuracy_at_0_5": 0.739872,
+            "bins": [
+              {
+                "examples": 49,
+                "lower": 0.0,
+                "mean_probability": 0.065201,
+                "observed_rate": 0.0,
+                "upper": 0.1
+              },
+              {
+                "examples": 49,
+                "lower": 0.1,
+                "mean_probability": 0.142218,
+                "observed_rate": 0.183673,
+                "upper": 0.2
+              },
+              {
+                "examples": 35,
+                "lower": 0.2,
+                "mean_probability": 0.25391,
+                "observed_rate": 0.571429,
+                "upper": 0.3
+              },
+              {
+                "examples": 41,
+                "lower": 0.3,
+                "mean_probability": 0.354094,
+                "observed_rate": 0.536585,
+                "upper": 0.4
+              },
+              {
+                "examples": 54,
+                "lower": 0.4,
+                "mean_probability": 0.454439,
+                "observed_rate": 0.574074,
+                "upper": 0.5
+              },
+              {
+                "examples": 47,
+                "lower": 0.5,
+                "mean_probability": 0.552155,
+                "observed_rate": 0.744681,
+                "upper": 0.6
+              },
+              {
+                "examples": 26,
+                "lower": 0.6,
+                "mean_probability": 0.648442,
+                "observed_rate": 0.692308,
+                "upper": 0.7
+              },
+              {
+                "examples": 56,
+                "lower": 0.7,
+                "mean_probability": 0.762021,
+                "observed_rate": 0.892857,
+                "upper": 0.8
+              },
+              {
+                "examples": 81,
+                "lower": 0.8,
+                "mean_probability": 0.844736,
+                "observed_rate": 0.950617,
+                "upper": 0.9
+              },
+              {
+                "examples": 31,
+                "lower": 0.9,
+                "mean_probability": 0.924856,
+                "observed_rate": 0.677419,
+                "upper": 1.0
+              }
+            ],
+            "brier": 0.172207,
+            "ece_10": 0.136556,
+            "examples": 469,
+            "log_loss": 0.523286,
+            "positive_rate": 0.603412
+          }
+        },
+        "CHARACTER.NECROBINDER": {
+          "calibrated": {
+            "accuracy_at_0_5": 0.751244,
+            "bins": [
+              {
+                "examples": 91,
+                "lower": 0.0,
+                "mean_probability": 0.062665,
+                "observed_rate": 0.230769,
+                "upper": 0.1
+              },
+              {
+                "examples": 68,
+                "lower": 0.1,
+                "mean_probability": 0.143713,
+                "observed_rate": 0.25,
+                "upper": 0.2
+              },
+              {
+                "examples": 58,
+                "lower": 0.2,
+                "mean_probability": 0.242358,
+                "observed_rate": 0.310345,
+                "upper": 0.3
+              },
+              {
+                "examples": 30,
+                "lower": 0.3,
+                "mean_probability": 0.351821,
+                "observed_rate": 0.2,
+                "upper": 0.4
+              },
+              {
+                "examples": 31,
+                "lower": 0.4,
+                "mean_probability": 0.444096,
+                "observed_rate": 0.677419,
+                "upper": 0.5
+              },
+              {
+                "examples": 54,
+                "lower": 0.5,
+                "mean_probability": 0.551503,
+                "observed_rate": 0.759259,
+                "upper": 0.6
+              },
+              {
+                "examples": 80,
+                "lower": 0.6,
+                "mean_probability": 0.647452,
+                "observed_rate": 0.625,
+                "upper": 0.7
+              },
+              {
+                "examples": 58,
+                "lower": 0.7,
+                "mean_probability": 0.755539,
+                "observed_rate": 0.724138,
+                "upper": 0.8
+              },
+              {
+                "examples": 97,
+                "lower": 0.8,
+                "mean_probability": 0.849811,
+                "observed_rate": 0.917526,
+                "upper": 0.9
+              },
+              {
+                "examples": 36,
+                "lower": 0.9,
+                "mean_probability": 0.937726,
+                "observed_rate": 1.0,
+                "upper": 1.0
+              }
+            ],
+            "brier": 0.183165,
+            "ece_10": 0.102657,
+            "examples": 603,
+            "log_loss": 0.563147,
+            "positive_rate": 0.565506
+          },
+          "calibrated_ece_10_group_bootstrap_95_interval": [
+            0.078672,
+            0.283572
+          ],
+          "uncalibrated": {
+            "accuracy_at_0_5": 0.751244,
+            "bins": [
+              {
+                "examples": 91,
+                "lower": 0.0,
+                "mean_probability": 0.062665,
+                "observed_rate": 0.230769,
+                "upper": 0.1
+              },
+              {
+                "examples": 68,
+                "lower": 0.1,
+                "mean_probability": 0.143713,
+                "observed_rate": 0.25,
+                "upper": 0.2
+              },
+              {
+                "examples": 58,
+                "lower": 0.2,
+                "mean_probability": 0.242358,
+                "observed_rate": 0.310345,
+                "upper": 0.3
+              },
+              {
+                "examples": 30,
+                "lower": 0.3,
+                "mean_probability": 0.351821,
+                "observed_rate": 0.2,
+                "upper": 0.4
+              },
+              {
+                "examples": 31,
+                "lower": 0.4,
+                "mean_probability": 0.444096,
+                "observed_rate": 0.677419,
+                "upper": 0.5
+              },
+              {
+                "examples": 54,
+                "lower": 0.5,
+                "mean_probability": 0.551503,
+                "observed_rate": 0.759259,
+                "upper": 0.6
+              },
+              {
+                "examples": 80,
+                "lower": 0.6,
+                "mean_probability": 0.647452,
+                "observed_rate": 0.625,
+                "upper": 0.7
+              },
+              {
+                "examples": 58,
+                "lower": 0.7,
+                "mean_probability": 0.755539,
+                "observed_rate": 0.724138,
+                "upper": 0.8
+              },
+              {
+                "examples": 97,
+                "lower": 0.8,
+                "mean_probability": 0.849811,
+                "observed_rate": 0.917526,
+                "upper": 0.9
+              },
+              {
+                "examples": 36,
+                "lower": 0.9,
+                "mean_probability": 0.937726,
+                "observed_rate": 1.0,
+                "upper": 1.0
+              }
+            ],
+            "brier": 0.183165,
+            "ece_10": 0.102657,
+            "examples": 603,
+            "log_loss": 0.563147,
+            "positive_rate": 0.565506
+          }
+        },
+        "CHARACTER.REGENT": {
+          "calibrated": {
+            "accuracy_at_0_5": 0.803487,
+            "bins": [
+              {
+                "examples": 24,
+                "lower": 0.0,
+                "mean_probability": 0.080444,
+                "observed_rate": 0.0,
+                "upper": 0.1
+              },
+              {
+                "examples": 82,
+                "lower": 0.1,
+                "mean_probability": 0.153439,
+                "observed_rate": 0.085366,
+                "upper": 0.2
+              },
+              {
+                "examples": 33,
+                "lower": 0.2,
+                "mean_probability": 0.250737,
+                "observed_rate": 0.121212,
+                "upper": 0.3
+              },
+              {
+                "examples": 51,
+                "lower": 0.3,
+                "mean_probability": 0.342255,
+                "observed_rate": 0.019608,
+                "upper": 0.4
+              },
+              {
+                "examples": 30,
+                "lower": 0.4,
+                "mean_probability": 0.457328,
+                "observed_rate": 0.6,
+                "upper": 0.5
+              },
+              {
+                "examples": 53,
+                "lower": 0.5,
+                "mean_probability": 0.553266,
+                "observed_rate": 0.566038,
+                "upper": 0.6
+              },
+              {
+                "examples": 66,
+                "lower": 0.6,
+                "mean_probability": 0.654882,
+                "observed_rate": 0.454545,
+                "upper": 0.7
+              },
+              {
+                "examples": 149,
+                "lower": 0.7,
+                "mean_probability": 0.757634,
+                "observed_rate": 0.832215,
+                "upper": 0.8
+              },
+              {
+                "examples": 142,
+                "lower": 0.8,
+                "mean_probability": 0.83805,
+                "observed_rate": 0.929577,
+                "upper": 0.9
+              },
+              {
+                "examples": 1,
+                "lower": 0.9,
+                "mean_probability": 0.91125,
+                "observed_rate": 1.0,
+                "upper": 1.0
+              }
+            ],
+            "brier": 0.139421,
+            "ece_10": 0.111917,
+            "examples": 631,
+            "log_loss": 0.443733,
+            "positive_rate": 0.549921
+          },
+          "calibrated_ece_10_group_bootstrap_95_interval": [
+            0.077552,
+            0.202431
+          ],
+          "uncalibrated": {
+            "accuracy_at_0_5": 0.803487,
+            "bins": [
+              {
+                "examples": 24,
+                "lower": 0.0,
+                "mean_probability": 0.080444,
+                "observed_rate": 0.0,
+                "upper": 0.1
+              },
+              {
+                "examples": 82,
+                "lower": 0.1,
+                "mean_probability": 0.153439,
+                "observed_rate": 0.085366,
+                "upper": 0.2
+              },
+              {
+                "examples": 33,
+                "lower": 0.2,
+                "mean_probability": 0.250737,
+                "observed_rate": 0.121212,
+                "upper": 0.3
+              },
+              {
+                "examples": 51,
+                "lower": 0.3,
+                "mean_probability": 0.342255,
+                "observed_rate": 0.019608,
+                "upper": 0.4
+              },
+              {
+                "examples": 30,
+                "lower": 0.4,
+                "mean_probability": 0.457328,
+                "observed_rate": 0.6,
+                "upper": 0.5
+              },
+              {
+                "examples": 53,
+                "lower": 0.5,
+                "mean_probability": 0.553266,
+                "observed_rate": 0.566038,
+                "upper": 0.6
+              },
+              {
+                "examples": 66,
+                "lower": 0.6,
+                "mean_probability": 0.654882,
+                "observed_rate": 0.454545,
+                "upper": 0.7
+              },
+              {
+                "examples": 149,
+                "lower": 0.7,
+                "mean_probability": 0.757634,
+                "observed_rate": 0.832215,
+                "upper": 0.8
+              },
+              {
+                "examples": 142,
+                "lower": 0.8,
+                "mean_probability": 0.83805,
+                "observed_rate": 0.929577,
+                "upper": 0.9
+              },
+              {
+                "examples": 1,
+                "lower": 0.9,
+                "mean_probability": 0.91125,
+                "observed_rate": 1.0,
+                "upper": 1.0
+              }
+            ],
+            "brier": 0.139421,
+            "ece_10": 0.111917,
+            "examples": 631,
+            "log_loss": 0.443733,
+            "positive_rate": 0.549921
+          }
+        },
+        "CHARACTER.SILENT": {
+          "calibrated": {
+            "accuracy_at_0_5": 0.731362,
+            "bins": [
+              {
+                "examples": 91,
+                "lower": 0.0,
+                "mean_probability": 0.055855,
+                "observed_rate": 0.175824,
+                "upper": 0.1
+              },
+              {
+                "examples": 105,
+                "lower": 0.1,
+                "mean_probability": 0.149168,
+                "observed_rate": 0.514286,
+                "upper": 0.2
+              },
+              {
+                "examples": 64,
+                "lower": 0.2,
+                "mean_probability": 0.245784,
+                "observed_rate": 0.21875,
+                "upper": 0.3
+              },
+              {
+                "examples": 38,
+                "lower": 0.3,
+                "mean_probability": 0.36025,
+                "observed_rate": 0.763158,
+                "upper": 0.4
+              },
+              {
+                "examples": 60,
+                "lower": 0.4,
+                "mean_probability": 0.450161,
+                "observed_rate": 0.8,
+                "upper": 0.5
+              },
+              {
+                "examples": 77,
+                "lower": 0.5,
+                "mean_probability": 0.548646,
+                "observed_rate": 0.701299,
+                "upper": 0.6
+              },
+              {
+                "examples": 109,
+                "lower": 0.6,
+                "mean_probability": 0.654579,
+                "observed_rate": 0.807339,
+                "upper": 0.7
+              },
+              {
+                "examples": 127,
+                "lower": 0.7,
+                "mean_probability": 0.753291,
+                "observed_rate": 0.968504,
+                "upper": 0.8
+              },
+              {
+                "examples": 106,
+                "lower": 0.8,
+                "mean_probability": 0.841838,
+                "observed_rate": 1.0,
+                "upper": 0.9
+              },
+              {
+                "examples": 1,
+                "lower": 0.9,
+                "mean_probability": 0.902166,
+                "observed_rate": 1.0,
+                "upper": 1.0
+              }
+            ],
+            "brier": 0.186803,
+            "ece_10": 0.205509,
+            "examples": 778,
+            "log_loss": 0.565987,
+            "positive_rate": 0.68509
+          },
+          "calibrated_ece_10_group_bootstrap_95_interval": [
+            0.133097,
+            0.355959
+          ],
+          "uncalibrated": {
+            "accuracy_at_0_5": 0.731362,
+            "bins": [
+              {
+                "examples": 91,
+                "lower": 0.0,
+                "mean_probability": 0.055855,
+                "observed_rate": 0.175824,
+                "upper": 0.1
+              },
+              {
+                "examples": 105,
+                "lower": 0.1,
+                "mean_probability": 0.149168,
+                "observed_rate": 0.514286,
+                "upper": 0.2
+              },
+              {
+                "examples": 64,
+                "lower": 0.2,
+                "mean_probability": 0.245784,
+                "observed_rate": 0.21875,
+                "upper": 0.3
+              },
+              {
+                "examples": 38,
+                "lower": 0.3,
+                "mean_probability": 0.36025,
+                "observed_rate": 0.763158,
+                "upper": 0.4
+              },
+              {
+                "examples": 60,
+                "lower": 0.4,
+                "mean_probability": 0.450161,
+                "observed_rate": 0.8,
+                "upper": 0.5
+              },
+              {
+                "examples": 77,
+                "lower": 0.5,
+                "mean_probability": 0.548646,
+                "observed_rate": 0.701299,
+                "upper": 0.6
+              },
+              {
+                "examples": 109,
+                "lower": 0.6,
+                "mean_probability": 0.654579,
+                "observed_rate": 0.807339,
+                "upper": 0.7
+              },
+              {
+                "examples": 127,
+                "lower": 0.7,
+                "mean_probability": 0.753291,
+                "observed_rate": 0.968504,
+                "upper": 0.8
+              },
+              {
+                "examples": 106,
+                "lower": 0.8,
+                "mean_probability": 0.841838,
+                "observed_rate": 1.0,
+                "upper": 0.9
+              },
+              {
+                "examples": 1,
+                "lower": 0.9,
+                "mean_probability": 0.902166,
+                "observed_rate": 1.0,
+                "upper": 1.0
+              }
+            ],
+            "brier": 0.186803,
+            "ece_10": 0.205509,
+            "examples": 778,
+            "log_loss": 0.565987,
+            "positive_rate": 0.68509
+          }
+        }
+      },
+      "calibrated": {
+        "accuracy_at_0_5": 0.751365,
+        "bins": [
+          {
+            "examples": 269,
+            "lower": 0.0,
+            "mean_probability": 0.062554,
+            "observed_rate": 0.137546,
+            "upper": 0.1
+          },
+          {
+            "examples": 357,
+            "lower": 0.1,
+            "mean_probability": 0.149931,
+            "observed_rate": 0.263305,
+            "upper": 0.2
+          },
+          {
+            "examples": 267,
+            "lower": 0.2,
+            "mean_probability": 0.248261,
+            "observed_rate": 0.273408,
+            "upper": 0.3
+          },
+          {
+            "examples": 211,
+            "lower": 0.3,
+            "mean_probability": 0.349579,
+            "observed_rate": 0.317536,
+            "upper": 0.4
+          },
+          {
+            "examples": 229,
+            "lower": 0.4,
+            "mean_probability": 0.453597,
+            "observed_rate": 0.572052,
+            "upper": 0.5
+          },
+          {
+            "examples": 305,
+            "lower": 0.5,
+            "mean_probability": 0.54981,
+            "observed_rate": 0.596721,
+            "upper": 0.6
+          },
+          {
+            "examples": 351,
+            "lower": 0.6,
+            "mean_probability": 0.653993,
+            "observed_rate": 0.652422,
+            "upper": 0.7
+          },
+          {
+            "examples": 473,
+            "lower": 0.7,
+            "mean_probability": 0.754286,
+            "observed_rate": 0.809725,
+            "upper": 0.8
+          },
+          {
+            "examples": 574,
+            "lower": 0.8,
+            "mean_probability": 0.847473,
+            "observed_rate": 0.952962,
+            "upper": 0.9
+          },
+          {
+            "examples": 77,
+            "lower": 0.9,
+            "mean_probability": 0.928525,
+            "observed_rate": 0.87013,
+            "upper": 1.0
+          }
+        ],
+        "brier": 0.171106,
+        "ece_10": 0.066617,
+        "examples": 3113,
+        "log_loss": 0.523236,
+        "positive_rate": 0.581433
+      },
+      "uncalibrated": {
+        "accuracy_at_0_5": 0.751365,
+        "bins": [
+          {
+            "examples": 269,
+            "lower": 0.0,
+            "mean_probability": 0.062554,
+            "observed_rate": 0.137546,
+            "upper": 0.1
+          },
+          {
+            "examples": 357,
+            "lower": 0.1,
+            "mean_probability": 0.149931,
+            "observed_rate": 0.263305,
+            "upper": 0.2
+          },
+          {
+            "examples": 267,
+            "lower": 0.2,
+            "mean_probability": 0.248261,
+            "observed_rate": 0.273408,
+            "upper": 0.3
+          },
+          {
+            "examples": 211,
+            "lower": 0.3,
+            "mean_probability": 0.349579,
+            "observed_rate": 0.317536,
+            "upper": 0.4
+          },
+          {
+            "examples": 229,
+            "lower": 0.4,
+            "mean_probability": 0.453597,
+            "observed_rate": 0.572052,
+            "upper": 0.5
+          },
+          {
+            "examples": 305,
+            "lower": 0.5,
+            "mean_probability": 0.54981,
+            "observed_rate": 0.596721,
+            "upper": 0.6
+          },
+          {
+            "examples": 351,
+            "lower": 0.6,
+            "mean_probability": 0.653993,
+            "observed_rate": 0.652422,
+            "upper": 0.7
+          },
+          {
+            "examples": 473,
+            "lower": 0.7,
+            "mean_probability": 0.754286,
+            "observed_rate": 0.809725,
+            "upper": 0.8
+          },
+          {
+            "examples": 574,
+            "lower": 0.8,
+            "mean_probability": 0.847473,
+            "observed_rate": 0.952962,
+            "upper": 0.9
+          },
+          {
+            "examples": 77,
+            "lower": 0.9,
+            "mean_probability": 0.928525,
+            "observed_rate": 0.87013,
+            "upper": 1.0
+          }
+        ],
+        "brier": 0.171106,
+        "ece_10": 0.066617,
+        "examples": 3113,
+        "log_loss": 0.523236,
+        "positive_rate": 0.581433
+      }
+    },
+    "validation": {
+      "by_character": {
+        "CHARACTER.DEFECT": {
+          "calibrated": {
+            "accuracy_at_0_5": 0.830325,
+            "bins": [
+              {
+                "examples": 20,
+                "lower": 0.0,
+                "mean_probability": 0.06114,
+                "observed_rate": 0.0,
+                "upper": 0.1
+              },
+              {
+                "examples": 39,
+                "lower": 0.1,
+                "mean_probability": 0.163123,
+                "observed_rate": 0.0,
+                "upper": 0.2
+              },
+              {
+                "examples": 56,
+                "lower": 0.2,
+                "mean_probability": 0.255486,
+                "observed_rate": 0.0,
+                "upper": 0.3
+              },
+              {
+                "examples": 46,
+                "lower": 0.3,
+                "mean_probability": 0.342436,
+                "observed_rate": 0.0,
+                "upper": 0.4
+              },
+              {
+                "examples": 41,
+                "lower": 0.4,
+                "mean_probability": 0.445249,
+                "observed_rate": 0.04878,
+                "upper": 0.5
+              },
+              {
+                "examples": 62,
+                "lower": 0.5,
+                "mean_probability": 0.56254,
+                "observed_rate": 0.451613,
+                "upper": 0.6
+              },
+              {
+                "examples": 76,
+                "lower": 0.6,
+                "mean_probability": 0.646295,
+                "observed_rate": 0.473684,
+                "upper": 0.7
+              },
+              {
+                "examples": 72,
+                "lower": 0.7,
+                "mean_probability": 0.761105,
+                "observed_rate": 0.763889,
+                "upper": 0.8
+              },
+              {
+                "examples": 123,
+                "lower": 0.8,
+                "mean_probability": 0.857988,
+                "observed_rate": 0.99187,
+                "upper": 0.9
+              },
+              {
+                "examples": 19,
+                "lower": 0.9,
+                "mean_probability": 0.905597,
+                "observed_rate": 1.0,
+                "upper": 1.0
+              }
+            ],
+            "brier": 0.128264,
+            "ece_10": 0.166708,
+            "examples": 554,
+            "log_loss": 0.41342,
+            "positive_rate": 0.472924
+          },
+          "calibrated_ece_10_group_bootstrap_95_interval": [
+            0.138961,
+            0.283595
+          ],
+          "uncalibrated": {
+            "accuracy_at_0_5": 0.830325,
+            "bins": [
+              {
+                "examples": 20,
+                "lower": 0.0,
+                "mean_probability": 0.06114,
+                "observed_rate": 0.0,
+                "upper": 0.1
+              },
+              {
+                "examples": 39,
+                "lower": 0.1,
+                "mean_probability": 0.163123,
+                "observed_rate": 0.0,
+                "upper": 0.2
+              },
+              {
+                "examples": 56,
+                "lower": 0.2,
+                "mean_probability": 0.255486,
+                "observed_rate": 0.0,
+                "upper": 0.3
+              },
+              {
+                "examples": 46,
+                "lower": 0.3,
+                "mean_probability": 0.342436,
+                "observed_rate": 0.0,
+                "upper": 0.4
+              },
+              {
+                "examples": 41,
+                "lower": 0.4,
+                "mean_probability": 0.445249,
+                "observed_rate": 0.04878,
+                "upper": 0.5
+              },
+              {
+                "examples": 62,
+                "lower": 0.5,
+                "mean_probability": 0.56254,
+                "observed_rate": 0.451613,
+                "upper": 0.6
+              },
+              {
+                "examples": 76,
+                "lower": 0.6,
+                "mean_probability": 0.646295,
+                "observed_rate": 0.473684,
+                "upper": 0.7
+              },
+              {
+                "examples": 72,
+                "lower": 0.7,
+                "mean_probability": 0.761105,
+                "observed_rate": 0.763889,
+                "upper": 0.8
+              },
+              {
+                "examples": 123,
+                "lower": 0.8,
+                "mean_probability": 0.857988,
+                "observed_rate": 0.99187,
+                "upper": 0.9
+              },
+              {
+                "examples": 19,
+                "lower": 0.9,
+                "mean_probability": 0.905597,
+                "observed_rate": 1.0,
+                "upper": 1.0
+              }
+            ],
+            "brier": 0.128264,
+            "ece_10": 0.166708,
+            "examples": 554,
+            "log_loss": 0.41342,
+            "positive_rate": 0.472924
+          }
+        },
+        "CHARACTER.IRONCLAD": {
+          "calibrated": {
+            "accuracy_at_0_5": 0.796167,
+            "bins": [
+              {
+                "examples": 75,
+                "lower": 0.0,
+                "mean_probability": 0.061826,
+                "observed_rate": 0.08,
+                "upper": 0.1
+              },
+              {
+                "examples": 51,
+                "lower": 0.1,
+                "mean_probability": 0.148819,
+                "observed_rate": 0.156863,
+                "upper": 0.2
+              },
+              {
+                "examples": 42,
+                "lower": 0.2,
+                "mean_probability": 0.243862,
+                "observed_rate": 0.095238,
+                "upper": 0.3
+              },
+              {
+                "examples": 56,
+                "lower": 0.3,
+                "mean_probability": 0.358207,
+                "observed_rate": 0.303571,
+                "upper": 0.4
+              },
+              {
+                "examples": 59,
+                "lower": 0.4,
+                "mean_probability": 0.455102,
+                "observed_rate": 0.745763,
+                "upper": 0.5
+              },
+              {
+                "examples": 72,
+                "lower": 0.5,
+                "mean_probability": 0.54004,
+                "observed_rate": 0.75,
+                "upper": 0.6
+              },
+              {
+                "examples": 60,
+                "lower": 0.6,
+                "mean_probability": 0.657947,
+                "observed_rate": 0.9,
+                "upper": 0.7
+              },
+              {
+                "examples": 99,
+                "lower": 0.7,
+                "mean_probability": 0.757159,
+                "observed_rate": 0.858586,
+                "upper": 0.8
+              },
+              {
+                "examples": 38,
+                "lower": 0.8,
+                "mean_probability": 0.836733,
+                "observed_rate": 1.0,
+                "upper": 0.9
+              },
+              {
+                "examples": 22,
+                "lower": 0.9,
+                "mean_probability": 0.92328,
+                "observed_rate": 1.0,
+                "upper": 1.0
+              }
+            ],
+            "brier": 0.14586,
+            "ece_10": 0.132052,
+            "examples": 574,
+            "log_loss": 0.457695,
+            "positive_rate": 0.578397
+          },
+          "calibrated_ece_10_group_bootstrap_95_interval": [
+            0.078402,
+            0.237063
+          ],
+          "uncalibrated": {
+            "accuracy_at_0_5": 0.796167,
+            "bins": [
+              {
+                "examples": 75,
+                "lower": 0.0,
+                "mean_probability": 0.061826,
+                "observed_rate": 0.08,
+                "upper": 0.1
+              },
+              {
+                "examples": 51,
+                "lower": 0.1,
+                "mean_probability": 0.148819,
+                "observed_rate": 0.156863,
+                "upper": 0.2
+              },
+              {
+                "examples": 42,
+                "lower": 0.2,
+                "mean_probability": 0.243862,
+                "observed_rate": 0.095238,
+                "upper": 0.3
+              },
+              {
+                "examples": 56,
+                "lower": 0.3,
+                "mean_probability": 0.358207,
+                "observed_rate": 0.303571,
+                "upper": 0.4
+              },
+              {
+                "examples": 59,
+                "lower": 0.4,
+                "mean_probability": 0.455102,
+                "observed_rate": 0.745763,
+                "upper": 0.5
+              },
+              {
+                "examples": 72,
+                "lower": 0.5,
+                "mean_probability": 0.54004,
+                "observed_rate": 0.75,
+                "upper": 0.6
+              },
+              {
+                "examples": 60,
+                "lower": 0.6,
+                "mean_probability": 0.657947,
+                "observed_rate": 0.9,
+                "upper": 0.7
+              },
+              {
+                "examples": 99,
+                "lower": 0.7,
+                "mean_probability": 0.757159,
+                "observed_rate": 0.858586,
+                "upper": 0.8
+              },
+              {
+                "examples": 38,
+                "lower": 0.8,
+                "mean_probability": 0.836733,
+                "observed_rate": 1.0,
+                "upper": 0.9
+              },
+              {
+                "examples": 22,
+                "lower": 0.9,
+                "mean_probability": 0.92328,
+                "observed_rate": 1.0,
+                "upper": 1.0
+              }
+            ],
+            "brier": 0.14586,
+            "ece_10": 0.132052,
+            "examples": 574,
+            "log_loss": 0.457695,
+            "positive_rate": 0.578397
+          }
+        },
+        "CHARACTER.NECROBINDER": {
+          "calibrated": {
+            "accuracy_at_0_5": 0.799277,
+            "bins": [
+              {
+                "examples": 15,
+                "lower": 0.0,
+                "mean_probability": 0.068062,
+                "observed_rate": 0.0,
+                "upper": 0.1
+              },
+              {
+                "examples": 64,
+                "lower": 0.1,
+                "mean_probability": 0.156728,
+                "observed_rate": 0.0,
+                "upper": 0.2
+              },
+              {
+                "examples": 66,
+                "lower": 0.2,
+                "mean_probability": 0.255633,
+                "observed_rate": 0.242424,
+                "upper": 0.3
+              },
+              {
+                "examples": 63,
+                "lower": 0.3,
+                "mean_probability": 0.347538,
+                "observed_rate": 0.222222,
+                "upper": 0.4
+              },
+              {
+                "examples": 69,
+                "lower": 0.4,
+                "mean_probability": 0.45101,
+                "observed_rate": 0.449275,
+                "upper": 0.5
+              },
+              {
+                "examples": 70,
+                "lower": 0.5,
+                "mean_probability": 0.553164,
+                "observed_rate": 0.485714,
+                "upper": 0.6
+              },
+              {
+                "examples": 57,
+                "lower": 0.6,
+                "mean_probability": 0.648423,
+                "observed_rate": 0.789474,
+                "upper": 0.7
+              },
+              {
+                "examples": 35,
+                "lower": 0.7,
+                "mean_probability": 0.753366,
+                "observed_rate": 0.942857,
+                "upper": 0.8
+              },
+              {
+                "examples": 94,
+                "lower": 0.8,
+                "mean_probability": 0.859794,
+                "observed_rate": 1.0,
+                "upper": 0.9
+              },
+              {
+                "examples": 20,
+                "lower": 0.9,
+                "mean_probability": 0.9185,
+                "observed_rate": 1.0,
+                "upper": 1.0
+              }
+            ],
+            "brier": 0.136877,
+            "ece_10": 0.097904,
+            "examples": 553,
+            "log_loss": 0.432846,
+            "positive_rate": 0.518987
+          },
+          "calibrated_ece_10_group_bootstrap_95_interval": [
+            0.083563,
+            0.205224
+          ],
+          "uncalibrated": {
+            "accuracy_at_0_5": 0.799277,
+            "bins": [
+              {
+                "examples": 15,
+                "lower": 0.0,
+                "mean_probability": 0.068062,
+                "observed_rate": 0.0,
+                "upper": 0.1
+              },
+              {
+                "examples": 64,
+                "lower": 0.1,
+                "mean_probability": 0.156728,
+                "observed_rate": 0.0,
+                "upper": 0.2
+              },
+              {
+                "examples": 66,
+                "lower": 0.2,
+                "mean_probability": 0.255633,
+                "observed_rate": 0.242424,
+                "upper": 0.3
+              },
+              {
+                "examples": 63,
+                "lower": 0.3,
+                "mean_probability": 0.347538,
+                "observed_rate": 0.222222,
+                "upper": 0.4
+              },
+              {
+                "examples": 69,
+                "lower": 0.4,
+                "mean_probability": 0.45101,
+                "observed_rate": 0.449275,
+                "upper": 0.5
+              },
+              {
+                "examples": 70,
+                "lower": 0.5,
+                "mean_probability": 0.553164,
+                "observed_rate": 0.485714,
+                "upper": 0.6
+              },
+              {
+                "examples": 57,
+                "lower": 0.6,
+                "mean_probability": 0.648423,
+                "observed_rate": 0.789474,
+                "upper": 0.7
+              },
+              {
+                "examples": 35,
+                "lower": 0.7,
+                "mean_probability": 0.753366,
+                "observed_rate": 0.942857,
+                "upper": 0.8
+              },
+              {
+                "examples": 94,
+                "lower": 0.8,
+                "mean_probability": 0.859794,
+                "observed_rate": 1.0,
+                "upper": 0.9
+              },
+              {
+                "examples": 20,
+                "lower": 0.9,
+                "mean_probability": 0.9185,
+                "observed_rate": 1.0,
+                "upper": 1.0
+              }
+            ],
+            "brier": 0.136877,
+            "ece_10": 0.097904,
+            "examples": 553,
+            "log_loss": 0.432846,
+            "positive_rate": 0.518987
+          }
+        },
+        "CHARACTER.REGENT": {
+          "calibrated": {
+            "accuracy_at_0_5": 0.804714,
+            "bins": [
+              {
+                "examples": 17,
+                "lower": 0.0,
+                "mean_probability": 0.090039,
+                "observed_rate": 0.0,
+                "upper": 0.1
+              },
+              {
+                "examples": 57,
+                "lower": 0.1,
+                "mean_probability": 0.156912,
+                "observed_rate": 0.0,
+                "upper": 0.2
+              },
+              {
+                "examples": 102,
+                "lower": 0.2,
+                "mean_probability": 0.246813,
+                "observed_rate": 0.04902,
+                "upper": 0.3
+              },
+              {
+                "examples": 71,
+                "lower": 0.3,
+                "mean_probability": 0.347553,
+                "observed_rate": 0.239437,
+                "upper": 0.4
+              },
+              {
+                "examples": 39,
+                "lower": 0.4,
+                "mean_probability": 0.446268,
+                "observed_rate": 0.205128,
+                "upper": 0.5
+              },
+              {
+                "examples": 44,
+                "lower": 0.5,
+                "mean_probability": 0.555512,
+                "observed_rate": 0.522727,
+                "upper": 0.6
+              },
+              {
+                "examples": 71,
+                "lower": 0.6,
+                "mean_probability": 0.646382,
+                "observed_rate": 0.521127,
+                "upper": 0.7
+              },
+              {
+                "examples": 124,
+                "lower": 0.7,
+                "mean_probability": 0.747758,
+                "observed_rate": 0.75,
+                "upper": 0.8
+              },
+              {
+                "examples": 69,
+                "lower": 0.8,
+                "mean_probability": 0.837485,
+                "observed_rate": 1.0,
+                "upper": 0.9
+              }
+            ],
+            "brier": 0.145288,
+            "ece_10": 0.1171,
+            "examples": 594,
+            "log_loss": 0.457835,
+            "positive_rate": 0.424242
+          },
+          "calibrated_ece_10_group_bootstrap_95_interval": [
+            0.094449,
+            0.253988
+          ],
+          "uncalibrated": {
+            "accuracy_at_0_5": 0.804714,
+            "bins": [
+              {
+                "examples": 17,
+                "lower": 0.0,
+                "mean_probability": 0.090039,
+                "observed_rate": 0.0,
+                "upper": 0.1
+              },
+              {
+                "examples": 57,
+                "lower": 0.1,
+                "mean_probability": 0.156912,
+                "observed_rate": 0.0,
+                "upper": 0.2
+              },
+              {
+                "examples": 102,
+                "lower": 0.2,
+                "mean_probability": 0.246813,
+                "observed_rate": 0.04902,
+                "upper": 0.3
+              },
+              {
+                "examples": 71,
+                "lower": 0.3,
+                "mean_probability": 0.347553,
+                "observed_rate": 0.239437,
+                "upper": 0.4
+              },
+              {
+                "examples": 39,
+                "lower": 0.4,
+                "mean_probability": 0.446268,
+                "observed_rate": 0.205128,
+                "upper": 0.5
+              },
+              {
+                "examples": 44,
+                "lower": 0.5,
+                "mean_probability": 0.555512,
+                "observed_rate": 0.522727,
+                "upper": 0.6
+              },
+              {
+                "examples": 71,
+                "lower": 0.6,
+                "mean_probability": 0.646382,
+                "observed_rate": 0.521127,
+                "upper": 0.7
+              },
+              {
+                "examples": 124,
+                "lower": 0.7,
+                "mean_probability": 0.747758,
+                "observed_rate": 0.75,
+                "upper": 0.8
+              },
+              {
+                "examples": 69,
+                "lower": 0.8,
+                "mean_probability": 0.837485,
+                "observed_rate": 1.0,
+                "upper": 0.9
+              }
+            ],
+            "brier": 0.145288,
+            "ece_10": 0.1171,
+            "examples": 594,
+            "log_loss": 0.457835,
+            "positive_rate": 0.424242
+          }
+        },
+        "CHARACTER.SILENT": {
+          "calibrated": {
+            "accuracy_at_0_5": 0.836193,
+            "bins": [
+              {
+                "examples": 78,
+                "lower": 0.0,
+                "mean_probability": 0.064658,
+                "observed_rate": 0.230769,
+                "upper": 0.1
+              },
+              {
+                "examples": 69,
+                "lower": 0.1,
+                "mean_probability": 0.1443,
+                "observed_rate": 0.028986,
+                "upper": 0.2
+              },
+              {
+                "examples": 50,
+                "lower": 0.2,
+                "mean_probability": 0.241925,
+                "observed_rate": 0.06,
+                "upper": 0.3
+              },
+              {
+                "examples": 53,
+                "lower": 0.3,
+                "mean_probability": 0.351773,
+                "observed_rate": 0.056604,
+                "upper": 0.4
+              },
+              {
+                "examples": 69,
+                "lower": 0.4,
+                "mean_probability": 0.446936,
+                "observed_rate": 0.26087,
+                "upper": 0.5
+              },
+              {
+                "examples": 63,
+                "lower": 0.5,
+                "mean_probability": 0.54409,
+                "observed_rate": 0.571429,
+                "upper": 0.6
+              },
+              {
+                "examples": 35,
+                "lower": 0.6,
+                "mean_probability": 0.654081,
+                "observed_rate": 0.8,
+                "upper": 0.7
+              },
+              {
+                "examples": 116,
+                "lower": 0.7,
+                "mean_probability": 0.755246,
+                "observed_rate": 0.887931,
+                "upper": 0.8
+              },
+              {
+                "examples": 106,
+                "lower": 0.8,
+                "mean_probability": 0.838092,
+                "observed_rate": 0.867925,
+                "upper": 0.9
+              },
+              {
+                "examples": 2,
+                "lower": 0.9,
+                "mean_probability": 0.909091,
+                "observed_rate": 1.0,
+                "upper": 1.0
+              }
+            ],
+            "brier": 0.145826,
+            "ece_10": 0.131134,
+            "examples": 641,
+            "log_loss": 0.472539,
+            "positive_rate": 0.475819
+          },
+          "calibrated_ece_10_group_bootstrap_95_interval": [
+            0.098754,
+            0.247307
+          ],
+          "uncalibrated": {
+            "accuracy_at_0_5": 0.836193,
+            "bins": [
+              {
+                "examples": 78,
+                "lower": 0.0,
+                "mean_probability": 0.064658,
+                "observed_rate": 0.230769,
+                "upper": 0.1
+              },
+              {
+                "examples": 69,
+                "lower": 0.1,
+                "mean_probability": 0.1443,
+                "observed_rate": 0.028986,
+                "upper": 0.2
+              },
+              {
+                "examples": 50,
+                "lower": 0.2,
+                "mean_probability": 0.241925,
+                "observed_rate": 0.06,
+                "upper": 0.3
+              },
+              {
+                "examples": 53,
+                "lower": 0.3,
+                "mean_probability": 0.351773,
+                "observed_rate": 0.056604,
+                "upper": 0.4
+              },
+              {
+                "examples": 69,
+                "lower": 0.4,
+                "mean_probability": 0.446936,
+                "observed_rate": 0.26087,
+                "upper": 0.5
+              },
+              {
+                "examples": 63,
+                "lower": 0.5,
+                "mean_probability": 0.54409,
+                "observed_rate": 0.571429,
+                "upper": 0.6
+              },
+              {
+                "examples": 35,
+                "lower": 0.6,
+                "mean_probability": 0.654081,
+                "observed_rate": 0.8,
+                "upper": 0.7
+              },
+              {
+                "examples": 116,
+                "lower": 0.7,
+                "mean_probability": 0.755246,
+                "observed_rate": 0.887931,
+                "upper": 0.8
+              },
+              {
+                "examples": 106,
+                "lower": 0.8,
+                "mean_probability": 0.838092,
+                "observed_rate": 0.867925,
+                "upper": 0.9
+              },
+              {
+                "examples": 2,
+                "lower": 0.9,
+                "mean_probability": 0.909091,
+                "observed_rate": 1.0,
+                "upper": 1.0
+              }
+            ],
+            "brier": 0.145826,
+            "ece_10": 0.131134,
+            "examples": 641,
+            "log_loss": 0.472539,
+            "positive_rate": 0.475819
+          }
+        }
+      },
+      "calibrated": {
+        "accuracy_at_0_5": 0.813786,
+        "bins": [
+          {
+            "examples": 205,
+            "lower": 0.0,
+            "mean_probability": 0.065633,
+            "observed_rate": 0.117073,
+            "upper": 0.1
+          },
+          {
+            "examples": 280,
+            "lower": 0.1,
+            "mean_probability": 0.153153,
+            "observed_rate": 0.035714,
+            "upper": 0.2
+          },
+          {
+            "examples": 316,
+            "lower": 0.2,
+            "mean_probability": 0.249027,
+            "observed_rate": 0.088608,
+            "upper": 0.3
+          },
+          {
+            "examples": 289,
+            "lower": 0.3,
+            "mean_probability": 0.349574,
+            "observed_rate": 0.176471,
+            "upper": 0.4
+          },
+          {
+            "examples": 277,
+            "lower": 0.4,
+            "mean_probability": 0.449346,
+            "observed_rate": 0.371841,
+            "upper": 0.5
+          },
+          {
+            "examples": 311,
+            "lower": 0.5,
+            "mean_probability": 0.550489,
+            "observed_rate": 0.562701,
+            "upper": 0.6
+          },
+          {
+            "examples": 299,
+            "lower": 0.6,
+            "mean_probability": 0.649971,
+            "observed_rate": 0.668896,
+            "upper": 0.7
+          },
+          {
+            "examples": 446,
+            "lower": 0.7,
+            "mean_probability": 0.754387,
+            "observed_rate": 0.827354,
+            "upper": 0.8
+          },
+          {
+            "examples": 430,
+            "lower": 0.8,
+            "mean_probability": 0.84831,
+            "observed_rate": 0.965116,
+            "upper": 0.9
+          },
+          {
+            "examples": 63,
+            "lower": 0.9,
+            "mean_probability": 0.915979,
+            "observed_rate": 1.0,
+            "upper": 1.0
+          }
+        ],
+        "brier": 0.140689,
+        "ece_10": 0.090239,
+        "examples": 2916,
+        "log_loss": 0.447863,
+        "positive_rate": 0.493141
+      },
+      "uncalibrated": {
+        "accuracy_at_0_5": 0.813786,
+        "bins": [
+          {
+            "examples": 205,
+            "lower": 0.0,
+            "mean_probability": 0.065633,
+            "observed_rate": 0.117073,
+            "upper": 0.1
+          },
+          {
+            "examples": 280,
+            "lower": 0.1,
+            "mean_probability": 0.153153,
+            "observed_rate": 0.035714,
+            "upper": 0.2
+          },
+          {
+            "examples": 316,
+            "lower": 0.2,
+            "mean_probability": 0.249027,
+            "observed_rate": 0.088608,
+            "upper": 0.3
+          },
+          {
+            "examples": 289,
+            "lower": 0.3,
+            "mean_probability": 0.349574,
+            "observed_rate": 0.176471,
+            "upper": 0.4
+          },
+          {
+            "examples": 277,
+            "lower": 0.4,
+            "mean_probability": 0.449346,
+            "observed_rate": 0.371841,
+            "upper": 0.5
+          },
+          {
+            "examples": 311,
+            "lower": 0.5,
+            "mean_probability": 0.550489,
+            "observed_rate": 0.562701,
+            "upper": 0.6
+          },
+          {
+            "examples": 299,
+            "lower": 0.6,
+            "mean_probability": 0.649971,
+            "observed_rate": 0.668896,
+            "upper": 0.7
+          },
+          {
+            "examples": 446,
+            "lower": 0.7,
+            "mean_probability": 0.754387,
+            "observed_rate": 0.827354,
+            "upper": 0.8
+          },
+          {
+            "examples": 430,
+            "lower": 0.8,
+            "mean_probability": 0.84831,
+            "observed_rate": 0.965116,
+            "upper": 0.9
+          },
+          {
+            "examples": 63,
+            "lower": 0.9,
+            "mean_probability": 0.915979,
+            "observed_rate": 1.0,
+            "upper": 1.0
+          }
+        ],
+        "brier": 0.140689,
+        "ece_10": 0.090239,
+        "examples": 2916,
+        "log_loss": 0.447863,
+        "positive_rate": 0.493141
+      }
+    }
+  },
+  "experiment": "rank_only_action_state_value_v1",
+  "model": "checkpoints\\combat_value.rank-action-state-v1.v0.107.1.npz",
+  "model_sha256": "55ef3baac4c0c20c32903bb8748397a497b9d493170b5190f18d37af2b38a748",
+  "probability_claim": false,
+  "schema_version": 1,
+  "search_labels_used": false,
+  "target": "survive_next_3_floors",
+  "training_labels_emitted": false,
+  "training_source": "existing_first_party_deep_sets_headless_trajectories"
+}
