@@ -181,7 +181,7 @@ license metadata alongside any raw snapshot.
 - [x] Leakage-aware one-ply search plumbing without training-label emission
 - [ ] Authorized search-generated policy/value labels and strength evaluation
 - [ ] Native replay-to-per-action training transition reconstruction
-- [ ] Batched multi-process environment manager
+- [x] Batched multi-process environment manager
 - [ ] Search plus offline/online reinforcement-learning loop
 - [x] Character-balanced, first-attempt fixed-seed evaluation harness
 
@@ -289,6 +289,13 @@ without adding a Gymnasium dependency. `reset` fixes the character, ascension,
 and run seed. Every observation carries the canonical character ID, and every
 decision exposes an ordered candidate list plus a matching legal-action mask.
 `step` accepts either a candidate index or the candidate itself.
+
+`stsai.headless_batch.HeadlessBatchManager` runs independent episodes through a
+bounded ordered coordinator. Each episode still owns its existing isolated
+native `sts2-cli` process; the coordinator overlaps blocking protocol calls and
+retains per-job failures without adding a second Windows multiprocessing layer.
+The combat comparison commands accept `--workers` (default `4`) and preserve
+manifest order, seeds, action order, atomic trajectories, and resume checks.
 
 Supported candidates include targeted card and potion actions, end turn, route
 choices, event and rest options, card rewards, bundle/card selections, staged

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "evaluation": "headless_batch_manager_equivalence_and_throughput_probe",
+  "build_id": "v0.107.1",
+  "ascension": 10,
+  "manifest": "benchmarks/headless-combat-deepsets-vs-dagger-r1-v0.107.1-a10.json",
+  "models": {
+    "baseline": "combat_policy.dagger-r1.v0.107.1.npz",
+    "candidate": "combat_policy.deepsets-r2.v0.107.1.pt"
+  },
+  "probe": {
+    "cases": 5,
+    "jobs": 10,
+    "max_steps": 80,
+    "semantic_events_compared": 791,
+    "semantic_sha256": "9ac60b8b19f3cf5a46907cd92a6799d0f92da3574a5a0df7ec17640fa178f44d"
+  },
+  "sequential": {
+    "workers": 1,
+    "elapsed_seconds": 18.51
+  },
+  "parallel": {
+    "workers": 4,
+    "elapsed_seconds": 6.454
+  },
+  "speedup": 2.868,
+  "gates": {
+    "ordered_aggregate_identical": true,
+    "all_normalized_trajectory_events_identical": true,
+    "per_job_failure_isolation_unit_tested": true,
+    "full_unit_suite_passed": true
+  },
+  "normalization": {
+    "removed_keys": [
+      "recorded_at",
+      "trajectory",
+      "trajectory_id"
+    ],
+    "reason": "These values identify an execution rather than simulator or policy semantics."
+  },
+  "limitations": [
+    "This is a bounded correctness and throughput probe, not a strength evaluation.",
+    "Throughput depends on machine load and may not scale linearly beyond four workers."
+  ]
+}

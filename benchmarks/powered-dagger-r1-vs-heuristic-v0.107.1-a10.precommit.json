@@ -1,0 +1,829 @@
+{
+  "cases": [
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000000"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000001"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000002"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000003"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000004"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000005"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000006"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000007"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000008"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000009"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000010"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000011"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000012"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000013"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000014"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000015"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000016"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000017"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000018"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000019"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000020"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000021"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000022"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000023"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000024"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000025"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000026"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000027"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000028"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000029"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000030"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000031"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000032"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000033"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000034"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000035"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000036"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000037"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000038"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "PWR1I000039"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000000"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000001"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000002"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000003"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000004"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000005"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000006"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000007"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000008"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000009"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000010"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000011"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000012"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000013"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000014"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000015"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000016"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000017"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000018"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000019"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000020"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000021"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000022"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000023"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000024"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000025"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000026"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000027"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000028"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000029"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000030"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000031"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000032"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000033"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000034"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000035"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000036"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000037"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000038"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "PWR1S000039"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000000"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000001"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000002"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000003"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000004"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000005"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000006"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000007"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000008"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000009"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000010"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000011"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000012"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000013"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000014"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000015"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000016"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000017"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000018"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000019"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000020"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000021"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000022"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000023"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000024"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000025"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000026"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000027"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000028"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000029"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000030"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000031"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000032"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000033"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000034"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000035"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000036"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000037"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000038"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "PWR1D000039"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000000"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000001"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000002"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000003"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000004"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000005"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000006"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000007"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000008"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000009"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000010"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000011"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000012"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000013"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000014"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000015"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000016"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000017"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000018"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000019"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000020"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000021"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000022"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000023"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000024"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000025"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000026"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000027"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000028"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000029"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000030"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000031"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000032"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000033"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000034"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000035"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000036"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000037"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000038"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "PWR1N000039"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000000"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000001"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000002"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000003"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000004"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000005"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000006"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000007"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000008"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000009"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000010"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000011"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000012"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000013"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000014"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000015"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000016"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000017"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000018"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000019"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000020"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000021"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000022"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000023"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000024"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000025"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000026"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000027"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000028"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000029"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000030"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000031"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000032"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000033"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000034"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000035"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000036"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000037"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000038"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "PWR1R000039"
+    }
+  ],
+  "created_at": "2026-07-19T21:29:10.943739+00:00",
+  "models": {
+    "baseline": {
+      "filename": "combat_policy.heuristic.v0.107.1.npz",
+      "kind": "mlp",
+      "sha256": "34e522e653130c6af724f8de1ac72a1559eb13d07ef700d93bbc009d0b46b9d2"
+    },
+    "candidate": {
+      "filename": "combat_policy.dagger-r1.v0.107.1.npz",
+      "kind": "mlp",
+      "sha256": "2b13007cd1b372bfc7c873b20f01907674c5c6b31783ada56a34d0f04685b065"
+    }
+  },
+  "name": "stsai-frozen-combat-checkpoint-pair",
+  "schema_version": 1,
+  "selection": {
+    "count_per_character": 40,
+    "method": "fresh-prefix-seeds-selected-before-outcomes",
+    "outcomes_inspected": false,
+    "seed_prefix": "PWR1"
+  },
+  "target": {
+    "ascension": 10,
+    "build_id": "v0.107.1"
+  }
+}

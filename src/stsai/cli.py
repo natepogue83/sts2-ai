@@ -93,9 +93,7 @@ def make_parser() -> argparse.ArgumentParser:
     human_manifest_parser.add_argument("--game-assembly", type=Path, required=True)
     human_manifest_parser.add_argument("--bridge-dll", type=Path, required=True)
     human_manifest_parser.add_argument("--telemetry-patch", type=Path, required=True)
-    human_manifest_parser.add_argument(
-        "--exclude-manifest", type=Path, action="append", default=[]
-    )
+    human_manifest_parser.add_argument("--exclude-manifest", type=Path, action="append", default=[])
     human_manifest_parser.add_argument("--build-id", default="v0.107.1")
     human_manifest_parser.add_argument("--ascension", type=int, default=10)
     human_manifest_parser.add_argument("--decisions-per-character", type=int, default=100)
@@ -104,9 +102,7 @@ def make_parser() -> argparse.ArgumentParser:
         "build-human-combat-dataset",
         help="Fail closed on provenance and emit balanced train-only UI demonstrations",
     )
-    human_dataset_parser.add_argument(
-        "--input", action="append", type=Path, required=True
-    )
+    human_dataset_parser.add_argument("--input", action="append", type=Path, required=True)
     human_dataset_parser.add_argument("--manifest", type=Path, required=True)
     human_dataset_parser.add_argument("--output", type=Path, required=True)
     human_dataset_parser.add_argument("--receipt", type=Path, required=True)
@@ -519,6 +515,12 @@ def make_parser() -> argparse.ArgumentParser:
     combat_headless_eval_parser.add_argument("--output", type=Path, required=True)
     combat_headless_eval_parser.add_argument("--trajectory-dir", type=Path, required=True)
     combat_headless_eval_parser.add_argument("--count-per-character", type=int, default=5)
+    combat_headless_eval_parser.add_argument(
+        "--workers",
+        type=int,
+        default=4,
+        help="Maximum independent native simulator processes to run concurrently",
+    )
     combat_headless_eval_parser.add_argument("--max-steps", type=int, default=1000)
     combat_headless_eval_parser.add_argument("--build-id", default="v0.107.1")
     combat_headless_eval_parser.add_argument(
@@ -543,6 +545,12 @@ def make_parser() -> argparse.ArgumentParser:
     combat_pair_parser.add_argument("--trajectory-dir", type=Path, required=True)
     combat_pair_parser.add_argument("--pool", default="validation")
     combat_pair_parser.add_argument("--count-per-character", type=int, default=5)
+    combat_pair_parser.add_argument(
+        "--workers",
+        type=int,
+        default=4,
+        help="Maximum independent native simulator processes to run concurrently",
+    )
     combat_pair_parser.add_argument("--max-steps", type=int, default=1000)
     combat_pair_parser.add_argument("--build-id", default="v0.107.1")
     combat_pair_parser.add_argument("--runtime", type=Path)
@@ -608,9 +616,7 @@ def make_parser() -> argparse.ArgumentParser:
     chip_manifest_parser.add_argument("--macro-model", type=Path, required=True)
     chip_manifest_parser.add_argument("--seed-prefix", default="TACTV1")
     chip_manifest_parser.add_argument("--count-per-character", type=int, default=10)
-    chip_manifest_parser.add_argument(
-        "--exclude-manifest", type=Path, action="append", default=[]
-    )
+    chip_manifest_parser.add_argument("--exclude-manifest", type=Path, action="append", default=[])
     chip_manifest_parser.add_argument("--build-id", default="v0.107.1")
     chip_manifest_parser.add_argument("--ascension", type=int, default=10)
 
@@ -1174,6 +1180,7 @@ def main(argv: Sequence[str] | None = None) -> int:
                 output=args.output,
                 trajectory_dir=args.trajectory_dir,
                 count_per_character=args.count_per_character,
+                parallel_workers=args.workers,
                 max_steps=args.max_steps,
                 build_id=args.build_id,
                 config=config,
@@ -1200,6 +1207,7 @@ def main(argv: Sequence[str] | None = None) -> int:
                 trajectory_dir=args.trajectory_dir,
                 pool=args.pool,
                 count_per_character=args.count_per_character,
+                parallel_workers=args.workers,
                 max_steps=args.max_steps,
                 build_id=args.build_id,
                 config=config,

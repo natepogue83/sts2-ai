@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
+from functools import partial
 import hashlib
 import json
 import os
@@ -13,6 +14,7 @@ from statistics import fmean, median, stdev
 from typing import Any, Callable, Mapping, Sequence
 
 from stsai.headless import HeadlessConfig, HeadlessRuntimeError
+from stsai.headless_batch import HeadlessBatchJob, HeadlessBatchManager
 from stsai.headless_env import HEADLESS_CHARACTERS, run_random_rollout
 from stsai.headless_policy import (
     run_combat_distilled_rollout,
@@ -918,6 +920,7 @@ def evaluate_combat_distillation(
     output: str | Path,
     trajectory_dir: str | Path,
     count_per_character: int = 5,
+    parallel_workers: int = 1,
     max_steps: int = 1_000,
     build_id: str = "v0.107.1",
     config: HeadlessConfig | None = None,
@@ -952,83 +955,88 @@ def evaluate_combat_distillation(
             "Frozen evaluation trajectory directory has unexpected files: "
             + ", ".join(sorted(unexpected))
         )
-    rows: list[dict[str, Any]] = []
     reused = {"heuristic": 0, "combat_bc": 0}
     discarded_incomplete = 0
     combat_sha256 = _sha256(combat_model_path)
+    arm_results: dict[str, dict[str, Any]] = {}
+    jobs: list[HeadlessBatchJob[dict[str, Any]]] = []
     for case_index, case in enumerate(cases):
         character = case["character"]
         seed = case["seed"]
         stem = f"{case_index:03d}.{character.lower()}.{seed}"
-        heuristic_path = trajectories / f"{stem}.heuristic.jsonl"
-        heuristic = _completed_rollout(
-            heuristic_path,
-            character=character,
-            seed=seed,
-            ascension=ascension,
-            policy="greedy_rules_v1",
-            build_id=build_id,
-        )
-        if heuristic is None:
+        for arm, policy_name, combat_sha in (
+            ("heuristic", "greedy_rules_v1", None),
+            ("combat_bc", "combat_bc_greedy_noncombat_v1", combat_sha256),
+        ):
+            suffix = "heuristic" if arm == "heuristic" else "combat-bc"
+            path = trajectories / f"{stem}.{suffix}.jsonl"
+            key = f"{case_index}:{arm}"
+            completed = _completed_rollout(
+                path,
+                character=character,
+                seed=seed,
+                ascension=ascension,
+                policy=policy_name,
+                build_id=build_id,
+                combat_model_sha256=combat_sha,
+            )
+            if completed is not None:
+                reused[arm] += 1
+                arm_results[key] = completed
+                continue
             discarded_incomplete += int(
                 _discard_matching_incomplete(
-                    heuristic_path,
+                    path,
                     character=character,
                     seed=seed,
-                    policy="greedy_rules_v1",
+                    policy=policy_name,
                 )
             )
-            heuristic = _run_benchmark_rollout(
-                heuristic_path,
-                lambda: run_heuristic_rollout(
-                    model_path=macro_model_path,
-                    output=heuristic_path,
-                    character=character,
-                    ascension=ascension,
-                    seed=seed,
-                    max_steps=max_steps,
-                    build_id=build_id,
-                    config=config,
-                ),
-            )
-        else:
-            reused["heuristic"] += 1
+            if arm == "heuristic":
+                run = partial(
+                    _run_benchmark_rollout,
+                    path,
+                    partial(
+                        run_heuristic_rollout,
+                        model_path=macro_model_path,
+                        output=path,
+                        character=character,
+                        ascension=ascension,
+                        seed=seed,
+                        max_steps=max_steps,
+                        build_id=build_id,
+                        config=config,
+                    ),
+                )
+            else:
+                run = partial(
+                    _run_benchmark_rollout,
+                    path,
+                    partial(
+                        run_combat_distilled_rollout,
+                        macro_model_path=macro_model_path,
+                        combat_model_path=combat_model_path,
+                        output=path,
+                        character=character,
+                        ascension=ascension,
+                        seed=seed,
+                        max_steps=max_steps,
+                        build_id=build_id,
+                        config=config,
+                    ),
+                )
+            jobs.append(HeadlessBatchJob(key, run))
 
-        combat_path = trajectories / f"{stem}.combat-bc.jsonl"
-        combat_bc = _completed_rollout(
-            combat_path,
-            character=character,
-            seed=seed,
-            ascension=ascension,
-            policy="combat_bc_greedy_noncombat_v1",
-            build_id=build_id,
-            combat_model_sha256=combat_sha256,
-        )
-        if combat_bc is None:
-            discarded_incomplete += int(
-                _discard_matching_incomplete(
-                    combat_path,
-                    character=character,
-                    seed=seed,
-                    policy="combat_bc_greedy_noncombat_v1",
-                )
-            )
-            combat_bc = _run_benchmark_rollout(
-                combat_path,
-                lambda: run_combat_distilled_rollout(
-                    macro_model_path=macro_model_path,
-                    combat_model_path=combat_model_path,
-                    output=combat_path,
-                    character=character,
-                    ascension=ascension,
-                    seed=seed,
-                    max_steps=max_steps,
-                    build_id=build_id,
-                    config=config,
-                ),
-            )
-        else:
-            reused["combat_bc"] += 1
+    batch_report = HeadlessBatchManager(parallel_workers).run(jobs)
+    for job, value in zip(jobs, batch_report.values(), strict=True):
+        arm_results[job.key] = value
+
+    rows: list[dict[str, Any]] = []
+    for case_index, case in enumerate(cases):
+        character = case["character"]
+        seed = case["seed"]
+        heuristic = arm_results[f"{case_index}:heuristic"]
+        combat_bc = arm_results[f"{case_index}:combat_bc"]
         rows.append(
             {
                 "case_index": case_index,
@@ -1053,6 +1061,11 @@ def evaluate_combat_distillation(
         "ascension": ascension,
         "count_per_character": count_per_character,
         "max_steps": max_steps,
+        "execution": {
+            "mode": "bounded_native_process_batch",
+            "parallel_workers": parallel_workers,
+            "submitted_jobs": len(jobs),
+        },
         "selection": "all precommitted held cases in manifest order; outcomes not inspected",
         "macro_model": str(Path(macro_model_path).resolve()),
         "macro_model_sha256": _sha256(macro_model_path),
@@ -1070,7 +1083,10 @@ def evaluate_combat_distillation(
                 "This compares imitation against its heuristic teacher; "
                 "it does not establish expert play."
             ),
-            "Five held seeds per character are a smoke evaluation, not a final statistical claim.",
+            (
+                f"{count_per_character} held seeds per character require interpreting the "
+                "reported paired interval, not only the point estimate."
+            ),
             "The descriptive interval is a normal approximation over paired final-floor deltas.",
             (
                 "Native runtime errors are retained as truncations at the last recorded floor "
@@ -1219,18 +1235,14 @@ def evaluate_chip_aware_heuristic_pair(
         ),
         "every_character_mean_paired_floor_delta_at_least_minus_0_5": all(
             float(by_character[character]["paired_floor_delta"])
-            >= float(
-                frozen_gate["every_character_mean_paired_floor_delta_at_least"]
-            )
+            >= float(frozen_gate["every_character_mean_paired_floor_delta_at_least"])
             for character in HEADLESS_CHARACTERS
         ),
         "candidate_victories_at_least_baseline": (
-            int(overall["candidate"]["victories"])
-            >= int(overall["baseline"]["victories"])
+            int(overall["candidate"]["victories"]) >= int(overall["baseline"]["victories"])
         ),
         "candidate_truncations_at_most_baseline": (
-            int(overall["candidate"]["truncations"])
-            <= int(overall["baseline"]["truncations"])
+            int(overall["candidate"]["truncations"]) <= int(overall["baseline"]["truncations"])
         ),
     }
     result = {
@@ -1467,6 +1479,7 @@ def evaluate_combat_model_pair(
     trajectory_dir: str | Path,
     pool: str = "validation",
     count_per_character: int = 5,
+    parallel_workers: int = 1,
     max_steps: int = 1_000,
     build_id: str = "v0.107.1",
     config: HeadlessConfig | None = None,
@@ -1521,22 +1534,24 @@ def evaluate_combat_model_pair(
         frozen = frozen if isinstance(frozen, Mapping) else {}
         if frozen and (str(frozen.get("kind")) != kind or str(frozen.get("sha256")) != sha256):
             raise ValueError(f"{arm.title()} checkpoint does not match frozen manifest")
-    rows: list[dict[str, Any]] = []
     reused = {"baseline": 0, "candidate": 0}
     discarded_incomplete = 0
-
+    arm_results: dict[str, dict[str, Any]] = {}
+    arm_paths: dict[str, Path] = {}
+    jobs: list[HeadlessBatchJob[dict[str, Any]]] = []
     for case_index, case in enumerate(cases):
         character = case["character"]
         seed = case["seed"]
         stem = f"{case_index:03d}.{character.lower()}.{seed}"
-        arm_results: dict[str, dict[str, Any]] = {}
         for arm, kind, model_path, model_sha256 in (
             ("baseline", baseline_kind, baseline_model_path, baseline_sha256),
             ("candidate", candidate_kind, candidate_model_path, candidate_sha256),
         ):
             path = trajectories / f"{stem}.{arm}.jsonl"
+            key = f"{case_index}:{arm}"
+            arm_paths[key] = path
             policy_name = _combat_policy_name(kind)
-            result = _completed_rollout(
+            completed = _completed_rollout(
                 path,
                 character=character,
                 seed=seed,
@@ -1545,34 +1560,52 @@ def evaluate_combat_model_pair(
                 build_id=build_id,
                 combat_model_sha256=model_sha256,
             )
-            if result is None:
-                discarded_incomplete += int(
-                    _discard_matching_incomplete(
-                        path,
-                        character=character,
-                        seed=seed,
-                        policy=policy_name,
-                    )
-                )
-                result = _run_benchmark_rollout(
-                    path,
-                    lambda path=path, model_path=model_path, kind=kind: _run_combat_checkpoint(
-                        kind,
-                        macro_model_path=macro_model_path,
-                        combat_model_path=model_path,
-                        output=path,
-                        character=character,
-                        ascension=ascension,
-                        seed=seed,
-                        max_steps=max_steps,
-                        build_id=build_id,
-                        config=config,
-                    ),
-                )
-            else:
+            if completed is not None:
                 reused[arm] += 1
-            result["combat_action_counts"] = _combat_action_counts(path)
-            arm_results[arm] = result
+                arm_results[key] = completed
+                continue
+            discarded_incomplete += int(
+                _discard_matching_incomplete(
+                    path,
+                    character=character,
+                    seed=seed,
+                    policy=policy_name,
+                )
+            )
+            run_checkpoint = partial(
+                _run_combat_checkpoint,
+                kind,
+                macro_model_path=macro_model_path,
+                combat_model_path=model_path,
+                output=path,
+                character=character,
+                ascension=ascension,
+                seed=seed,
+                max_steps=max_steps,
+                build_id=build_id,
+                config=config,
+            )
+            jobs.append(
+                HeadlessBatchJob(
+                    key,
+                    partial(_run_benchmark_rollout, path, run_checkpoint),
+                )
+            )
+
+    batch_report = HeadlessBatchManager(parallel_workers).run(jobs)
+    for job, value in zip(jobs, batch_report.values(), strict=True):
+        arm_results[job.key] = value
+
+    rows: list[dict[str, Any]] = []
+    for case_index, case in enumerate(cases):
+        character = case["character"]
+        seed = case["seed"]
+        paired: dict[str, dict[str, Any]] = {}
+        for arm in ("baseline", "candidate"):
+            key = f"{case_index}:{arm}"
+            arm_result = arm_results[key]
+            arm_result["combat_action_counts"] = _combat_action_counts(arm_paths[key])
+            paired[arm] = arm_result
         rows.append(
             {
                 "case_index": case_index,
@@ -1580,9 +1613,9 @@ def evaluate_combat_model_pair(
                 "canonical_character": canonical_character(character),
                 "seed": seed,
                 "ascension": ascension,
-                **arm_results,
-                "paired_floor_delta": int(arm_results["candidate"].get("floor") or 0)
-                - int(arm_results["baseline"].get("floor") or 0),
+                **paired,
+                "paired_floor_delta": int(paired["candidate"].get("floor") or 0)
+                - int(paired["baseline"].get("floor") or 0),
             }
         )
 
@@ -1597,6 +1630,11 @@ def evaluate_combat_model_pair(
         "ascension": ascension,
         "count_per_character": count_per_character,
         "max_steps": max_steps,
+        "execution": {
+            "mode": "bounded_native_process_batch",
+            "parallel_workers": parallel_workers,
+            "submitted_jobs": len(jobs),
+        },
         "selection": (
             "named precommitted manifest pool in original order"
             if has_named_pool
@@ -1618,7 +1656,10 @@ def evaluate_combat_model_pair(
         "combat_action_counts": _pair_combat_action_counts(rows),
         "cases": rows,
         "limitations": [
-            "Five validation seeds per character are directional, not a final claim.",
+            (
+                f"{count_per_character} validation seeds per character require interpreting "
+                "the reported paired interval, not only the point estimate."
+            ),
             "Runtime errors are retained as truncations and counted against their arm.",
             "No policy is promoted by this validation comparison alone.",
         ],
