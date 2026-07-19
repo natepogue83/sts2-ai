@@ -449,6 +449,15 @@ floors with a descriptive 95% interval of -1.2582 to +1.7382; neither arm won a
 run. The checkpoint is therefore a stronger imitation baseline, not a high-level
 player claim.
 
+A fresh powered rerun now supersedes those directional 25-case estimates. At
+200 paired cases each, DAgger round 1 versus the heuristic-distillation MLP was
+`+0.13` floors (95% interval `[-0.1014, 0.3614]`), DAgger round 2 versus round 1
+was `+0.09` (`[-0.1479, 0.3279]`), and Deep Sets versus round 1 was `-0.105`
+(`[-0.4588, 0.2488]`). None won a run. The imitation variants are therefore
+closed as strength candidates; Deep Sets remains the representation baseline
+for the value/search path. The frozen summary is
+`benchmarks/powered-imitation-comparison-summary.v0.107.1-a10.n200.json`.
+
 The next combat milestone is no longer another global-Platt linear retry. The
 opened audit can be folded into future development, but never reused as blind
 evidence. A replacement should precommit a calibration-selection procedure

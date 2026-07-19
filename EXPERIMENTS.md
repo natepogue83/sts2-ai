@@ -811,3 +811,58 @@ not prove complete RunReplays coverage, full-run reconstruction, data license
 authorization, or policy strength. The next replay step is broader
 fidelity/provenance coverage and explicit authorization before any replay data
 is converted into training transitions.
+
+## 2026-07-19 - Powered online imitation comparisons
+
+### Measurement gate
+
+Git history was established before opening new outcomes. Commit `8977a55`
+freezes the prior research baseline; commit `8eb1372` freezes the batch manager,
+its real-runtime proof, all checkpoints, and three fresh model-bound manifests.
+Each comparison contains 200 Ascension-10 cases, exactly 40 per character and
+400 isolated episodes.
+
+The manager coordinates existing one-process-per-environment native runtimes
+with four bounded workers. Against sequential execution, a five-character
+real-runtime probe was 2.868x faster (18.510 seconds to 6.454 seconds). All 791
+normalized trajectory events and the ordered aggregate were identical. The
+proof is `benchmarks/headless-batch-manager-probe.v0.107.1.json`.
+
+### Primary results
+
+| Candidate minus baseline | Paired cases | Mean floor delta | Descriptive 95% interval | Improved / tied / worse |
+|---|---:|---:|---:|---:|
+| DAgger r1 - heuristic-distillation MLP | 200 | +0.130 | [-0.1014, +0.3614] | 25 / 158 / 17 |
+| DAgger r2 - DAgger r1 | 200 | +0.090 | [-0.1479, +0.3279] | 25 / 157 / 18 |
+| Deep Sets - DAgger r1 | 200 | -0.105 | [-0.4588, +0.2488] | 32 / 131 / 37 |
+
+No arm won a run. Deep Sets regressed on Ironclad by -0.975 floors with interval
+[-1.7767, -0.1733]. Every primary interval excludes the previously targeted
++0.75-floor practical gain. The earlier +1.24 DAgger-r1 estimate was sampling
+noise at 25 cases, not a repeatable effect.
+
+### Runtime-boundary sensitivity
+
+The powered scale exposed a known native limitation: 46/47, 40/40, and 32/33
+baseline failures across the three reports were the fail-closed Attack Potion
+selection boundary. This is not batch nondeterminism; the batch equivalence
+probe reproduced the same runtime boundary under sequential and parallel
+execution.
+
+On pairs where neither arm failed, the deltas were -0.0066 for DAgger r1 versus
+the heuristic MLP (n=151), +0.2548 for DAgger r2 versus r1 (n=157), and -0.1138
+for Deep Sets versus r1 (n=167). The DAgger-r2 sensitivity is not a promotion:
+three candidate-only failures were excluded, which biases that subset in the
+candidate's favor. The primary all-pairs estimates remain authoritative.
+
+### Decision
+
+The imitation-strength tranche stops at its precommitted 200 cases per arm.
+Another 300 cases per arm would resolve only small effects that do not change
+the project direction. No imitation variant is promoted as stronger online.
+Deep Sets is retained only as the best offline representation baseline.
+
+The next tranche is the teacher-exceeding path: a search-eligible value head,
+the existing leakage-aware one-ply native search, then bounded expert iteration.
+The potion adapter is fixed only if it blocks that safe Deep Sets search path.
+Fable reviewed the milestone and approved this bounded pivot.

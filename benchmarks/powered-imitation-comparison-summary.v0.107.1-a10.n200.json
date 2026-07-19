@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "evaluation": "powered_online_imitation_comparison_summary",
+  "build_id": "v0.107.1",
+  "ascension": 10,
+  "cases_per_comparison": 200,
+  "cases_per_character": 40,
+  "arms_per_comparison": 2,
+  "parallel_workers": 4,
+  "elapsed_seconds_total": 521.246,
+  "comparisons": {
+    "dagger_r1_minus_heuristic_distillation_mlp": {
+      "report": "powered-dagger-r1-vs-heuristic-v0.107.1-a10.n40.json",
+      "report_sha256": "d8dbe070647819ce93552742dd16d6eaa1b268320e7d2494b19321f03c9868d5",
+      "paired_floor_delta": 0.13,
+      "descriptive_paired_95_interval": [-0.1014, 0.3614],
+      "improved_tied_worse": [25, 158, 17],
+      "runtime_failures": {
+        "baseline": 47,
+        "candidate": 45,
+        "both": 43,
+        "baseline_only": 4,
+        "candidate_only": 2
+      },
+      "neither_arm_failed_sensitivity": {
+        "cases": 151,
+        "paired_floor_delta": -0.0066,
+        "descriptive_paired_95_interval": [-0.2745, 0.2612]
+      }
+    },
+    "dagger_r2_minus_dagger_r1": {
+      "report": "powered-dagger-r2-vs-r1-v0.107.1-a10.n40.json",
+      "report_sha256": "7978dd53443e36b3459e83422442c002a497933ea6ef9a9f2e6c7ec01c069e09",
+      "paired_floor_delta": 0.09,
+      "descriptive_paired_95_interval": [-0.1479, 0.3279],
+      "improved_tied_worse": [25, 157, 18],
+      "runtime_failures": {
+        "baseline": 40,
+        "candidate": 43,
+        "both": 40,
+        "baseline_only": 0,
+        "candidate_only": 3
+      },
+      "neither_arm_failed_sensitivity": {
+        "cases": 157,
+        "paired_floor_delta": 0.2548,
+        "descriptive_paired_95_interval": [0.0088, 0.5008],
+        "warning": "Excluding three candidate-only failures biases this sensitivity in favor of the candidate."
+      }
+    },
+    "deep_sets_minus_dagger_r1": {
+      "report": "powered-deepsets-vs-dagger-r1-v0.107.1-a10.n40.json",
+      "report_sha256": "afd99d3ce5b63ca0d48172f70cbd068e3a09b3eb6435c9671c985b48a310ecbf",
+      "paired_floor_delta": -0.105,
+      "descriptive_paired_95_interval": [-0.4588, 0.2488],
+      "improved_tied_worse": [32, 131, 37],
+      "runtime_failures": {
+        "baseline": 33,
+        "candidate": 0,
+        "both": 0,
+        "baseline_only": 33,
+        "candidate_only": 0
+      },
+      "neither_arm_failed_sensitivity": {
+        "cases": 167,
+        "paired_floor_delta": -0.1138,
+        "descriptive_paired_95_interval": [-0.4624, 0.2348]
+      },
+      "ironclad": {
+        "paired_floor_delta": -0.975,
+        "descriptive_paired_95_interval": [-1.7767, -0.1733]
+      }
+    }
+  },
+  "shared_findings": {
+    "victories_by_any_arm": 0,
+    "primary_interval_excludes_a_positive_0_75_floor_effect_for_every_comparison": true,
+    "offline_teacher_agreement_predicted_online_strength": false,
+    "dominant_runtime_boundary": "Potion card selection is outside the proven Attack Potion adapter",
+    "batch_manager_equivalence_gate_passed": true
+  },
+  "decision": {
+    "extend_to_500_cases_per_arm": false,
+    "promote_an_imitation_variant_for_online_strength": false,
+    "retain_deep_sets_as_representation_baseline": true,
+    "next_tranche": "search-eligible value head plus one-ply search and expert iteration",
+    "potion_adapter_policy": "Fix only if it blocks the safe Deep Sets search evaluation."
+  }
+}
