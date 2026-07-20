@@ -65,6 +65,17 @@ class SearchBenchmarkTests(unittest.TestCase):
                 manifest["power"]["interpretation"],
                 "correctness_smoke_not_strength_evidence",
             )
+            self.assertEqual(
+                manifest["search_policy"]["branch_failure_mode"],
+                "fallback_to_base_on_any_branch_error",
+            )
+            self.assertTrue(
+                manifest["promotion_gate"]["report_branch_failure_fallback_by_character"]
+            )
+            self.assertEqual(
+                manifest["promotion_gate"]["terminal_decision_if_not_passed"],
+                "stop_this_fail_closed_search_configuration_without_tuning",
+            )
 
     def test_power_approximation_distinguishes_smoke_from_powered_design(self) -> None:
         smoke = _approximate_two_sided_power(

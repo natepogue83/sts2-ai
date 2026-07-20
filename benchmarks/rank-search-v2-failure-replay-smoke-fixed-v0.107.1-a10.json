@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "experiment": "rank_search_v2_failure_replay_smoke",
+  "attempt": 2,
+  "status": "passed_targeted_robustness_gate",
+  "precommit": "benchmarks/rank-search-v2-failure-replay-smoke-v0.107.1-a10.precommit.json",
+  "runtime_dll_sha256": "ac91be61e433ee2aace0a3a40881e5ca6ee4e743c31acd635b6294233ccc7b06",
+  "strength_claim": false,
+  "outcome_aggregate_produced": false,
+  "execution": {
+    "targeted_previous_failure_seeds": 17,
+    "completed_search_episodes": 17,
+    "top_level_runtime_failures": 0,
+    "parallel_workers": 4,
+    "parallel_search_branches": 4
+  },
+  "fail_closed_coverage": {
+    "combat_decisions": 1269,
+    "search_used_decisions": 136,
+    "branch_failure_fallback_decisions": 326,
+    "branch_failure_fallback_fraction_of_combat_decisions": 0.256895,
+    "failed_branch_nodes": 678,
+    "transcript_hash_divergence_fallback_decisions": 92,
+    "semantic_checkpoint_divergence_fallback_decisions": 2,
+    "replay_invalid_action_fallback_decisions": 96,
+    "by_character": {
+      "CHARACTER.IRONCLAD": {
+        "episodes": 6,
+        "combat_decisions": 505,
+        "search_used_decisions": 30,
+        "branch_failure_fallback_decisions": 161,
+        "fallback_fraction": 0.318812
+      },
+      "CHARACTER.SILENT": {
+        "episodes": 1,
+        "combat_decisions": 60,
+        "search_used_decisions": 16,
+        "branch_failure_fallback_decisions": 14,
+        "fallback_fraction": 0.233333
+      },
+      "CHARACTER.DEFECT": {
+        "episodes": 1,
+        "combat_decisions": 91,
+        "search_used_decisions": 11,
+        "branch_failure_fallback_decisions": 19,
+        "fallback_fraction": 0.208791
+      },
+      "CHARACTER.NECROBINDER": {
+        "episodes": 5,
+        "combat_decisions": 281,
+        "search_used_decisions": 38,
+        "branch_failure_fallback_decisions": 68,
+        "fallback_fraction": 0.241993
+      },
+      "CHARACTER.REGENT": {
+        "episodes": 4,
+        "combat_decisions": 332,
+        "search_used_decisions": 41,
+        "branch_failure_fallback_decisions": 64,
+        "fallback_fraction": 0.192771
+      }
+    }
+  },
+  "success_criteria": {
+    "completed_search_episodes_17": true,
+    "runtime_failures_zero": true,
+    "fallback_metadata_present": true,
+    "transcript_hash_divergence_fallback_observed": true,
+    "semantic_checkpoint_divergence_fallback_observed": true,
+    "replay_invalid_action_fallback_observed": true,
+    "outcomes_inspected": false,
+    "training_labels_emitted": false
+  },
+  "integrity": {
+    "gameplay_outcomes_inspected": false,
+    "training_labels_authorized": false,
+    "training_labels_emitted": false
+  },
+  "caveat": "At this fallback rate the evaluated policy is materially closer to the Deep Sets base policy; every future strength report must disclose fallback rates per character."
+}

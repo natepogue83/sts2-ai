@@ -127,6 +127,8 @@ def create_rank_search_manifest(
     macro_sha = _sha256(macro_model_path)
     combat_sha = _sha256(combat_model_path)
     value_sha = _sha256(value_model_path)
+    runtime_path = HeadlessConfig().runtime
+    runtime_sha = _sha256(runtime_path) if runtime_path.is_file() else None
     ranker = RankOnlyPublicValueEvaluator(value_model_path, expected_sha256=value_sha)
     excluded, exclusion_sources = _manifest_seeds(excluded_manifests)
     cases: list[dict[str, str]] = []
@@ -153,7 +155,11 @@ def create_rank_search_manifest(
         "schema_version": 1,
         "name": "stsai-frozen-rank-only-one-ply-search-pair",
         "created_at": datetime.now(timezone.utc).isoformat(),
-        "target": {"build_id": build_id, "ascension": ascension},
+        "target": {
+            "build_id": build_id,
+            "ascension": ascension,
+            "runtime_dll_sha256": runtime_sha,
+        },
         "selection": {
             "method": "fresh-prefix-seeds-selected-before-outcomes",
             "seed_prefix": seed_prefix,
@@ -203,6 +209,10 @@ def create_rank_search_manifest(
             "every_character_mean_delta_at_least": -0.5,
             "search_used_in_at_least_one_case": True,
             "training_labels_remain_disabled_until_gate_passes": True,
+            "report_branch_failure_fallback_by_character": True,
+            "terminal_decision_if_not_passed": (
+                "stop_this_fail_closed_search_configuration_without_tuning"
+            ),
         },
         "cases": cases,
     }
@@ -362,6 +372,13 @@ def evaluate_rank_search_pair(
     if str(target.get("build_id")) != build_id:
         raise ValueError("Rank-search manifest and evaluator build ids differ")
     ascension = int(target.get("ascension", 10))
+    effective_config = config or HeadlessConfig()
+    frozen_runtime_sha = target.get("runtime_dll_sha256")
+    if frozen_runtime_sha is not None:
+        if not effective_config.runtime.is_file():
+            raise ValueError("Frozen rank-search runtime does not exist")
+        if str(frozen_runtime_sha) != _sha256(effective_config.runtime):
+            raise ValueError("Headless runtime does not match rank-search manifest")
     selection = manifest.get("selection") or {}
     count_per_character = int(selection.get("count_per_character") or 0)
     cases = select_benchmark_cases(manifest, count_per_character)
