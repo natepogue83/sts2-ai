@@ -1,0 +1,889 @@
+{
+  "base_policy": {
+    "combat_model_sha256": "5bbb35de90351827374c9188351cc11c5ce867053c057e1a45978a60bb7633e1",
+    "macro_model_sha256": "476701d84a7f6cf85b1aa6a910877334c13f52ea637af967a8f6da400ca878f9",
+    "name": "combat_deepsets_greedy_noncombat_v1",
+    "safe_potion_ids": [
+      "POTION.ATTACK_POTION"
+    ]
+  },
+  "cases": [
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000000"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000001"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000002"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000003"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000004"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000005"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000006"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000007"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000008"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000009"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000010"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000011"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000012"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000013"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000014"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000015"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000016"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000017"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000018"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000019"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000020"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000021"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000022"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000023"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000024"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000025"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000026"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000027"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000028"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000029"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000030"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000031"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000032"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000033"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000034"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000035"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000036"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000037"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000038"
+    },
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "SEARCHR3I000039"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000000"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000001"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000002"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000003"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000004"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000005"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000006"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000007"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000008"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000009"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000010"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000011"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000012"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000013"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000014"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000015"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000016"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000017"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000018"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000019"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000020"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000021"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000022"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000023"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000024"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000025"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000026"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000027"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000028"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000029"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000030"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000031"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000032"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000033"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000034"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000035"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000036"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000037"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000038"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "SEARCHR3S000039"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000000"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000001"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000002"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000003"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000004"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000005"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000006"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000007"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000008"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000009"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000010"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000011"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000012"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000013"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000014"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000015"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000016"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000017"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000018"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000019"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000020"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000021"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000022"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000023"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000024"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000025"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000026"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000027"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000028"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000029"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000030"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000031"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000032"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000033"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000034"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000035"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000036"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000037"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000038"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "SEARCHR3D000039"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000000"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000001"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000002"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000003"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000004"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000005"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000006"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000007"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000008"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000009"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000010"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000011"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000012"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000013"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000014"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000015"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000016"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000017"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000018"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000019"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000020"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000021"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000022"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000023"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000024"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000025"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000026"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000027"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000028"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000029"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000030"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000031"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000032"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000033"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000034"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000035"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000036"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000037"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000038"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "SEARCHR3N000039"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000000"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000001"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000002"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000003"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000004"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000005"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000006"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000007"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000008"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000009"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000010"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000011"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000012"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000013"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000014"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000015"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000016"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000017"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000018"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000019"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000020"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000021"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000022"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000023"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000024"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000025"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000026"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000027"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000028"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000029"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000030"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000031"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000032"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000033"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000034"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000035"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000036"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000037"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000038"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "SEARCHR3R000039"
+    }
+  ],
+  "created_at": "2026-07-20T00:12:04.409028+00:00",
+  "name": "stsai-frozen-rank-only-one-ply-search-pair",
+  "power": {
+    "approximate_power_for_practical_effect": 0.983,
+    "conservative_paired_floor_sd": 2.6,
+    "interpretation": "powered_strength_evaluation",
+    "paired_cases": 200,
+    "practical_effect_floor_delta": 0.75,
+    "small_effects_are_out_of_scope": true,
+    "two_sided_alpha": 0.05
+  },
+  "promotion_gate": {
+    "candidate_truncations_at_most_baseline": true,
+    "candidate_victories_at_least_baseline": true,
+    "every_character_mean_delta_at_least": -0.5,
+    "paired_floor_delta_interval_lower_above": 0.0,
+    "report_branch_failure_fallback_by_character": true,
+    "search_used_in_at_least_one_case": true,
+    "terminal_decision_if_not_passed": "stop_this_fail_closed_search_configuration_without_tuning",
+    "training_labels_remain_disabled_until_gate_passes": true
+  },
+  "schema_version": 1,
+  "search_policy": {
+    "absolute_probability_claimed": false,
+    "branch_failure_mode": "fallback_to_base_on_any_branch_error",
+    "depth": 1,
+    "max_nodes": 8,
+    "name": "combat_deepsets_one_ply_rank_v2",
+    "original_calibration_status": "rank_only_action_state_development",
+    "parallel_branches": 4,
+    "rank_invariant_positive_slopes": [
+      1.0
+    ],
+    "training_labels_emitted": false,
+    "value_checkpoint_sha256": "55ef3baac4c0c20c32903bb8748397a497b9d493170b5190f18d37af2b38a748",
+    "value_feature_schema": "character_nonlinear_v3",
+    "visibility_mode": "public_deterministic_only"
+  },
+  "selection": {
+    "count_per_character": 40,
+    "excluded_manifests": [
+      {
+        "path": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\rank-search-smoke-v0.107.1-a10.precommit.json",
+        "sha256": "dec19d3597f8efc52bdcb48de708de1d12d03ece2f1ddcea37b50415c2c647d6"
+      },
+      {
+        "path": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\rank-search-parallel-smoke-v0.107.1-a10.precommit.json",
+        "sha256": "4f275c4e7932474f34d22c079183d60c1b5770bbeb30225f0db2f358c26f789a"
+      },
+      {
+        "path": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\rank-search-action-state-smoke-v0.107.1-a10.precommit.json",
+        "sha256": "861d25b01d79604aaa8557cc820bcc47ee996e66104de896d487ab4a56d22509"
+      },
+      {
+        "path": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\v0.107.1-a10-search-paired-precommit.json",
+        "sha256": "6bc9573386e450b37f2fb34e456c554f077edcfb1a8de99c186b1721b28f9fae"
+      },
+      {
+        "path": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\rank-search-action-state-powered-v0.107.1-a10.precommit.json",
+        "sha256": "a97423f528099ba97ce46f2240a7c51f76389b2fb536183c208397e23e662a8a"
+      },
+      {
+        "path": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\rank-search-v2-failure-replay-smoke-v0.107.1-a10.precommit.json",
+        "sha256": "a0d2b9bf3f2389e6955faafb5f8aec161f9375c5b068126eebd04f3a784a117a"
+      }
+    ],
+    "excluded_seed_count": 225,
+    "method": "fresh-prefix-seeds-selected-before-outcomes",
+    "outcomes_inspected": false,
+    "seed_prefix": "SEARCHR3",
+    "total_cases": 200
+  },
+  "target": {
+    "ascension": 10,
+    "build_id": "v0.107.1",
+    "runtime_dll_sha256": "ac91be61e433ee2aace0a3a40881e5ca6ee4e743c31acd635b6294233ccc7b06"
+  }
+}
