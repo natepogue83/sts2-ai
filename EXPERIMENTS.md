@@ -933,3 +933,60 @@ claim that all search approaches are ineffective. The complete report is
 `benchmarks/rank-search-v2-powered-v0.107.1-a10.n40.json` and its frozen manifest
 SHA-256 is `020294429ba0d2aa70bd6f7cc6573fb87abf4361eb50fb4876cd7521ef674c71`.
 Fable reviewed the completed milestone and approved the precommitted stop.
+
+## 2026-07-19 - Counterfactual RNG-coupling feasibility
+
+### Frozen measurement
+
+The next tranche froze `combat_deepsets_greedy_noncombat_v1`, its macro and
+combat checkpoint hashes, and runtime DLL SHA-256
+`ac91be61e433ee2aace0a3a40881e5ca6ee4e743c31acd635b6294233ccc7b06`.
+It authorized only a coupling measurement: no dataset, training label, or policy
+override. Each selected combat root opened a base branch, an exact base repeat,
+and the highest-ranked semantically distinct alternative. Continuations used the
+same frozen base policy.
+
+Two five-character smokes corrected bounded measurement errors before the full
+manifest. The first treated duplicate card copies as alternatives. The second
+proved distinct actions and exact RNG reproduction but showed that floor plus
+player HP could not observe immediate enemy-HP divergence. The final proxy was
+therefore frozen as floor plus player-HP fraction minus summed current enemy HP
+divided by summed max HP for all enemies in the active combat. It is read from
+the semantic checkpoint so subordinate card choices cannot hide the combat
+state. It remains a measurement proxy and is not a training target.
+
+The final `CRN1` probe used 25 fresh Ascension-10 cases, five per character, and
+two roots per case. All 50 roots were collected in 57.5 seconds; 47 supplied a
+complete three-branch comparison at every horizon. Three roots were invalidated
+by exact transcript replay divergence. All validity, per-character support,
+exact-repeat, and stream-alignment gates passed.
+
+| Horizon (decisions) | Valid pairs | Exact repeats | Mean root-stream alignment | Paired / circular-unpaired variance | Individual gate |
+|---:|---:|---:|---:|---:|---|
+| 1 | 47/50 | 48/48 | 99.65% | 0.607 | fail |
+| 2 | 47/50 | 48/48 | 99.53% | 0.634 | fail |
+| 4 | 47/50 | 48/48 | 99.17% | 0.285 | pass |
+| 8 | 47/50 | 48/48 | 97.65% | 0.299 | pass |
+| 16 | 47/50 | 48/48 | 97.51% | 0.088 | pass |
+
+The runtime has split streams: 12 named run streams, three player streams, and
+per-monster streams. Most remained coupled even at 16 decisions; the observed
+later divergences included Shuffle, MonsterAi, CombatTargets, Rewards, and a few
+monster-local streams. The variance comparison measures the combined benefit of
+same-root matching and shared native RNG because the pinned engine cannot
+resample independent future RNG while preserving one exact root.
+
+### Decision
+
+The manifest required the longest *contiguous* passing horizon starting at one.
+Because horizons 1 and 2 exceeded the frozen maximum variance ratio of 0.5, the
+passing prefix is empty. Horizons 4, 8, and 16 cannot be selected after seeing
+their results. The terminal decision
+`stop_before_counterfactual_dataset_design` is executed: selected horizon is
+null, the base remains frozen, and dataset/training/override authorization stays
+false. The report is
+`benchmarks/crn-coupling-feasibility-v0.107.1-a10.json` (SHA-256
+`413239746f70c91dbd7109d736894a10a25aeeb60d4fcb8b4ca3d4ad11b1ba9b`),
+bound to manifest SHA-256
+`a069af5471f6a28061a659e986eb68cd11c0cb3c58a1bd986feee9764f3af3cc`.
+Fable reviewed the completed milestone and approved honoring the frozen stop.

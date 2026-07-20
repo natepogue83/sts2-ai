@@ -180,6 +180,7 @@ license metadata alongside any raw snapshot.
 - [x] Process-isolated reconstructive snapshot/fork with native proof gates
 - [x] Leakage-aware one-ply search plumbing without training-label emission
 - [x] Powered character-balanced fail-closed one-ply strength evaluation
+- [x] Measurement-only split-stream counterfactual coupling probe
 - [ ] Authorized search-generated policy/value labels and strength evaluation
 - [ ] Native replay-to-per-action training transition reconstruction
 - [x] Batched multi-process environment manager
@@ -475,6 +476,17 @@ emitted. The terminal report is
 the current ranker/search combination, not search in general; any successor must
 be proposed and gated as a fresh hypothesis. A large learned world model remains
 deferred because the native simulator already supplies the dynamics.
+
+A subsequent measurement-only common-random-number probe froze the same base
+policy and runtime across 50 counterfactual roots. The native engine exposes 12
+named run RNG streams plus player- and monster-specific streams. Same-action
+branches reproduced exactly in 48/48 available comparisons, and mean root-stream
+alignment remained 97.51% after 16 policy decisions. However, the precommitted
+paired/unpaired variance-ratio gate failed at horizons 1 and 2 (`0.607` and
+`0.634`, required `<=0.5`). Horizons 4, 8, and 16 passed individually, but the
+frozen longest-contiguous-prefix rule forbids selecting them post hoc. The probe
+therefore stops before dataset design; no counterfactual records are authorized
+as training data. See `benchmarks/crn-coupling-feasibility-v0.107.1-a10.json`.
 
 ### RunReplays reconstruction fidelity
 
