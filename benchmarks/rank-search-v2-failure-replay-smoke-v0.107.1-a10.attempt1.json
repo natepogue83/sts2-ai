@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "experiment": "rank_search_v2_failure_replay_smoke",
+  "attempt": 1,
+  "status": "failed_native_effect_verification_boundary",
+  "precommit": "benchmarks/rank-search-v2-failure-replay-smoke-v0.107.1-a10.precommit.json",
+  "strength_claim": false,
+  "outcome_aggregate_produced": false,
+  "execution": {
+    "targeted_previous_failure_seeds": 17,
+    "completed_search_episodes": 16,
+    "top_level_runtime_failures": 1,
+    "parallel_workers": 4,
+    "parallel_search_branches": 4
+  },
+  "fail_closed_coverage": {
+    "branch_failure_fallback_decisions": 286,
+    "failed_branch_nodes": 565,
+    "transcript_hash_divergence_fallback_decisions": 81,
+    "semantic_checkpoint_divergence_fallback_decisions": 2,
+    "replay_invalid_action_fallback_decisions": 100,
+    "fallback_decisions_by_character": {
+      "CHARACTER.IRONCLAD": 140,
+      "CHARACTER.SILENT": 14,
+      "CHARACTER.DEFECT": 31,
+      "CHARACTER.NECROBINDER": 46,
+      "CHARACTER.REGENT": 55
+    }
+  },
+  "runtime_failure": {
+    "case_index": 181,
+    "character": "CHARACTER.REGENT",
+    "seed": "SEARCHR2R000021",
+    "floor": 17,
+    "card": "CARD.PARTICLE_WALL",
+    "message": "Card could not be played (still in hand after action)",
+    "classification": "false_negative_effect_verification_for_intentional_return_to_hand_card"
+  },
+  "diagnosis": {
+    "primary_evidence": "Decompiled v0.107.1 ParticleWall.OnPlay gains block and GetResultPileTypeForCardPlay returns Hand instead of Discard.",
+    "adapter_gap": "The verifier treated an unchanged hand index as failure but did not compare Regent stars or player block, the effects Particle Wall changes.",
+    "effect_verification_remains_strict": true
+  },
+  "integrity": {
+    "gameplay_outcomes_inspected": false,
+    "training_labels_authorized": false,
+    "training_labels_emitted": false
+  },
+  "decision": "patch_exact_particle_wall_effect_verification_then_rerun_same_17_seed_smoke"
+}

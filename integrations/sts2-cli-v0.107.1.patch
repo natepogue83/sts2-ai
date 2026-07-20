@@ -22,7 +22,7 @@ index 800f139..4001c4f 100644
              {
                  var args = new Dictionary<string, JsonElement>();
 diff --git a/src/Sts2Headless/RunSimulator.cs b/src/Sts2Headless/RunSimulator.cs
-index 6b9de4a..1ff04b9 100644
+index 6b9de4a..cc9563c 100644
 --- a/src/Sts2Headless/RunSimulator.cs
 +++ b/src/Sts2Headless/RunSimulator.cs
 @@ -1,4 +1,6 @@
@@ -556,13 +556,16 @@ index 6b9de4a..1ff04b9 100644
          _lastKnownHp = player.Creature?.CurrentHp ?? 0;
  
          var col = Convert.ToInt32(args["col"]);
-@@ -1007,15 +1329,72 @@ public class RunSimulator
+@@ -1007,15 +1329,82 @@ public class RunSimulator
          Log($"Playing card {card.GetType().Name} (index {cardIndex}) targeting {(target != null ? target.Monster?.GetType().Name ?? "creature" : "none")}");
  
          var handCountBefore = hand.Count;
 +        var targetHpBefore = target?.CurrentHp;
 +        var targetBlockBefore = target?.Block;
 +        var energyBefore = pcs.Energy;
++        var playerBlockBefore = player.Creature?.Block;
++        var starsBefore = pcs.Stars;
++        var starCostBefore = card.CurrentStarCost;
  
          var playAction = new PlayCardAction(card, target);
          RunManager.Instance.ActionQueueSet.EnqueueWithoutSynchronizing(playAction);
@@ -618,19 +621,26 @@ index 6b9de4a..1ff04b9 100644
 +                catch (Exception ex) { Log($"Claw cleanup failed: {ex.Message}"); }
 +            }
 +            card.CanPlay(out var reasonAfter, out var _);
-+            if (card.Id.Entry == "PARTICLE_WALL" && reasonAfter.ToString() == "StarCostTooHigh")
++            var particleWallEffectVerified = card.Id.Entry == "PARTICLE_WALL"
++                && playerBlockBefore != player.Creature?.Block
++                && starsBefore - pcs.Stars == starCostBefore;
++            if (particleWallEffectVerified)
 +            {
-+                Log("Accepted Particle Wall's intentional return-to-hand behavior");
++                Log($"Accepted Particle Wall's verified return-to-hand behavior: " +
++                    $"block={playerBlockBefore}->{player.Creature?.Block}, " +
++                    $"stars={starsBefore}->{pcs.Stars}");
 +                return DetectDecisionPoint();
 +            }
 +            Log($"Card remained after action: targetHp={targetHpBefore}->{target?.CurrentHp}, " +
-+                $"energy={energyBefore}->{pcs.Energy}, hand={handCountBefore}->{handAfter.Count}, " +
++                $"playerBlock={playerBlockBefore}->{player.Creature?.Block}, " +
++                $"stars={starsBefore}->{pcs.Stars}, energy={energyBefore}->{pcs.Energy}, " +
++                $"hand={handCountBefore}->{handAfter.Count}, " +
 +                $"canPlayAfter={reasonAfter}, pendingCard={_cardSelector.HasPending}, " +
 +                $"pendingReward={_cardSelector.HasPendingReward}, pendingBundles={_pendingBundles != null}");
              return Error($"Card could not be played (still in hand after action): {card.GetType().Name} [{card.Id}]");
          }
  
-@@ -1216,6 +1595,8 @@ public class RunSimulator
+@@ -1216,6 +1605,8 @@ public class RunSimulator
              Thread.Sleep(50);
              _syncCtx.Pump();
              WaitForActionExecutor();
@@ -639,7 +649,7 @@ index 6b9de4a..1ff04b9 100644
              return DetectDecisionPoint();
          }
  
-@@ -1257,6 +1638,8 @@ public class RunSimulator
+@@ -1257,6 +1648,8 @@ public class RunSimulator
              Thread.Sleep(50);
              _syncCtx.Pump();
              WaitForActionExecutor();
@@ -648,7 +658,7 @@ index 6b9de4a..1ff04b9 100644
              return DetectDecisionPoint();
          }
          if (_pendingCardReward != null)
-@@ -1268,16 +1651,67 @@ public class RunSimulator
+@@ -1268,16 +1661,67 @@ public class RunSimulator
          return DetectDecisionPoint();
      }
  
@@ -719,7 +729,7 @@ index 6b9de4a..1ff04b9 100644
          if (idx < 0 || idx >= allEntries.Count)
              return Error($"Invalid card index {idx}");
  
-@@ -1287,7 +1721,7 @@ public class RunSimulator
+@@ -1287,7 +1731,7 @@ public class RunSimulator
  
          try
          {
@@ -728,7 +738,7 @@ index 6b9de4a..1ff04b9 100644
              _syncCtx.Pump();
              Log($"Bought card: {entry.CreationResult?.Card?.GetType().Name ?? "?"} for {entry.Cost}g");
          }
-@@ -1298,13 +1732,14 @@ public class RunSimulator
+@@ -1298,13 +1742,14 @@ public class RunSimulator
  
      private Dictionary<string, object?> DoBuyRelic(Player player, Dictionary<string, object?>? args)
      {
@@ -745,7 +755,7 @@ index 6b9de4a..1ff04b9 100644
          if (idx < 0 || idx >= entries.Count) return Error($"Invalid relic index {idx}");
  
          var entry = entries[idx];
-@@ -1317,8 +1752,9 @@ public class RunSimulator
+@@ -1317,8 +1762,9 @@ public class RunSimulator
              // Adroit, #80). Run the purchase on a background task and yield as soon as a
              // pending selection appears so the caller can resolve it; the background task
              // continues once the selector's TCS is fed by select_cards.
@@ -757,7 +767,7 @@ index 6b9de4a..1ff04b9 100644
              for (int i = 0; i < 100; i++)
              {
                  _syncCtx.Pump();
-@@ -1329,12 +1765,12 @@ public class RunSimulator
+@@ -1329,12 +1775,12 @@ public class RunSimulator
              }
              if (_cardSelector.HasPending || _cardSelector.HasPendingReward || _pendingBundles != null)
              {
@@ -772,7 +782,7 @@ index 6b9de4a..1ff04b9 100644
          }
          catch (Exception ex) { return Error($"Buy relic failed: {ex.Message}"); }
  
-@@ -1343,13 +1779,14 @@ public class RunSimulator
+@@ -1343,13 +1789,14 @@ public class RunSimulator
  
      private Dictionary<string, object?> DoBuyPotion(Player player, Dictionary<string, object?>? args)
      {
@@ -789,7 +799,7 @@ index 6b9de4a..1ff04b9 100644
          if (idx < 0 || idx >= entries.Count) return Error($"Invalid potion index {idx}");
  
          var entry = entries[idx];
-@@ -1358,9 +1795,9 @@ public class RunSimulator
+@@ -1358,9 +1805,9 @@ public class RunSimulator
  
          try
          {
@@ -801,7 +811,7 @@ index 6b9de4a..1ff04b9 100644
          }
          catch (Exception ex)
          {
-@@ -1373,17 +1810,18 @@ public class RunSimulator
+@@ -1373,17 +1820,18 @@ public class RunSimulator
  
      private Dictionary<string, object?> DoRemoveCard(Player player)
      {
@@ -823,7 +833,7 @@ index 6b9de4a..1ff04b9 100644
              for (int i = 0; i < 100; i++)
              {
                  _syncCtx.Pump();
-@@ -1436,27 +1874,97 @@ public class RunSimulator
+@@ -1436,27 +1884,97 @@ public class RunSimulator
              return Error("select_cards requires 'indices' (comma-separated card indices)");
  
          var indicesStr = args["indices"]?.ToString() ?? "";
@@ -933,7 +943,7 @@ index 6b9de4a..1ff04b9 100644
          }
  
          // Extra wait for shop card removal: the purchase task needs to finish
-@@ -1468,6 +1976,22 @@ public class RunSimulator
+@@ -1468,6 +1986,22 @@ public class RunSimulator
              Log("Card selection in shop (card removal), refreshing shop state");
          }
  
@@ -956,7 +966,7 @@ index 6b9de4a..1ff04b9 100644
          return DetectDecisionPoint();
      }
  
-@@ -1484,6 +2008,146 @@ public class RunSimulator
+@@ -1484,6 +2018,146 @@ public class RunSimulator
      }
  
      private Dictionary<string, object?> DoUsePotion(Player player, Dictionary<string, object?>? args)
@@ -1103,7 +1113,7 @@ index 6b9de4a..1ff04b9 100644
      {
          if (args == null || !args.ContainsKey("potion_index"))
              return Error("use_potion requires 'potion_index'");
-@@ -1570,9 +2234,9 @@ public class RunSimulator
+@@ -1570,9 +2244,9 @@ public class RunSimulator
              return Error("discard_potion requires 'potion_index'");
  
          var idx = Convert.ToInt32(args["potion_index"]);
@@ -1116,7 +1126,7 @@ index 6b9de4a..1ff04b9 100644
          if (potion == null) return Error($"No potion at index {idx}");
  
          MegaCrit.Sts2.Core.Commands.PotionCmd.Discard(potion).GetAwaiter().GetResult();
-@@ -1580,64 +2244,352 @@ public class RunSimulator
+@@ -1580,64 +2254,352 @@ public class RunSimulator
          return DetectDecisionPoint();
      }
  
@@ -1514,7 +1524,7 @@ index 6b9de4a..1ff04b9 100644
              {
                  var options = localEvent.CurrentOptions;
                  var optCountBefore = options?.Count ?? 0;
-@@ -1648,22 +2600,58 @@ public class RunSimulator
+@@ -1648,22 +2610,58 @@ public class RunSimulator
                          _eventOptionChosen = true;
                          _lastEventOptionCount = options.Count;
                          // Run on thread pool so GetSelectedCards/GetSelectedCardReward can block
@@ -1577,7 +1587,7 @@ index 6b9de4a..1ff04b9 100644
                      }
                      catch (Exception ex) { Log($"Event choose: {ex.Message}"); }
                  }
-@@ -1679,9 +2667,55 @@ public class RunSimulator
+@@ -1679,9 +2677,55 @@ public class RunSimulator
          return DetectDecisionPoint();
      }
  
@@ -1633,7 +1643,7 @@ index 6b9de4a..1ff04b9 100644
          try { RunManager.Instance.ProceedFromTerminalRewardsScreen().GetAwaiter().GetResult(); }
          catch { }
          _syncCtx.Pump();
-@@ -1697,6 +2731,9 @@ public class RunSimulator
+@@ -1697,6 +2741,9 @@ public class RunSimulator
                  RunManager.Instance.EnterRoom(new MapRoom()).GetAwaiter().GetResult();
                  _syncCtx.Pump();
                  WaitForActionExecutor();
@@ -1643,7 +1653,7 @@ index 6b9de4a..1ff04b9 100644
              }
              catch (Exception ex) { Log($"Force leave: {ex.Message}"); }
          }
-@@ -1844,6 +2881,10 @@ public class RunSimulator
+@@ -1844,6 +2891,10 @@ public class RunSimulator
                  ["cards"] = cards,
                  ["can_skip"] = true,
                  ["from_event"] = true,
@@ -1654,7 +1664,7 @@ index 6b9de4a..1ff04b9 100644
                  ["player"] = PlayerSummary(_runState!.Players[0]),
              };
          }
-@@ -1881,6 +2922,9 @@ public class RunSimulator
+@@ -1881,6 +2932,9 @@ public class RunSimulator
                  ["cards"] = opts,
                  ["min_select"] = _cardSelector.PendingMinSelect,
                  ["max_select"] = _cardSelector.PendingMaxSelect,
@@ -1664,7 +1674,7 @@ index 6b9de4a..1ff04b9 100644
                  ["player"] = PlayerSummary(player),
              };
          }
-@@ -2182,6 +3226,12 @@ public class RunSimulator
+@@ -2182,6 +3236,12 @@ public class RunSimulator
                  ["stats"] = stats.Count > 0 ? stats : null,
                  ["description"] = _loc.Bilingual("cards", c.Id.Entry + ".description"),
              };
@@ -1677,7 +1687,7 @@ index 6b9de4a..1ff04b9 100644
              if (starCost > 0)
              {
                  cardInfo["star_cost"] = starCost;
-@@ -2265,6 +3315,8 @@ public class RunSimulator
+@@ -2265,6 +3325,8 @@ public class RunSimulator
                  return new Dictionary<string, object?>
                  {
                      ["index"] = i,
@@ -1686,7 +1696,7 @@ index 6b9de4a..1ff04b9 100644
                      ["name"] = _loc.Monster(e.Monster?.Id.Entry ?? "UNKNOWN"),
                      ["hp"] = e.CurrentHp,
                      ["max_hp"] = e.MaxHp,
-@@ -2288,6 +3340,7 @@ public class RunSimulator
+@@ -2288,6 +3350,7 @@ public class RunSimulator
              ["type"] = "decision",
              ["decision"] = "combat_play",
              ["context"] = RunContext(),
@@ -1694,7 +1704,7 @@ index 6b9de4a..1ff04b9 100644
              ["round"] = combatState?.RoundNumber ?? 0,
              ["energy"] = pcs?.Energy ?? 0,
              ["max_energy"] = pcs?.MaxEnergy ?? 0,
-@@ -2297,6 +3350,7 @@ public class RunSimulator
+@@ -2297,6 +3360,7 @@ public class RunSimulator
              ["player_powers"] = playerPowers?.Count > 0 ? playerPowers : null,
              ["draw_pile_count"] = pcs?.DrawPile?.Cards?.Count ?? 0,
              ["discard_pile_count"] = pcs?.DiscardPile?.Cards?.Count ?? 0,
@@ -1702,7 +1712,7 @@ index 6b9de4a..1ff04b9 100644
          };
  
          // Character-specific mechanics
-@@ -2358,6 +3412,7 @@ public class RunSimulator
+@@ -2358,6 +3422,7 @@ public class RunSimulator
          if (_pendingRewards == null && !_rewardsProcessed)
          {
              _goldBeforeCombat = player.Gold;
@@ -1710,7 +1720,7 @@ index 6b9de4a..1ff04b9 100644
              try
              {
                  var rewardsSet = new RewardsSet(player).WithRewardsFromRoom(combatRoom);
-@@ -2367,19 +3422,102 @@ public class RunSimulator
+@@ -2367,19 +3432,102 @@ public class RunSimulator
                  var rewards = rewardsSet.Rewards;
                  _syncCtx.Pump();
  
@@ -1818,7 +1828,7 @@ index 6b9de4a..1ff04b9 100644
                      }
                  }
  
-@@ -2458,15 +3596,22 @@ public class RunSimulator
+@@ -2458,15 +3606,22 @@ public class RunSimulator
              ["type"] = "decision",
              ["decision"] = "card_reward",
              ["context"] = RunContext(),
@@ -1841,7 +1851,7 @@ index 6b9de4a..1ff04b9 100644
          try
          {
              RunManager.Instance.ProceedFromTerminalRewardsScreen().GetAwaiter().GetResult();
-@@ -2476,15 +3621,117 @@ public class RunSimulator
+@@ -2476,15 +3631,117 @@ public class RunSimulator
  
          if (_runState?.CurrentRoom is not MapRoom)
          {
@@ -1961,7 +1971,7 @@ index 6b9de4a..1ff04b9 100644
  
          // Reset the choice-tracking flag once we re-export the event state. Earlier this
          // block force-finished events whose option count was unchanged, but that incorrectly
-@@ -2492,32 +3739,48 @@ public class RunSimulator
+@@ -2492,32 +3749,48 @@ public class RunSimulator
          // instead and let DetectDecisionPoint show the current options for the next choice.
          if (_eventOptionChosen) _eventOptionChosen = false;
  
@@ -2030,7 +2040,7 @@ index 6b9de4a..1ff04b9 100644
          }
  
          var options = currentOptions
-@@ -2653,6 +3916,7 @@ public class RunSimulator
+@@ -2653,6 +3926,7 @@ public class RunSimulator
              ["event_name"] = eventName,
              ["description"] = eventDesc,
              ["options"] = options,
@@ -2038,7 +2048,7 @@ index 6b9de4a..1ff04b9 100644
              ["player"] = PlayerSummary(_runState!.Players[0]),
          };
      }
-@@ -2691,7 +3955,41 @@ public class RunSimulator
+@@ -2691,7 +3965,41 @@ public class RunSimulator
      private Dictionary<string, object?> ShopState(MerchantRoom merchantRoom, Player player)
      {
          var inv = merchantRoom.GetLocalInventory();
@@ -2081,7 +2091,7 @@ index 6b9de4a..1ff04b9 100644
  
          var cards = inv.CharacterCardEntries.Concat(inv.ColorlessCardEntries)
              .Select((e, i) =>
-@@ -2755,22 +4053,325 @@ public class RunSimulator
+@@ -2755,22 +4063,325 @@ public class RunSimulator
              ["is_stocked"] = e.IsStocked,
          }).ToList();
  
@@ -2408,7 +2418,7 @@ index 6b9de4a..1ff04b9 100644
      {
          // Treasure rooms give relics via TreasureRoomRelicSynchronizer
          Log("Treasure room — collecting rewards");
-@@ -2891,7 +4492,8 @@ public class RunSimulator
+@@ -2891,7 +4502,8 @@ public class RunSimulator
  
              // Executor may stay "running" while the game awaits headless card selection / reward (e.g. Attack Potion).
              // Spinning here would time out and downstream code could mis-handle an in-flight potion use (BUG-026).
@@ -2418,7 +2428,7 @@ index 6b9de4a..1ff04b9 100644
                  return;
  
              var executor = RunManager.Instance.ActionExecutor;
-@@ -2965,6 +4567,29 @@ public class RunSimulator
+@@ -2965,6 +4577,29 @@ public class RunSimulator
          catch { return null; }
      }
  
@@ -2448,7 +2458,7 @@ index 6b9de4a..1ff04b9 100644
      private Dictionary<string, object?> PlayerSummary(Player player)
      {
          return new Dictionary<string, object?>
-@@ -2974,6 +4599,7 @@ public class RunSimulator
+@@ -2974,6 +4609,7 @@ public class RunSimulator
              ["max_hp"] = player.Creature?.MaxHp ?? 0,
              ["block"] = player.Creature?.Block ?? 0,
              ["gold"] = player.Gold,
@@ -2456,7 +2466,7 @@ index 6b9de4a..1ff04b9 100644
              ["relics"] = player.Relics?.Select(r =>
              {
                  var vars = new Dictionary<string, object?>();
-@@ -2985,7 +4611,7 @@ public class RunSimulator
+@@ -2985,7 +4621,7 @@ public class RunSimulator
                      ["vars"] = vars.Count > 0 ? vars : null,
                  };
              }).ToList(),
@@ -2465,7 +2475,7 @@ index 6b9de4a..1ff04b9 100644
              {
                  if (p == null) return null;
                  var pvars = new Dictionary<string, object?>();
-@@ -2993,10 +4619,14 @@ public class RunSimulator
+@@ -2993,10 +4629,14 @@ public class RunSimulator
                  return new Dictionary<string, object?>
                  {
                      ["index"] = i,
@@ -2480,7 +2490,7 @@ index 6b9de4a..1ff04b9 100644
                  };
              }).Where(x => x != null).ToList(),
              ["deck_size"] = player.Deck?.Cards?.Count(c => c != null) ?? 0,
-@@ -3044,7 +4674,16 @@ public class RunSimulator
+@@ -3044,7 +4684,16 @@ public class RunSimulator
              ["act_name"] = _loc.Act(_runState.Act?.Id.Entry ?? "OVERGROWTH"),
              ["floor"] = _runState.ActFloor,
              ["room_type"] = _runState.CurrentRoom?.RoomType.ToString(),
@@ -2497,7 +2507,7 @@ index 6b9de4a..1ff04b9 100644
  
          // Boss encounter info — use BossEncounter?.Id?.Entry
          try
-@@ -3074,6 +4713,17 @@ public class RunSimulator
+@@ -3074,6 +4723,17 @@ public class RunSimulator
  
          TestMode.IsOn = true;
  
@@ -2569,7 +2579,7 @@ index 8c7b336..990f9e7 100644
                  state = game.act("skip_card_reward")
              elif dec == "bundle_select":
 diff --git a/tests/test_combat.py b/tests/test_combat.py
-index 7e86970..c7c5ddd 100644
+index 7e86970..c11ef8a 100644
 --- a/tests/test_combat.py
 +++ b/tests/test_combat.py
 @@ -18,6 +18,7 @@ class TestCombatStructure:
@@ -2588,7 +2598,39 @@ index 7e86970..c7c5ddd 100644
              assert e["hp"] > 0
              assert e["max_hp"] > 0
              assert "block" in e
-@@ -118,6 +120,21 @@ class TestCombatEnd:
+@@ -82,6 +84,31 @@ class TestPlayCards:
+         if state["decision"] == "combat_play":
+             assert state["player"].get("block", 0) >= block_before
+
++    def test_particle_wall_can_return_to_hand_and_be_replayed(self, game):
++        state = game.start(character="Regent", seed="particle_wall_replay")
++        game.skip_neow(state)
++        game.set_player(
++            deck=["VENERATE", "VENERATE", "PARTICLE_WALL", "DEFEND_REGENT", "STRIKE_REGENT"]
++        )
++        state = game.enter_room("combat", encounter="SHRINKER_BEETLE_WEAK")
++
++        for _ in range(2):
++            venerate = next(c for c in state["hand"] if c["id"] == "CARD.VENERATE")
++            state = game.act("play_card", card_index=venerate["index"])
++            assert state.get("type") != "error"
++
++        for _ in range(2):
++            wall = next(c for c in state["hand"] if c["id"] == "CARD.PARTICLE_WALL")
++            assert wall["can_play"] is True
++            block_before = state["player"]["block"]
++            stars_before = state["stars"]
++            state = game.act("play_card", card_index=wall["index"])
++
++            assert state.get("type") != "error"
++            assert state["player"]["block"] > block_before
++            assert state["stars"] == stars_before - wall["star_cost"]
++            assert any(c["id"] == "CARD.PARTICLE_WALL" for c in state["hand"])
++
+
+ class TestTurnFlow:
+     def test_end_turn_advances_round(self, game):
+@@ -118,6 +145,21 @@ class TestCombatEnd:
          state = game.enter_room("combat", encounter="SHRINKER_BEETLE_WEAK")
          state = game.auto_play_combat(state)
          assert state["decision"] in ("card_reward", "map_select", "card_select", "bundle_select")
@@ -2945,138 +2987,3 @@ index 8261559..683134d 100644
          deck_before = state["player"]["deck_size"]
          state = game.act("remove_card")
          # Should trigger card_select
-diff --git a/tests/test_snapshot.py b/tests/test_snapshot.py
-new file mode 100644
-index 0000000..37acdb1
---- /dev/null
-+++ b/tests/test_snapshot.py
-@@ -0,0 +1,67 @@
-+"""Proof gates for process-isolated reconstructive snapshots."""
-+
-+
-+def checkpoint(game):
-+    result = game.send({"cmd": "snapshot_checkpoint"})
-+    assert result["type"] == "snapshot_checkpoint"
-+    assert result["schema_version"] == 1
-+    return result
-+
-+
-+def test_event_decision_fails_closed(game):
-+    state = game.start(seed="snapshot_event_reject")
-+    assert state["decision"] == "event_choice"
-+
-+    result = checkpoint(game)
-+
-+    assert result["snapshot_safe"] is False
-+    assert result["stage"] == "unsupported"
-+    assert "decision_stage_not_allowlisted" in result["reasons"]
-+
-+
-+def test_stable_combat_checkpoint_covers_hidden_semantics(game):
-+    seed = "snapshot_combat_safe"
-+    game.start(seed=seed, ascension=10)
-+    state = game.enter_room("combat", encounter="SHRINKER_BEETLE_WEAK")
-+    assert state["decision"] == "combat_play"
-+
-+    first = checkpoint(game)
-+    second = checkpoint(game)
-+
-+    assert first == second
-+    assert first["snapshot_safe"] is True
-+    assert first["stage"] == "combat_play"
-+    assert first["reasons"] == []
-+    assert first["quiescence"] == {
-+        "sync_context_idle": True,
-+        "sync_context_pending": 0,
-+        "action_executor_running": False,
-+        "current_action": None,
-+        "action_queue_empty": True,
-+    }
-+    semantic = first["semantic"]
-+    assert semantic["run_seed_sha256"] != seed
-+    assert len(semantic["run_seed_sha256"]) == 64
-+    assert set(semantic["run_rng_counters"]) >= {"Shuffle", "MonsterAi"}
-+    assert semantic["player_rngs"][0]["counters"]
-+    assert semantic["combat"]["piles"]
-+    assert semantic["combat"]["creatures"]
-+    assert semantic["next_action_id"] >= 0
-+    assert semantic["excluded_nondeterministic_rng"] == (
-+        "Rng.Chaotic (presentation only)"
-+    )
-+
-+
-+def test_pending_card_selection_is_rejected(game):
-+    game.start(character="Defect", seed="snapshot_selection_reject")
-+    game.set_player(potions=["ATTACK_POTION"])
-+    state = game.enter_room("combat", encounter="SHRINKER_BEETLE_WEAK")
-+    assert state["decision"] == "combat_play"
-+
-+    state = game.act("use_potion", potion_index=0)
-+    assert state["decision"] == "card_select"
-+
-+    result = checkpoint(game)
-+    assert result["snapshot_safe"] is False
-+    assert "card_selector_pending" in result["reasons"]
-+    assert "potion_selection_pending" in result["reasons"]
-diff --git a/tests/test_treasure.py b/tests/test_treasure.py
-new file mode 100644
-index 0000000..39676db
---- /dev/null
-+++ b/tests/test_treasure.py
-@@ -0,0 +1,56 @@
-+"""Tests for staged, native-order treasure-room decisions."""
-+
-+
-+def _enter_treasure(game, seed):
-+    state = game.start(seed=seed)
-+    state = game.skip_neow(state)
-+    assert state["decision"] == "map_select"
-+    return game.enter_room("treasure")
-+
-+
-+def test_treasure_open_take_and_proceed(game):
-+    state = _enter_treasure(game, "treasure_stages_1")
-+    assert state["decision"] == "treasure"
-+    assert state["treasure_stage"] == "unopened"
-+    relics_before = len(state.get("player", {}).get("relics", []))
-+
-+    state = game.act("open_chest")
-+    assert state["decision"] == "treasure"
-+    assert state["treasure_stage"] == "relic_ready"
-+    assert len(state["relics"]) == 1
-+    assert state["treasure_proof"]["stage"] == "open_completed"
-+    assert state["treasure_proof"]["postcondition_verified"] is True
-+
-+    state = game.act("take_chest_relic", relic_index=0)
-+    assert state["decision"] == "treasure"
-+    assert state["treasure_stage"] == "proceed"
-+    assert state["treasure_proof"]["stage"] == "relic_awarded"
-+    assert state["treasure_proof"]["inventory_delta"] == 1
-+    assert state["treasure_proof"]["session_closed"] is True
-+    assert len(state["player"]["relics"]) == relics_before + 1
-+
-+    state = game.act("leave_room")
-+    assert state["decision"] == "map_select"
-+
-+
-+def test_treasure_rejects_wrong_stage_and_resets_next_room(game):
-+    state = _enter_treasure(game, "treasure_stages_2")
-+
-+    rejected = game.act("take_chest_relic", relic_index=0)
-+    assert rejected["type"] == "error"
-+    rejected = game.act("leave_room")
-+    assert rejected["type"] == "error"
-+
-+    state = game.act("open_chest")
-+    duplicate = game.act("open_chest")
-+    assert duplicate["type"] == "error"
-+
-+    state = game.act("take_chest_relic", relic_index=0)
-+    duplicate = game.act("take_chest_relic", relic_index=0)
-+    assert duplicate["type"] == "error"
-+    state = game.act("leave_room")
-+    assert state["decision"] == "map_select"
-+
-+    state = game.enter_room("treasure")
-+    assert state["decision"] == "treasure"
-+    assert state["treasure_stage"] == "unopened"
