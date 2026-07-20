@@ -1,0 +1,84 @@
+{
+  "authorization": {
+    "counterfactual_dataset": false,
+    "policy_overrides": false,
+    "training_labels": false
+  },
+  "base_policy": {
+    "combat_model_sha256": "5bbb35de90351827374c9188351cc11c5ce867053c057e1a45978a60bb7633e1",
+    "frozen_for_entire_tranche": true,
+    "macro_model_sha256": "476701d84a7f6cf85b1aa6a910877334c13f52ea637af967a8f6da400ca878f9",
+    "name": "combat_deepsets_greedy_noncombat_v1",
+    "safe_potion_ids": [
+      "POTION.ATTACK_POTION"
+    ],
+    "updates_forbidden_until": "counterfactual_line_passes_or_stops"
+  },
+  "cases": [
+    {
+      "character": "CHARACTER.IRONCLAD",
+      "seed": "CRNSMOKE2I000000"
+    },
+    {
+      "character": "CHARACTER.SILENT",
+      "seed": "CRNSMOKE2S000000"
+    },
+    {
+      "character": "CHARACTER.DEFECT",
+      "seed": "CRNSMOKE2D000000"
+    },
+    {
+      "character": "CHARACTER.NECROBINDER",
+      "seed": "CRNSMOKE2N000000"
+    },
+    {
+      "character": "CHARACTER.REGENT",
+      "seed": "CRNSMOKE2R000000"
+    }
+  ],
+  "created_at": "2026-07-20T03:55:01.547428+00:00",
+  "horizon_selection_gate": {
+    "maximum_paired_to_unpaired_variance_ratio": 0.5,
+    "method": "longest_contiguous_passing_horizon",
+    "minimum_exact_base_repeat_fraction": 1.0,
+    "minimum_mean_root_stream_alignment_fraction": 0.75,
+    "minimum_valid_pair_fraction": 0.9,
+    "minimum_valid_pairs": 5,
+    "minimum_valid_pairs_per_character": 1,
+    "terminal_decision_if_none_pass": "stop_before_counterfactual_dataset_design",
+    "zero_unpaired_variance_is_not_estimable": true
+  },
+  "measurement": {
+    "branches": [
+      "base_action",
+      "exact_base_repeat",
+      "highest_ranked_semantically_distinct_alternative"
+    ],
+    "continuation_policy": "combat_deepsets_greedy_noncombat_v1",
+    "horizons_in_policy_decisions": [
+      1,
+      2,
+      4
+    ],
+    "return_metric": "floor_plus_player_hp_fraction_measurement_proxy",
+    "rng_observation": "native_semantic_checkpoint_named_stream_counters",
+    "root": "first_distinct_top_two_combat_actions_under_frozen_base",
+    "training_data_emitted": false,
+    "variance_comparator": "same_root_paired_difference_vs_within_character_circularly_unpaired_difference"
+  },
+  "name": "stsai-frozen-crn-coupling-feasibility-v1",
+  "schema_version": 1,
+  "selection": {
+    "count_per_character": 1,
+    "expected_root_pairs": 5,
+    "method": "fresh-prefix-seeds-selected-before-measurement",
+    "outcomes_inspected": false,
+    "roots_per_case": 1,
+    "seed_prefix": "CRNSMOKE2"
+  },
+  "target": {
+    "ascension": 10,
+    "build_id": "v0.107.1",
+    "runtime_dll_sha256": "ac91be61e433ee2aace0a3a40881e5ca6ee4e743c31acd635b6294233ccc7b06"
+  }
+}

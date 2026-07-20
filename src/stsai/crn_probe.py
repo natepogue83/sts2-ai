@@ -134,7 +134,11 @@ def create_crn_probe_manifest(
         "measurement": {
             "horizons_in_policy_decisions": normalized_horizons,
             "root": "first_distinct_top_two_combat_actions_under_frozen_base",
-            "branches": ["base_action", "exact_base_repeat", "highest_ranked_alternative"],
+            "branches": [
+                "base_action",
+                "exact_base_repeat",
+                "highest_ranked_semantically_distinct_alternative",
+            ],
             "continuation_policy": BASE_POLICY_NAME,
             "rng_observation": "native_semantic_checkpoint_named_stream_counters",
             "return_metric": "floor_plus_player_hp_fraction_measurement_proxy",
@@ -325,12 +329,19 @@ def _alternative_index(
     base_index: int,
     policy_info: Mapping[str, Any],
 ) -> int | None:
+    base = legal_actions[base_index]
+    base_semantic_key = (base.command, base.option_id)
     for ranked in policy_info.get("ranked_actions") or []:
         if isinstance(ranked, Mapping):
             index = int(ranked.get("action_index", -1))
-            if 0 <= index < len(legal_actions) and index != base_index:
+            if (
+                0 <= index < len(legal_actions)
+                and index != base_index
+                and (legal_actions[index].command, legal_actions[index].option_id)
+                != base_semantic_key
+            ):
                 return index
-    return next((index for index in range(len(legal_actions)) if index != base_index), None)
+    return None
 
 
 def _run_probe_case(

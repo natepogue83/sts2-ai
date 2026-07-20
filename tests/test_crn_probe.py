@@ -6,15 +6,32 @@ import tempfile
 import unittest
 
 from stsai.crn_probe import (
+    _alternative_index,
     apply_horizon_gate,
     create_crn_probe_manifest,
     extract_rng_streams,
     summarize_horizon,
 )
-from stsai.headless_env import HEADLESS_CHARACTERS
+from stsai.headless_env import HEADLESS_CHARACTERS, HeadlessAction
 
 
 class CrnProbeTests(unittest.TestCase):
+    def test_alternative_skips_duplicate_card_copies(self) -> None:
+        actions = (
+            HeadlessAction.create("play_card", "CARD.STRIKE|TARGET.0", card_index=0),
+            HeadlessAction.create("play_card", "CARD.STRIKE|TARGET.0", card_index=2),
+            HeadlessAction.create("play_card", "CARD.DEFEND", card_index=1),
+        )
+        policy_info = {
+            "ranked_actions": [
+                {"action_index": 0},
+                {"action_index": 1},
+                {"action_index": 2},
+            ]
+        }
+
+        self.assertEqual(_alternative_index(actions, 0, policy_info), 2)
+
     def test_manifest_freezes_policy_and_mechanical_horizon_gate(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
