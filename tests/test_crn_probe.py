@@ -7,6 +7,8 @@ import unittest
 
 from stsai.crn_probe import (
     _alternative_index,
+    _state_metrics,
+    RETURN_KEY,
     apply_horizon_gate,
     compact_case_results,
     create_crn_probe_manifest,
@@ -17,6 +19,32 @@ from stsai.headless_env import HEADLESS_CHARACTERS, HeadlessAction
 
 
 class CrnProbeTests(unittest.TestCase):
+    def test_state_proxy_uses_checkpoint_combat_during_subordinate_choice(self) -> None:
+        state = {
+            "decision": "card_select",
+            "player": {"hp": 50, "max_hp": 100},
+        }
+        checkpoint = {
+            "semantic": {
+                "act_floor": 3,
+                "player": {"hp": 50, "max_hp": 100},
+                "combat": {
+                    "creatures": [
+                        {"is_player": True, "current_hp": 50, "max_hp": 100},
+                        {"is_player": False, "current_hp": 10, "max_hp": 40},
+                        {"is_player": False, "current_hp": 0, "max_hp": 20},
+                    ]
+                },
+            }
+        }
+
+        metrics = _state_metrics(state, checkpoint)
+
+        self.assertEqual(metrics["enemy_hp"], 10.0)
+        self.assertEqual(metrics["enemy_max_hp"], 60.0)
+        self.assertAlmostEqual(metrics["enemy_hp_fraction"], 1 / 6)
+        self.assertAlmostEqual(metrics[RETURN_KEY], 3.5 - 1 / 6)
+
     def test_alternative_skips_duplicate_card_copies(self) -> None:
         actions = (
             HeadlessAction.create("play_card", "CARD.STRIKE|TARGET.0", card_index=0),
@@ -111,12 +139,12 @@ class CrnProbeTests(unittest.TestCase):
                 capture = {
                     "checkpoint_sha256": f"same-{counter}",
                     "rng_streams": streams,
-                    "state": {"floor_plus_player_hp_fraction": base_return},
+                    "state": {RETURN_KEY: base_return},
                 }
                 alternative = {
                     "checkpoint_sha256": f"alt-{counter}",
                     "rng_streams": streams,
-                    "state": {"floor_plus_player_hp_fraction": base_return + 0.25},
+                    "state": {RETURN_KEY: base_return + 0.25},
                 }
                 roots.append(
                     {
@@ -176,12 +204,12 @@ class CrnProbeTests(unittest.TestCase):
         capture = {
             "checkpoint_sha256": "base",
             "rng_streams": streams,
-            "state": {"floor_plus_player_hp_fraction": 2.5},
+            "state": {RETURN_KEY: 2.5},
         }
         alternative = {
             "checkpoint_sha256": "alternative",
             "rng_streams": streams,
-            "state": {"floor_plus_player_hp_fraction": 2.75},
+            "state": {RETURN_KEY: 2.75},
         }
         cases = [
             {

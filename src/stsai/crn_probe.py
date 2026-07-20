@@ -23,6 +23,7 @@ from stsai.set_policy import DeepSetCombatPolicy, HeadlessSetCombatPolicy
 
 BASE_POLICY_NAME = "combat_deepsets_greedy_noncombat_v1"
 PROBE_NAME = "stsai-frozen-crn-coupling-feasibility-v1"
+RETURN_KEY = "floor_plus_player_hp_fraction_minus_enemy_hp_fraction"
 _CHARACTER_CODES = {
     "Defect": "D",
     "Ironclad": "I",
@@ -141,7 +142,7 @@ def create_crn_probe_manifest(
             ],
             "continuation_policy": BASE_POLICY_NAME,
             "rng_observation": "native_semantic_checkpoint_named_stream_counters",
-            "return_metric": "floor_plus_player_hp_fraction_measurement_proxy",
+            "return_metric": RETURN_KEY,
             "variance_comparator": (
                 "same_root_paired_difference_vs_within_character_circularly_unpaired_difference"
             ),
@@ -220,33 +221,69 @@ def _read_checkpoint(env: Sts2Env) -> dict[str, Any]:
     return checkpoint
 
 
-def _state_metrics(state: Mapping[str, Any]) -> dict[str, Any]:
-    player = state.get("player")
-    player = player if isinstance(player, Mapping) else {}
+def _state_metrics(
+    state: Mapping[str, Any], checkpoint: Mapping[str, Any] | None = None
+) -> dict[str, Any]:
+    semantic = (checkpoint or {}).get("semantic")
+    semantic = semantic if isinstance(semantic, Mapping) else {}
+    semantic_player = semantic.get("player")
+    semantic_player = semantic_player if isinstance(semantic_player, Mapping) else {}
+    response_player = state.get("player")
+    response_player = response_player if isinstance(response_player, Mapping) else {}
+    player = semantic_player or response_player
     hp = float(player.get("hp") or 0.0)
     max_hp = max(float(player.get("max_hp") or 1.0), 1.0)
     context = state.get("context")
     context = context if isinstance(context, Mapping) else {}
-    floor = int(state.get("floor") or context.get("floor") or 0)
-    enemies = [
-        enemy
-        for enemy in state.get("enemies") or []
-        if isinstance(enemy, Mapping) and float(enemy.get("hp") or 0.0) > 0.0
-    ]
-    enemy_hp = sum(float(enemy.get("hp") or 0.0) for enemy in enemies)
-    enemy_max_hp = sum(
-        float(enemy.get("max_hp") or enemy.get("hp") or 0.0) for enemy in enemies
+    floor = int(
+        semantic.get("act_floor")
+        or state.get("floor")
+        or context.get("floor")
+        or 0
     )
+    combat = semantic.get("combat")
+    combat = combat if isinstance(combat, Mapping) else {}
+    semantic_enemies = [
+        creature
+        for creature in combat.get("creatures") or []
+        if isinstance(creature, Mapping) and creature.get("is_player") is not True
+    ]
+    response_enemies = [
+        enemy for enemy in state.get("enemies") or [] if isinstance(enemy, Mapping)
+    ]
+    enemies = semantic_enemies or response_enemies
+    enemy_hp = sum(
+        max(float(enemy.get("current_hp", enemy.get("hp")) or 0.0), 0.0)
+        for enemy in enemies
+    )
+    enemy_max_hp = sum(
+        max(
+            float(
+                enemy.get("max_hp")
+                or enemy.get("current_hp")
+                or enemy.get("hp")
+                or 0.0
+            ),
+            0.0,
+        )
+        for enemy in enemies
+    )
+    enemy_hp_fraction = enemy_hp / enemy_max_hp if enemy_max_hp > 0.0 else 0.0
     return {
         "decision": str(state.get("decision") or "unknown"),
         "floor": floor,
         "player_hp": hp,
         "player_max_hp": max_hp,
         "player_hp_fraction": hp / max_hp,
-        "living_enemies": len(enemies),
+        "living_enemies": sum(
+            int(float(enemy.get("current_hp", enemy.get("hp")) or 0.0) > 0.0)
+            for enemy in enemies
+        ),
         "enemy_hp": enemy_hp,
         "enemy_max_hp": enemy_max_hp,
+        "enemy_hp_fraction": enemy_hp_fraction,
         "floor_plus_player_hp_fraction": floor + hp / max_hp,
+        RETURN_KEY: floor + hp / max_hp - enemy_hp_fraction,
         "terminated": state.get("decision") == "game_over",
         "victory": state.get("victory") is True,
     }
@@ -258,7 +295,7 @@ def _capture(env: Sts2Env, *, absorbing_terminal: bool = False) -> dict[str, Any
         "checkpoint_sha256": _json_sha(checkpoint),
         "checkpoint_snapshot_safe": checkpoint.get("snapshot_safe") is True,
         "rng_streams": extract_rng_streams(checkpoint),
-        "state": _state_metrics(env.raw_state),
+        "state": _state_metrics(env.raw_state, checkpoint),
         "absorbing_terminal": absorbing_terminal,
     }
 
@@ -390,7 +427,7 @@ def _run_probe_case(
                             "parent_step": parent_step,
                             "root_checkpoint_sha256": snapshot.native.checkpoint_sha256,
                             "root_rng_streams": extract_rng_streams(root_checkpoint),
-                            "root_state": _state_metrics(env.raw_state),
+                            "root_state": _state_metrics(env.raw_state, root_checkpoint),
                             "base_action_index": base_index,
                             "base_action": base_action.as_dict(),
                             "alternative_action_index": alternative_index,
@@ -478,13 +515,13 @@ def summarize_horizon(
             valid.append(
                 {
                     "character": character,
-                    "base_return": float(base["state"]["floor_plus_player_hp_fraction"]),
+                    "base_return": float(base["state"][RETURN_KEY]),
                     "alternative_return": float(
-                        alternative["state"]["floor_plus_player_hp_fraction"]
+                        alternative["state"][RETURN_KEY]
                     ),
                     "paired_difference": float(
-                        alternative["state"]["floor_plus_player_hp_fraction"]
-                        - base["state"]["floor_plus_player_hp_fraction"]
+                        alternative["state"][RETURN_KEY]
+                        - base["state"][RETURN_KEY]
                     ),
                     "root_stream_alignment_fraction": alignment,
                 }
@@ -607,9 +644,9 @@ def compact_case_results(
                     isinstance(value, Mapping) for value in (base, repeated, alternative)
                 ):
                     alignment, different = _stream_alignment(root, base, alternative)
-                    base_return = float(base["state"]["floor_plus_player_hp_fraction"])
+                    base_return = float(base["state"][RETURN_KEY])
                     alternative_return = float(
-                        alternative["state"]["floor_plus_player_hp_fraction"]
+                        alternative["state"][RETURN_KEY]
                     )
                     row = {
                         "horizon": horizon,
@@ -779,7 +816,7 @@ def evaluate_crn_probe(
         },
         "cases": compact_case_results(results, horizons),
         "limitations": [
-            "The floor-plus-HP return is a coupling measurement proxy, not a training target.",
+            "The floor-plus-player-HP-minus-enemy-HP return is a coupling measurement proxy, not a training target.",
             "The variance comparison combines matched-root control with shared native RNG; the pinned runtime does not expose independent future-RNG resampling at a fixed root.",
             "Raw repeated RNG vectors are reduced to hashes, alignment, and differing stream names after aggregation to keep the evidence bounded.",
             "Passing makes a separately precommitted single-use dataset eligible for design; it does not authorize training data or policy overrides.",

@@ -1,0 +1,1256 @@
+{
+  "authorization": {
+    "counterfactual_dataset": false,
+    "policy_overrides": false,
+    "training_labels": false
+  },
+  "build_id": "v0.107.1",
+  "cases": [
+    {
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "character": "Ironclad",
+      "completed": true,
+      "roots": [
+        {
+          "alternative_action": {
+            "action": "play_card",
+            "args": {
+              "card_index": 4,
+              "target_index": 0
+            },
+            "option_id": "CARD.STRIKE_IRONCLAD|TARGET.0"
+          },
+          "alternative_action_index": 4,
+          "base_action": {
+            "action": "play_card",
+            "args": {
+              "card_index": 1,
+              "target_index": 0
+            },
+            "option_id": "CARD.BASH|TARGET.0"
+          },
+          "base_action_index": 1,
+          "branch_status": {
+            "alternative": {
+              "completed": true
+            },
+            "base": {
+              "completed": true
+            },
+            "base_repeat": {
+              "completed": true
+            }
+          },
+          "horizons": [
+            {
+              "alternative_checkpoint_sha256": "68ad6a81bcb12b5678c1fd99c369ea281bdac3f5ef10f7af329c4beb00b25922",
+              "alternative_return": 2.8,
+              "alternative_rng_streams_sha256": "01d00ae536e211e49075541bdd281c49dd7b023f1fbdf8f52382ea08f224a8ce",
+              "alternative_state": {
+                "decision": "combat_play",
+                "enemy_hp": 52.0,
+                "enemy_max_hp": 58.0,
+                "floor": 2,
+                "floor_plus_player_hp_fraction": 2.8,
+                "living_enemies": 1,
+                "player_hp": 64.0,
+                "player_hp_fraction": 0.8,
+                "player_max_hp": 80.0,
+                "terminated": false,
+                "victory": false
+              },
+              "base_checkpoint_sha256": "8127dab84aa70c990ec2270fc5dc972e295c814b9cd6d93684e8c76a3d1e4281",
+              "base_repeat_checkpoint_sha256": "8127dab84aa70c990ec2270fc5dc972e295c814b9cd6d93684e8c76a3d1e4281",
+              "base_return": 2.8,
+              "base_rng_streams_sha256": "01d00ae536e211e49075541bdd281c49dd7b023f1fbdf8f52382ea08f224a8ce",
+              "base_state": {
+                "decision": "combat_play",
+                "enemy_hp": 50.0,
+                "enemy_max_hp": 58.0,
+                "floor": 2,
+                "floor_plus_player_hp_fraction": 2.8,
+                "living_enemies": 1,
+                "player_hp": 64.0,
+                "player_hp_fraction": 0.8,
+                "player_max_hp": 80.0,
+                "terminated": false,
+                "victory": false
+              },
+              "desynchronized_root_streams": [],
+              "exact_base_repeat": true,
+              "horizon": 1,
+              "paired_difference": 0.0,
+              "root_stream_alignment_fraction": 1.0,
+              "valid": true
+            },
+            {
+              "alternative_checkpoint_sha256": "1c32ded92dceb8565aa728c0e2914e9951f9e86e46d8585090e457603de04fc5",
+              "alternative_return": 2.8,
+              "alternative_rng_streams_sha256": "01d00ae536e211e49075541bdd281c49dd7b023f1fbdf8f52382ea08f224a8ce",
+              "alternative_state": {
+                "decision": "combat_play",
+                "enemy_hp": 44.0,
+                "enemy_max_hp": 58.0,
+                "floor": 2,
+                "floor_plus_player_hp_fraction": 2.8,
+                "living_enemies": 1,
+                "player_hp": 64.0,
+                "player_hp_fraction": 0.8,
+                "player_max_hp": 80.0,
+                "terminated": false,
+                "victory": false
+              },
+              "base_checkpoint_sha256": "5bdedd0605606a018bef3107ea2aeb32211ba713f56cfbb0765ccda75054149f",
+              "base_repeat_checkpoint_sha256": "5bdedd0605606a018bef3107ea2aeb32211ba713f56cfbb0765ccda75054149f",
+              "base_return": 2.8,
+              "base_rng_streams_sha256": "01d00ae536e211e49075541bdd281c49dd7b023f1fbdf8f52382ea08f224a8ce",
+              "base_state": {
+                "decision": "combat_play",
+                "enemy_hp": 41.0,
+                "enemy_max_hp": 58.0,
+                "floor": 2,
+                "floor_plus_player_hp_fraction": 2.8,
+                "living_enemies": 1,
+                "player_hp": 64.0,
+                "player_hp_fraction": 0.8,
+                "player_max_hp": 80.0,
+                "terminated": false,
+                "victory": false
+              },
+              "desynchronized_root_streams": [],
+              "exact_base_repeat": true,
+              "horizon": 2,
+              "paired_difference": 0.0,
+              "root_stream_alignment_fraction": 1.0,
+              "valid": true
+            },
+            {
+              "alternative_checkpoint_sha256": "bdedc79a3e4c1b24d113e54add90e65f8d7a4460a2457b6a1194d4d8407c6d05",
+              "alternative_return": 2.725,
+              "alternative_rng_streams_sha256": "01d00ae536e211e49075541bdd281c49dd7b023f1fbdf8f52382ea08f224a8ce",
+              "alternative_state": {
+                "decision": "combat_play",
+                "enemy_hp": 35.0,
+                "enemy_max_hp": 58.0,
+                "floor": 2,
+                "floor_plus_player_hp_fraction": 2.725,
+                "living_enemies": 1,
+                "player_hp": 58.0,
+                "player_hp_fraction": 0.725,
+                "player_max_hp": 80.0,
+                "terminated": false,
+                "victory": false
+              },
+              "base_checkpoint_sha256": "700101810cf55862115f62d3fe584dfc27a8e2c297b6ff19fbf4e42e6a7b3930",
+              "base_repeat_checkpoint_sha256": "700101810cf55862115f62d3fe584dfc27a8e2c297b6ff19fbf4e42e6a7b3930",
+              "base_return": 2.725,
+              "base_rng_streams_sha256": "01d00ae536e211e49075541bdd281c49dd7b023f1fbdf8f52382ea08f224a8ce",
+              "base_state": {
+                "decision": "combat_play",
+                "enemy_hp": 32.0,
+                "enemy_max_hp": 58.0,
+                "floor": 2,
+                "floor_plus_player_hp_fraction": 2.725,
+                "living_enemies": 1,
+                "player_hp": 58.0,
+                "player_hp_fraction": 0.725,
+                "player_max_hp": 80.0,
+                "terminated": false,
+                "victory": false
+              },
+              "desynchronized_root_streams": [],
+              "exact_base_repeat": true,
+              "horizon": 4,
+              "paired_difference": 0.0,
+              "root_stream_alignment_fraction": 1.0,
+              "valid": true
+            }
+          ],
+          "parent_step": 3,
+          "root_checkpoint_sha256": "89c8e222e73705f26a0e4b19b37f32ad8d56de954c879a4d436df002b536e97d",
+          "root_index": 0,
+          "root_rng_stream_names": [
+            "monster:1:MONSTER.FUZZY_WURM_CRAWLER",
+            "player:0:Rewards",
+            "player:0:Shops",
+            "player:0:Transformations",
+            "run:CombatCardGeneration",
+            "run:CombatCardSelection",
+            "run:CombatEnergyCosts",
+            "run:CombatOrbs",
+            "run:CombatPotionGeneration",
+            "run:CombatTargets",
+            "run:MonsterAi",
+            "run:Niche",
+            "run:Shuffle",
+            "run:TreasureRoomRelics",
+            "run:UnknownMapPoint",
+            "run:UpFront"
+          ],
+          "root_state": {
+            "decision": "combat_play",
+            "enemy_hp": 58.0,
+            "enemy_max_hp": 58.0,
+            "floor": 2,
+            "floor_plus_player_hp_fraction": 2.8,
+            "living_enemies": 1,
+            "player_hp": 64.0,
+            "player_hp_fraction": 0.8,
+            "player_max_hp": 80.0,
+            "terminated": false,
+            "victory": false
+          }
+        }
+      ],
+      "roots_collected": 1,
+      "roots_requested": 1,
+      "seed": "CRNSMOKE2I000000"
+    },
+    {
+      "canonical_character": "CHARACTER.SILENT",
+      "character": "Silent",
+      "completed": true,
+      "roots": [
+        {
+          "alternative_action": {
+            "action": "play_card",
+            "args": {
+              "card_index": 1
+            },
+            "option_id": "CARD.SURVIVOR"
+          },
+          "alternative_action_index": 1,
+          "base_action": {
+            "action": "play_card",
+            "args": {
+              "card_index": 4,
+              "target_index": 0
+            },
+            "option_id": "CARD.STRIKE_SILENT|TARGET.0"
+          },
+          "base_action_index": 4,
+          "branch_status": {
+            "alternative": {
+              "completed": true
+            },
+            "base": {
+              "completed": true
+            },
+            "base_repeat": {
+              "completed": true
+            }
+          },
+          "horizons": [
+            {
+              "alternative_checkpoint_sha256": "c8558fbc9f4a0f85f107afe8b4d57dc5f035f2d52d0d8f4b3d1e5f3539d4a9c4",
+              "alternative_return": 2.8,
+              "alternative_rng_streams_sha256": "f277aee169c7bbbaf27c417cc8ab394cc70db3d3840926b0a7d09f73fe961ea4",
+              "alternative_state": {
+                "decision": "card_select",
+                "enemy_hp": 0,
+                "enemy_max_hp": 0,
+                "floor": 2,
+                "floor_plus_player_hp_fraction": 2.8,
+                "living_enemies": 0,
+                "player_hp": 56.0,
+                "player_hp_fraction": 0.8,
+                "player_max_hp": 70.0,
+                "terminated": false,
+                "victory": false
+              },
+              "base_checkpoint_sha256": "47e2c1dbc741384e068e706069d303e111421d05cea14ae162e90ab39e3902e8",
+              "base_repeat_checkpoint_sha256": "47e2c1dbc741384e068e706069d303e111421d05cea14ae162e90ab39e3902e8",
+              "base_return": 2.8,
+              "base_rng_streams_sha256": "f277aee169c7bbbaf27c417cc8ab394cc70db3d3840926b0a7d09f73fe961ea4",
+              "base_state": {
+                "decision": "combat_play",
+                "enemy_hp": 35.0,
+                "enemy_max_hp": 41.0,
+                "floor": 2,
+                "floor_plus_player_hp_fraction": 2.8,
+                "living_enemies": 1,
+                "player_hp": 56.0,
+                "player_hp_fraction": 0.8,
+                "player_max_hp": 70.0,
+                "terminated": false,
+                "victory": false
+              },
+              "desynchronized_root_streams": [],
+              "exact_base_repeat": true,
+              "horizon": 1,
+              "paired_difference": 0.0,
+              "root_stream_alignment_fraction": 1.0,
+              "valid": true
+            },
+            {
+              "alternative_checkpoint_sha256": "8a9e24d540726f08ac64f4d9755dad031db27d233ecfda11de7378c08fb88139",
+              "alternative_return": 2.8,
+              "alternative_rng_streams_sha256": "f277aee169c7bbbaf27c417cc8ab394cc70db3d3840926b0a7d09f73fe961ea4",
+              "alternative_state": {
+                "decision": "combat_play",
+                "enemy_hp": 41.0,
+                "enemy_max_hp": 41.0,
+                "floor": 2,
+                "floor_plus_player_hp_fraction": 2.8,
+                "living_enemies": 1,
+                "player_hp": 56.0,
+                "player_hp_fraction": 0.8,
+                "player_max_hp": 70.0,
+                "terminated": false,
+                "victory": false
+              },
+              "base_checkpoint_sha256": "e7330f88c13eeeac0fe5e39787ce8563249512cc66aa07b323edb9d2dfb7b7f2",
+              "base_repeat_checkpoint_sha256": "e7330f88c13eeeac0fe5e39787ce8563249512cc66aa07b323edb9d2dfb7b7f2",
+              "base_return": 2.8,
+              "base_rng_streams_sha256": "f277aee169c7bbbaf27c417cc8ab394cc70db3d3840926b0a7d09f73fe961ea4",
+              "base_state": {
+                "decision": "combat_play",
+                "enemy_hp": 29.0,
+                "enemy_max_hp": 41.0,
+                "floor": 2,
+                "floor_plus_player_hp_fraction": 2.8,
+                "living_enemies": 1,
+                "player_hp": 56.0,
+                "player_hp_fraction": 0.8,
+                "player_max_hp": 70.0,
+                "terminated": false,
+                "victory": false
+              },
+              "desynchronized_root_streams": [],
+              "exact_base_repeat": true,
+              "horizon": 2,
+              "paired_difference": 0.0,
+              "root_stream_alignment_fraction": 1.0,
+              "valid": true
+            },
+            {
+              "alternative_checkpoint_sha256": "df55bfac00c4533c62b14f93e5e63916e04eef54c6ac6d02818a67454b1d49f1",
+              "alternative_return": 2.8,
+              "alternative_rng_streams_sha256": "f277aee169c7bbbaf27c417cc8ab394cc70db3d3840926b0a7d09f73fe961ea4",
+              "alternative_state": {
+                "decision": "combat_play",
+                "enemy_hp": 29.0,
+                "enemy_max_hp": 41.0,
+                "floor": 2,
+                "floor_plus_player_hp_fraction": 2.8,
+                "living_enemies": 1,
+                "player_hp": 56.0,
+                "player_hp_fraction": 0.8,
+                "player_max_hp": 70.0,
+                "terminated": false,
+                "victory": false
+              },
+              "base_checkpoint_sha256": "43667619702e2c150d9d71ca492fca2ada651df0f8c0d3ae22ea82113f940f45",
+              "base_repeat_checkpoint_sha256": "43667619702e2c150d9d71ca492fca2ada651df0f8c0d3ae22ea82113f940f45",
+              "base_return": 2.8,
+              "base_rng_streams_sha256": "f277aee169c7bbbaf27c417cc8ab394cc70db3d3840926b0a7d09f73fe961ea4",
+              "base_state": {
+                "decision": "combat_play",
+                "enemy_hp": 29.0,
+                "enemy_max_hp": 41.0,
+                "floor": 2,
+                "floor_plus_player_hp_fraction": 2.8,
+                "living_enemies": 1,
+                "player_hp": 56.0,
+                "player_hp_fraction": 0.8,
+                "player_max_hp": 70.0,
+                "terminated": false,
+                "victory": false
+              },
+              "desynchronized_root_streams": [],
+              "exact_base_repeat": true,
+              "horizon": 4,
+              "paired_difference": 0.0,
+              "root_stream_alignment_fraction": 1.0,
+              "valid": true
+            }
+          ],
+          "parent_step": 3,
+          "root_checkpoint_sha256": "af7a34f2a672d2ca6d2598dad1be33b6d50a67e931e8e5406480b607ee5d4e36",
+          "root_index": 0,
+          "root_rng_stream_names": [
+            "monster:1:MONSTER.SHRINKER_BEETLE",
+            "player:0:Rewards",
+            "player:0:Shops",
+            "player:0:Transformations",
+            "run:CombatCardGeneration",
+            "run:CombatCardSelection",
+            "run:CombatEnergyCosts",
+            "run:CombatOrbs",
+            "run:CombatPotionGeneration",
+            "run:CombatTargets",
+            "run:MonsterAi",
+            "run:Niche",
+            "run:Shuffle",
+            "run:TreasureRoomRelics",
+            "run:UnknownMapPoint",
+            "run:UpFront"
+          ],
+          "root_state": {
+            "decision": "combat_play",
+            "enemy_hp": 41.0,
+            "enemy_max_hp": 41.0,
+            "floor": 2,
+            "floor_plus_player_hp_fraction": 2.8,
+            "living_enemies": 1,
+            "player_hp": 56.0,
+            "player_hp_fraction": 0.8,
+            "player_max_hp": 70.0,
+            "terminated": false,
+            "victory": false
+          }
+        }
+      ],
+      "roots_collected": 1,
+      "roots_requested": 1,
+      "seed": "CRNSMOKE2S000000"
+    },
+    {
+      "canonical_character": "CHARACTER.DEFECT",
+      "character": "Defect",
+      "completed": true,
+      "roots": [
+        {
+          "alternative_action": {
+            "action": "play_card",
+            "args": {
+              "card_index": 1,
+              "target_index": 2
+            },
+            "option_id": "CARD.STRIKE_DEFECT|TARGET.2"
+          },
+          "alternative_action_index": 2,
+          "base_action": {
+            "action": "play_card",
+            "args": {
+              "card_index": 1,
+              "target_index": 1
+            },
+            "option_id": "CARD.STRIKE_DEFECT|TARGET.1"
+          },
+          "base_action_index": 1,
+          "branch_status": {
+            "alternative": {
+              "completed": true
+            },
+            "base": {
+              "completed": true
+            },
+            "base_repeat": {
+              "completed": true
+            }
+          },
+          "horizons": [
+            {
+              "alternative_checkpoint_sha256": "ae62f90a9e59124f5f43c55418d66309c8258f4fdfbb9de90fb8d3b265692633",
+              "alternative_return": 2.8,
+              "alternative_rng_streams_sha256": "5552cef44238240823677327dd1a1ec88aeab4c461ebe1d5971fbe9e9e93e14b",
+              "alternative_state": {
+                "decision": "combat_play",
+                "enemy_hp": 48.0,
+                "enemy_max_hp": 54.0,
+                "floor": 2,
+                "floor_plus_player_hp_fraction": 2.8,
+                "living_enemies": 3,
+                "player_hp": 60.0,
+                "player_hp_fraction": 0.8,
+                "player_max_hp": 75.0,
+                "terminated": false,
+                "victory": false
+              },
+              "base_checkpoint_sha256": "396054be1feaf2668cffc750853c55f8bf4feaa471377d8d8eeefa2464ba982f",
+              "base_repeat_checkpoint_sha256": "396054be1feaf2668cffc750853c55f8bf4feaa471377d8d8eeefa2464ba982f",
+              "base_return": 2.8,
+              "base_rng_streams_sha256": "5552cef44238240823677327dd1a1ec88aeab4c461ebe1d5971fbe9e9e93e14b",
+              "base_state": {
+                "decision": "combat_play",
+                "enemy_hp": 48.0,
+                "enemy_max_hp": 54.0,
+                "floor": 2,
+                "floor_plus_player_hp_fraction": 2.8,
+                "living_enemies": 3,
+                "player_hp": 60.0,
+                "player_hp_fraction": 0.8,
+                "player_max_hp": 75.0,
+                "terminated": false,
+                "victory": false
+              },
+              "desynchronized_root_streams": [],
+              "exact_base_repeat": true,
+              "horizon": 1,
+              "paired_difference": 0.0,
+              "root_stream_alignment_fraction": 1.0,
+              "valid": true
+            },
+            {
+              "alternative_checkpoint_sha256": "aee7ccc50c51c8cd9a5836d7a48b67e97e0d3698397339a82aaddd28578fe807",
+              "alternative_return": 2.8,
+              "alternative_rng_streams_sha256": "5552cef44238240823677327dd1a1ec88aeab4c461ebe1d5971fbe9e9e93e14b",
+              "alternative_state": {
+                "decision": "combat_play",
+                "enemy_hp": 48.0,
+                "enemy_max_hp": 54.0,
+                "floor": 2,
+                "floor_plus_player_hp_fraction": 2.8,
+                "living_enemies": 3,
+                "player_hp": 60.0,
+                "player_hp_fraction": 0.8,
+                "player_max_hp": 75.0,
+                "terminated": false,
+                "victory": false
+              },
+              "base_checkpoint_sha256": "e2dedfa063824287574cc1829555eeecdd699308a3583b720bdf52598d0bcad2",
+              "base_repeat_checkpoint_sha256": "e2dedfa063824287574cc1829555eeecdd699308a3583b720bdf52598d0bcad2",
+              "base_return": 2.8,
+              "base_rng_streams_sha256": "5552cef44238240823677327dd1a1ec88aeab4c461ebe1d5971fbe9e9e93e14b",
+              "base_state": {
+                "decision": "combat_play",
+                "enemy_hp": 48.0,
+                "enemy_max_hp": 54.0,
+                "floor": 2,
+                "floor_plus_player_hp_fraction": 2.8,
+                "living_enemies": 3,
+                "player_hp": 60.0,
+                "player_hp_fraction": 0.8,
+                "player_max_hp": 75.0,
+                "terminated": false,
+                "victory": false
+              },
+              "desynchronized_root_streams": [],
+              "exact_base_repeat": true,
+              "horizon": 2,
+              "paired_difference": 0.0,
+              "root_stream_alignment_fraction": 1.0,
+              "valid": true
+            },
+            {
+              "alternative_checkpoint_sha256": "1f69f1bd142080cbf60263310c2c0154c13a1c63a65f6e411cb38aa78ec56676",
+              "alternative_return": 2.8,
+              "alternative_rng_streams_sha256": "4598cdc92d5ac5a3d0d021c84ea73bbdf2d5073c465120b206c6c960e05fdc8d",
+              "alternative_state": {
+                "decision": "combat_play",
+                "enemy_hp": 45.0,
+                "enemy_max_hp": 54.0,
+                "floor": 2,
+                "floor_plus_player_hp_fraction": 2.8,
+                "living_enemies": 3,
+                "player_hp": 60.0,
+                "player_hp_fraction": 0.8,
+                "player_max_hp": 75.0,
+                "terminated": false,
+                "victory": false
+              },
+              "base_checkpoint_sha256": "70ea2658d07b6af847aa922b1d182924c84a608fd76d6d5c9ec5d240ffd661ce",
+              "base_repeat_checkpoint_sha256": "70ea2658d07b6af847aa922b1d182924c84a608fd76d6d5c9ec5d240ffd661ce",
+              "base_return": 2.8,
+              "base_rng_streams_sha256": "4598cdc92d5ac5a3d0d021c84ea73bbdf2d5073c465120b206c6c960e05fdc8d",
+              "base_state": {
+                "decision": "combat_play",
+                "enemy_hp": 45.0,
+                "enemy_max_hp": 54.0,
+                "floor": 2,
+                "floor_plus_player_hp_fraction": 2.8,
+                "living_enemies": 3,
+                "player_hp": 60.0,
+                "player_hp_fraction": 0.8,
+                "player_max_hp": 75.0,
+                "terminated": false,
+                "victory": false
+              },
+              "desynchronized_root_streams": [],
+              "exact_base_repeat": true,
+              "horizon": 4,
+              "paired_difference": 0.0,
+              "root_stream_alignment_fraction": 1.0,
+              "valid": true
+            }
+          ],
+          "parent_step": 3,
+          "root_checkpoint_sha256": "4d10c46f0ee1e2fdf049f84e4b6a52cee40cd09a1839dfbf3b7ea7265e1c6c04",
+          "root_index": 0,
+          "root_rng_stream_names": [
+            "monster:1:MONSTER.LEAF_SLIME_S",
+            "monster:2:MONSTER.TWIG_SLIME_M",
+            "monster:3:MONSTER.TWIG_SLIME_S",
+            "player:0:Rewards",
+            "player:0:Shops",
+            "player:0:Transformations",
+            "run:CombatCardGeneration",
+            "run:CombatCardSelection",
+            "run:CombatEnergyCosts",
+            "run:CombatOrbs",
+            "run:CombatPotionGeneration",
+            "run:CombatTargets",
+            "run:MonsterAi",
+            "run:Niche",
+            "run:Shuffle",
+            "run:TreasureRoomRelics",
+            "run:UnknownMapPoint",
+            "run:UpFront"
+          ],
+          "root_state": {
+            "decision": "combat_play",
+            "enemy_hp": 54.0,
+            "enemy_max_hp": 54.0,
+            "floor": 2,
+            "floor_plus_player_hp_fraction": 2.8,
+            "living_enemies": 3,
+            "player_hp": 60.0,
+            "player_hp_fraction": 0.8,
+            "player_max_hp": 75.0,
+            "terminated": false,
+            "victory": false
+          }
+        }
+      ],
+      "roots_collected": 1,
+      "roots_requested": 1,
+      "seed": "CRNSMOKE2D000000"
+    },
+    {
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "character": "Necrobinder",
+      "completed": true,
+      "roots": [
+        {
+          "alternative_action": {
+            "action": "play_card",
+            "args": {
+              "card_index": 1
+            },
+            "option_id": "CARD.DEFEND_NECROBINDER"
+          },
+          "alternative_action_index": 0,
+          "base_action": {
+            "action": "play_card",
+            "args": {
+              "card_index": 2,
+              "target_index": 0
+            },
+            "option_id": "CARD.STRIKE_NECROBINDER|TARGET.0"
+          },
+          "base_action_index": 1,
+          "branch_status": {
+            "alternative": {
+              "completed": true
+            },
+            "base": {
+              "completed": true
+            },
+            "base_repeat": {
+              "completed": true
+            }
+          },
+          "horizons": [
+            {
+              "alternative_checkpoint_sha256": "8da66be8c5d1bb5e643e61f85e8cd257feaeaeb4d08105ebcb9bb47a1a6dc470",
+              "alternative_return": 2.787878787878788,
+              "alternative_rng_streams_sha256": "1501e59281c9cdcf5af853060159db7a81740e94102ae6f6bfb47a125f6684c8",
+              "alternative_state": {
+                "decision": "combat_play",
+                "enemy_hp": 48.0,
+                "enemy_max_hp": 48.0,
+                "floor": 2,
+                "floor_plus_player_hp_fraction": 2.787878787878788,
+                "living_enemies": 1,
+                "player_hp": 52.0,
+                "player_hp_fraction": 0.7878787878787878,
+                "player_max_hp": 66.0,
+                "terminated": false,
+                "victory": false
+              },
+              "base_checkpoint_sha256": "4d3facbe4e4cccbbea0cefa76335f17d2fd6881d4259c1b40919301d0d3d165b",
+              "base_repeat_checkpoint_sha256": "4d3facbe4e4cccbbea0cefa76335f17d2fd6881d4259c1b40919301d0d3d165b",
+              "base_return": 2.787878787878788,
+              "base_rng_streams_sha256": "1501e59281c9cdcf5af853060159db7a81740e94102ae6f6bfb47a125f6684c8",
+              "base_state": {
+                "decision": "combat_play",
+                "enemy_hp": 42.0,
+                "enemy_max_hp": 48.0,
+                "floor": 2,
+                "floor_plus_player_hp_fraction": 2.787878787878788,
+                "living_enemies": 1,
+                "player_hp": 52.0,
+                "player_hp_fraction": 0.7878787878787878,
+                "player_max_hp": 66.0,
+                "terminated": false,
+                "victory": false
+              },
+              "desynchronized_root_streams": [],
+              "exact_base_repeat": true,
+              "horizon": 1,
+              "paired_difference": 0.0,
+              "root_stream_alignment_fraction": 1.0,
+              "valid": true
+            },
+            {
+              "alternative_checkpoint_sha256": "ef2d81da611461df6e494d700628f3f36b52d1e4532d3f4722df56e1374c3392",
+              "alternative_return": 2.787878787878788,
+              "alternative_rng_streams_sha256": "1501e59281c9cdcf5af853060159db7a81740e94102ae6f6bfb47a125f6684c8",
+              "alternative_state": {
+                "decision": "combat_play",
+                "enemy_hp": 42.0,
+                "enemy_max_hp": 48.0,
+                "floor": 2,
+                "floor_plus_player_hp_fraction": 2.787878787878788,
+                "living_enemies": 1,
+                "player_hp": 52.0,
+                "player_hp_fraction": 0.7878787878787878,
+                "player_max_hp": 66.0,
+                "terminated": false,
+                "victory": false
+              },
+              "base_checkpoint_sha256": "0ce6318a511c8c381d4c818edd321b8691f5cad0138c409a998a64859321a51f",
+              "base_repeat_checkpoint_sha256": "0ce6318a511c8c381d4c818edd321b8691f5cad0138c409a998a64859321a51f",
+              "base_return": 2.787878787878788,
+              "base_rng_streams_sha256": "1501e59281c9cdcf5af853060159db7a81740e94102ae6f6bfb47a125f6684c8",
+              "base_state": {
+                "decision": "combat_play",
+                "enemy_hp": 42.0,
+                "enemy_max_hp": 48.0,
+                "floor": 2,
+                "floor_plus_player_hp_fraction": 2.787878787878788,
+                "living_enemies": 1,
+                "player_hp": 52.0,
+                "player_hp_fraction": 0.7878787878787878,
+                "player_max_hp": 66.0,
+                "terminated": false,
+                "victory": false
+              },
+              "desynchronized_root_streams": [],
+              "exact_base_repeat": true,
+              "horizon": 2,
+              "paired_difference": 0.0,
+              "root_stream_alignment_fraction": 1.0,
+              "valid": true
+            },
+            {
+              "alternative_checkpoint_sha256": "038d735671f3ec5734765804f9ff9e4528323807fefb666b457e09043ac20fa9",
+              "alternative_return": 2.757575757575758,
+              "alternative_rng_streams_sha256": "1501e59281c9cdcf5af853060159db7a81740e94102ae6f6bfb47a125f6684c8",
+              "alternative_state": {
+                "decision": "combat_play",
+                "enemy_hp": 42.0,
+                "enemy_max_hp": 48.0,
+                "floor": 2,
+                "floor_plus_player_hp_fraction": 2.757575757575758,
+                "living_enemies": 1,
+                "player_hp": 50.0,
+                "player_hp_fraction": 0.7575757575757576,
+                "player_max_hp": 66.0,
+                "terminated": false,
+                "victory": false
+              },
+              "base_checkpoint_sha256": "58b66884783878a9710dfd2d5c2345d92ab3eed93e5daee0090ee9593e34d4e9",
+              "base_repeat_checkpoint_sha256": "58b66884783878a9710dfd2d5c2345d92ab3eed93e5daee0090ee9593e34d4e9",
+              "base_return": 2.757575757575758,
+              "base_rng_streams_sha256": "1501e59281c9cdcf5af853060159db7a81740e94102ae6f6bfb47a125f6684c8",
+              "base_state": {
+                "decision": "combat_play",
+                "enemy_hp": 42.0,
+                "enemy_max_hp": 48.0,
+                "floor": 2,
+                "floor_plus_player_hp_fraction": 2.757575757575758,
+                "living_enemies": 1,
+                "player_hp": 50.0,
+                "player_hp_fraction": 0.7575757575757576,
+                "player_max_hp": 66.0,
+                "terminated": false,
+                "victory": false
+              },
+              "desynchronized_root_streams": [],
+              "exact_base_repeat": true,
+              "horizon": 4,
+              "paired_difference": 0.0,
+              "root_stream_alignment_fraction": 1.0,
+              "valid": true
+            }
+          ],
+          "parent_step": 3,
+          "root_checkpoint_sha256": "ea49e275ca2305a113c53d0919d572a5521be5ca16de4edd8b9557375242c007",
+          "root_index": 0,
+          "root_rng_stream_names": [
+            "monster:1:MONSTER.NIBBIT",
+            "monster:2:MONSTER.OSTY",
+            "player:0:Rewards",
+            "player:0:Shops",
+            "player:0:Transformations",
+            "run:CombatCardGeneration",
+            "run:CombatCardSelection",
+            "run:CombatEnergyCosts",
+            "run:CombatOrbs",
+            "run:CombatPotionGeneration",
+            "run:CombatTargets",
+            "run:MonsterAi",
+            "run:Niche",
+            "run:Shuffle",
+            "run:TreasureRoomRelics",
+            "run:UnknownMapPoint",
+            "run:UpFront"
+          ],
+          "root_state": {
+            "decision": "combat_play",
+            "enemy_hp": 48.0,
+            "enemy_max_hp": 48.0,
+            "floor": 2,
+            "floor_plus_player_hp_fraction": 2.787878787878788,
+            "living_enemies": 1,
+            "player_hp": 52.0,
+            "player_hp_fraction": 0.7878787878787878,
+            "player_max_hp": 66.0,
+            "terminated": false,
+            "victory": false
+          }
+        }
+      ],
+      "roots_collected": 1,
+      "roots_requested": 1,
+      "seed": "CRNSMOKE2N000000"
+    },
+    {
+      "canonical_character": "CHARACTER.REGENT",
+      "character": "Regent",
+      "completed": true,
+      "roots": [
+        {
+          "alternative_action": {
+            "action": "play_card",
+            "args": {
+              "card_index": 4,
+              "target_index": 2
+            },
+            "option_id": "CARD.STRIKE_REGENT|TARGET.2"
+          },
+          "alternative_action_index": 5,
+          "base_action": {
+            "action": "play_card",
+            "args": {
+              "card_index": 4,
+              "target_index": 1
+            },
+            "option_id": "CARD.STRIKE_REGENT|TARGET.1"
+          },
+          "base_action_index": 4,
+          "branch_status": {
+            "alternative": {
+              "completed": true
+            },
+            "base": {
+              "completed": true
+            },
+            "base_repeat": {
+              "completed": true
+            }
+          },
+          "horizons": [
+            {
+              "alternative_checkpoint_sha256": "3718e15d32d87f4f92835991e2535e561931a622122f14a458e7a686151732c4",
+              "alternative_return": 2.8,
+              "alternative_rng_streams_sha256": "23a71d4ed87da751ac36378ab9615fcc09779cf480c68a03d738503f391d3aa5",
+              "alternative_state": {
+                "decision": "combat_play",
+                "enemy_hp": 42.0,
+                "enemy_max_hp": 48.0,
+                "floor": 2,
+                "floor_plus_player_hp_fraction": 2.8,
+                "living_enemies": 3,
+                "player_hp": 60.0,
+                "player_hp_fraction": 0.8,
+                "player_max_hp": 75.0,
+                "terminated": false,
+                "victory": false
+              },
+              "base_checkpoint_sha256": "0a55d9ca917891d6e09d3581a180840f1445248abc0a15b3b55303067e69d43b",
+              "base_repeat_checkpoint_sha256": "0a55d9ca917891d6e09d3581a180840f1445248abc0a15b3b55303067e69d43b",
+              "base_return": 2.8,
+              "base_rng_streams_sha256": "23a71d4ed87da751ac36378ab9615fcc09779cf480c68a03d738503f391d3aa5",
+              "base_state": {
+                "decision": "combat_play",
+                "enemy_hp": 42.0,
+                "enemy_max_hp": 48.0,
+                "floor": 2,
+                "floor_plus_player_hp_fraction": 2.8,
+                "living_enemies": 3,
+                "player_hp": 60.0,
+                "player_hp_fraction": 0.8,
+                "player_max_hp": 75.0,
+                "terminated": false,
+                "victory": false
+              },
+              "desynchronized_root_streams": [],
+              "exact_base_repeat": true,
+              "horizon": 1,
+              "paired_difference": 0.0,
+              "root_stream_alignment_fraction": 1.0,
+              "valid": true
+            },
+            {
+              "alternative_checkpoint_sha256": "57163c32110b7b6118f45f7a528cced1b16e21623ae40c29267ed673ec750ff3",
+              "alternative_return": 2.8,
+              "alternative_rng_streams_sha256": "23a71d4ed87da751ac36378ab9615fcc09779cf480c68a03d738503f391d3aa5",
+              "alternative_state": {
+                "decision": "combat_play",
+                "enemy_hp": 42.0,
+                "enemy_max_hp": 48.0,
+                "floor": 2,
+                "floor_plus_player_hp_fraction": 2.8,
+                "living_enemies": 3,
+                "player_hp": 60.0,
+                "player_hp_fraction": 0.8,
+                "player_max_hp": 75.0,
+                "terminated": false,
+                "victory": false
+              },
+              "base_checkpoint_sha256": "59a6f8d6c17e0a9ac52fdc07a18811c021422e68dabb8bde659e652d602782e1",
+              "base_repeat_checkpoint_sha256": "59a6f8d6c17e0a9ac52fdc07a18811c021422e68dabb8bde659e652d602782e1",
+              "base_return": 2.8,
+              "base_rng_streams_sha256": "23a71d4ed87da751ac36378ab9615fcc09779cf480c68a03d738503f391d3aa5",
+              "base_state": {
+                "decision": "combat_play",
+                "enemy_hp": 42.0,
+                "enemy_max_hp": 48.0,
+                "floor": 2,
+                "floor_plus_player_hp_fraction": 2.8,
+                "living_enemies": 3,
+                "player_hp": 60.0,
+                "player_hp_fraction": 0.8,
+                "player_max_hp": 75.0,
+                "terminated": false,
+                "victory": false
+              },
+              "desynchronized_root_streams": [],
+              "exact_base_repeat": true,
+              "horizon": 2,
+              "paired_difference": 0.0,
+              "root_stream_alignment_fraction": 1.0,
+              "valid": true
+            },
+            {
+              "alternative_checkpoint_sha256": "7bf8d9f789d1160eeeb156f7deea3b233956c6de7cda21318d3972119aec1725",
+              "alternative_return": 2.8,
+              "alternative_rng_streams_sha256": "8d80f05f5a15a27f68ae34536f0965e8a697a3f00ba62881c9ceffa521e7bfca",
+              "alternative_state": {
+                "decision": "combat_play",
+                "enemy_hp": 42.0,
+                "enemy_max_hp": 48.0,
+                "floor": 2,
+                "floor_plus_player_hp_fraction": 2.8,
+                "living_enemies": 3,
+                "player_hp": 60.0,
+                "player_hp_fraction": 0.8,
+                "player_max_hp": 75.0,
+                "terminated": false,
+                "victory": false
+              },
+              "base_checkpoint_sha256": "e71d17a7330da7ebc9c1fa1f2c202a14fd3a91d8258f09bd3116f87bb032e3e8",
+              "base_repeat_checkpoint_sha256": "e71d17a7330da7ebc9c1fa1f2c202a14fd3a91d8258f09bd3116f87bb032e3e8",
+              "base_return": 2.8,
+              "base_rng_streams_sha256": "8d80f05f5a15a27f68ae34536f0965e8a697a3f00ba62881c9ceffa521e7bfca",
+              "base_state": {
+                "decision": "combat_play",
+                "enemy_hp": 42.0,
+                "enemy_max_hp": 48.0,
+                "floor": 2,
+                "floor_plus_player_hp_fraction": 2.8,
+                "living_enemies": 3,
+                "player_hp": 60.0,
+                "player_hp_fraction": 0.8,
+                "player_max_hp": 75.0,
+                "terminated": false,
+                "victory": false
+              },
+              "desynchronized_root_streams": [],
+              "exact_base_repeat": true,
+              "horizon": 4,
+              "paired_difference": 0.0,
+              "root_stream_alignment_fraction": 1.0,
+              "valid": true
+            }
+          ],
+          "parent_step": 3,
+          "root_checkpoint_sha256": "a7a0261a9ff5ec9d494148f14471e0f8c1e86ab62c1377da146203fd0e2953c2",
+          "root_index": 0,
+          "root_rng_stream_names": [
+            "monster:1:MONSTER.TWIG_SLIME_S",
+            "monster:2:MONSTER.TWIG_SLIME_M",
+            "monster:3:MONSTER.LEAF_SLIME_S",
+            "player:0:Rewards",
+            "player:0:Shops",
+            "player:0:Transformations",
+            "run:CombatCardGeneration",
+            "run:CombatCardSelection",
+            "run:CombatEnergyCosts",
+            "run:CombatOrbs",
+            "run:CombatPotionGeneration",
+            "run:CombatTargets",
+            "run:MonsterAi",
+            "run:Niche",
+            "run:Shuffle",
+            "run:TreasureRoomRelics",
+            "run:UnknownMapPoint",
+            "run:UpFront"
+          ],
+          "root_state": {
+            "decision": "combat_play",
+            "enemy_hp": 48.0,
+            "enemy_max_hp": 48.0,
+            "floor": 2,
+            "floor_plus_player_hp_fraction": 2.8,
+            "living_enemies": 3,
+            "player_hp": 60.0,
+            "player_hp_fraction": 0.8,
+            "player_max_hp": 75.0,
+            "terminated": false,
+            "victory": false
+          }
+        }
+      ],
+      "roots_collected": 1,
+      "roots_requested": 1,
+      "seed": "CRNSMOKE2R000000"
+    }
+  ],
+  "collection": {
+    "cases_completed": 5,
+    "cases_failed": 0,
+    "roots_collected": 5,
+    "roots_expected": 5
+  },
+  "evaluation": "frozen_measurement_only_crn_coupling_feasibility",
+  "execution": {
+    "elapsed_seconds": 7.66,
+    "max_parent_steps": 200,
+    "parallel_workers": 4,
+    "submitted_cases": 5
+  },
+  "horizon_gate": {
+    "decision": "stop_before_counterfactual_dataset_design",
+    "evaluated": [
+      {
+        "contiguous_prefix_passed": false,
+        "criteria": {
+          "exact_base_repeat": true,
+          "minimum_valid_pairs": true,
+          "paired_variance_reduction": false,
+          "per_character_support": true,
+          "root_stream_alignment": true,
+          "valid_pair_fraction": true
+        },
+        "horizon": 1,
+        "passed": false
+      },
+      {
+        "contiguous_prefix_passed": false,
+        "criteria": {
+          "exact_base_repeat": true,
+          "minimum_valid_pairs": true,
+          "paired_variance_reduction": false,
+          "per_character_support": true,
+          "root_stream_alignment": true,
+          "valid_pair_fraction": true
+        },
+        "horizon": 2,
+        "passed": false
+      },
+      {
+        "contiguous_prefix_passed": false,
+        "criteria": {
+          "exact_base_repeat": true,
+          "minimum_valid_pairs": true,
+          "paired_variance_reduction": false,
+          "per_character_support": true,
+          "root_stream_alignment": true,
+          "valid_pair_fraction": true
+        },
+        "horizon": 4,
+        "passed": false
+      }
+    ],
+    "passed": false,
+    "selected_horizon": null
+  },
+  "horizons": [
+    {
+      "base_repeat_attempts": 5,
+      "desynchronized_root_stream_counts": {},
+      "exact_base_repeat_fraction": 1.0,
+      "exact_base_repeats": 5,
+      "expected_pairs": 5,
+      "horizon": 1,
+      "mean_root_stream_alignment_fraction": 1.0,
+      "return_variance": {
+        "comparison_includes_shared_root_state_and_shared_rng": true,
+        "paired_difference": 0.0,
+        "paired_to_unpaired_ratio": null,
+        "within_character_circularly_unpaired_difference": null
+      },
+      "valid_by_character": {
+        "Defect": {
+          "expected_pairs": 1,
+          "valid_fraction": 1.0,
+          "valid_pairs": 1
+        },
+        "Ironclad": {
+          "expected_pairs": 1,
+          "valid_fraction": 1.0,
+          "valid_pairs": 1
+        },
+        "Necrobinder": {
+          "expected_pairs": 1,
+          "valid_fraction": 1.0,
+          "valid_pairs": 1
+        },
+        "Regent": {
+          "expected_pairs": 1,
+          "valid_fraction": 1.0,
+          "valid_pairs": 1
+        },
+        "Silent": {
+          "expected_pairs": 1,
+          "valid_fraction": 1.0,
+          "valid_pairs": 1
+        }
+      },
+      "valid_fraction": 1.0,
+      "valid_pairs": 5
+    },
+    {
+      "base_repeat_attempts": 5,
+      "desynchronized_root_stream_counts": {},
+      "exact_base_repeat_fraction": 1.0,
+      "exact_base_repeats": 5,
+      "expected_pairs": 5,
+      "horizon": 2,
+      "mean_root_stream_alignment_fraction": 1.0,
+      "return_variance": {
+        "comparison_includes_shared_root_state_and_shared_rng": true,
+        "paired_difference": 0.0,
+        "paired_to_unpaired_ratio": null,
+        "within_character_circularly_unpaired_difference": null
+      },
+      "valid_by_character": {
+        "Defect": {
+          "expected_pairs": 1,
+          "valid_fraction": 1.0,
+          "valid_pairs": 1
+        },
+        "Ironclad": {
+          "expected_pairs": 1,
+          "valid_fraction": 1.0,
+          "valid_pairs": 1
+        },
+        "Necrobinder": {
+          "expected_pairs": 1,
+          "valid_fraction": 1.0,
+          "valid_pairs": 1
+        },
+        "Regent": {
+          "expected_pairs": 1,
+          "valid_fraction": 1.0,
+          "valid_pairs": 1
+        },
+        "Silent": {
+          "expected_pairs": 1,
+          "valid_fraction": 1.0,
+          "valid_pairs": 1
+        }
+      },
+      "valid_fraction": 1.0,
+      "valid_pairs": 5
+    },
+    {
+      "base_repeat_attempts": 5,
+      "desynchronized_root_stream_counts": {},
+      "exact_base_repeat_fraction": 1.0,
+      "exact_base_repeats": 5,
+      "expected_pairs": 5,
+      "horizon": 4,
+      "mean_root_stream_alignment_fraction": 1.0,
+      "return_variance": {
+        "comparison_includes_shared_root_state_and_shared_rng": true,
+        "paired_difference": 0.0,
+        "paired_to_unpaired_ratio": null,
+        "within_character_circularly_unpaired_difference": null
+      },
+      "valid_by_character": {
+        "Defect": {
+          "expected_pairs": 1,
+          "valid_fraction": 1.0,
+          "valid_pairs": 1
+        },
+        "Ironclad": {
+          "expected_pairs": 1,
+          "valid_fraction": 1.0,
+          "valid_pairs": 1
+        },
+        "Necrobinder": {
+          "expected_pairs": 1,
+          "valid_fraction": 1.0,
+          "valid_pairs": 1
+        },
+        "Regent": {
+          "expected_pairs": 1,
+          "valid_fraction": 1.0,
+          "valid_pairs": 1
+        },
+        "Silent": {
+          "expected_pairs": 1,
+          "valid_fraction": 1.0,
+          "valid_pairs": 1
+        }
+      },
+      "valid_fraction": 1.0,
+      "valid_pairs": 5
+    }
+  ],
+  "limitations": [
+    "The floor-plus-HP return is a coupling measurement proxy, not a training target.",
+    "The variance comparison combines matched-root control with shared native RNG; the pinned runtime does not expose independent future-RNG resampling at a fixed root.",
+    "Raw repeated RNG vectors are reduced to hashes, alignment, and differing stream names after aggregation to keep the evidence bounded.",
+    "Passing makes a separately precommitted single-use dataset eligible for design; it does not authorize training data or policy overrides."
+  ],
+  "manifest": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\crn-coupling-smoke-v0.107.1-a10.attempt2.precommit.json",
+  "manifest_sha256": "75103de5a4183bc7d0d23ace6990242f5139f4264285d62c117d5f6770141c5d",
+  "models": {
+    "combat_sha256": "5bbb35de90351827374c9188351cc11c5ce867053c057e1a45978a60bb7633e1",
+    "macro_sha256": "476701d84a7f6cf85b1aa6a910877334c13f52ea637af967a8f6da400ca878f9"
+  },
+  "rng_topology": {
+    "chaotic_presentation_rng_excluded_by_native_checkpoint": true,
+    "kind": "split_named_streams",
+    "scope_counts": {
+      "monster": 9,
+      "player": 3,
+      "run": 12
+    },
+    "stream_count_at_observed_roots": 24,
+    "stream_names": [
+      "monster:1:MONSTER.FUZZY_WURM_CRAWLER",
+      "monster:1:MONSTER.LEAF_SLIME_S",
+      "monster:1:MONSTER.NIBBIT",
+      "monster:1:MONSTER.SHRINKER_BEETLE",
+      "monster:1:MONSTER.TWIG_SLIME_S",
+      "monster:2:MONSTER.OSTY",
+      "monster:2:MONSTER.TWIG_SLIME_M",
+      "monster:3:MONSTER.LEAF_SLIME_S",
+      "monster:3:MONSTER.TWIG_SLIME_S",
+      "player:0:Rewards",
+      "player:0:Shops",
+      "player:0:Transformations",
+      "run:CombatCardGeneration",
+      "run:CombatCardSelection",
+      "run:CombatEnergyCosts",
+      "run:CombatOrbs",
+      "run:CombatPotionGeneration",
+      "run:CombatTargets",
+      "run:MonsterAi",
+      "run:Niche",
+      "run:Shuffle",
+      "run:TreasureRoomRelics",
+      "run:UnknownMapPoint",
+      "run:UpFront"
+    ]
+  },
+  "runtime_dll_sha256": "ac91be61e433ee2aace0a3a40881e5ca6ee4e743c31acd635b6294233ccc7b06",
+  "schema_version": 1
+}
