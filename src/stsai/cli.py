@@ -697,6 +697,37 @@ def make_parser() -> argparse.ArgumentParser:
     rank_search_parser.add_argument("--startup-timeout", type=float, default=60.0)
     rank_search_parser.add_argument("--command-timeout", type=float, default=30.0)
 
+    crn_manifest_parser = subparsers.add_parser(
+        "create-crn-coupling-manifest",
+        help="Freeze a measurement-only native counterfactual RNG-coupling probe",
+    )
+    crn_manifest_parser.add_argument("--output", type=Path, required=True)
+    crn_manifest_parser.add_argument("--macro-model", type=Path, required=True)
+    crn_manifest_parser.add_argument("--combat-model", type=Path, required=True)
+    crn_manifest_parser.add_argument("--seed-prefix", default="CRN1")
+    crn_manifest_parser.add_argument("--count-per-character", type=int, default=5)
+    crn_manifest_parser.add_argument("--roots-per-case", type=int, default=2)
+    crn_manifest_parser.add_argument(
+        "--horizon", type=int, action="append", default=None
+    )
+    crn_manifest_parser.add_argument("--build-id", default="v0.107.1")
+    crn_manifest_parser.add_argument("--ascension", type=int, default=10)
+
+    crn_evaluate_parser = subparsers.add_parser(
+        "evaluate-crn-coupling",
+        help="Measure paired RNG-stream coupling at every frozen rollout horizon",
+    )
+    crn_evaluate_parser.add_argument("--manifest", type=Path, required=True)
+    crn_evaluate_parser.add_argument("--macro-model", type=Path, required=True)
+    crn_evaluate_parser.add_argument("--combat-model", type=Path, required=True)
+    crn_evaluate_parser.add_argument("--output", type=Path, required=True)
+    crn_evaluate_parser.add_argument("--workers", type=int, default=4)
+    crn_evaluate_parser.add_argument("--max-parent-steps", type=int, default=300)
+    crn_evaluate_parser.add_argument("--build-id", default="v0.107.1")
+    crn_evaluate_parser.add_argument("--runtime", type=Path)
+    crn_evaluate_parser.add_argument("--startup-timeout", type=float, default=60.0)
+    crn_evaluate_parser.add_argument("--command-timeout", type=float, default=120.0)
+
     bridge_parser = subparsers.add_parser(
         "bridge-state", help="Read the current state from a local STS2MCP mod"
     )
@@ -1423,6 +1454,45 @@ def main(argv: Sequence[str] | None = None) -> int:
             )
             print(json.dumps(payload["aggregate"], indent=2, sort_keys=True))
             print(json.dumps(payload["search_coverage"], indent=2, sort_keys=True))
+            return 0
+        elif args.command == "create-crn-coupling-manifest":
+            from stsai.crn_probe import create_crn_probe_manifest
+
+            payload = create_crn_probe_manifest(
+                args.output,
+                macro_model_path=args.macro_model,
+                combat_model_path=args.combat_model,
+                seed_prefix=args.seed_prefix,
+                count_per_character=args.count_per_character,
+                roots_per_case=args.roots_per_case,
+                horizons=args.horizon or (1, 2, 4, 8, 16),
+                build_id=args.build_id,
+                ascension=args.ascension,
+            )
+            print(json.dumps(payload, indent=2, sort_keys=True))
+            return 0
+        elif args.command == "evaluate-crn-coupling":
+            from stsai.crn_probe import evaluate_crn_probe
+            from stsai.headless import HeadlessConfig
+
+            config = HeadlessConfig(
+                runtime=args.runtime or HeadlessConfig().runtime,
+                startup_timeout=args.startup_timeout,
+                command_timeout=args.command_timeout,
+            )
+            payload = evaluate_crn_probe(
+                manifest_path=args.manifest,
+                macro_model_path=args.macro_model,
+                combat_model_path=args.combat_model,
+                output=args.output,
+                parallel_workers=args.workers,
+                max_parent_steps=args.max_parent_steps,
+                build_id=args.build_id,
+                config=config,
+            )
+            print(json.dumps(payload["rng_topology"], indent=2, sort_keys=True))
+            print(json.dumps(payload["horizons"], indent=2, sort_keys=True))
+            print(json.dumps(payload["horizon_gate"], indent=2, sort_keys=True))
             return 0
         elif args.command == "bridge-state":
             from stsai.bridge import BridgeConfig, STS2MCPClient
