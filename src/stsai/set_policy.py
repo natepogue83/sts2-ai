@@ -16,6 +16,7 @@ from stsai.combat import (
     action_key,
     headless_action_to_combat,
     normalize_headless_combat_observation,
+    safe_potion_indexes,
 )
 from stsai.headless import HeadlessConfig
 from stsai.headless_env import Sts2Env, run_headless_rollout
@@ -566,24 +567,19 @@ class HeadlessSetCombatPolicy:
         order = torch.argsort(scores[0, : len(actions)], descending=True).tolist()
         eligible_order = order
         if self.safe_potion_ids is not None:
-            potions = _objects(_mapping(env.observation.get("player")).get("potions"))
-            potion_ids_by_slot = {
-                int(potion.get("slot", index)): str(potion.get("id", ""))
-                for index, potion in enumerate(potions)
-            }
+            allowed = safe_potion_indexes(
+                _mapping(env.observation.get("player")), self.safe_potion_ids
+            )
             eligible_order = [
                 index
                 for index in order
                 if env.legal_actions[int(index)].command != "use_potion"
-                or potion_ids_by_slot.get(
-                    int(
-                        env.legal_actions[int(index)]
-                        .argument_dict()
-                        .get("potion_index", -1)
-                    ),
-                    "",
+                or int(
+                    env.legal_actions[int(index)]
+                    .argument_dict()
+                    .get("potion_index", -1)
                 )
-                in self.safe_potion_ids
+                in allowed
             ]
         if not eligible_order:
             raise ValueError("No runtime-safe Deep Sets combat action is available")

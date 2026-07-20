@@ -6,6 +6,7 @@ import tempfile
 import unittest
 
 from stsai.headless_benchmark import (
+    _discard_matching_incomplete,
     _publish_runtime_failure,
     aggregate_combat_policy_baseline,
     aggregate_combat_model_pair,
@@ -283,6 +284,39 @@ class HeadlessBenchmarkTests(unittest.TestCase):
             last = json.loads(output.read_text(encoding="utf-8").splitlines()[-1])
             self.assertEqual(last["event_type"], "episode_end")
             self.assertEqual(last["steps"], 4)
+
+    def test_discard_removes_unreadable_incomplete_header(self) -> None:
+        # A crash before episode_start finished writing must not block resume.
+        for corrupt in ("", '{"event_type": "episode_st'):
+            with tempfile.TemporaryDirectory() as directory:
+                path = Path(directory) / "case.jsonl"
+                temporary = path.with_suffix(path.suffix + ".tmp")
+                temporary.write_text(corrupt, encoding="utf-8")
+
+                removed = _discard_matching_incomplete(
+                    path, character="Silent", seed="ABC", policy="legal_random"
+                )
+
+                self.assertTrue(removed)
+                self.assertFalse(temporary.exists())
+
+    def test_discard_still_refuses_mismatched_incomplete(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "case.jsonl"
+            temporary = path.with_suffix(path.suffix + ".tmp")
+            header = {
+                "event_type": "episode_start",
+                "character": "Ironclad",
+                "seed": "OTHER",
+                "policy": "legal_random",
+            }
+            temporary.write_text(json.dumps(header) + "\n", encoding="utf-8")
+
+            with self.assertRaises(ValueError):
+                _discard_matching_incomplete(
+                    path, character="Silent", seed="ABC", policy="legal_random"
+                )
+            self.assertTrue(temporary.exists())
 
 
 if __name__ == "__main__":

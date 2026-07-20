@@ -7,6 +7,7 @@ import unittest
 
 from stsai.dataset import (
     SKIP,
+    DatasetBuildSummary,
     build_card_dataset,
     build_decision_dataset,
     card_reward_records,
@@ -58,6 +59,34 @@ class DatasetTests(unittest.TestCase):
         right["start_time"] = 999999
         right["players"][0]["id"] = "different-player"
         self.assertEqual(split_for_run(left), split_for_run(right))
+
+    def test_deck_reversal_failures_are_counted_not_hidden(self) -> None:
+        run = sample_run()
+        # The final deck holds the upgraded id while the gain delta recorded
+        # the base id, so reversal cannot remove it and the future card leaks
+        # into the pre-choice snapshot. The build must count that, not hide it.
+        run["players"][0]["deck"] = [{"id": "CARD.START"}, {"id": "CARD.B+1"}]
+
+        clean_summary = DatasetBuildSummary()
+        list(decision_records(sample_run(), summary=clean_summary))
+        self.assertEqual(clean_summary.deck_reversal_failures, 0)
+        self.assertEqual(clean_summary.runs_with_reversal_failures, 0)
+
+        summary = DatasetBuildSummary()
+        records = list(decision_records(run, summary=summary))
+        self.assertEqual(summary.deck_reversal_failures, 1)
+        self.assertEqual(summary.runs_with_reversal_failures, 1)
+        self.assertEqual(summary.as_dict()["deck_reversal_failures"], 1)
+        by_type = {record["decision_type"]: record for record in records}
+        self.assertIn("CARD.B+1", by_type["card_reward"]["observation"]["deck"])
+
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "run.run"
+            output = Path(directory) / "dataset.jsonl"
+            source.write_text(json.dumps(run), encoding="utf-8")
+            build_summary = build_decision_dataset([source], output)
+        self.assertEqual(build_summary.deck_reversal_failures, 1)
+        self.assertEqual(build_summary.runs_with_reversal_failures, 1)
 
     def test_builds_atomic_ndjson(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

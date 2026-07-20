@@ -75,6 +75,34 @@ def _completed_rollout(
     return dict(last)
 
 
+def _discard_incomplete(path: Path, *, character: str, seed: str) -> bool:
+    """Remove a crash-orphaned .tmp for this exact case so reruns can resume."""
+
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    if not temporary.is_file():
+        return False
+    with temporary.open("r", encoding="utf-8-sig") as handle:
+        first_line = handle.readline()
+    try:
+        first = json.loads(first_line)
+    except json.JSONDecodeError:
+        # A crash before the episode_start header finished writing leaves an
+        # empty or truncated first line; nothing identifiable survives.
+        temporary.unlink()
+        return True
+    if (
+        not isinstance(first, Mapping)
+        or first.get("event_type") != "episode_start"
+        or canonical_character(first.get("character")) != canonical_character(character)
+        or str(first.get("seed")) != seed
+    ):
+        raise ValueError(
+            f"Refusing to remove mismatched incomplete trajectory: {temporary}"
+        )
+    temporary.unlink()
+    return True
+
+
 def create_combat_bootstrap_manifest(
     output: str | Path,
     *,
@@ -159,6 +187,7 @@ def collect_combat_bootstrap_corpus(
     total_steps = 0
     truncations = 0
     reused = 0
+    discarded_incomplete = 0
     cases = manifest.get("cases") or []
     for index, case in enumerate(cases):
         if not isinstance(case, Mapping):
@@ -178,6 +207,9 @@ def collect_combat_bootstrap_corpus(
         path = destination / f"{index:03d}.{split}.{character.lower()}.{seed}.jsonl"
         result = _completed_rollout(path, character=character, seed=seed)
         if result is None:
+            discarded_incomplete += int(
+                _discard_incomplete(path, character=character, seed=seed)
+            )
             result = run_heuristic_rollout(
                 model_path=macro_model_path,
                 output=path,
@@ -202,6 +234,7 @@ def collect_combat_bootstrap_corpus(
         "total_steps": total_steps,
         "truncations": truncations,
         "reused_completed_runs": reused,
+        "discarded_incomplete": discarded_incomplete,
         "by_split": dict(by_split),
         "by_character": dict(by_character),
         "label_source": "deterministic_heuristic_distillation",

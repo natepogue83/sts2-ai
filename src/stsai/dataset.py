@@ -24,6 +24,8 @@ class DatasetBuildSummary:
     decisions_written: int = 0
     skipped_ambiguous: int = 0
     chosen_skip: int = 0
+    deck_reversal_failures: int = 0
+    runs_with_reversal_failures: int = 0
     splits: Counter[str] = field(default_factory=Counter)
     builds: Counter[str] = field(default_factory=Counter)
     decision_types: Counter[str] = field(default_factory=Counter)
@@ -36,6 +38,8 @@ class DatasetBuildSummary:
             "decisions_written": self.decisions_written,
             "skipped_ambiguous": self.skipped_ambiguous,
             "chosen_skip": self.chosen_skip,
+            "deck_reversal_failures": self.deck_reversal_failures,
+            "runs_with_reversal_failures": self.runs_with_reversal_failures,
             "splits": dict(self.splits),
             "builds": dict(self.builds),
             "decision_types": dict(self.decision_types),
@@ -54,34 +58,50 @@ def _card_id(value: Any) -> str | None:
     return None
 
 
-def _remove_one(cards: list[str], identifier: str | None) -> None:
+def _remove_one(cards: list[str], identifier: str | None) -> bool:
+    """Remove one instance; report failure instead of hiding it.
+
+    A failed removal means a future card could not be reversed out of an
+    earlier deck snapshot — that snapshot now leaks post-decision information.
+    """
+
     if not identifier:
-        return
+        return False
     try:
         cards.remove(identifier)
+        return True
     except ValueError:
-        # Schema/patch variations can omit a final-deck instance. A partial deck
-        # is still useful, and failing closed here would discard the whole run.
-        pass
+        # Schema/patch variations can omit a final-deck instance (e.g. the
+        # final deck holds the upgraded id while the delta recorded the base
+        # id). A partial deck is still useful and failing closed would discard
+        # the whole run, but callers must count these so leakage is measurable.
+        return False
 
 
-def _reverse_deck_snapshots(run: Mapping[str, Any], player: Mapping[str, Any]) -> dict[int, list[str]]:
-    """Reconstruct the deck before each floor from the final deck and deltas."""
+def _reverse_deck_snapshots(
+    run: Mapping[str, Any], player: Mapping[str, Any]
+) -> tuple[dict[int, list[str]], int]:
+    """Reconstruct the deck before each floor from the final deck and deltas.
+
+    Returns the snapshots plus the count of delta entries that failed to
+    reverse; every failure leaves a future card in earlier floors' snapshots.
+    """
 
     deck = [identifier for card in (player.get("deck") or []) if (identifier := _card_id(card))]
     points = list(iter_map_points(run))
     before: dict[int, list[str]] = {}
+    failures = 0
     for _, floor, point in reversed(points):
         stats = player_stats(point, player)
 
         # Reverse additions first, then transformations, then removals. We only
         # track IDs here; upgrade/enchantment state gets its own encoder later.
         for gained in stats.get("cards_gained") or []:
-            _remove_one(deck, _card_id(gained))
+            failures += not _remove_one(deck, _card_id(gained))
         for transformed in reversed(stats.get("cards_transformed") or []):
             if not isinstance(transformed, dict):
                 continue
-            _remove_one(deck, _card_id(transformed.get("final_card")))
+            failures += not _remove_one(deck, _card_id(transformed.get("final_card")))
             original = _card_id(transformed.get("original_card"))
             if original:
                 deck.append(original)
@@ -90,7 +110,7 @@ def _reverse_deck_snapshots(run: Mapping[str, Any], player: Mapping[str, Any]) -
             if identifier:
                 deck.append(identifier)
         before[floor] = sorted(deck)
-    return before
+    return before, failures
 
 
 def _relics_before_floor(player: Mapping[str, Any], floor: int) -> list[str]:
@@ -240,7 +260,10 @@ SUPPORTED_DECISION_TYPES = frozenset(
 
 
 def decision_records(
-    run: Mapping[str, Any], decision_types: frozenset[str] = SUPPORTED_DECISION_TYPES
+    run: Mapping[str, Any],
+    decision_types: frozenset[str] = SUPPORTED_DECISION_TYPES,
+    *,
+    summary: DatasetBuildSummary | None = None,
 ) -> Iterator[dict[str, Any]]:
     """Yield decisions whose chosen and rejected alternatives are both recorded."""
 
@@ -252,7 +275,10 @@ def decision_records(
     if not isinstance(players, list) or len(players) != 1 or not isinstance(players[0], dict):
         return
     player = players[0]
-    snapshots = _reverse_deck_snapshots(run, player)
+    snapshots, reversal_failures = _reverse_deck_snapshots(run, player)
+    if summary is not None and reversal_failures:
+        summary.deck_reversal_failures += reversal_failures
+        summary.runs_with_reversal_failures += 1
     floors_reached = sum(1 for _ in iter_map_points(run))
 
     for act, floor, point in iter_map_points(run):
@@ -319,7 +345,9 @@ def build_decision_dataset(
                         summary.duplicate_runs += 1
                         continue
                     seen_runs.add(fingerprint)
-                    records = list(decision_records(run, decision_types))
+                    records = list(
+                        decision_records(run, decision_types, summary=summary)
+                    )
                     if not records:
                         continue
                     summary.runs_used += 1

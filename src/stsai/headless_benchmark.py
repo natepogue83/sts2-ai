@@ -656,8 +656,9 @@ def _completed_rollout(
     seed: str,
     ascension: int,
     policy: str,
-    build_id: str,
+    build_id: str | None,
     combat_model_sha256: str | None = None,
+    expected_metadata: Mapping[str, Any] | None = None,
 ) -> dict[str, Any] | None:
     if not path.is_file():
         return None
@@ -684,10 +685,14 @@ def _completed_rollout(
         or str(first.get("seed")) != seed
         or int(first.get("ascension", -1)) != ascension
         or str(first.get("policy")) != policy
-        or str(metadata.get("build_id")) != build_id
+        or (build_id is not None and str(metadata.get("build_id")) != build_id)
         or (
             combat_model_sha256 is not None
             and str(metadata.get("combat_model_sha256")) != combat_model_sha256
+        )
+        or any(
+            str(metadata.get(key)) != str(value)
+            for key, value in (expected_metadata or {}).items()
         )
     ):
         return None
@@ -723,7 +728,14 @@ def _discard_matching_incomplete(
         return False
     with temporary.open("r", encoding="utf-8-sig") as handle:
         first_line = handle.readline()
-    first = json.loads(first_line)
+    try:
+        first = json.loads(first_line)
+    except json.JSONDecodeError:
+        # A crash before the episode_start header finished writing leaves an
+        # empty or truncated first line. Nothing identifiable survives, so the
+        # file cannot belong to a different case; remove it so reruns resume.
+        temporary.unlink()
+        return True
     if (
         not isinstance(first, Mapping)
         or first.get("event_type") != "episode_start"
@@ -835,40 +847,92 @@ def evaluate_hybrid_vs_random(
     trajectory_dir.mkdir(parents=True, exist_ok=True)
     rows: list[dict[str, Any]] = []
 
+    reused = 0
+    discarded_incomplete = 0
     for case_index, case in enumerate(cases):
         character = case["character"]
         seed = case["seed"]
         stem = f"{case_index:03d}.{character.lower()}.{seed}"
         derived_policy_seed = _policy_seed(random_policy_seed, character, seed)
-        random_result = run_random_rollout(
-            output=trajectory_dir / f"{stem}.random.jsonl",
-            character=character,
-            ascension=ascension,
-            seed=seed,
-            policy_seed=derived_policy_seed,
-            max_steps=max_steps,
-            config=config,
+        arms: tuple[
+            tuple[str, str, str | None, dict[str, Any] | None, Callable[[Path], dict[str, Any]]],
+            ...,
+        ] = (
+            (
+                "random",
+                "legal_random",
+                None,
+                {"policy_seed": derived_policy_seed},
+                lambda path: run_random_rollout(
+                    output=path,
+                    character=character,
+                    ascension=ascension,
+                    seed=seed,
+                    policy_seed=derived_policy_seed,
+                    max_steps=max_steps,
+                    config=config,
+                ),
+            ),
+            (
+                "heuristic",
+                "greedy_rules_v1",
+                build_id,
+                None,
+                lambda path: run_heuristic_rollout(
+                    model_path=model_path,
+                    output=path,
+                    character=character,
+                    ascension=ascension,
+                    seed=seed,
+                    max_steps=max_steps,
+                    build_id=build_id,
+                    config=config,
+                ),
+            ),
+            (
+                "hybrid",
+                "hybrid_macro_bc_greedy_v1",
+                build_id,
+                None,
+                lambda path: run_hybrid_rollout(
+                    model_path=model_path,
+                    output=path,
+                    character=character,
+                    ascension=ascension,
+                    seed=seed,
+                    max_steps=max_steps,
+                    build_id=build_id,
+                    config=config,
+                ),
+            ),
         )
-        heuristic_result = run_heuristic_rollout(
-            model_path=model_path,
-            output=trajectory_dir / f"{stem}.heuristic.jsonl",
-            character=character,
-            ascension=ascension,
-            seed=seed,
-            max_steps=max_steps,
-            build_id=build_id,
-            config=config,
-        )
-        hybrid_result = run_hybrid_rollout(
-            model_path=model_path,
-            output=trajectory_dir / f"{stem}.hybrid.jsonl",
-            character=character,
-            ascension=ascension,
-            seed=seed,
-            max_steps=max_steps,
-            build_id=build_id,
-            config=config,
-        )
+        arm_results: dict[str, dict[str, Any]] = {}
+        for arm_name, policy_name, arm_build_id, extra_metadata, run in arms:
+            path = trajectory_dir / f"{stem}.{arm_name}.jsonl"
+            result = _completed_rollout(
+                path,
+                character=character,
+                seed=seed,
+                ascension=ascension,
+                policy=policy_name,
+                build_id=arm_build_id,
+                expected_metadata=extra_metadata,
+            )
+            if result is None:
+                discarded_incomplete += int(
+                    _discard_matching_incomplete(
+                        path, character=character, seed=seed, policy=policy_name
+                    )
+                )
+                result = _run_benchmark_rollout(
+                    path, lambda run=run, path=path: run(path)
+                )
+            else:
+                reused += 1
+            arm_results[arm_name] = result
+        random_result = arm_results["random"]
+        heuristic_result = arm_results["heuristic"]
+        hybrid_result = arm_results["hybrid"]
         rows.append(
             {
                 "case_index": case_index,
@@ -897,6 +961,8 @@ def evaluate_hybrid_vs_random(
         "max_steps": max_steps,
         "model": str(Path(model_path).resolve()),
         "selection": "first precommitted manifest cases per character",
+        "reused_completed_runs": reused,
+        "discarded_incomplete": discarded_incomplete,
         "aggregate": aggregate_paired_results(rows),
         "cases": rows,
     }

@@ -11,6 +11,7 @@ from stsai.combat import (
     headless_combat_trajectory_key,
     legal_combat_actions,
     normalize_combat_observation,
+    safe_potion_indexes,
 )
 
 
@@ -339,6 +340,34 @@ class CombatDatasetTests(unittest.TestCase):
             )
         self.assertEqual(summary.decisions_written, 0)
         self.assertEqual(summary.skipped_wrong_source, 1)
+
+
+class SafePotionIndexTests(unittest.TestCase):
+    def test_uses_raw_index_not_list_position_after_consumption(self) -> None:
+        # Slot 0 was consumed: remaining potions carry raw indexes 1 and 2 at
+        # list positions 0 and 1. The allowlist must key raw indexes.
+        player = {
+            "potions": [
+                {"index": 1, "id": "POTION.ATTACK_POTION"},
+                {"index": 2, "id": "POTION.FEAR_POTION"},
+            ]
+        }
+        allowed = safe_potion_indexes(player, frozenset({"POTION.ATTACK_POTION"}))
+        self.assertEqual(allowed, {1})
+
+    def test_canonicalizes_raw_ids_and_allowlist_entries(self) -> None:
+        player = {"potions": [{"index": 0, "id": "Attack Potion"}]}
+        self.assertEqual(
+            safe_potion_indexes(player, frozenset({"POTION.ATTACK_POTION"})), {0}
+        )
+        self.assertEqual(safe_potion_indexes(player, ("attack potion",)), {0})
+
+    def test_unknown_or_missing_ids_fail_closed(self) -> None:
+        player = {"potions": [{"index": 0}, {"index": 1, "id": ""}]}
+        self.assertEqual(
+            safe_potion_indexes(player, frozenset({"POTION.ATTACK_POTION"})), set()
+        )
+        self.assertEqual(safe_potion_indexes({}, frozenset({"POTION.A"})), set())
 
 
 if __name__ == "__main__":

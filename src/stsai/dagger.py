@@ -19,7 +19,7 @@ from stsai.combat import (
     normalize_headless_combat_observation,
 )
 from stsai.headless import HeadlessConfig, HeadlessRuntimeError
-from stsai.headless_env import HEADLESS_CHARACTERS, HeadlessAction, Sts2Env, run_headless_rollout
+from stsai.headless_env import HEADLESS_CHARACTERS, Sts2Env, run_headless_rollout
 from stsai.headless_policy import HeadlessHybridPolicy
 from stsai.ids import canonical_character
 from stsai.policy import MaskedMLPPolicy

@@ -409,6 +409,45 @@ class HybridPolicyTests(unittest.TestCase):
 
         self.assertEqual(env.legal_actions[index].command, "leave_room")
 
+    def test_safe_potion_filter_keys_raw_index_with_canonical_ids(self) -> None:
+        state = {
+            "type": "decision",
+            "decision": "combat_play",
+            "context": {"act": 1, "floor": 2, "room_type": "Monster"},
+            "hand": [],
+            "enemies": [{"index": 0, "hp": 20, "block": 0}],
+            "player": {
+                "hp": 50,
+                "max_hp": 70,
+                "block": 0,
+                "gold": 0,
+                "deck": [],
+                # Slot 0 was already consumed: raw indexes 1 and 2 sit at list
+                # positions 0 and 1, and the raw ids are not canonical.
+                "potions": [
+                    {"index": 1, "id": "Attack Potion"},
+                    {"index": 2, "id": "Fear Potion"},
+                ],
+            },
+        }
+        env = reset_env(state)
+        policy = HeadlessHybridPolicy(
+            FakeModel(),
+            use_macro=False,
+            safe_potion_ids=frozenset({"POTION.ATTACK_POTION"}),
+        )
+
+        _, info = policy.select(env)
+
+        scores = {
+            entry["action"]["args"]["potion_index"]: entry["score"]
+            for entry in info["ranked_actions"]
+            if entry["action"]["action"] == "use_potion"
+        }
+        self.assertEqual(set(scores), {1, 2})
+        self.assertEqual(scores[2], -1_000_000.0)
+        self.assertGreater(scores[1], -1_000_000.0)
+
 
 if __name__ == "__main__":
     unittest.main()

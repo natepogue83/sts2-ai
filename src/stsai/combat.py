@@ -403,6 +403,26 @@ def _headless_statuses(value: Any) -> list[dict[str, Any]]:
     return statuses
 
 
+def safe_potion_indexes(
+    player: Mapping[str, Any], safe_potion_ids: Sequence[str] | frozenset[str]
+) -> set[int]:
+    """Raw potion indexes whose canonical id is in the safe allowlist.
+
+    Raw headless potions carry "index" (normalization is what derives "slot"
+    from it), and legal use_potion actions reference that same raw index.
+    Both sides are canonicalized so an uncanonical raw id or allowlist entry
+    cannot silently exclude a safe potion or admit an unsafe one.
+    """
+
+    safe = {canonical_entity(identifier, "POTION") for identifier in safe_potion_ids}
+    allowed: set[int] = set()
+    for fallback, potion in enumerate(_objects(player.get("potions"))):
+        identifier = canonical_entity(potion.get("id") or potion.get("name"), "POTION")
+        if identifier in safe:
+            allowed.add(int(potion.get("index", fallback)))
+    return allowed
+
+
 def normalize_headless_combat_observation(
     observation: Mapping[str, Any]
 ) -> dict[str, Any]:

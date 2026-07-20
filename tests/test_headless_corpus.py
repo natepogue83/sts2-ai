@@ -7,7 +7,7 @@ import unittest
 
 from stsai.combat import headless_combat_split
 from stsai.headless_env import HEADLESS_CHARACTERS
-from stsai.headless_corpus import create_combat_bootstrap_manifest
+from stsai.headless_corpus import _discard_incomplete, create_combat_bootstrap_manifest
 
 
 class HeadlessCorpusTests(unittest.TestCase):
@@ -48,6 +48,50 @@ class HeadlessCorpusTests(unittest.TestCase):
                         seed=case["seed"],
                     ),
                 )
+
+
+class DiscardIncompleteTests(unittest.TestCase):
+    def test_removes_matching_and_unreadable_incomplete_files(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "000.train.silent.CBTS000000.jsonl"
+            temporary = path.with_suffix(path.suffix + ".tmp")
+
+            self.assertFalse(
+                _discard_incomplete(path, character="Silent", seed="CBTS000000")
+            )
+
+            header = {
+                "event_type": "episode_start",
+                "character": "Silent",
+                "seed": "CBTS000000",
+            }
+            temporary.write_text(json.dumps(header) + "\n", encoding="utf-8")
+            self.assertTrue(
+                _discard_incomplete(path, character="Silent", seed="CBTS000000")
+            )
+            self.assertFalse(temporary.exists())
+
+            # A crash before the header finished writing must also unblock.
+            temporary.write_text('{"event_type": "epis', encoding="utf-8")
+            self.assertTrue(
+                _discard_incomplete(path, character="Silent", seed="CBTS000000")
+            )
+            self.assertFalse(temporary.exists())
+
+    def test_refuses_to_remove_a_different_case(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "000.train.silent.CBTS000000.jsonl"
+            temporary = path.with_suffix(path.suffix + ".tmp")
+            header = {
+                "event_type": "episode_start",
+                "character": "Ironclad",
+                "seed": "CBTI000042",
+            }
+            temporary.write_text(json.dumps(header) + "\n", encoding="utf-8")
+
+            with self.assertRaises(ValueError):
+                _discard_incomplete(path, character="Silent", seed="CBTS000000")
+            self.assertTrue(temporary.exists())
 
 
 if __name__ == "__main__":

@@ -12,6 +12,7 @@ import numpy as np
 from stsai.combat import (
     headless_action_to_combat,
     normalize_headless_combat_observation,
+    safe_potion_indexes,
 )
 from stsai.combat_policy import CombatFeatureHasher
 from stsai.dataset import SKIP
@@ -103,16 +104,14 @@ class HeadlessHybridPolicy:
             for action in env.legal_actions
         ]
         if self.safe_potion_ids is not None:
-            potions = _objects(_mapping(env.raw_state.get("player")).get("potions"))
-            potion_ids_by_slot = {
-                int(potion.get("slot", index)): str(potion.get("id", ""))
-                for index, potion in enumerate(potions)
-            }
+            allowed = safe_potion_indexes(
+                _mapping(env.raw_state.get("player")), self.safe_potion_ids
+            )
             for index, action in enumerate(env.legal_actions):
                 if action.command != "use_potion":
                     continue
                 potion_index = int(action.argument_dict().get("potion_index", -1))
-                if potion_ids_by_slot.get(potion_index, "") not in self.safe_potion_ids:
+                if potion_index not in allowed:
                     scores[index] = -1_000_000.0
         best = max(range(len(scores)), key=lambda index: (scores[index], -index))
         guard = self._guard_repeated_event_action(env, best)
