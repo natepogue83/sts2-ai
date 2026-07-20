@@ -587,6 +587,89 @@ def apply_horizon_gate(
     }
 
 
+def compact_case_results(
+    cases: Sequence[Mapping[str, Any]], horizons: Sequence[int]
+) -> list[dict[str, Any]]:
+    """Keep auditable per-root evidence without repeating every RNG vector."""
+
+    compacted: list[dict[str, Any]] = []
+    for case in cases:
+        roots: list[dict[str, Any]] = []
+        for root in case.get("roots") or []:
+            horizon_rows: list[dict[str, Any]] = []
+            for horizon in horizons:
+                key = str(horizon)
+                base = (root.get("base") or {}).get("horizons", {}).get(key)
+                repeated = (root.get("base_repeat") or {}).get("horizons", {}).get(key)
+                alternative = (root.get("alternative") or {}).get("horizons", {}).get(key)
+                row: dict[str, Any] = {"horizon": horizon, "valid": False}
+                if all(
+                    isinstance(value, Mapping) for value in (base, repeated, alternative)
+                ):
+                    alignment, different = _stream_alignment(root, base, alternative)
+                    base_return = float(base["state"]["floor_plus_player_hp_fraction"])
+                    alternative_return = float(
+                        alternative["state"]["floor_plus_player_hp_fraction"]
+                    )
+                    row = {
+                        "horizon": horizon,
+                        "valid": True,
+                        "base_checkpoint_sha256": base["checkpoint_sha256"],
+                        "base_repeat_checkpoint_sha256": repeated["checkpoint_sha256"],
+                        "alternative_checkpoint_sha256": alternative["checkpoint_sha256"],
+                        "base_rng_streams_sha256": _json_sha(base.get("rng_streams") or {}),
+                        "alternative_rng_streams_sha256": _json_sha(
+                            alternative.get("rng_streams") or {}
+                        ),
+                        "exact_base_repeat": (
+                            base["checkpoint_sha256"] == repeated["checkpoint_sha256"]
+                        ),
+                        "root_stream_alignment_fraction": alignment,
+                        "desynchronized_root_streams": different,
+                        "base_return": base_return,
+                        "alternative_return": alternative_return,
+                        "paired_difference": alternative_return - base_return,
+                        "base_state": base["state"],
+                        "alternative_state": alternative["state"],
+                    }
+                horizon_rows.append(row)
+            branch_status = {
+                name: {
+                    field: branch[field]
+                    for field in ("completed", "error_type", "error_message")
+                    if field in branch
+                }
+                for name in ("base", "base_repeat", "alternative")
+                if isinstance((branch := root.get(name)), Mapping)
+            }
+            roots.append(
+                {
+                    "root_index": root.get("root_index"),
+                    "parent_step": root.get("parent_step"),
+                    "root_checkpoint_sha256": root.get("root_checkpoint_sha256"),
+                    "root_rng_stream_names": sorted(
+                        (root.get("root_rng_streams") or {}).keys()
+                    ),
+                    "root_state": root.get("root_state"),
+                    "base_action_index": root.get("base_action_index"),
+                    "base_action": root.get("base_action"),
+                    "alternative_action_index": root.get("alternative_action_index"),
+                    "alternative_action": root.get("alternative_action"),
+                    "branch_status": branch_status,
+                    "horizons": horizon_rows,
+                }
+            )
+        compacted.append(
+            {
+                key: value
+                for key, value in case.items()
+                if key != "roots"
+            }
+            | {"roots": roots}
+        )
+    return compacted
+
+
 def evaluate_crn_probe(
     *,
     manifest_path: str | os.PathLike[str],
@@ -694,10 +777,11 @@ def evaluate_crn_probe(
             "training_labels": False,
             "policy_overrides": False,
         },
-        "cases": results,
+        "cases": compact_case_results(results, horizons),
         "limitations": [
             "The floor-plus-HP return is a coupling measurement proxy, not a training target.",
             "The variance comparison combines matched-root control with shared native RNG; the pinned runtime does not expose independent future-RNG resampling at a fixed root.",
+            "Raw repeated RNG vectors are reduced to hashes, alignment, and differing stream names after aggregation to keep the evidence bounded.",
             "Passing makes a separately precommitted single-use dataset eligible for design; it does not authorize training data or policy overrides.",
         ],
     }

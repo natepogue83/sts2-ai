@@ -8,6 +8,7 @@ import unittest
 from stsai.crn_probe import (
     _alternative_index,
     apply_horizon_gate,
+    compact_case_results,
     create_crn_probe_manifest,
     extract_rng_streams,
     summarize_horizon,
@@ -169,6 +170,47 @@ class CrnProbeTests(unittest.TestCase):
         self.assertTrue(result["passed"])
         self.assertEqual(result["selected_horizon"], 1)
         self.assertFalse(result["evaluated"][2]["contiguous_prefix_passed"])
+
+    def test_compact_results_hashes_rng_vectors(self) -> None:
+        streams = {"run:Shuffle": {"scope": "run", "seed": "s", "counter": 1}}
+        capture = {
+            "checkpoint_sha256": "base",
+            "rng_streams": streams,
+            "state": {"floor_plus_player_hp_fraction": 2.5},
+        }
+        alternative = {
+            "checkpoint_sha256": "alternative",
+            "rng_streams": streams,
+            "state": {"floor_plus_player_hp_fraction": 2.75},
+        }
+        cases = [
+            {
+                "character": "Ironclad",
+                "roots": [
+                    {
+                        "root_index": 0,
+                        "root_rng_streams": streams,
+                        "base": {"completed": True, "horizons": {"1": capture}},
+                        "base_repeat": {
+                            "completed": True,
+                            "horizons": {"1": dict(capture)},
+                        },
+                        "alternative": {
+                            "completed": True,
+                            "horizons": {"1": alternative},
+                        },
+                    }
+                ],
+            }
+        ]
+
+        compacted = compact_case_results(cases, [1])
+        row = compacted[0]["roots"][0]["horizons"][0]
+
+        self.assertTrue(row["valid"])
+        self.assertEqual(row["paired_difference"], 0.25)
+        self.assertNotIn("rng_streams", row)
+        self.assertEqual(row["base_rng_streams_sha256"], row["alternative_rng_streams_sha256"])
 
 
 if __name__ == "__main__":
