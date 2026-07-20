@@ -1,0 +1,570 @@
+{
+  "aggregate": {
+    "by_character": {
+      "Defect": {
+        "baseline": {
+          "mean_floor": 6.0,
+          "mean_steps": 95.0,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "candidate": {
+          "mean_floor": 6.0,
+          "mean_steps": 99.0,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "cases": 1,
+        "descriptive_paired_95_interval": [
+          0.0,
+          0.0
+        ],
+        "improved": 0,
+        "paired_floor_delta": 0.0,
+        "tied": 1,
+        "worse": 0
+      },
+      "Ironclad": {
+        "baseline": {
+          "mean_floor": 11.0,
+          "mean_steps": 112.0,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "candidate": {
+          "mean_floor": 5.0,
+          "mean_steps": 62.0,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "cases": 1,
+        "descriptive_paired_95_interval": [
+          -6.0,
+          -6.0
+        ],
+        "improved": 0,
+        "paired_floor_delta": -6.0,
+        "tied": 0,
+        "worse": 1
+      },
+      "Necrobinder": {
+        "baseline": {
+          "mean_floor": 14.0,
+          "mean_steps": 148.0,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "candidate": {
+          "mean_floor": 14.0,
+          "mean_steps": 149.0,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "cases": 1,
+        "descriptive_paired_95_interval": [
+          0.0,
+          0.0
+        ],
+        "improved": 0,
+        "paired_floor_delta": 0.0,
+        "tied": 1,
+        "worse": 0
+      },
+      "Regent": {
+        "baseline": {
+          "mean_floor": 6.0,
+          "mean_steps": 79.0,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "candidate": {
+          "mean_floor": 8.0,
+          "mean_steps": 117.0,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "cases": 1,
+        "descriptive_paired_95_interval": [
+          2.0,
+          2.0
+        ],
+        "improved": 1,
+        "paired_floor_delta": 2.0,
+        "tied": 0,
+        "worse": 0
+      },
+      "Silent": {
+        "baseline": {
+          "mean_floor": 8.0,
+          "mean_steps": 102.0,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "candidate": {
+          "mean_floor": 8.0,
+          "mean_steps": 96.0,
+          "runtime_failures": 0,
+          "truncations": 0,
+          "victories": 0
+        },
+        "cases": 1,
+        "descriptive_paired_95_interval": [
+          0.0,
+          0.0
+        ],
+        "improved": 0,
+        "paired_floor_delta": 0.0,
+        "tied": 1,
+        "worse": 0
+      }
+    },
+    "overall": {
+      "baseline": {
+        "mean_floor": 9.0,
+        "mean_steps": 107.2,
+        "runtime_failures": 0,
+        "truncations": 0,
+        "victories": 0
+      },
+      "candidate": {
+        "mean_floor": 8.2,
+        "mean_steps": 104.6,
+        "runtime_failures": 0,
+        "truncations": 0,
+        "victories": 0
+      },
+      "cases": 5,
+      "descriptive_paired_95_interval": [
+        -3.4587,
+        1.8587
+      ],
+      "improved": 1,
+      "paired_floor_delta": -0.8,
+      "tied": 3,
+      "worse": 1
+    }
+  },
+  "ascension": 10,
+  "build_id": "v0.107.1",
+  "cases": [
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 18,
+          "play_card": 67
+        },
+        "floor": 11,
+        "policy_sources": {
+          "combat_deepsets": 85,
+          "heuristic": 27
+        },
+        "steps": 112,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\rank-search-parallel-smoke-v0.107.1-a10.n1\\000.ironclad.SMKR2I000000.baseline.jsonl",
+        "trajectory_id": "b07883f679f2473aaa2539d1cbce37cb",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 11,
+          "play_card": 42
+        },
+        "floor": 5,
+        "policy_sources": {
+          "combat_deepsets": 18,
+          "heuristic": 9,
+          "public_deterministic_one_ply_search": 35
+        },
+        "search_coverage": {
+          "branch_nodes": 148,
+          "combat_decisions": 53,
+          "decisions_with_search_metadata": 62,
+          "fallback_reasons": {
+            "base_action_crosses_information_boundary": 18,
+            "noncombat_fallback": 9
+          },
+          "search_changed_action_decisions": 14,
+          "search_used_decisions": 35,
+          "search_used_fraction_of_combat_decisions": 0.660377
+        },
+        "steps": 62,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\rank-search-parallel-smoke-v0.107.1-a10.n1\\000.ironclad.SMKR2I000000.search.jsonl",
+        "trajectory_id": "4f170758301140478f76b9b915a07856",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.IRONCLAD",
+      "case_index": 0,
+      "character": "Ironclad",
+      "paired_floor_delta": -6,
+      "seed": "SMKR2I000000"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 16,
+          "play_card": 63
+        },
+        "floor": 8,
+        "policy_sources": {
+          "combat_deepsets": 79,
+          "heuristic": 23
+        },
+        "steps": 102,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\rank-search-parallel-smoke-v0.107.1-a10.n1\\001.silent.SMKR2S000000.baseline.jsonl",
+        "trajectory_id": "32b19c56c57649bb996b25690a135d6b",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 14,
+          "play_card": 59
+        },
+        "floor": 8,
+        "policy_sources": {
+          "combat_deepsets": 24,
+          "heuristic": 23,
+          "public_deterministic_one_ply_search": 49
+        },
+        "search_coverage": {
+          "branch_nodes": 188,
+          "combat_decisions": 73,
+          "decisions_with_search_metadata": 96,
+          "fallback_reasons": {
+            "base_action_crosses_information_boundary": 24,
+            "noncombat_fallback": 23
+          },
+          "search_changed_action_decisions": 17,
+          "search_used_decisions": 49,
+          "search_used_fraction_of_combat_decisions": 0.671233
+        },
+        "steps": 96,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\rank-search-parallel-smoke-v0.107.1-a10.n1\\001.silent.SMKR2S000000.search.jsonl",
+        "trajectory_id": "7a1fb9fcbd86415f8fefb6d7fc07a388",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.SILENT",
+      "case_index": 1,
+      "character": "Silent",
+      "paired_floor_delta": 0,
+      "seed": "SMKR2S000000"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 16,
+          "play_card": 66
+        },
+        "floor": 6,
+        "policy_sources": {
+          "combat_deepsets": 82,
+          "heuristic": 13
+        },
+        "steps": 95,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\rank-search-parallel-smoke-v0.107.1-a10.n1\\002.defect.SMKR2D000000.baseline.jsonl",
+        "trajectory_id": "17be95c3a0954fe3ae91c286d890135c",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 17,
+          "play_card": 69
+        },
+        "floor": 6,
+        "policy_sources": {
+          "combat_deepsets": 36,
+          "heuristic": 13,
+          "public_deterministic_one_ply_search": 50
+        },
+        "search_coverage": {
+          "branch_nodes": 139,
+          "combat_decisions": 86,
+          "decisions_with_search_metadata": 99,
+          "fallback_reasons": {
+            "base_action_crosses_information_boundary": 36,
+            "noncombat_fallback": 13
+          },
+          "search_changed_action_decisions": 14,
+          "search_used_decisions": 50,
+          "search_used_fraction_of_combat_decisions": 0.581395
+        },
+        "steps": 99,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\rank-search-parallel-smoke-v0.107.1-a10.n1\\002.defect.SMKR2D000000.search.jsonl",
+        "trajectory_id": "19c719ba019b402fa041062f7ba5e0e7",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.DEFECT",
+      "case_index": 2,
+      "character": "Defect",
+      "paired_floor_delta": 0,
+      "seed": "SMKR2D000000"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 24,
+          "play_card": 81
+        },
+        "floor": 14,
+        "policy_sources": {
+          "combat_deepsets": 105,
+          "heuristic": 43
+        },
+        "steps": 148,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\rank-search-parallel-smoke-v0.107.1-a10.n1\\003.necrobinder.SMKR2N000000.baseline.jsonl",
+        "trajectory_id": "d07ef56cc0454299ada17955e6244895",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 25,
+          "play_card": 81
+        },
+        "floor": 14,
+        "policy_sources": {
+          "combat_deepsets": 59,
+          "heuristic": 43,
+          "public_deterministic_one_ply_search": 47
+        },
+        "search_coverage": {
+          "branch_nodes": 122,
+          "combat_decisions": 106,
+          "decisions_with_search_metadata": 149,
+          "fallback_reasons": {
+            "base_action_crosses_information_boundary": 59,
+            "noncombat_fallback": 43
+          },
+          "search_changed_action_decisions": 7,
+          "search_used_decisions": 47,
+          "search_used_fraction_of_combat_decisions": 0.443396
+        },
+        "steps": 149,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\rank-search-parallel-smoke-v0.107.1-a10.n1\\003.necrobinder.SMKR2N000000.search.jsonl",
+        "trajectory_id": "3a13cf541b994a689d4fead91f85972a",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.NECROBINDER",
+      "case_index": 3,
+      "character": "Necrobinder",
+      "paired_floor_delta": 0,
+      "seed": "SMKR2N000000"
+    },
+    {
+      "ascension": 10,
+      "baseline": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 16,
+          "play_card": 49
+        },
+        "floor": 6,
+        "policy_sources": {
+          "combat_deepsets": 65,
+          "heuristic": 14
+        },
+        "steps": 79,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\rank-search-parallel-smoke-v0.107.1-a10.n1\\004.regent.SMKR2R000000.baseline.jsonl",
+        "trajectory_id": "ed3a37f023db4f5bbec3bee25136ba72",
+        "truncated": false,
+        "victory": false
+      },
+      "candidate": {
+        "act": 1,
+        "combat_action_counts": {
+          "end_turn": 22,
+          "play_card": 77
+        },
+        "floor": 8,
+        "policy_sources": {
+          "combat_deepsets": 44,
+          "heuristic": 18,
+          "public_deterministic_one_ply_search": 55
+        },
+        "search_coverage": {
+          "branch_nodes": 162,
+          "combat_decisions": 99,
+          "decisions_with_search_metadata": 117,
+          "fallback_reasons": {
+            "base_action_crosses_information_boundary": 44,
+            "noncombat_fallback": 18
+          },
+          "search_changed_action_decisions": 8,
+          "search_used_decisions": 55,
+          "search_used_fraction_of_combat_decisions": 0.555556
+        },
+        "steps": 117,
+        "terminated": true,
+        "total_reward": -1.0,
+        "trajectory": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\data\\raw\\headless\\rank-search-parallel-smoke-v0.107.1-a10.n1\\004.regent.SMKR2R000000.search.jsonl",
+        "trajectory_id": "d2424507d7cb46a294eb67469c5d3748",
+        "truncated": false,
+        "victory": false
+      },
+      "canonical_character": "CHARACTER.REGENT",
+      "case_index": 4,
+      "character": "Regent",
+      "paired_floor_delta": 2,
+      "seed": "SMKR2R000000"
+    }
+  ],
+  "combat_action_counts": {
+    "by_character": {
+      "Defect": {
+        "baseline": {
+          "end_turn": 16,
+          "play_card": 66
+        },
+        "candidate": {
+          "end_turn": 17,
+          "play_card": 69
+        }
+      },
+      "Ironclad": {
+        "baseline": {
+          "end_turn": 18,
+          "play_card": 67
+        },
+        "candidate": {
+          "end_turn": 11,
+          "play_card": 42
+        }
+      },
+      "Necrobinder": {
+        "baseline": {
+          "end_turn": 24,
+          "play_card": 81
+        },
+        "candidate": {
+          "end_turn": 25,
+          "play_card": 81
+        }
+      },
+      "Regent": {
+        "baseline": {
+          "end_turn": 16,
+          "play_card": 49
+        },
+        "candidate": {
+          "end_turn": 22,
+          "play_card": 77
+        }
+      },
+      "Silent": {
+        "baseline": {
+          "end_turn": 16,
+          "play_card": 63
+        },
+        "candidate": {
+          "end_turn": 14,
+          "play_card": 59
+        }
+      }
+    },
+    "overall": {
+      "baseline": {
+        "end_turn": 90,
+        "play_card": 326
+      },
+      "candidate": {
+        "end_turn": 89,
+        "play_card": 328
+      }
+    }
+  },
+  "count_per_character": 1,
+  "evaluation": "frozen_paired_rank_only_one_ply_search",
+  "execution": {
+    "max_search_nodes": 8,
+    "mode": "bounded_native_process_batch",
+    "parallel_search_branches": 4,
+    "parallel_workers": 4,
+    "submitted_jobs": 10
+  },
+  "limitations": [
+    "The value checkpoint is used only as a ranker; no calibrated probability claim is made.",
+    "Search is depth one and limited to public-deterministic allowlisted actions.",
+    "No search branch value or selected action is emitted as a training label in this tranche."
+  ],
+  "manifest": "C:\\Users\\ignit\\OneDrive\\Documents\\STSAI\\benchmarks\\rank-search-parallel-smoke-v0.107.1-a10.precommit.json",
+  "manifest_sha256": "4f275c4e7932474f34d22c079183d60c1b5770bbeb30225f0db2f358c26f789a",
+  "max_steps": 1000,
+  "models": {
+    "combat_sha256": "5bbb35de90351827374c9188351cc11c5ce867053c057e1a45978a60bb7633e1",
+    "macro_sha256": "476701d84a7f6cf85b1aa6a910877334c13f52ea637af967a8f6da400ca878f9",
+    "value_sha256": "339d6dc2323d041c0dab880b5c88b80b71fcc3d0ca68f40dc1bc56ef6691bb56"
+  },
+  "promotion_gate": {
+    "criteria": {
+      "candidate_truncations_at_most_baseline": true,
+      "candidate_victories_at_least_baseline": true,
+      "every_character_delta_at_least_minus_0_5": false,
+      "paired_interval_lower_above_zero": false,
+      "search_used_in_at_least_one_case": true
+    },
+    "decision": "do_not_emit_search_training_labels",
+    "passed": false
+  },
+  "resume": {
+    "discarded_matching_incomplete_trajectories": 0,
+    "reused_completed_trajectories": {
+      "baseline": 0,
+      "search": 0
+    }
+  },
+  "schema_version": 1,
+  "search_coverage": {
+    "branch_nodes": 759,
+    "cases_with_search_used": 5,
+    "combat_decisions": 417,
+    "decisions_with_search_metadata": 523,
+    "search_changed_action_decisions": 60,
+    "search_used_decisions": 236
+  },
+  "training_labels_authorized": false,
+  "training_labels_emitted": false
+}

@@ -179,6 +179,7 @@ license metadata alongside any raw snapshot.
 - [ ] Search-eligible calibrated value head and policy ensemble
 - [x] Process-isolated reconstructive snapshot/fork with native proof gates
 - [x] Leakage-aware one-ply search plumbing without training-label emission
+- [x] Powered character-balanced fail-closed one-ply strength evaluation
 - [ ] Authorized search-generated policy/value labels and strength evaluation
 - [ ] Native replay-to-per-action training transition reconstruction
 - [x] Batched multi-process environment manager
@@ -458,16 +459,22 @@ closed as strength candidates; Deep Sets remains the representation baseline
 for the value/search path. The frozen summary is
 `benchmarks/powered-imitation-comparison-summary.v0.107.1-a10.n200.json`.
 
-The next combat milestone is no longer another global-Platt linear retry. The
-opened audit can be folded into future development, but never reused as blind
-evidence. A replacement should precommit a calibration-selection procedure
-(including identity/no post-calibration), use richer character-conditioned
-value modeling or a small ensemble, and reserve a fresh blind pool before the
-already-frozen policy-versus-search strength evaluation can run. The
-reconstructive snapshot/fork boundary and public-state one-ply search harness
-exist, but search-derived labels remain disabled until an evaluator passes
-every gate and training authorization is explicit. A large learned world model
-remains deferred because the native simulator already supplies the dynamics.
+The first teacher-exceeding attempt is now closed. A policy-filtered action-state
+corpus supplied 30,125 combat decisions from 400 existing Deep Sets trajectories,
+and a character-aware ensemble was trained only as a leaf-state ranker. Its
+fail-closed one-ply policy completed a frozen, fresh, character-balanced 200-pair
+Ascension-10 evaluation with zero runtime failures or truncations, but regressed
+from 8.69 to 8.21 mean floors: a paired `-0.48`, with descriptive 95% interval
+`[-0.7226, -0.2374]`. It was worse on every character mean (16 improved / 141
+tied / 43 worse overall).
+
+The precommitted gate therefore stopped this exact one-ply configuration without
+post-hoc tuning. Search labels remain disabled and no expert-iteration data was
+emitted. The terminal report is
+`benchmarks/rank-search-v2-powered-v0.107.1-a10.n40.json`. This result rejects
+the current ranker/search combination, not search in general; any successor must
+be proposed and gated as a fresh hypothesis. A large learned world model remains
+deferred because the native simulator already supplies the dynamics.
 
 ### RunReplays reconstruction fidelity
 
