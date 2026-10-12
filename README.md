@@ -1,7 +1,32 @@
-# STSAI
+# STSAI: a Slay the Spire 2 agent, with its negative results kept
 
-STSAI is a research project for training an AI to play *Slay the Spire 2* at a
-high level. The project deliberately separates three jobs that need different
+**The question.** Can an agent learn *Slay the Spire 2* combat from a rule-based
+teacher and then beat it with search?
+
+**The result so far.** Imitation reached 83% agreement with the teacher's moves on
+held-out decisions, 86% after one round of DAgger. Adding one-step look-ahead
+search made the agent *worse*: mean floor reached fell from 8.69 to 8.21 over
+200 pre-registered paired games (paired difference −0.48, 95% interval −0.72 to
+−0.24), worse for every character. The gate was fixed before the run, so the
+configuration was dropped without re-tuning. The agent does not yet beat its own
+teacher. Details are in [EXPERIMENTS.md](EXPERIMENTS.md) and the frozen reports
+in `benchmarks/`.
+
+**Why it is on a safety portfolio.** Every test here had a pass gate and a stop
+rule written down before it ran, replay determinism was tested (48 of 48 exact
+repeats), outcome fields are kept out of policy inputs so future information
+cannot leak into training, and the failures are reported as failures. It is a
+small exercise in not fooling yourself with an agent.
+
+**How it was made.** The code was written by AI coding agents (OpenAI Codex, with
+a Claude model consulted at checkpoints; see [AGENTS.md](AGENTS.md)) under
+Nathan Pogue's direction. Nathan does not write code; he set the questions,
+the gates and the budgets, and decided what the results were allowed to claim.
+The 162 tests were written by the agents too.
+
+---
+
+STSAI is a research project for training an AI to play *Slay the Spire 2*. The project deliberately separates three jobs that need different
 data and learning methods:
 
 1. **Run-history learning** — learn card rewards, pathing, shops, rest sites,
